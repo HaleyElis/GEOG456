@@ -50,6 +50,24 @@
     .addTo(map); // 
     // end of script
 
+    //L.geoJSON(OldWell, ).addTo(map);
+    // create custom icon variable
+    var uncIcon = L.icon({    // notice the L.icon which is a Leaflet object with properties
+        iconUrl: 'https://identity.unc.edu/files/2014/01/Old_Well_Graphic_twitter.jpg',   
+          // this points to a jpg image obtained from the internet
+        iconSize: [32,32], // size of the icon
+        popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point. 
+        });
+    //YOU COULD CHANGE the iconURL, iconSize and popupAnchor to see how the map changes
+        var customPopup = "UNC Well<br/><img src='https://static1.squarespace.com/static/57d17e77b8a79bfa4e31641d/t/58a22fd0bebafb516ad2404a/1487024089479/unc+well.png?format=1500w' width='100px'/>";
+
+    L.geoJSON(OldWell, {   // a
+    pointToLayer: function (feature, latlng) { // b
+    return L.marker(latlng, {icon: uncIcon});}}) // c
+    .bindPopup(customPopup) // d
+    .addTo(map); // 
+    
+    // end of script
     </script>
     
 </body>

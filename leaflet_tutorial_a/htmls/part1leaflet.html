@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>My First Leaflet Map</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+    </head>
+    <body>
+    This is not as hard as I thought. 
+    <div id="mapid"></div>
+    
+    <style>
+        #mapid{ width: 900px; height: 500px; }
+    </style>
+    <script>  
+    // this means that the following lines will be script 
+    // (it could also or point to an external script file). 
+
+    var map = L.map('mapid').setView([35.91, -79.05], 17); // YOU CAN CHANGE THE ZOOM
+
+    // this line is creating the variable map by  initializing the L.map class (a Leaflet class) with the mapid element that we created before. setView is a method that can be applied to the class L.map : you can give it a latitude, longitude and a zoom.  The higher the value of the zoom, the finer the initial scale of the map. 
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+    // L.tileLayer can display a tile layer. You can check out other tile layer examples at https://leaflet-extras.github.io/leaflet-providers/preview/. The location of the tile layer needs to be in single quotes. You can also indicate the attribution for that layer. In this example we used the Open StreetMap attribution. The '&copy; <a> and the other information you see here is HTML code adding a copyright sign, and making a hyperlink to OpenStreetMap. 
+    // At the end we include .addTo(map), which is indicating to add the tile layer to the variable map. 
+
+    L.marker([35.911271, -79.049807]).addTo(map)
+        .bindPopup('Hey I am at Carolina Hall 322') // YOU CAN CHANGE THE MESSAGE
+        .openPopup();
+    // end of script
+    </script>
+    </body>
+</html>
