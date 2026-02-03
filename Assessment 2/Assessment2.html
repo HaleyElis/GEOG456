@@ -18,19 +18,19 @@
     <h1>2018 Hurricane Hector Track</h1>
     <div id="mapid"></div>
     <style>
-        #mapid { width: 900px; height: 500px; }
+        #mapid { width: 1200px; height: 550px; }
     </style>
     
     <script>
-        var map = L.map('mapid').setView([30, -140], 2);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 19,
-         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        var map = L.map('mapid').setView([20, -140], 4);
+        var Esri_OceanBasemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri',
+	maxZoom: 13
+});
+        Esri_OceanBasemap.addTo(map);
             var Cyclone = L.icon({ 
-            iconUrl: 'cycloneicon.png',
-            iconSize: [32, 32],
+            iconUrl: 'cyclone.png',
+            iconSize: [20, 20],
             popupAnchor: [0, 0]
         });
 
