@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+// convert a shapefile to a GeoJSON- done in QGIS
+// convert the GeoJSON into a .js- done in VS Code var publicschools.js
+    // bring that .js to an HTML
+     <script src="publicschools.js"></script>
+    </head>
+    
+   <body>
+
+    <div id="mapid"></div>
+    <style>
+        #mapid { width: 900px; height: 500px; }
+    </style>
+// display the GeoJSON as a Leaflet map. 
+    
+    <script>
+        var map = L.map('mapid').setView([35.91, -79.05], 17);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+            var schoolIcon = L.icon({
+            iconUrl: 'Assesment 2\schoolicon.png',
+            iconSize: [32, 32],
+            popupAnchor: [0, 0]
+        });
+
+    var customPopup = "Orange County Public Schools <br/><img src='https://www.orangecountyfirst.com/' width='100px'/>";
+    // Each feature in the GeoJSON should be represented with an icon that has a pop-up that contains an image and a hyperlink. 
+    // The page needs to work from GitHub. 
+    L.geoJSON(publicschools, {   // a
+    pointToLayer: function (feature, latlng) { // b
+    return L.marker(latlng, {icon: schoolIcon});}}) // c
+    .bindPopup(customPopup) // d
+    .addTo(map); // 
+    
+    // end of script
+    </script>
+    
+</body>
+</html>
