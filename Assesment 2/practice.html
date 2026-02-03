@@ -46,36 +46,23 @@
 //    .bindPopup(customPopup) // d
 //    .addTo(map); // 
 
-   L.geoJSON(publicschools, {
+L.geoJSON(publicschools, {
   pointToLayer: function (feature, latlng) {
     return L.marker(latlng, { icon: schoolIcon });
   },
-
-  onEachFeature: function (feature, layer) {
-    var name = feature.properties.school_nam;
-    var url  = feature.properties.url_addres;
-
-    // If url is missing, just show the name
-    if (!url) {
-      layer.bindPopup("<strong>" + name + "</strong><br>No website listed");
-      return;
-    }
-
-    // Some of your URLs end with "index." (invalid). Fix common cases:
-    if (url.endsWith("index.")) url += "html";
-
-    // Make sure it has http/https
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      url = "https://" + url;
-    }
+// https://leafletjs.com/examples/geojson/ how to create popups for each feature using onEachFeature
+  onEachFeature: function (feature, layer) { // this function creates a different popup for each feature using its properties
+    var name = feature.properties.school_nam;// .school_nam is the property name in the GeoJSON file
+    var ocpsUrl = "https://www.orangecountyfirst.com/"; // Orange County Schools website URL this is the same for all features
 
     var popupContent =
       "<strong>" + name + "</strong><br>" +
-      "<a href='" + url + "' target='_blank'>School website</a>";
+      "<a href='" + ocpsUrl + "' target='_blank'>Orange County Schools website</a>"; // hyperlink text this is the same for all features
 
     layer.bindPopup(popupContent);
   }
 }).addTo(map);
+
 
 
     // end of script
