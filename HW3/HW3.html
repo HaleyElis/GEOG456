@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script src="publicschools.js"></script>
+
+</head>
+
+<body>
+<h1>Orange County Schools</h1>
+<div id="mapid"></div>
+
+    <style>
+        #mapid { width: 1200px; height: 550px; }
+    </style>
+
+    <script>
+   var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "© OpenStreetMap"
+});
+
+var osmHOT = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    "© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France"
+});
+
+var map = L.map("mapid", {
+  center: [36.04, -79.13],
+  zoom: 10,
+  layers: [osm]
+});
+
+var schoolIcon = L.icon({
+  iconUrl: "schoolicon.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],     // bottom middle
+  popupAnchor: [0, -32]     // popup above icon
+});
+
+var schoolsLayer = L.geoJSON(publicschools, {
+  pointToLayer: function (feature, latlng) {
+    return L.marker(latlng, { icon: schoolIcon });
+  },
+  onEachFeature: function (feature, layer) {
+    var name = feature.properties.school_nam;
+    var ocpsUrl = "https://www.orangecountyfirst.com/";
+
+    var popupContent =
+      "<strong>" + name + "</strong><br>" +
+      "<a href='" + ocpsUrl + "' target='_blank'>Orange County Schools website</a>";
+
+    layer.bindPopup(popupContent);
+  }
+}).addTo(map);
+
+var baseMaps = {
+  "OpenStreetMap": osm,
+  "OpenStreetMap.HOT": osmHOT
+};
+
+var overlayMaps = {
+  "Schools": schoolsLayer
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+    // end of script
+    </script>
+</body>
+</html>
