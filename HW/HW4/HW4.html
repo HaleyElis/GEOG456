@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HW4 – Earthquakes</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- REQUIRED: loads GeoJSON as variable named `data` -->
+  <script src="data.js"></script>
+
+  <style>
+    #map {
+      height: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>USGS Earthquakes</h1>
+  <div id="map"></div>
+
+  <script>
+  // Create map
+  var map = L.map("map").setView([20, 0], 2);
+
+  // Basemap
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+
+  function getColor(mag) {
+    // magnitude color ramp (small -> large)
+    return mag >= 7 ? "#800026" :
+           mag >= 6 ? "#BD0026" :
+           mag >= 5 ? "#E31A1C" :
+           mag >= 4 ? "#FC4E2A" :
+           mag >= 3 ? "#FD8D3C" :
+           mag >= 2 ? "#FEB24C" :
+           mag >= 1 ? "#FED976" :
+                      "#FFEDA0";
+  }
+
+  function getRadius(mag) {
+    if (mag == null || isNaN(mag)) return 3;
+    return Math.max(3, Math.min(20, mag * 3));
+  }
+
+  L.geoJSON(data, {
+    pointToLayer: function (feature, latlng) {
+      var mag = feature.properties && feature.properties.mag;
+      return L.circleMarker(latlng, {
+        radius: getRadius(mag),
+        fillColor: getColor(mag),
+        color: "#222",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.75
+      });
+    },
+    onEachFeature: function (feature, layer) {
+      var p = feature.properties || {};
+      var when = p.time ? new Date(p.time).toLocaleString() : "Unknown time";
+      var depth = (feature.geometry && feature.geometry.coordinates)
+        ? feature.geometry.coordinates[2]
+        : null;
+
+      layer.bindPopup(
+        `<b>Magnitude:</b> ${p.mag ?? "N/A"}<br>
+         <b>Place:</b> ${p.place ?? "N/A"}<br>
+         <b>Time:</b> ${when}<br>
+         <b>Depth (km):</b> ${depth ?? "N/A"}`
+      );
+    }
+  }).addTo(map);
+
+  console.log("GeoJSON loaded:", data);
+</script>
+</body>
+</html>

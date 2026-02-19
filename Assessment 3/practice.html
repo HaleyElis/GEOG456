@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Page</title>
+</head>
+// Load from the internet the CSS stylesheet for the leaflet library. 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+// Load from the internet the JavaScript library for leaflet.
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<style>
+
+    #map { height: 500px; width: 400px; }
+
+    body {
+    background-color: red;
+    }
+
+</style>
+
+<body>
+
+    <h1><a href="https://www.nytimes.com">New York Times</a></h1>
+    
+    <div id="map"></div>
+
+    <script>
+
+        var map = L.map('map').setView([33.7175, -79.05004], 17); // Centered on Myrtle Beach, SC
+                // L.map('map').setView([40.7484, -73.9857], 17) // Centered on Times Square, New York
+
+        // Add OpenStreetMap or other tile layer fo base map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var data = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-73.9857, 40.7484] // Longitude, Latitude
+                    },
+                    "properties": {
+                        "name": "Times Square",
+                        "city": "New York",
+                        "country": "USA"
+                }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [2.2945, 48.8584] // Longitude, Latitude
+                    },
+                    "properties": {
+                        "name": "Eiffel Tower",
+                        "city": "Paris",
+                        "country": "France"
+                }
+                }
+            ]
+        }
+
+        // Add GeoJSON layer to the map, onEachFeature to bind popups with name, city, and country
+        // The onEachFeature function is called for each feature in the GeoJSON data, allowing us to bind a popup to each marker with the desired information.
+        L.geoJSON(data, {
+            onEachFeature: function (feature, layer) {
+                var name = feature.properties.name;
+                var city = feature.properties.city;
+                var country = feature.properties.country;
+
+                var popupContent = "<strong>" + name + "</strong><br>" +
+                                   city + ", " + country;
+
+                layer.bindPopup(popupContent);
+            }
+        }).addTo(map);
+
+        // Add a marker for just the Eiffel Tower with a popup
+        // This is an additional marker that specifically highlights the Eiffel Tower, demonstrating how to add a marker with a popup directly without using GeoJSON.
+        L.marker([48.8584, 2.2945]).addTo(map)
+
+        // Create a variable that has the value of the property  city of the first feature in data
+        var myCity = data.features[0].properies.city
+
+        // Create a variable that is the longitude of New York using JS dot nota on to get the value from variable data
+        var myLon = data.features[0].geometry.coordinates[0]
+
+        //  Create a variable that is an array that has the latitude and longitude for NYC using the variable data and the JS dot notaion
+        var myCoord = [
+            data.features[0].geometry.coordinates[1], // Latitude
+            data.features[0].geometry.coordinates[0]  // Longitude
+        ]
+
+        //  Create a variable that contains an array of the features in variable data
+        var myFeatures = data.features;
+
+    </script>
+</body>
+
+<body>
+        // Write an h2 tag  that displays the text UNC and links to www.unc.edu
+        <a href="https://www.unc.edu"><h2>UNC</h2></a>
+
+        //How would you make a div with the id "map" have a width of 400px?
+        <style>
+            #map {
+                width: 400px;
+            }
+        </style>
+
+        <script>
+        // How do you declare a variable?
+        var something = "example";
+
+        // How do you create an array?
+        var fruits = ["lemon", "banana", "apple"];
+
+        // To access the value "apple" you would write:
+        fruits[2];
+        // (Remember: array indexing starts at 0)
+
+        var apple = {
+            name: "apple",
+            colors: ["red", "green", "yellow"],
+        };
+
+        apple.name;  // "apple"
+        apple.colors[1]; // "green"
+
+        // How to write an if-else statement
+        var number = 10;
+        if (number > 5) {
+            console.log("Number is greater than 5");
+        } else {
+            console.log("Number is 5 or less");
+        }
+
+        // How to write a ternary expression
+        var isEven = (number % 2 === 0) ? "Even" : "Odd";
+        console.log(isEven); // "Even"
+
+    </script>
+</body>
+</html>
