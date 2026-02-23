@@ -28,6 +28,19 @@
   <h1>USGS Earthquakes</h1>
   <div id="map"></div>
 
+  <h2>Earthquake Table (sample)</h2>
+<table id="eqTable" border="1" cellpadding="6" style="border-collapse:collapse; width:100%;">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Magnitude</th>
+      <th>Place</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+
   <script>
   // Create map
   var map = L.map("map").setView([20, 0], 2);
@@ -83,6 +96,66 @@
   }).addTo(map);
 
   console.log("GeoJSON loaded:", data);
+
+  // ---- helper functions ----
+  function magColor(mag) {
+    // pick any color scheme you like
+    if (mag >= 7) return "#800026";
+    if (mag >= 6) return "#BD0026";
+    if (mag >= 5) return "#E31A1C";
+    if (mag >= 4) return "#FC4E2A";
+    if (mag >= 3) return "#FD8D3C";
+    if (mag >= 2) return "#FEB24C";
+    if (mag >= 1) return "#FED976";
+    return "#FFEDA0";
+  }
+
+  function fmtTime(ms) {
+    if (!ms) return "N/A";
+    return new Date(ms).toLocaleString();
+  }
+
+  // ---- build the table ----
+  const tbody = document.querySelector("#eqTable tbody");
+
+  // (Optional) sort biggest first
+  const features = [...data.features].sort(
+    (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
+  );
+
+  // (Optional) limit rows so page isn't huge
+  const MAX_ROWS = 100;
+  const slice = features.slice(0, MAX_ROWS);
+
+  slice.forEach((f) => {
+    const p = f.properties || {};
+    const mag = p.mag;
+
+    const tr = document.createElement("tr");
+
+    // Time column
+    const tdTime = document.createElement("td");
+    tdTime.textContent = fmtTime(p.time);
+
+    // Magnitude column (colored)
+    const tdMag = document.createElement("td");
+    tdMag.textContent = mag ?? "N/A";
+    tdMag.style.backgroundColor = magColor(mag ?? 0);
+    tdMag.style.fontWeight = "bold";
+
+    // Place column
+    const tdPlace = document.createElement("td");
+    tdPlace.textContent = p.place ?? "N/A";
+
+    tr.appendChild(tdTime);
+    tr.appendChild(tdMag);
+    tr.appendChild(tdPlace);
+
+    tbody.appendChild(tr);
+  });
+
+  console.log("Built table rows:", slice.length);
 </script>
+
 </body>
 </html>
