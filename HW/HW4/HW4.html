@@ -124,6 +124,9 @@
     (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
   );
 
+  //  limit rows so page isn't huge
+  var MAX_ROWS = 1000;
+  var slice = features.slice(0, MAX_ROWS);
 
   slice.forEach((f) => {
     var p = f.properties || {};
