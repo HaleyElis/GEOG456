@@ -119,14 +119,11 @@
   // ---- build the table ----
   var tbody = document.querySelector("#eqTable tbody");
 
-  // (Optional) sort biggest first
+  // sort biggest first
   var features = [...data.features].sort(
     (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
   );
 
-  // (Optional) limit rows so page isn't huge
-  var MAX_ROWS = 100;
-  var slice = features.slice(0, MAX_ROWS);
 
   slice.forEach((f) => {
     var p = f.properties || {};
