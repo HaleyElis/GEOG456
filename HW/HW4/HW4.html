@@ -20,6 +20,7 @@
   <style>
     #map {
       height: 600px;
+      width: 900px;
     }
   </style>
 </head>
@@ -116,35 +117,35 @@
   }
 
   // ---- build the table ----
-  const tbody = document.querySelector("#eqTable tbody");
+  var tbody = document.querySelector("#eqTable tbody");
 
   // (Optional) sort biggest first
-  const features = [...data.features].sort(
+  var features = [...data.features].sort(
     (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
   );
 
   // (Optional) limit rows so page isn't huge
-  const MAX_ROWS = 100;
-  const slice = features.slice(0, MAX_ROWS);
+  var MAX_ROWS = 100;
+  var slice = features.slice(0, MAX_ROWS);
 
   slice.forEach((f) => {
-    const p = f.properties || {};
-    const mag = p.mag;
+    var p = f.properties || {};
+    var mag = p.mag;
 
-    const tr = document.createElement("tr");
+    var tr = document.createElement("tr");
 
     // Time column
-    const tdTime = document.createElement("td");
+    var tdTime = document.createElement("td");
     tdTime.textContent = fmtTime(p.time);
 
     // Magnitude column (colored)
-    const tdMag = document.createElement("td");
+    var tdMag = document.createElement("td");
     tdMag.textContent = mag ?? "N/A";
     tdMag.style.backgroundColor = magColor(mag ?? 0);
     tdMag.style.fontWeight = "bold";
 
     // Place column
-    const tdPlace = document.createElement("td");
+    var tdPlace = document.createElement("td");
     tdPlace.textContent = p.place ?? "N/A";
 
     tr.appendChild(tdTime);
