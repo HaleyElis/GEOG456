@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet with Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="./data/current.js"></script>
+    <script src="./data/august.js"></script>
+    <script src="./data/june.js"></script>
+    <script src="./data/lastyear.js"></script>
+    <script src="./data/january.js"></script>
+</head>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+
+        }
+    </style>
+    
+<body>
+</br>
+
+<h3 id="theSeasonH3elementID">Months 2022</h3>
+<input id="myRange" type="range" name="season" value="0" min="0" max="4" oninput="moveSlider(this.value)">
+<br>
+Droughts in North America from last year (September 2021) and January 2022 and June 2022 to September 2022.
+    <div id="map"></div>
+
+<script>
+    // Made by  View Nathalie Ayala Uriarte 2022 GEOG456, edited and annotated by J Arce 
+ 
+    var map = L.map('map').setView([40.00, -102.15], 3);
+        
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    }).addTo(map);
+
+    var myStyle = {
+    "color": "#ff7800",
+    "weight": 0.25,
+    "opacity": 0.65
+};
+     var myData = [lastyear, january, june, august, current] // array ordering the data. You need to be very careful with this method as you are bringing in all the data at once. 
+     var order = ['September 2021','January 2022','June 2022', 'August 2022', 'September 2022'] // an array with the date of each data source
+     var drought = L.geoJSON(myData[0], {style: myStyle}).addTo(map); // open the first element of the myData array
+
+    function moveSlider(value){  // function called by the slider, with the value parameter: the value goes from 0 to 4
+        var season = myData[value] // get the data based on the slider value
+        map.removeLayer(drought);// leaflet method to remove a layer //drought.remove()  
+        drought = L.geoJSON(season, {style: myStyle});
+        map.addLayer(drought); // add the new layer
+        document.getElementById('theSeasonH3elementID').innerHTML = order[value] // change the text above the slider
+    }
+    moveSlider(0)
+
+</script>
+</body>
+</html>

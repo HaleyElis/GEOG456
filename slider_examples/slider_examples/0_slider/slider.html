@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id ="myText">Slider Intro</h3>
+    <input id="mySlider" type = "range" value="-100" name = "Test" min = "0" max = "100" oninput="mySlider(value)">
+<script>
+    function mySlider(value){
+        console.log("Hey! You moved me to value " + value)
+        // make the h3 with id = myText show the value of the slider oninput
+    }
+</script>
+</body>
+</html>

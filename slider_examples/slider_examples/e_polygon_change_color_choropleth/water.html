@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet with Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="crossorigin=""></script>
+    
+    <script src="./aws.js"></script>
+    <style>
+        h1 {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 36px;
+        position: relative;
+        top: 10%;
+        text-align: center;
+        outline-style: ridge;
+        -webkit-text-stroke-width: 1px;
+        }
+        h2 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        h3 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .legend {
+            line-height: 18px;
+            color: #000;
+            background-color: #ffffff;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7; 
+        }
+        #map { height: 400px;
+            width: 900px;
+            background-color: lightslategray;
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Annual Residential Water Use in Austin, Texas</h1>
+    <h2 id="theYear">Year</h2>
+    
+        <input type="range" name="year" value="2012" min="2012" max="2020" oninput="moveSlider(this.value)">
+        <div id="map"></div>
+        <div class="legend"></div>
+
+    <script>
+        //HW made by Colby Mask // Edited and annotated by J Arce
+
+        var map = L.map('map').setView([30.293322656220493, -97.74882492684549], 10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+    
+        var selectedYear = '2012'
+        function myStyle(feature) {
+            // console.log(feature.properties[selectedYear]) //look at the console log and notice that selectedYear is the name of a property of the geojson, so this will give you the data for that feature. 
+            // console.log(getColor(feature.properties[selectedYear])) //look at the console log and notice that the selected year will result in a color. 
+
+            return {
+            "fillColor": getColor(feature.properties[selectedYear]),
+            "color": "black",// notice that the selected year is the name of a property of the geojson
+            "weight": 0.75,
+            "opacity": 2.0,
+            "fillOpacity": 0.7
+            }
+        };
+
+        function getColor(waterConsumption) {
+            return waterConsumption < 5000000 ? "#f7fbff" 
+            :waterConsumption < 10000000 ? "#9ecae1" 
+            :waterConsumption < 50000000 ? "#4292c6"
+            : "#08306b";
+        };
+
+        var austinWater = L.geoJSON(aws, {style: myStyle}).addTo(map);
+
+        function moveSlider(value) {
+            selectedYear = value; // this changes the value of the selectedYear variable
+            map.removeLayer(austinWater);// leaflet method to remove a layer / 
+            austinWater = L.geoJSON(aws, {style: myStyle});
+            map.addLayer(austinWater); // add the new layer
+            document.getElementById('theYear').innerHTML = 'Year: '+ value  
+        }
+        moveSlider('2012')
+
+        // create a leaflet legend
+        var legend = L.control({position: 'bottomright'});
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 5000000, 10000000, 50000000],
+                labels = [];
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' gal'+ '<br>' : '+ gal');
+            }
+            return div;
+        };
+        legend.addTo(map);
+
+        var legendTitle = L.control({position: 'bottomright'});
+            legendTitle.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+
+            legendTitle.update = function (props) {
+                this._div.innerHTML = '<h3><u>Total Water in Gallons</u></h3>';
+            };
+            legendTitle.addTo(map);
+    </script>
+    <ul>
+        <li><a href="https://data.austintexas.gov/Utilities-and-City-Services/Austin-Water-Residential-Water-Consumption/sxk7-7k6z"><h3>Austin Water - Residential Water Consumption (CSV)</h3></a></li>
+        <li><a href="https://data.austintexas.gov/dataset/Boundaries-Zip-Code-Tabulation-Areas-2017/nf4y-c7ue"><h3>Boundaries: Zipcode Tabulation Areas, 2017 (Shapefile)</h3></a></li>
+    </ul>
+</body>
+</html>
