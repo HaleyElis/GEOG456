@@ -7,8 +7,6 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- cna09.js must define: var cna09 = { ...JSON-stat... }; -->
   <script src="./cna09.js"></script>
 
   <style>
@@ -161,7 +159,7 @@ var GEOJSON_FILE = "ireland_provinces_4326.geojson";
     return name;
   }
 
-  // Your GeoJSON uses props.PROVINCE
+  // GeoJSON uses props.PROVINCE
   function getProvinceNameFromGeoProps(props) {
     return normalizeProvince(props.PROVINCE);
   }
