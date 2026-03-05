@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- IMPORTANT: cna09.js must define:  var cna09 = { ...your JSON-stat... }; -->
   <script src="./cna09.js"></script>
 
   <style>
@@ -47,12 +49,12 @@
 <body>
   <h1>Population of Irish Speakers Aged 3+ (CSO CNA09)</h1>
 
-<h3>
-  Source: 
-  <a href="https://data.cso.ie/" target="_blank">
-    Central Statistics Office Ireland
-  </a>
-</h3>
+  <h3>
+    Source:
+    <a href="https://data.cso.ie/" target="_blank">
+      Central Statistics Office Ireland
+    </a>
+  </h3>
 
   <div class="controls">
     <div>
@@ -81,39 +83,63 @@
   </table>
 
 <script>
+  // -----------------------
+  // Files
+  // -----------------------
   var GEOJSON_FILE = "ireland_provinces.geojson";
 
+  // -----------------------
+  // Leaflet map
+  // -----------------------
   var map = L.map("map").setView([53.35, -8.0], 7);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
     maxZoom: 19
   }).addTo(map);
 
+  // -----------------------
+  // UI elements
+  // -----------------------
   var statSelect = document.getElementById("statSelect");
   var yearSlider = document.getElementById("yearSlider");
   var yearLabel = document.getElementById("yearLabel");
   var colHeader = document.getElementById("colHeader");
   var tbody = document.getElementById("tbody");
 
+  // -----------------------
+  // Globals
+  // -----------------------
   var provincesGeo = null;
   var layer = null;
   var legendControl = null;
 
-  // JSON-stat structure
-  var ids = cna09.id;     // ["CECONTY","TLIST(A1)","STATISTIC"]
-  var size = cna09.size;  // [5,19,3]
+  // -----------------------
+  // JSON-stat structure (from cna09.js)
+  // -----------------------
+  var size = cna09.size;   // [5,19,3]
   var values = cna09.value;
-
   var dim = cna09.dimension;
 
-  var dimProv = dim["CECONTY"].category.index;         // ["0","01","02","03","04"]
-  var dimYear = dim["TLIST(A1)"].category.index;       // ["1861",...,"2016"]
-  var dimStat = dim["STATISTIC"].category.index;       // ["CNA09C1","CNA09C2","CNA09C3"]
+  var dimProv = dim["CECONTY"].category.index;   // ["0","01","02","03","04"]
+  var dimYear = dim["TLIST(A1)"].category.index; // ["1861",...,"2016"]
+  var dimStat = dim["STATISTIC"].category.index; // ["CNA09C1","CNA09C2","CNA09C3"]
 
-  var provLabels = dim["CECONTY"].category.label;      // code->label
-  var statLabels = dim["STATISTIC"].category.label;    // code->label
-  var statUnits  = dim["STATISTIC"].category.unit;     // decimals, %, etc.
+  var provLabels = dim["CECONTY"].category.label;   // code->label
+  var statLabels = dim["STATISTIC"].category.label; // code->label
+  var statUnits  = dim["STATISTIC"].category.unit;  // decimals, %, etc.
 
+  // HARD MAP: GeoJSON province name -> JSON-stat province code
+  // (avoids join/mismatch issues)
+  var nameToCode = {
+    "Leinster": "01",
+    "Munster": "02",
+    "Connacht": "03",
+    "Ulster": "04"
+  };
+
+  // -----------------------
+  // Helpers
+  // -----------------------
   function indexMap(arr) {
     var m = {};
     arr.forEach(function(v,i){ m[v]=i; });
@@ -124,6 +150,7 @@
   var yearIndex = indexMap(dimYear);
   var statIndex = indexMap(dimStat);
 
+  // (prov, year, stat) -> flat index in values[]
   function valueAt(provCode, yearCode, statCode) {
     var p = provIndex[provCode];
     var y = yearIndex[yearCode];
@@ -137,12 +164,13 @@
 
   function normalizeProvince(name) {
     if (!name) return "";
-    if (name.indexOf("Ulster") === 0) return "Ulster"; // match most GeoJSONs
+    if (String(name).indexOf("Ulster") === 0) return "Ulster";
     return String(name).trim();
   }
 
+  // This GeoJSON uses feature.properties.name
   function getProvinceNameFromGeoProps(props) {
-  return normalizeProvince(props.name);
+    return normalizeProvince(props.name);
   }
 
   function fmt(statCode, v) {
@@ -181,8 +209,9 @@
     var legend = L.control({position:"bottomright"});
     legend.onAdd = function() {
       var div = L.DomUtil.create("div","legend");
-      div.innerHTML = '<div style="font-weight:bold; margin-bottom:6px;">' +
-        statLabels[statCode] + '</div>';
+      div.innerHTML =
+        '<div style="font-weight:bold; margin-bottom:6px;">' +
+        statLabels[statCode] + "</div>";
 
       for (var i=0;i<grades.length;i++){
         var from = grades[i];
@@ -196,21 +225,23 @@
     return legend;
   }
 
-  // --- TABLE (alphabetical + colored value cell) ---
+  // -----------------------
+  // TABLE (alphabetical + colored)
+  // -----------------------
   function buildTable(statCode, yearCode) {
     tbody.innerHTML = "";
 
-    // skip State ("0"), only provinces
+    // Provinces only (skip "0": State)
     var provCodes = ["01","02","03","04"];
-
     var rows = [];
+
     provCodes.forEach(function(code){
       var label = normalizeProvince(provLabels[code]);
       var v = valueAt(code, yearCode, statCode);
       rows.push({ label: label, v: v });
     });
 
-    // alphabetize by province label
+    // Alphabetize provinces
     rows.sort(function(a,b){
       return a.label.localeCompare(b.label);
     });
@@ -225,9 +256,14 @@
       tdV.className = "num";
       tdV.textContent = fmt(statCode, r.v);
 
-      // COLOR THE TABLE CELL like the map
+      // Color like the map
       tdV.style.backgroundColor = getColor(statCode, r.v);
       tdV.style.fontWeight = "bold";
+
+      // make dark bin readable
+      if (tdV.style.backgroundColor === "rgb(8, 48, 107)" || tdV.style.backgroundColor === "#08306b") {
+        tdV.style.color = "white";
+      }
 
       tr.appendChild(tdP);
       tr.appendChild(tdV);
@@ -235,6 +271,9 @@
     });
   }
 
+  // -----------------------
+  // Render map + table
+  // -----------------------
   function render() {
     var yearCode = dimYear[Number(yearSlider.value)];
     var statCode = statSelect.value;
@@ -242,23 +281,18 @@
     yearLabel.textContent = yearCode;
     colHeader.textContent = statLabels[statCode] + " (" + yearCode + ")";
 
+    // Legend
     if (legendControl) map.removeControl(legendControl);
     legendControl = makeLegend(statCode);
     legendControl.addTo(map);
 
+    // Layer
     if (layer) map.removeLayer(layer);
 
     layer = L.geoJSON(provincesGeo, {
       style: function(feature) {
         var pName = getProvinceNameFromGeoProps(feature.properties || {});
-        var provCode = null;
-
-        for (var i=0;i<dimProv.length;i++){
-          var code = dimProv[i];
-          var lbl = normalizeProvince(provLabels[code]);
-          if (lbl === pName) { provCode = code; break; }
-        }
-
+        var provCode = nameToCode[pName] || null;
         var v = provCode ? valueAt(provCode, yearCode, statCode) : null;
 
         return {
@@ -270,14 +304,7 @@
       },
       onEachFeature: function(feature, lyr) {
         var pName = getProvinceNameFromGeoProps(feature.properties || {});
-        var provCode = null;
-
-        for (var i=0;i<dimProv.length;i++){
-          var code = dimProv[i];
-          var lbl = normalizeProvince(provLabels[code]);
-          if (lbl === pName) { provCode = code; break; }
-        }
-
+        var provCode = nameToCode[pName] || null;
         var v = provCode ? valueAt(provCode, yearCode, statCode) : null;
 
         lyr.bindPopup(
@@ -288,26 +315,32 @@
       }
     }).addTo(map);
 
+    // Table
     buildTable(statCode, yearCode);
   }
 
+  // -----------------------
+  // Init
+  // -----------------------
   async function init() {
     var gj = await fetch(GEOJSON_FILE);
     provincesGeo = await gj.json();
 
-    // fill stat dropdown
+    // Populate statistic dropdown
     dimStat.forEach(function(code){
       var opt = document.createElement("option");
       opt.value = code;
       opt.textContent = statLabels[code];
       statSelect.appendChild(opt);
     });
-    statSelect.value = dimStat[2]; // default: Percentage of Irish Speakers
 
-    // slider years
+    // Default stat = Percentage of Irish Speakers
+    statSelect.value = dimStat[2];
+
+    // Slider years (index into dimYear)
     yearSlider.min = 0;
     yearSlider.max = dimYear.length - 1;
-    yearSlider.value = dimYear.length - 1; // latest year
+    yearSlider.value = dimYear.length - 1; // latest
 
     yearSlider.oninput = render;
     statSelect.onchange = render;
