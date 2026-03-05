@@ -18,15 +18,49 @@
   <script src="data.js"></script>
 
   <style>
-    #map {
-      height: 400px;
-      width: 600px;
-    }
+  #map { height: 400px; width: 600px; }
+
+  .slidecontainer { width: 600px; margin: 10px 0 14px; }
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 18px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.85;
+    transition: opacity .2s;
+    border-radius: 10px;
+  }
+  .slider:hover { opacity: 1; }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+  }
   </style>
 </head>
 
 <body>
   <h1>USGS Earthquakes</h1>
+  <div class="slidecontainer">
+  <input type="range" min="0" max="0" value="0" class="slider" id="daySlider">
+  <div>
+    Day: <span id="dayLabel"></span>
+    <span id="dayCount" style="margin-left:12px;"></span>
+  </div>
+  </div>
+
   <div id="map"></div>
 
   <h2>Earthquake Table</h2>
@@ -41,18 +75,15 @@
   <tbody></tbody>
 </table>
 
-
   <script>
-  // Create map
+  // ---------------- Map setup ----------------
   var map = L.map("map").setView([20, 0], 2);
 
-  // Basemap
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors"
   }).addTo(map);
 
   function getColor(mag) {
-    // magnitude color ramp (small -> large)
     return mag >= 7 ? "#800026" :
            mag >= 6 ? "#BD0026" :
            mag >= 5 ? "#E31A1C" :
@@ -68,39 +99,56 @@
     return Math.max(3, Math.min(20, mag * 3));
   }
 
-  L.geoJSON(data, {
-    pointToLayer: function (feature, latlng) {
-      var mag = feature.properties && feature.properties.mag;
-      return L.circleMarker(latlng, {
-        radius: getRadius(mag),
-        fillColor: getColor(mag),
-        color: "#222",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.75
-      });
-    },
-    onEachFeature: function (feature, layer) {
-      var p = feature.properties || {};
-      var when = p.time ? new Date(p.time).toLocaleString() : "Unknown time";
-      var depth = (feature.geometry && feature.geometry.coordinates)
-        ? feature.geometry.coordinates[2]
-        : null;
+  function fmtTime(ms) {
+    if (!ms) return "N/A";
+    return new Date(ms).toLocaleString();
+  }
 
-      layer.bindPopup(
-        `<b>Magnitude:</b> ${p.mag ?? "N/A"}<br>
-         <b>Place:</b> ${p.place ?? "N/A"}<br>
-         <b>Time:</b> ${when}<br>
-         <b>Depth (km):</b> ${depth ?? "N/A"}`
-      );
+  // Make a "day key" in UTC so days are consistent globally
+  function dayKeyUTC(ms) {
+    var d = new Date(ms);
+    // YYYY-MM-DD in UTC
+    var y = d.getUTCFullYear();
+    var m = String(d.getUTCMonth() + 1).padStart(2, "0");
+    var da = String(d.getUTCDate()).padStart(2, "0");
+    return `${y}-${m}-${da}`;
+  }
+
+  // ---------------- Build list of unique days ----------------
+  var allFeatures = (data && data.features) ? data.features : [];
+
+  // Filter out features missing time
+  allFeatures = allFeatures.filter(f => f && f.properties && f.properties.time);
+
+  // Sort by time (ascending)
+  allFeatures.sort((a,b) => (a.properties.time ?? 0) - (b.properties.time ?? 0));
+
+  // Unique UTC days
+  var days = [];
+  var seen = new Set();
+  allFeatures.forEach(f => {
+    var k = dayKeyUTC(f.properties.time);
+    if (!seen.has(k)) {
+      seen.add(k);
+      days.push(k);
     }
-  }).addTo(map);
+  });
 
-  console.log("GeoJSON loaded:", data);
+  console.log("Unique days:", days.length, days);
 
-  // ---- helper functions ----
+  // ---------------- Slider wiring ----------------
+  var slider = document.getElementById("daySlider");
+  var dayLabel = document.getElementById("dayLabel");
+  var dayCount = document.getElementById("dayCount");
+
+  slider.min = 0;
+  slider.max = Math.max(0, days.length - 1);
+  slider.value = 0;
+
+  var quakesLayer = null;
+  var tbody = document.querySelector("#eqTable tbody");
+
   function magColor(mag) {
-    // pick any color scheme you like
     if (mag >= 7) return "#800026";
     if (mag >= 6) return "#BD0026";
     if (mag >= 5) return "#E31A1C";
@@ -111,51 +159,109 @@
     return "#FFEDA0";
   }
 
-  function fmtTime(ms) {
-    if (!ms) return "N/A";
-    return new Date(ms).toLocaleString();
+  function clearTable() {
+    tbody.innerHTML = "";
   }
 
-  // ---- build the table ----
-  var tbody = document.querySelector("#eqTable tbody");
+  function buildTable(featuresForDay) {
+    clearTable();
 
-  // sort biggest first
-  var features = [...data.features].sort(
-    (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
-  );
+    // biggest first
+    var sorted = [...featuresForDay].sort(
+      (a, b) => (b.properties.mag ?? -999) - (a.properties.mag ?? -999)
+    );
 
-  //  limit rows so page isn't huge
-  var MAX_ROWS = 1000;
-  var slice = features.slice(0, MAX_ROWS);
+    var MAX_ROWS = 1000;
+    sorted.slice(0, MAX_ROWS).forEach((f) => {
+      var p = f.properties || {};
+      var mag = p.mag;
 
-  slice.forEach((f) => {
-    var p = f.properties || {};
-    var mag = p.mag;
+      var tr = document.createElement("tr");
 
-    var tr = document.createElement("tr");
+      var tdTime = document.createElement("td");
+      tdTime.textContent = fmtTime(p.time);
 
-    // Time column
-    var tdTime = document.createElement("td");
-    tdTime.textContent = fmtTime(p.time);
+      var tdMag = document.createElement("td");
+      tdMag.textContent = mag ?? "N/A";
+      tdMag.style.backgroundColor = magColor(mag ?? 0);
+      tdMag.style.fontWeight = "bold";
 
-    // Magnitude column (colored)
-    var tdMag = document.createElement("td");
-    tdMag.textContent = mag ?? "N/A";
-    tdMag.style.backgroundColor = magColor(mag ?? 0);
-    tdMag.style.fontWeight = "bold";
+      var tdPlace = document.createElement("td");
+      tdPlace.textContent = p.place ?? "N/A";
 
-    // Place column
-    var tdPlace = document.createElement("td");
-    tdPlace.textContent = p.place ?? "N/A";
+      tr.appendChild(tdTime);
+      tr.appendChild(tdMag);
+      tr.appendChild(tdPlace);
+      tbody.appendChild(tr);
+    });
+  }
 
-    tr.appendChild(tdTime);
-    tr.appendChild(tdMag);
-    tr.appendChild(tdPlace);
+  function buildLayer(featuresForDay) {
+    // remove old layer
+    if (quakesLayer) map.removeLayer(quakesLayer);
 
-    tbody.appendChild(tr);
-  });
+    // Build a GeoJSON object for just that day
+    var dayGeojson = {
+      type: "FeatureCollection",
+      features: featuresForDay
+    };
 
-  console.log("Built table rows:", slice.length);
+    quakesLayer = L.geoJSON(dayGeojson, {
+      pointToLayer: function (feature, latlng) {
+        var mag = feature.properties && feature.properties.mag;
+        return L.circleMarker(latlng, {
+          radius: getRadius(mag),
+          fillColor: getColor(mag),
+          color: "#222",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.75
+        });
+      },
+      onEachFeature: function (feature, layer) {
+        var p = feature.properties || {};
+        var when = p.time ? new Date(p.time).toLocaleString() : "Unknown time";
+        var depth = (feature.geometry && feature.geometry.coordinates)
+          ? feature.geometry.coordinates[2]
+          : null;
+
+        layer.bindPopup(
+          `<b>Magnitude:</b> ${p.mag ?? "N/A"}<br>
+           <b>Place:</b> ${p.place ?? "N/A"}<br>
+           <b>Time:</b> ${when}<br>
+           <b>Depth (km):</b> ${depth ?? "N/A"}`
+        );
+      }
+    }).addTo(map);
+  }
+
+  function renderForDayIndex(idx) {
+    if (days.length === 0) {
+      dayLabel.textContent = "No data";
+      dayCount.textContent = "";
+      clearTable();
+      if (quakesLayer) map.removeLayer(quakesLayer);
+      return;
+    }
+
+    var day = days[idx];
+    dayLabel.textContent = day;
+
+    // collect features on that UTC day
+    var featuresForDay = allFeatures.filter(f => dayKeyUTC(f.properties.time) === day);
+
+    dayCount.textContent = `(${featuresForDay.length} quakes)`;
+
+    buildLayer(featuresForDay);
+    buildTable(featuresForDay);
+  }
+
+  slider.oninput = function () {
+    renderForDayIndex(parseInt(this.value, 10));
+  };
+
+  // initial render
+  renderForDayIndex(0);
 </script>
 
 </body>
