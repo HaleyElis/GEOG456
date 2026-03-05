@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- IMPORTANT: cna09.js must define:  var cna09 = { ...your JSON-stat object... }; -->
+  <!-- IMPORTANT: cna09.js must define: var cna09 = { ...your JSON-stat object... }; -->
   <script src="./cna09.js"></script>
 
   <style>
@@ -41,7 +41,7 @@
       border-radius:8px; border:1px solid #ccc;
     }
     .legend i{
-      width:16px; height:16px; float:left; margin-right:8px; opacity:0.85;
+      width:16px; height:16px; float:left; margin-right:8px; opacity:0.9;
     }
   </style>
 </head>
@@ -61,7 +61,7 @@
     </div>
 
     <div>
-      <label>Year:</label>
+      <label for="yearSlider">Year:</label>
       <input id="yearSlider" class="slider" type="range" min="0" max="0" value="0">
       <span id="yearLabel" style="margin-left:8px;"></span>
     </div>
@@ -96,13 +96,13 @@
   }).addTo(map);
 
   // -----------------------
-  // UI elements
+  // UI
   // -----------------------
   var statSelect = document.getElementById("statSelect");
   var yearSlider = document.getElementById("yearSlider");
-  var yearLabel = document.getElementById("yearLabel");
-  var colHeader = document.getElementById("colHeader");
-  var tbody = document.getElementById("tbody");
+  var yearLabel  = document.getElementById("yearLabel");
+  var colHeader  = document.getElementById("colHeader");
+  var tbody      = document.getElementById("tbody");
 
   // -----------------------
   // Globals
@@ -114,9 +114,9 @@
   // -----------------------
   // JSON-stat structure (from cna09.js)
   // -----------------------
-  var size = cna09.size;   // [5,19,3]
+  var size   = cna09.size;   // [5,19,3]
   var values = cna09.value;
-  var dim = cna09.dimension;
+  var dim    = cna09.dimension;
 
   var dimProv = dim["CECONTY"].category.index;   // ["0","01","02","03","04"]
   var dimYear = dim["TLIST(A1)"].category.index; // ["1861",...,"2016"]
@@ -154,6 +154,7 @@
     var s = statIndex[statCode];
     if (p==null || y==null || s==null) return null;
 
+    // order is [province, year, statistic]
     var idx = p*(size[1]*size[2]) + y*(size[2]) + s;
     var v = values[idx];
     return (v == null) ? null : Number(v);
@@ -166,7 +167,7 @@
     return name;
   }
 
-  // IMPORTANT: your GeoJSON uses props.PROVINCE (not props.name)
+  // IMPORTANT: your GeoJSON uses props.PROVINCE
   function getProvinceNameFromGeoProps(props) {
     return normalizeProvince(props.PROVINCE);
   }
@@ -185,18 +186,19 @@
 
     var isPercent = (statUnits[statCode] && statUnits[statCode].label === "%");
 
+    // darker ramp so it is clearly visible
     if (isPercent) {
-      return v < 5  ? "#f7fbff" :
-             v < 10 ? "#c6dbef" :
+      return v < 5  ? "#deebf7" :
+             v < 10 ? "#9ecae1" :
              v < 20 ? "#6baed6" :
-             v < 30 ? "#2171b5" :
-                      "#08306b";
+             v < 30 ? "#3182bd" :
+                      "#08519c";
     } else {
-      return v < 100000  ? "#f7fbff" :
-             v < 250000  ? "#c6dbef" :
+      return v < 100000  ? "#deebf7" :
+             v < 250000  ? "#9ecae1" :
              v < 500000  ? "#6baed6" :
-             v < 1000000 ? "#2171b5" :
-                           "#08306b";
+             v < 1000000 ? "#3182bd" :
+                           "#08519c";
     }
   }
 
@@ -233,11 +235,15 @@
     var rows = [];
 
     provCodes.forEach(function(code){
-      var label = normalizeProvince(provLabels[code]); // from JSON-stat labels
+      var label = normalizeProvince(provLabels[code]); // Leinster, Munster, Connacht, Ulster (pt)
+      // normalize fixes Ulster (pt) -> Ulster
+      label = normalizeProvince(label);
+
       var v = valueAt(code, yearCode, statCode);
       rows.push({ label: label, v: v });
     });
 
+    // Alphabetize
     rows.sort(function(a,b){
       return a.label.localeCompare(b.label);
     });
@@ -255,9 +261,8 @@
       tdV.style.backgroundColor = getColor(statCode, r.v);
       tdV.style.fontWeight = "bold";
 
-      // improve readability in the darkest bin
-      var bg = tdV.style.backgroundColor;
-      if (bg === "rgb(8, 48, 107)" || bg === "#08306b") {
+      // readable text on dark colors
+      if (tdV.style.backgroundColor === "rgb(8, 81, 156)" || tdV.style.backgroundColor === "#08519c") {
         tdV.style.color = "white";
       }
 
@@ -277,10 +282,12 @@
     yearLabel.textContent = yearCode;
     colHeader.textContent = statLabels[statCode] + " (" + yearCode + ")";
 
+    // Legend
     if (legendControl) map.removeControl(legendControl);
     legendControl = makeLegend(statCode);
     legendControl.addTo(map);
 
+    // Layer
     if (layer) map.removeLayer(layer);
 
     layer = L.geoJSON(provincesGeo, {
@@ -291,9 +298,10 @@
 
         return {
           fillColor: getColor(statCode, v),
-          color: "#111",
-          weight: 1,
-          fillOpacity: 0.75
+          color: "#000",
+          weight: 3,
+          opacity: 1,
+          fillOpacity: 0.8
         };
       },
       onEachFeature: function(feature, lyr) {
@@ -309,6 +317,10 @@
       }
     }).addTo(map);
 
+    // Make sure polygons are above the basemap
+    layer.bringToFront();
+
+    // Table
     buildTable(statCode, yearCode);
   }
 
