@@ -170,8 +170,8 @@
 
   // This GeoJSON uses feature.properties.name
   function getProvinceNameFromGeoProps(props) {
-    return normalizeProvince(props.name);
-  }
+  return normalizeProvince(props.PROVINCE);
+}
 
   function fmt(statCode, v) {
     if (v == null || isNaN(v)) return "N/A";
