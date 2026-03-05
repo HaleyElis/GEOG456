@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- IMPORTANT: cna09.js must define:  var cna09 = { ...your JSON-stat... }; -->
+  <!-- IMPORTANT: cna09.js must define:  var cna09 = { ...your JSON-stat object... }; -->
   <script src="./cna09.js"></script>
 
   <style>
@@ -23,7 +23,7 @@
     label{ font-weight:bold; }
 
     .slider{
-      -webkit-appearance:none; appearance:none; width:420px; height:16px;
+      -webkit-appearance:none; appearance:none; width:520px; height:16px;
       background:#d3d3d3; border-radius:10px; outline:none;
     }
     .slider::-webkit-slider-thumb{
@@ -51,9 +51,7 @@
 
   <h3>
     Source:
-    <a href="https://data.cso.ie/" target="_blank">
-      Central Statistics Office Ireland
-    </a>
+    <a href="https://data.cso.ie/" target="_blank">Central Statistics Office Ireland</a>
   </h3>
 
   <div class="controls">
@@ -129,7 +127,6 @@
   var statUnits  = dim["STATISTIC"].category.unit;  // decimals, %, etc.
 
   // HARD MAP: GeoJSON province name -> JSON-stat province code
-  // (avoids join/mismatch issues)
   var nameToCode = {
     "Leinster": "01",
     "Munster": "02",
@@ -164,14 +161,15 @@
 
   function normalizeProvince(name) {
     if (!name) return "";
-    if (String(name).indexOf("Ulster") === 0) return "Ulster";
-    return String(name).trim();
+    name = String(name).trim();
+    if (name.indexOf("Ulster") === 0) return "Ulster";
+    return name;
   }
 
-  // This GeoJSON uses feature.properties.name
+  // IMPORTANT: your GeoJSON uses props.PROVINCE (not props.name)
   function getProvinceNameFromGeoProps(props) {
-  return normalizeProvince(props.PROVINCE);
-}
+    return normalizeProvince(props.PROVINCE);
+  }
 
   function fmt(statCode, v) {
     if (v == null || isNaN(v)) return "N/A";
@@ -226,22 +224,20 @@
   }
 
   // -----------------------
-  // TABLE (alphabetical + colored)
+  // Table (alphabetical + colored)
   // -----------------------
   function buildTable(statCode, yearCode) {
     tbody.innerHTML = "";
 
-    // Provinces only (skip "0": State)
     var provCodes = ["01","02","03","04"];
     var rows = [];
 
     provCodes.forEach(function(code){
-      var label = normalizeProvince(provLabels[code]);
+      var label = normalizeProvince(provLabels[code]); // from JSON-stat labels
       var v = valueAt(code, yearCode, statCode);
       rows.push({ label: label, v: v });
     });
 
-    // Alphabetize provinces
     rows.sort(function(a,b){
       return a.label.localeCompare(b.label);
     });
@@ -256,12 +252,12 @@
       tdV.className = "num";
       tdV.textContent = fmt(statCode, r.v);
 
-      // Color like the map
       tdV.style.backgroundColor = getColor(statCode, r.v);
       tdV.style.fontWeight = "bold";
 
-      // make dark bin readable
-      if (tdV.style.backgroundColor === "rgb(8, 48, 107)" || tdV.style.backgroundColor === "#08306b") {
+      // improve readability in the darkest bin
+      var bg = tdV.style.backgroundColor;
+      if (bg === "rgb(8, 48, 107)" || bg === "#08306b") {
         tdV.style.color = "white";
       }
 
@@ -281,12 +277,10 @@
     yearLabel.textContent = yearCode;
     colHeader.textContent = statLabels[statCode] + " (" + yearCode + ")";
 
-    // Legend
     if (legendControl) map.removeControl(legendControl);
     legendControl = makeLegend(statCode);
     legendControl.addTo(map);
 
-    // Layer
     if (layer) map.removeLayer(layer);
 
     layer = L.geoJSON(provincesGeo, {
@@ -315,7 +309,6 @@
       }
     }).addTo(map);
 
-    // Table
     buildTable(statCode, yearCode);
   }
 
@@ -324,6 +317,7 @@
   // -----------------------
   async function init() {
     var gj = await fetch(GEOJSON_FILE);
+    if (!gj.ok) throw new Error("GeoJSON failed to load: " + GEOJSON_FILE);
     provincesGeo = await gj.json();
 
     // Populate statistic dropdown
@@ -333,14 +327,12 @@
       opt.textContent = statLabels[code];
       statSelect.appendChild(opt);
     });
+    statSelect.value = dimStat[2]; // default: Percentage of Irish Speakers
 
-    // Default stat = Percentage of Irish Speakers
-    statSelect.value = dimStat[2];
-
-    // Slider years (index into dimYear)
+    // Slider years
     yearSlider.min = 0;
     yearSlider.max = dimYear.length - 1;
-    yearSlider.value = dimYear.length - 1; // latest
+    yearSlider.value = dimYear.length - 1; // latest year
 
     yearSlider.oninput = render;
     statSelect.onchange = render;
