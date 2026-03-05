@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homework 5</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Your JSON-stat dataset -->
+  <script src="\CNA09.20260304T220310.json"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #map { height: 420px; width: 900px; background:#ddd; }
+
+    .controls{
+      width: 900px; margin: 10px 0; padding: 10px;
+      border: 1px solid #ccc; border-radius: 10px; background: #fafafa;
+      display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+    }
+    label{ font-weight:bold; }
+
+    .slider{
+      -webkit-appearance:none; appearance:none; width:420px; height:16px;
+      background:#d3d3d3; border-radius:10px; outline:none;
+    }
+    .slider::-webkit-slider-thumb{
+      -webkit-appearance:none; appearance:none;
+      width:18px; height:18px; background:#4CAF50; cursor:pointer; border-radius:50%;
+    }
+
+    table { width: 900px; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #999; padding: 8px; }
+    th { background: #f0f0f0; }
+    td.num { text-align:right; font-variant-numeric: tabular-nums; }
+
+    .legend{
+      background:white; padding:8px 10px; line-height:18px;
+      border-radius:8px; border:1px solid #ccc;
+    }
+    .legend i{
+      width:16px; height:16px; float:left; margin-right:8px; opacity:0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Population of Irish Speakers Aged 3+ (CSO CNA09)</h1>
+
+<h3>
+  Source: 
+  <a href="https://data.cso.ie/" target="_blank">
+    Central Statistics Office Ireland
+  </a>
+</h3>
+
+  <div class="controls">
+    <div>
+      <label for="statSelect">Statistic:</label>
+      <select id="statSelect"></select>
+    </div>
+
+    <div>
+      <label>Year:</label>
+      <input id="yearSlider" class="slider" type="range" min="0" max="0" value="0">
+      <span id="yearLabel" style="margin-left:8px;"></span>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <h2>Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Province</th>
+        <th id="colHeader">Value</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+<script>
+  var GEOJSON_FILE = "ireland_provinces.geojson";
+
+  var map = L.map("map").setView([53.35, -8.0], 7);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+    maxZoom: 19
+  }).addTo(map);
+
+  var statSelect = document.getElementById("statSelect");
+  var yearSlider = document.getElementById("yearSlider");
+  var yearLabel = document.getElementById("yearLabel");
+  var colHeader = document.getElementById("colHeader");
+  var tbody = document.getElementById("tbody");
+
+  var provincesGeo = null;
+  var layer = null;
+  var legendControl = null;
+
+  // JSON-stat structure
+  var ids = cna09.id;     // ["CECONTY","TLIST(A1)","STATISTIC"]
+  var size = cna09.size;  // [5,19,3]
+  var values = cna09.value;
+
+  var dim = cna09.dimension;
+
+  var dimProv = dim["CECONTY"].category.index;         // ["0","01","02","03","04"]
+  var dimYear = dim["TLIST(A1)"].category.index;       // ["1861",...,"2016"]
+  var dimStat = dim["STATISTIC"].category.index;       // ["CNA09C1","CNA09C2","CNA09C3"]
+
+  var provLabels = dim["CECONTY"].category.label;      // code->label
+  var statLabels = dim["STATISTIC"].category.label;    // code->label
+  var statUnits  = dim["STATISTIC"].category.unit;     // decimals, %, etc.
+
+  function indexMap(arr) {
+    var m = {};
+    arr.forEach(function(v,i){ m[v]=i; });
+    return m;
+  }
+
+  var provIndex = indexMap(dimProv);
+  var yearIndex = indexMap(dimYear);
+  var statIndex = indexMap(dimStat);
+
+  function valueAt(provCode, yearCode, statCode) {
+    var p = provIndex[provCode];
+    var y = yearIndex[yearCode];
+    var s = statIndex[statCode];
+    if (p==null || y==null || s==null) return null;
+
+    var idx = p*(size[1]*size[2]) + y*(size[2]) + s;
+    var v = values[idx];
+    return (v == null) ? null : Number(v);
+  }
+
+  function normalizeProvince(name) {
+    if (!name) return "";
+    if (name.indexOf("Ulster") === 0) return "Ulster"; // match most GeoJSONs
+    return String(name).trim();
+  }
+
+  function getProvinceNameFromGeoProps(props) {
+    return normalizeProvince(
+      props.PROVINCE || props.Province || props.NAME || props.Name || props.name ||
+      props.PROVNAME || props.ENGLISH || ""
+    );
+  }
+
+  function fmt(statCode, v) {
+    if (v == null || isNaN(v)) return "N/A";
+    var meta = statUnits[statCode];
+    var decimals = (meta && meta.decimals != null) ? meta.decimals : 0;
+    var label = (meta && meta.label) ? meta.label : "";
+    var isPercent = (label === "%");
+    return isPercent ? Number(v).toFixed(decimals) + "%" : Number(v).toLocaleString();
+  }
+
+  function getColor(statCode, v) {
+    if (v == null || isNaN(v)) return "#cccccc";
+
+    var isPercent = (statUnits[statCode] && statUnits[statCode].label === "%");
+
+    if (isPercent) {
+      return v < 5  ? "#f7fbff" :
+             v < 10 ? "#c6dbef" :
+             v < 20 ? "#6baed6" :
+             v < 30 ? "#2171b5" :
+                      "#08306b";
+    } else {
+      return v < 100000  ? "#f7fbff" :
+             v < 250000  ? "#c6dbef" :
+             v < 500000  ? "#6baed6" :
+             v < 1000000 ? "#2171b5" :
+                           "#08306b";
+    }
+  }
+
+  function makeLegend(statCode) {
+    var isPercent = (statUnits[statCode] && statUnits[statCode].label === "%");
+    var grades = isPercent ? [0,5,10,20,30] : [0,100000,250000,500000,1000000];
+
+    var legend = L.control({position:"bottomright"});
+    legend.onAdd = function() {
+      var div = L.DomUtil.create("div","legend");
+      div.innerHTML = '<div style="font-weight:bold; margin-bottom:6px;">' +
+        statLabels[statCode] + '</div>';
+
+      for (var i=0;i<grades.length;i++){
+        var from = grades[i];
+        var to = grades[i+1];
+        div.innerHTML +=
+          '<i style="background:' + getColor(statCode, from + 0.0001) + '"></i> ' +
+          from + (to ? '&ndash;' + to : '+') + '<br>';
+      }
+      return div;
+    };
+    return legend;
+  }
+
+  // --- TABLE (alphabetical + colored value cell) ---
+  function buildTable(statCode, yearCode) {
+    tbody.innerHTML = "";
+
+    // skip State ("0"), only provinces
+    var provCodes = ["01","02","03","04"];
+
+    var rows = [];
+    provCodes.forEach(function(code){
+      var label = normalizeProvince(provLabels[code]);
+      var v = valueAt(code, yearCode, statCode);
+      rows.push({ label: label, v: v });
+    });
+
+    // alphabetize by province label
+    rows.sort(function(a,b){
+      return a.label.localeCompare(b.label);
+    });
+
+    rows.forEach(function(r){
+      var tr = document.createElement("tr");
+
+      var tdP = document.createElement("td");
+      tdP.textContent = r.label;
+
+      var tdV = document.createElement("td");
+      tdV.className = "num";
+      tdV.textContent = fmt(statCode, r.v);
+
+      // COLOR THE TABLE CELL like the map
+      tdV.style.backgroundColor = getColor(statCode, r.v);
+      tdV.style.fontWeight = "bold";
+
+      tr.appendChild(tdP);
+      tr.appendChild(tdV);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function render() {
+    var yearCode = dimYear[Number(yearSlider.value)];
+    var statCode = statSelect.value;
+
+    yearLabel.textContent = yearCode;
+    colHeader.textContent = statLabels[statCode] + " (" + yearCode + ")";
+
+    if (legendControl) map.removeControl(legendControl);
+    legendControl = makeLegend(statCode);
+    legendControl.addTo(map);
+
+    if (layer) map.removeLayer(layer);
+
+    layer = L.geoJSON(provincesGeo, {
+      style: function(feature) {
+        var pName = getProvinceNameFromGeoProps(feature.properties || {});
+        var provCode = null;
+
+        for (var i=0;i<dimProv.length;i++){
+          var code = dimProv[i];
+          var lbl = normalizeProvince(provLabels[code]);
+          if (lbl === pName) { provCode = code; break; }
+        }
+
+        var v = provCode ? valueAt(provCode, yearCode, statCode) : null;
+
+        return {
+          fillColor: getColor(statCode, v),
+          color: "#111",
+          weight: 1,
+          fillOpacity: 0.75
+        };
+      },
+      onEachFeature: function(feature, lyr) {
+        var pName = getProvinceNameFromGeoProps(feature.properties || {});
+        var provCode = null;
+
+        for (var i=0;i<dimProv.length;i++){
+          var code = dimProv[i];
+          var lbl = normalizeProvince(provLabels[code]);
+          if (lbl === pName) { provCode = code; break; }
+        }
+
+        var v = provCode ? valueAt(provCode, yearCode, statCode) : null;
+
+        lyr.bindPopup(
+          "<b>Province:</b> " + (pName || "Unknown") + "<br>" +
+          "<b>Year:</b> " + yearCode + "<br>" +
+          "<b>" + statLabels[statCode] + ":</b> " + fmt(statCode, v)
+        );
+      }
+    }).addTo(map);
+
+    buildTable(statCode, yearCode);
+  }
+
+  async function init() {
+    var gj = await fetch(GEOJSON_FILE);
+    provincesGeo = await gj.json();
+
+    // fill stat dropdown
+    dimStat.forEach(function(code){
+      var opt = document.createElement("option");
+      opt.value = code;
+      opt.textContent = statLabels[code];
+      statSelect.appendChild(opt);
+    });
+    statSelect.value = dimStat[2]; // default: Percentage of Irish Speakers
+
+    // slider years
+    yearSlider.min = 0;
+    yearSlider.max = dimYear.length - 1;
+    yearSlider.value = dimYear.length - 1; // latest year
+
+    yearSlider.oninput = render;
+    statSelect.onchange = render;
+
+    render();
+  }
+
+  init().catch(function(err){
+    console.error(err);
+    alert("Load error. Use Live Server and ensure cna09.js + ireland_provinces.geojson are in the same folder.");
+  });
+</script>
+</body>
+</html>
