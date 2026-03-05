@@ -270,6 +270,7 @@
     if (layer) map.removeLayer(layer);
 
     layer = L.geoJSON(provincesGeo, {
+      renderer: L.canvas(), 
       style: function(feature) {
         var pName = getProvinceNameFromGeoProps(feature.properties || {});
         var provCode = nameToCode[pName] || null;
