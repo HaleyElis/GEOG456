@@ -142,10 +142,7 @@
   }
 
   function getProvinceNameFromGeoProps(props) {
-    return normalizeProvince(
-      props.PROVINCE || props.Province || props.NAME || props.Name || props.name ||
-      props.PROVNAME || props.ENGLISH || ""
-    );
+  return normalizeProvince(props.name);
   }
 
   function fmt(statCode, v) {
