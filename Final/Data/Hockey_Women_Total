@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet with Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    
+    <script src="./Women_Total.js"></script>
+    <script src="./states.js"></script>
+
+    <style>
+        h1 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 36px;
+            position: relative;
+            top: 10%;
+            text-align: center;
+            outline-style: ridge;
+            -webkit-text-stroke-width: 1px;
+        }
+        h2 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center;
+        }
+        h3 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .legend {
+            line-height: 18px;
+            color: #000;
+            background-color: #ffffff;
+            padding: 6px 8px;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7; 
+        }
+        #map {
+            height: 400px;
+            width: 900px;
+            background-color: lightslategray;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Total Number of Women and Girls Registered for USA Hockey</h1>
+    <h2 id="theYear">Year: 2024</h2>
+    
+    <div style="text-align:center;">
+        <input type="range" name="year" value="2024" min="2005" max="2024" step="1" oninput="moveSlider(this.value)">
+    </div>
+    <br>
+    <div id="map"></div>
+    <div class="legend"></div>
+
+    <script>
+        // HW made by Colby Mask
+        // Edited and annotated by J Arce
+        // Adapted by Haley Meyrowitz for HW 6 and Final Project
+
+        var map = L.map('map').setView([39.8282, -98.5795], 4);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var selectedYear = '2024';
+
+        // lookup women data by state abbreviation
+        var womenLookup = {};
+        women.forEach(function(row) {
+            var abb = row.State_abb;
+
+            // aggregate E PA + W PA into PA
+            if (abb === "E PA" || abb === "W PA") {
+                abb = "PA";
+            }
+
+            if (!womenLookup[abb]) {
+                womenLookup[abb] = {
+                    State: row.State,
+                    State_abb: abb
+                };
+            }
+
+            Object.keys(row).forEach(function(key) {
+                if (key.startsWith("X")) {
+                    var val = row[key];
+                    if (typeof val === "string") {
+                        val = Number(val.replace(/,/g, ""));
+                    } else {
+                        val = Number(val);
+                    }
+                    womenLookup[abb][key] = (womenLookup[abb][key] || 0) + (val || 0);
+                }
+            });
+        });
+
+        // Join data onto state polygons
+        states.features.forEach(function(feature) {
+            var abb = feature.properties.STUSPS || feature.properties.STATE_ABBR || feature.properties.ABBR || feature.properties.STATE;
+
+            if (womenLookup[abb]) {
+                Object.keys(womenLookup[abb]).forEach(function(key) {
+                    feature.properties[key] = womenLookup[abb][key];
+                });
+            }
+        });
+
+        function getColor(Registered) {
+            return Registered > 10000 ? "#084081" :
+                   Registered > 5000  ? "#0868ac" :
+                   Registered > 2500  ? "#2b8cbe" :
+                   Registered > 1000  ? "#4eb3d3" :
+                   Registered > 500   ? "#7bccc4" :
+                   Registered > 100   ? "#a8ddb5" :
+                                        "#e0f3db";
+        }
+
+        function myStyle(feature) {
+            var value = Number(feature.properties["X" + selectedYear]) || 0;
+
+            return {
+                "fillColor": getColor(value),
+                "color": "black",
+                "weight": 0.75,
+                "opacity": 1.0,
+                "fillOpacity": 0.7
+            };
+        }
+
+        function onEachFeature(feature, layer) {
+            var stateName =
+                feature.properties.State ||
+                feature.properties.STATE_NAME ||
+                feature.properties.NAME ||
+                "Unknown";
+
+            var value = Number(feature.properties["X" + selectedYear]) || 0;
+
+            layer.bindPopup(
+                "<h3>" + stateName + "</h3>" +
+                "<p><b>Year:</b> " + selectedYear + "<br>" +
+                "<b>Registrations:</b> " + value.toLocaleString() + "</p>"
+            );
+        }
+
+        var statesLayer = L.geoJSON(states, {
+            style: myStyle,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+        function moveSlider(value) {
+            selectedYear = value;
+            map.removeLayer(statesLayer);
+            statesLayer = L.geoJSON(states, {
+                style: myStyle,
+                onEachFeature: onEachFeature
+            });
+            map.addLayer(statesLayer);
+            document.getElementById('theYear').innerHTML = 'Year: ' + value;
+        }
+
+        moveSlider('2024');
+
+        // create a leaflet legend
+        var legend = L.control({position: 'bottomright'});
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 100, 500, 1000, 2500, 5000, 10000];
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i].toLocaleString() +
+                    (grades[i + 1] ? '&ndash;' + grades[i + 1].toLocaleString() + '<br>' : '+');
+            }
+            return div;
+        };
+        legend.addTo(map);
+
+        var legendTitle = L.control({position: 'bottomright'});
+        legendTitle.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+
+        legendTitle.update = function () {
+            this._div.innerHTML = '<h3><u>USA Hockey Registrations</u></h3>';
+        };
+        legendTitle.addTo(map);
+    </script>
+    <ul>
+        <li><a href="https://www.usahockey.com/membershipstats"><h3>USA Hockey Registration Reports</h3></a></li>
+        <li><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html"><h3>US Census Bureau Cartographic Boundary Files</h3></a></li>
+    </ul>
+</body>
+</html>
