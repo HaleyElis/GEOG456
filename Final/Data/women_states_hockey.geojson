@@ -1,5 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "women_states_hockey",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4269" } },
-"features": [
