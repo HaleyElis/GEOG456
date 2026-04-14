@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PWHL Championship Game Animations</title>
+  <title>PWHL + Olympics Hockey Game Animator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 1.25rem;
+      padding: 1rem;
       background: #f5f7fb;
       color: #111;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1180px;
       margin: 0 auto;
       background: #fff;
       border-radius: 12px;
@@ -23,21 +23,37 @@
     }
 
     h1 {
-      margin: 0.5rem 0;
+      margin: 0.25rem 0 0.5rem;
       font-size: 1.6rem;
     }
 
     .subtitle {
-      margin-top: 0;
-      color: #444;
+      margin: 0 0 0.8rem;
+      color: #3f3f46;
     }
 
-    .controls {
+    .tab-row,
+    .controls,
+    .subcontrols {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.7rem;
       align-items: center;
-      margin: 0.75rem 0 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .tab-btn {
+      padding: 0.45rem 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+      color: #fff;
     }
 
     button,
@@ -46,8 +62,7 @@
       padding: 0.45rem 0.65rem;
       border-radius: 8px;
       border: 1px solid #bbb;
-      background: white;
-      cursor: pointer;
+      background: #fff;
     }
 
     .status {
@@ -66,21 +81,23 @@
     svg {
       display: block;
       width: 100%;
-      min-width: 900px;
+      min-width: 920px;
       height: auto;
       background: #fff;
     }
 
     .caption {
       margin-top: 0.75rem;
-      font-size: 0.9rem;
-      color: #555;
+      font-size: 0.95rem;
+      color: #374151;
+      min-height: 1.4rem;
     }
 
     .legend {
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-      margin-top: 0.5rem;
+      margin-top: 0.65rem;
       font-size: 0.9rem;
     }
 
@@ -89,27 +106,85 @@
       height: 0.8rem;
       display: inline-block;
       border-radius: 50%;
-      margin-right: 0.4rem;
+      margin-right: 0.35rem;
       vertical-align: middle;
     }
 
     .note {
       margin-top: 1rem;
-      padding: 0.8rem;
-      border-left: 3px solid #6b7280;
-      background: #f3f4f6;
+      padding: 0.75rem;
+      border-left: 3px solid #64748b;
+      background: #f1f5f9;
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .pill-goal {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .pill-shot {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    label {
+      font-size: 0.93rem;
+    }
+
+    .meta {
+      color: #4b5563;
       font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>PWHL Championship Game Animation</h1>
-    <p class="subtitle">Animated key events from title-clinching Walter Cup games (2024 and 2025).</p>
+    <h1>Hockey Game Animation (PWHL + Olympics)</h1>
+    <p class="subtitle">
+      Animate event locations for PWHL games and Olympic women’s hockey games.
+    </p>
+
+    <div class="tab-row">
+      <button class="tab-btn active" data-mode="pwhl">PWHL</button>
+      <button class="tab-btn" data-mode="olympics">Olympic Games (Women)</button>
+    </div>
+
+    <div class="subcontrols" id="pwhl-controls">
+      <label for="pwhl-season-select">PWHL season:</label>
+      <select id="pwhl-season-select">
+        <option value="auto">Auto / try all</option>
+        <option value="6">Season ID 6</option>
+        <option value="5">Season ID 5</option>
+        <option value="4">Season ID 4</option>
+      </select>
+      <span class="meta">Uses HockeyTech schedule + play-by-play.</span>
+    </div>
 
     <div class="controls">
-      <label for="game-select">Championship game:</label>
+      <label for="event-filter">Show:</label>
+      <select id="event-filter">
+        <option value="all">Goals + Shots</option>
+        <option value="goals">Goals only</option>
+      </select>
+
+      <label for="game-select">Game:</label>
       <select id="game-select"></select>
+
+      <button id="load-btn">Load game events</button>
       <button id="play-btn">▶ Play</button>
       <button id="reset-btn">↺ Reset</button>
       <span class="status" id="status">Ready</span>
@@ -120,60 +195,94 @@
     </div>
 
     <div class="legend">
-      <span><span class="dot" style="background:#c8102e;"></span>Champion goals</span>
-      <span><span class="dot" style="background:#1f4e79;"></span>Opponent goals</span>
+      <span><span class="dot" style="background:#c8102e;"></span>Home / Team A events</span>
+      <span><span class="dot" style="background:#1f4e79;"></span>Away / Team B events</span>
+      <span>★ Goal</span>
+      <span>● Shot</span>
       <span><span class="dot" style="background:#111;"></span>Current animation position</span>
     </div>
 
     <p class="caption" id="caption"></p>
 
-    <div class="note">
-      Built to mirror a <code>hockey_rink</code>-style coordinate system (200x85 feet) so you can swap in full play-by-play
-      shot/goal data from the-bucketless repositories later.
+    <div class="note" id="note">
+      Data source mode: <strong>PWHL HockeyTech API</strong>.
     </div>
   </div>
 
   <script>
-    const championshipGames = [
-      {
-        id: "2024-g5",
-        label: "2024 Walter Cup Final – Game 5 (Minnesota 3, Boston 0)",
-        champion: "Minnesota",
-        opponent: "Boston",
-        date: "2024-05-29",
-        events: [
-          { minute: 8, team: "Minnesota", x: 146, y: 43, note: "PWHL Minnesota opens scoring." },
-          { minute: 37, team: "Minnesota", x: 161, y: 27, note: "Second goal gives Minnesota breathing room." },
-          { minute: 58, team: "Minnesota", x: 180, y: 41, note: "Empty-netter seals the first Walter Cup." }
-        ]
-      },
-      {
-        id: "2025-g4",
-        label: "2025 Walter Cup Final – Game 4 (Minnesota 2, Ottawa 1 OT)",
-        champion: "Minnesota",
-        opponent: "Ottawa",
-        date: "2025-05-26",
-        events: [
-          { minute: 14, team: "Ottawa", x: 152, y: 36, note: "Ottawa strikes first in regulation." },
-          { minute: 51, team: "Minnesota", x: 166, y: 46, note: "Minnesota ties late to force overtime." },
-          { minute: 74, team: "Minnesota", x: 173, y: 39, note: "OT winner secures Minnesota's second title." }
-        ]
-      }
-    ];
+    const PWHL_CFG = {
+      seasonIds: [6, 5, 4],
+      key: "446521baf8c38984",
+      client_code: "pwhl",
+      base: "https://lscluster.hockeytech.com/feed/index.php"
+    };
+
+    const OLY_CSV_URL =
+      "https://raw.githubusercontent.com/the-bucketless/bdc/main/data/pxp_womens_oly_2022_v2.csv";
 
     const svg = document.getElementById("rink");
     const select = document.getElementById("game-select");
+    const loadBtn = document.getElementById("load-btn");
     const playBtn = document.getElementById("play-btn");
     const resetBtn = document.getElementById("reset-btn");
-    const statusEl = document.getElementById("status");
     const captionEl = document.getElementById("caption");
+    const statusEl = document.getElementById("status");
+    const noteEl = document.getElementById("note");
+    const tabButtons = [...document.querySelectorAll(".tab-btn")];
+    const pwhlControls = document.getElementById("pwhl-controls");
+    const pwhlSeasonSelect = document.getElementById("pwhl-season-select");
+    const eventFilterSelect = document.getElementById("event-filter");
 
+    let mode = "pwhl";
     let animationHandle = null;
+    let animationIndex = -1;
+    let games = [];
+    let allEvents = [];
+    let activeEvents = [];
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+    }
+
+    function fmtIsoDate(v) {
+      return String(v || "").slice(0, 10);
+    }
+
+    function formatDateDMY(isoDate) {
+      if (!isoDate || !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return isoDate || "";
+      const [yyyy, mm, dd] = isoDate.split("-");
+      return `${dd}/${mm}/${yyyy}`;
+    }
+
+    function safeNumber(v) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function escapeHtml(text) {
+      return String(text || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function normalizeRinkCoord(xRaw, yRaw) {
+      let x = safeNumber(xRaw);
+      let y = safeNumber(yRaw);
+
+      if (x === null || y === null) return null;
+
+      if (x < 0 || x > 200) x = x + 100;
+      if (y < 0 || y > 85) y = y + 42.5;
+
+      if (x < 0 || x > 200 || y < 0 || y > 85) return null;
+      return { x, y };
+    }
 
     function drawRink() {
-      svg.innerHTML = "";
-
-      const lines = [
+      svg.innerHTML = [
         '<rect x="0.5" y="0.5" width="199" height="84" rx="10" ry="10" fill="#ffffff" stroke="#7aa4cf" stroke-width="1"/>',
         '<line x1="100" y1="1" x2="100" y2="84" stroke="#d62828" stroke-width="1"/>',
         '<line x1="75" y1="1" x2="75" y2="84" stroke="#1f78b4" stroke-width="0.8"/>',
@@ -181,54 +290,7 @@
         '<circle cx="100" cy="42.5" r="9" fill="none" stroke="#d62828" stroke-width="0.8"/>',
         '<rect x="0.5" y="32" width="6" height="21" fill="none" stroke="#d62828" stroke-width="0.8"/>',
         '<rect x="193.5" y="32" width="6" height="21" fill="none" stroke="#d62828" stroke-width="0.8"/>'
-      ];
-
-      svg.insertAdjacentHTML("beforeend", lines.join(""));
-    }
-
-    function populateSelect() {
-      championshipGames.forEach((game, idx) => {
-        const option = document.createElement("option");
-        option.value = game.id;
-        option.textContent = game.label;
-        if (idx === 0) option.selected = true;
-        select.appendChild(option);
-      });
-    }
-
-    function getCurrentGame() {
-      return championshipGames.find((g) => g.id === select.value) || championshipGames[0];
-    }
-
-    function renderEvents(game, upto = -1) {
-      svg.querySelectorAll(".event-dot,.event-label,.puck").forEach((n) => n.remove());
-
-      for (let i = 0; i <= upto; i += 1) {
-        const e = game.events[i];
-        const isChampion = e.team === game.champion;
-        const color = isChampion ? "#c8102e" : "#1f4e79";
-
-        svg.insertAdjacentHTML(
-          "beforeend",
-          `<circle class="event-dot" cx="${e.x}" cy="${e.y}" r="1.8" fill="${color}" opacity="0.85"></circle>` +
-          `<text class="event-label" x="${e.x + 2}" y="${e.y - 2}" font-size="2.6" fill="#111">${e.minute}'</text>`
-        );
-      }
-
-      if (upto >= 0) {
-        const current = game.events[upto];
-        svg.insertAdjacentHTML(
-          "beforeend",
-          `<circle class="puck" cx="${current.x}" cy="${current.y}" r="2.5" fill="#111"></circle>`
-        );
-      }
-
-      if (upto >= 0) {
-        const e = game.events[upto];
-        captionEl.textContent = `${e.minute}' — ${e.note}`;
-      } else {
-        captionEl.textContent = `Date: ${game.date}. Click Play to animate key scoring moments.`;
-      }
+      ].join("");
     }
 
     function stopAnimation() {
@@ -238,47 +300,540 @@
       }
     }
 
+    function parsePeriodValue(periodRaw) {
+      const m = String(periodRaw || "").match(/\d+/);
+      return m ? Number(m[0]) : 0;
+    }
+
+    function parseClockToSeconds(clockRaw) {
+      if (typeof clockRaw === "number" && Number.isFinite(clockRaw)) {
+        return clockRaw;
+      }
+
+      const s = String(clockRaw || "").trim();
+      const match = s.match(/(\d{1,2}):(\d{2})/);
+      if (!match) return 0;
+
+      const mins = Number(match[1]);
+      const secs = Number(match[2]);
+      return mins * 60 + secs;
+    }
+
+    function buildSortKey(periodRaw, clockRaw) {
+      const period = parsePeriodValue(periodRaw);
+      const seconds = parseClockToSeconds(clockRaw);
+      return period * 100000 + seconds;
+    }
+
+    function formatClock(periodRaw, clockSecondsRaw) {
+      const total = Number(clockSecondsRaw || 0);
+      const mins = Math.floor(total / 60);
+      const secs = total % 60;
+      return `P${parsePeriodValue(periodRaw)} ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function classifyEvent(raw) {
+      const ev = String(raw || "").trim().toUpperCase();
+
+      if (!ev) return null;
+
+      if (
+        ev.includes("NO GOAL") ||
+        ev.includes("DISALLOWED GOAL") ||
+        ev.includes("GOAL DISALLOWED") ||
+        ev.includes("WAVED OFF") ||
+        ev.includes("WAVE OFF")
+      ) {
+        return null;
+      }
+
+      if (ev === "GOAL" || ev.endsWith(" GOAL") || ev.includes("GOAL SCORED")) {
+        return "goal";
+      }
+
+      if (
+        ev.includes("SHOT") ||
+        ev.includes("WRIST SHOT") ||
+        ev.includes("SNAP SHOT") ||
+        ev.includes("SLAP SHOT") ||
+        ev.includes("BACKHAND")
+      ) {
+        return "shot";
+      }
+
+      return null;
+    }
+
+    function starPoints(cx, cy, outerR = 2.8, innerR = 1.2, spikes = 5) {
+      let rot = Math.PI / 2 * 3;
+      const step = Math.PI / spikes;
+      const points = [];
+
+      for (let i = 0; i < spikes; i++) {
+        let x = cx + Math.cos(rot) * outerR;
+        let y = cy + Math.sin(rot) * outerR;
+        points.push(`${x},${y}`);
+        rot += step;
+
+        x = cx + Math.cos(rot) * innerR;
+        y = cy + Math.sin(rot) * innerR;
+        points.push(`${x},${y}`);
+        rot += step;
+      }
+
+      return points.join(" ");
+    }
+
+    function renderEventShape(e, current = false) {
+      const teamColor = e.side === "home" ? "#c8102e" : "#1f4e79";
+      const currentStroke = current ? "#111" : "none";
+      const currentStrokeWidth = current ? 0.7 : 0;
+
+      if (e.type === "goal") {
+        return `<polygon class="${current ? "puck" : "event-dot"}" points="${starPoints(e.x, e.y, current ? 3.6 : 3.1, current ? 1.6 : 1.3)}" fill="${teamColor}" stroke="${currentStroke}" stroke-width="${currentStrokeWidth}" opacity="0.95"></polygon>`;
+      }
+
+      return `<circle class="${current ? "puck" : "event-dot"}" cx="${e.x}" cy="${e.y}" r="${current ? 2.8 : 1.9}" fill="${current ? "#111" : teamColor}" opacity="0.9"></circle>`;
+    }
+
+    function renderEvents(upto = -1) {
+      svg.querySelectorAll(".event-dot,.event-label,.puck").forEach((n) => n.remove());
+
+      for (let i = 0; i <= upto; i += 1) {
+        const e = activeEvents[i];
+        svg.insertAdjacentHTML("beforeend", renderEventShape(e, false));
+        svg.insertAdjacentHTML(
+          "beforeend",
+          `<text class="event-label" x="${e.x + 2}" y="${e.y - 2}" font-size="2.5" fill="#111">${escapeHtml(e.clock)}</text>`
+        );
+      }
+
+      if (upto >= 0) {
+        const e = activeEvents[upto];
+        svg.insertAdjacentHTML("beforeend", renderEventShape(e, true));
+
+        captionEl.innerHTML =
+          `${escapeHtml(e.clock)} — ${escapeHtml(e.description)} ` +
+          (e.type === "goal"
+            ? `<span class="pill pill-goal">GOAL</span>`
+            : `<span class="pill pill-shot">SHOT</span>`);
+      } else {
+        captionEl.textContent = `Loaded ${activeEvents.length} plottable events. Press Play.`;
+      }
+    }
+
+    function applyEventFilter() {
+      const filterValue = eventFilterSelect.value;
+      activeEvents = filterValue === "goals"
+        ? allEvents.filter((e) => e.type === "goal")
+        : [...allEvents];
+
+      activeEvents.sort((a, b) => a.sortKey - b.sortKey);
+      resetView();
+      setStatus(`Loaded ${activeEvents.length} events`);
+    }
+
     function resetView() {
       stopAnimation();
-      const game = getCurrentGame();
-      renderEvents(game, -1);
-      statusEl.textContent = "Ready";
+      animationIndex = -1;
+      renderEvents(-1);
+      setStatus(activeEvents.length ? `Loaded ${activeEvents.length} events` : "Ready");
       playBtn.textContent = "▶ Play";
     }
 
     function playAnimation() {
-      const game = getCurrentGame();
+      if (!activeEvents.length) {
+        setStatus("No events loaded");
+        captionEl.textContent = "Load a game first.";
+        return;
+      }
 
       if (animationHandle) {
         stopAnimation();
-        statusEl.textContent = "Paused";
+        setStatus("Paused");
         playBtn.textContent = "▶ Play";
         return;
       }
 
-      let i = -1;
-      statusEl.textContent = "Playing...";
+      if (animationIndex >= activeEvents.length - 1) {
+        animationIndex = -1;
+      }
+
+      setStatus("Playing...");
       playBtn.textContent = "⏸ Pause";
 
       animationHandle = setInterval(() => {
-        i += 1;
-        if (i >= game.events.length) {
+        animationIndex += 1;
+
+        if (animationIndex >= activeEvents.length) {
           stopAnimation();
-          statusEl.textContent = "Complete";
+          setStatus("Complete");
           playBtn.textContent = "▶ Play";
           return;
         }
-        renderEvents(game, i);
-      }, 1100);
+
+        renderEvents(animationIndex);
+      }, 850);
     }
 
-    select.addEventListener("change", resetView);
+    function populateGameSelect() {
+      select.innerHTML = "";
+
+      if (!games.length) {
+        const empty = document.createElement("option");
+        empty.textContent = "No games found";
+        empty.value = "";
+        select.appendChild(empty);
+        return;
+      }
+
+      for (const g of games) {
+        const opt = document.createElement("option");
+        opt.value = g.id;
+        opt.textContent = g.label;
+        select.appendChild(opt);
+      }
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const text = await response.text();
+
+      try {
+        return JSON.parse(text);
+      } catch {
+        const trimmed = text.replace(/^[^(]*\(/, "").replace(/\);?\s*$/, "");
+        return JSON.parse(trimmed);
+      }
+    }
+
+    function toArray(obj) {
+      if (Array.isArray(obj)) return obj;
+
+      if (obj && typeof obj === "object") {
+        for (const value of Object.values(obj)) {
+          if (Array.isArray(value) && value.length && typeof value[0] === "object") {
+            return value;
+          }
+        }
+      }
+
+      return [];
+    }
+
+    function parseCsv(text) {
+      const out = [];
+      let row = [];
+      let value = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        const n = text[i + 1];
+
+        if (c === '"') {
+          if (inQuotes && n === '"') {
+            value += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (c === "," && !inQuotes) {
+          row.push(value);
+          value = "";
+        } else if ((c === "\n" || c === "\r") && !inQuotes) {
+          if (c === "\r" && n === "\n") i++;
+          row.push(value);
+          value = "";
+          if (row.some((x) => x !== "")) out.push(row);
+          row = [];
+        } else {
+          value += c;
+        }
+      }
+
+      if (value || row.length) {
+        row.push(value);
+        out.push(row);
+      }
+
+      const [header, ...rows] = out;
+      return rows.map((r) =>
+        Object.fromEntries(header.map((h, idx) => [h, r[idx] || ""]))
+      );
+    }
+
+    function parsePwhlScheduleRows(rows, seasonId) {
+      return rows
+        .map((r) => {
+          const id = r.game_id || r.id || r.GameID || r.gameid;
+          const date = fmtIsoDate(r.date || r.game_date || r.gamedate || r.start_datetime || "");
+          const home = r.home_team || r.home || r.home_team_name || r.HomeTeam || "Home";
+          const away = r.visiting_team || r.away || r.away_team_name || r.AwayTeam || "Away";
+
+          return {
+            id: String(id || ""),
+            date,
+            home,
+            away,
+            seasonId
+          };
+        })
+        .filter((g) => g.id && g.date)
+        .sort((a, b) => a.date.localeCompare(b.date));
+    }
+
+    async function loadPwhlSchedule() {
+      setStatus("Loading PWHL schedule...");
+      noteEl.innerHTML =
+        "Data source mode: <strong>PWHL HockeyTech API</strong> (historical schedule + play-by-play).";
+
+      const chosen = pwhlSeasonSelect.value;
+      const seasonIds = chosen === "auto" ? PWHL_CFG.seasonIds : [Number(chosen)];
+      let bestGames = [];
+
+      for (const sid of seasonIds) {
+        const url =
+          `${PWHL_CFG.base}?feed=modulekit&view=schedule&season_id=${sid}` +
+          `&key=${PWHL_CFG.key}&client_code=${PWHL_CFG.client_code}`;
+
+        try {
+          const payload = await fetchJson(url);
+          const rows = toArray(payload);
+          if (!rows.length) continue;
+
+          const parsed = parsePwhlScheduleRows(rows, sid).map((g) => ({
+            ...g,
+            label: `${formatDateDMY(g.date)} — ${g.away} @ ${g.home} (SID ${sid})`
+          }));
+
+          if (parsed.length > bestGames.length) {
+            bestGames = parsed;
+          }
+
+          if (chosen !== "auto" && parsed.length) {
+            bestGames = parsed;
+            break;
+          }
+        } catch (error) {
+          // keep trying
+        }
+      }
+
+      games = bestGames;
+      populateGameSelect();
+
+      if (games.length) {
+        setStatus(`Loaded ${games.length} PWHL games`);
+      } else {
+        setStatus("No PWHL schedule data found");
+        captionEl.textContent = "Try another season ID or switch to Auto / try all.";
+      }
+    }
+
+    async function loadOlympicsSchedule() {
+      setStatus("Loading Olympic games...");
+      noteEl.innerHTML =
+        "Data source mode: <strong>the-bucketless/bdc Olympic dataset (2022)</strong>.";
+
+      const response = await fetch(OLY_CSV_URL);
+      if (!response.ok) throw new Error("Olympics CSV unavailable");
+
+      const rows = parseCsv(await response.text());
+      const grouped = new Map();
+
+      for (const r of rows) {
+        const date = fmtIsoDate(r.game_date || r.date || "");
+        const teamA = (r.team_name || r.team || "Team").trim();
+        const teamB = (r.opp_team_name || r.opponent || "Opponent").trim();
+        if (!date || !teamA || !teamB) continue;
+
+        const pair = [teamA, teamB].sort((a, b) => a.localeCompare(b));
+        const gameKey = `${date}__${pair[0]}__${pair[1]}`;
+
+        if (!grouped.has(gameKey)) {
+          grouped.set(gameKey, {
+            id: gameKey,
+            date,
+            home: pair[0],
+            away: pair[1],
+            rows: []
+          });
+        }
+
+        grouped.get(gameKey).rows.push(r);
+      }
+
+      games = [...grouped.values()]
+        .sort((a, b) => a.date.localeCompare(b.date) || a.away.localeCompare(b.away))
+        .map((g) => ({
+          ...g,
+          label: `${formatDateDMY(g.date)} — ${g.away} vs ${g.home}`
+        }));
+
+      populateGameSelect();
+      setStatus(`Loaded ${games.length} Olympic game groups`);
+    }
+
+    function extractEventsFromPwhl(payload) {
+      const rows = toArray(payload);
+      const events = [];
+
+      for (const r of rows) {
+        const type = classifyEvent(r.event || r.event_type || r.description);
+        if (!type) continue;
+
+        const coord = normalizeRinkCoord(
+          r.x || r.xcoord || r.x_coord || r.coord_x || r.event_coord_x,
+          r.y || r.ycoord || r.y_coord || r.coord_y || r.event_coord_y
+        );
+        if (!coord) continue;
+
+        const period = r.period || r.per || "P?";
+        const clock = r.time || r.clock || r.game_clock || "00:00";
+        const team = r.team || r.team_name || r.event_team || r.team_short || "Team";
+        const home = r.home_team || r.home || "";
+        const side = team === home ? "home" : "away";
+
+        events.push({
+          x: coord.x,
+          y: coord.y,
+          side,
+          type,
+          period: parsePeriodValue(period),
+          clock: String(clock),
+          sortKey: buildSortKey(period, clock),
+          description: `${team} ${type.toUpperCase()} (P${parsePeriodValue(period)})`
+        });
+      }
+
+      return events;
+    }
+
+    function extractEventsFromOlympics(game) {
+      const rows = game.rows || [];
+      const dedupe = new Set();
+      const events = [];
+
+      for (const r of rows) {
+        const type = classifyEvent(r.event);
+        if (!type) continue;
+
+        const coord = normalizeRinkCoord(r.x_coord, r.y_coord);
+        if (!coord) continue;
+
+        const rawTeam = (r.team_name || r.team || "Team").trim();
+        const side = rawTeam === game.home ? "home" : "away";
+        const period = r.period || "P?";
+        const clockSeconds = Number(r.clock_seconds || 0);
+
+        const dedupeKey = [
+          parsePeriodValue(period),
+          clockSeconds,
+          rawTeam,
+          coord.x,
+          coord.y,
+          type
+        ].join("__");
+
+        if (dedupe.has(dedupeKey)) continue;
+        dedupe.add(dedupeKey);
+
+        events.push({
+          x: coord.x,
+          y: coord.y,
+          side,
+          type,
+          period: parsePeriodValue(period),
+          clock: formatClock(period, clockSeconds),
+          sortKey: buildSortKey(period, clockSeconds),
+          description: `${rawTeam} ${type.toUpperCase()}`
+        });
+      }
+
+      return events;
+    }
+
+    async function loadSelectedGameEvents() {
+      const game = games.find((g) => g.id === select.value);
+
+      if (!game) {
+        setStatus("Select a game first");
+        return;
+      }
+
+      try {
+        setStatus("Loading game events...");
+
+        if (mode === "pwhl") {
+          const url =
+            `${PWHL_CFG.base}?feed=gc&tab=pxpverbose&game_id=${encodeURIComponent(game.id)}` +
+            `&key=${PWHL_CFG.key}&client_code=${PWHL_CFG.client_code}`;
+
+          const payload = await fetchJson(url);
+          allEvents = extractEventsFromPwhl(payload);
+        } else {
+          allEvents = extractEventsFromOlympics(game);
+        }
+
+        applyEventFilter();
+      } catch (error) {
+        allEvents = [];
+        activeEvents = [];
+        resetView();
+        setStatus("Event load failed");
+        captionEl.textContent = `Could not load events: ${error.message}`;
+      }
+    }
+
+    async function switchMode(nextMode) {
+      mode = nextMode;
+      tabButtons.forEach((btn) =>
+        btn.classList.toggle("active", btn.dataset.mode === mode)
+      );
+
+      pwhlControls.classList.toggle("hidden", mode !== "pwhl");
+
+      games = [];
+      allEvents = [];
+      activeEvents = [];
+      populateGameSelect();
+      resetView();
+
+      try {
+        if (mode === "pwhl") {
+          await loadPwhlSchedule();
+        } else {
+          await loadOlympicsSchedule();
+        }
+      } catch (error) {
+        games = [];
+        populateGameSelect();
+        setStatus("Load failed");
+        captionEl.textContent = error.message;
+      }
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => switchMode(btn.dataset.mode));
+    });
+
+    pwhlSeasonSelect.addEventListener("change", () => {
+      if (mode === "pwhl") switchMode("pwhl");
+    });
+
+    eventFilterSelect.addEventListener("change", () => {
+      applyEventFilter();
+    });
+
+    loadBtn.addEventListener("click", loadSelectedGameEvents);
     playBtn.addEventListener("click", playAnimation);
     resetBtn.addEventListener("click", resetView);
 
     drawRink();
-    populateSelect();
-    resetView();
+    switchMode("pwhl");
   </script>
 </body>
 </html>
