@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PWHL Championship Game Animations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1.25rem;
+      background: #f5f7fb;
+      color: #111;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem 1.25rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0.5rem 0;
+      font-size: 1.6rem;
+    }
+
+    .subtitle {
+      margin-top: 0;
+      color: #444;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin: 0.75rem 0 1rem;
+    }
+
+    button,
+    select {
+      font-size: 0.95rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+      background: white;
+      cursor: pointer;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #1d4e89;
+    }
+
+    .rink-wrapper {
+      overflow-x: auto;
+      border: 1px solid #dce3ef;
+      border-radius: 10px;
+      background: #f9fcff;
+      padding: 0.75rem;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      min-width: 900px;
+      height: auto;
+      background: #fff;
+    }
+
+    .caption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .note {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-left: 3px solid #6b7280;
+      background: #f3f4f6;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PWHL Championship Game Animation</h1>
+    <p class="subtitle">Animated key events from title-clinching Walter Cup games (2024 and 2025).</p>
+
+    <div class="controls">
+      <label for="game-select">Championship game:</label>
+      <select id="game-select"></select>
+      <button id="play-btn">▶ Play</button>
+      <button id="reset-btn">↺ Reset</button>
+      <span class="status" id="status">Ready</span>
+    </div>
+
+    <div class="rink-wrapper">
+      <svg id="rink" viewBox="0 0 200 85" aria-label="Hockey rink"></svg>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot" style="background:#c8102e;"></span>Champion goals</span>
+      <span><span class="dot" style="background:#1f4e79;"></span>Opponent goals</span>
+      <span><span class="dot" style="background:#111;"></span>Current animation position</span>
+    </div>
+
+    <p class="caption" id="caption"></p>
+
+    <div class="note">
+      Built to mirror a <code>hockey_rink</code>-style coordinate system (200x85 feet) so you can swap in full play-by-play
+      shot/goal data from the-bucketless repositories later.
+    </div>
+  </div>
+
+  <script>
+    const championshipGames = [
+      {
+        id: "2024-g5",
+        label: "2024 Walter Cup Final – Game 5 (Minnesota 3, Boston 0)",
+        champion: "Minnesota",
+        opponent: "Boston",
+        date: "2024-05-29",
+        events: [
+          { minute: 8, team: "Minnesota", x: 146, y: 43, note: "PWHL Minnesota opens scoring." },
+          { minute: 37, team: "Minnesota", x: 161, y: 27, note: "Second goal gives Minnesota breathing room." },
+          { minute: 58, team: "Minnesota", x: 180, y: 41, note: "Empty-netter seals the first Walter Cup." }
+        ]
+      },
+      {
+        id: "2025-g4",
+        label: "2025 Walter Cup Final – Game 4 (Minnesota 2, Ottawa 1 OT)",
+        champion: "Minnesota",
+        opponent: "Ottawa",
+        date: "2025-05-26",
+        events: [
+          { minute: 14, team: "Ottawa", x: 152, y: 36, note: "Ottawa strikes first in regulation." },
+          { minute: 51, team: "Minnesota", x: 166, y: 46, note: "Minnesota ties late to force overtime." },
+          { minute: 74, team: "Minnesota", x: 173, y: 39, note: "OT winner secures Minnesota's second title." }
+        ]
+      }
+    ];
+
+    const svg = document.getElementById("rink");
+    const select = document.getElementById("game-select");
+    const playBtn = document.getElementById("play-btn");
+    const resetBtn = document.getElementById("reset-btn");
+    const statusEl = document.getElementById("status");
+    const captionEl = document.getElementById("caption");
+
+    let animationHandle = null;
+
+    function drawRink() {
+      svg.innerHTML = "";
+
+      const lines = [
+        '<rect x="0.5" y="0.5" width="199" height="84" rx="10" ry="10" fill="#ffffff" stroke="#7aa4cf" stroke-width="1"/>',
+        '<line x1="100" y1="1" x2="100" y2="84" stroke="#d62828" stroke-width="1"/>',
+        '<line x1="75" y1="1" x2="75" y2="84" stroke="#1f78b4" stroke-width="0.8"/>',
+        '<line x1="125" y1="1" x2="125" y2="84" stroke="#1f78b4" stroke-width="0.8"/>',
+        '<circle cx="100" cy="42.5" r="9" fill="none" stroke="#d62828" stroke-width="0.8"/>',
+        '<rect x="0.5" y="32" width="6" height="21" fill="none" stroke="#d62828" stroke-width="0.8"/>',
+        '<rect x="193.5" y="32" width="6" height="21" fill="none" stroke="#d62828" stroke-width="0.8"/>'
+      ];
+
+      svg.insertAdjacentHTML("beforeend", lines.join(""));
+    }
+
+    function populateSelect() {
+      championshipGames.forEach((game, idx) => {
+        const option = document.createElement("option");
+        option.value = game.id;
+        option.textContent = game.label;
+        if (idx === 0) option.selected = true;
+        select.appendChild(option);
+      });
+    }
+
+    function getCurrentGame() {
+      return championshipGames.find((g) => g.id === select.value) || championshipGames[0];
+    }
+
+    function renderEvents(game, upto = -1) {
+      svg.querySelectorAll(".event-dot,.event-label,.puck").forEach((n) => n.remove());
+
+      for (let i = 0; i <= upto; i += 1) {
+        const e = game.events[i];
+        const isChampion = e.team === game.champion;
+        const color = isChampion ? "#c8102e" : "#1f4e79";
+
+        svg.insertAdjacentHTML(
+          "beforeend",
+          `<circle class="event-dot" cx="${e.x}" cy="${e.y}" r="1.8" fill="${color}" opacity="0.85"></circle>` +
+          `<text class="event-label" x="${e.x + 2}" y="${e.y - 2}" font-size="2.6" fill="#111">${e.minute}'</text>`
+        );
+      }
+
+      if (upto >= 0) {
+        const current = game.events[upto];
+        svg.insertAdjacentHTML(
+          "beforeend",
+          `<circle class="puck" cx="${current.x}" cy="${current.y}" r="2.5" fill="#111"></circle>`
+        );
+      }
+
+      if (upto >= 0) {
+        const e = game.events[upto];
+        captionEl.textContent = `${e.minute}' — ${e.note}`;
+      } else {
+        captionEl.textContent = `Date: ${game.date}. Click Play to animate key scoring moments.`;
+      }
+    }
+
+    function stopAnimation() {
+      if (animationHandle) {
+        clearInterval(animationHandle);
+        animationHandle = null;
+      }
+    }
+
+    function resetView() {
+      stopAnimation();
+      const game = getCurrentGame();
+      renderEvents(game, -1);
+      statusEl.textContent = "Ready";
+      playBtn.textContent = "▶ Play";
+    }
+
+    function playAnimation() {
+      const game = getCurrentGame();
+
+      if (animationHandle) {
+        stopAnimation();
+        statusEl.textContent = "Paused";
+        playBtn.textContent = "▶ Play";
+        return;
+      }
+
+      let i = -1;
+      statusEl.textContent = "Playing...";
+      playBtn.textContent = "⏸ Pause";
+
+      animationHandle = setInterval(() => {
+        i += 1;
+        if (i >= game.events.length) {
+          stopAnimation();
+          statusEl.textContent = "Complete";
+          playBtn.textContent = "▶ Play";
+          return;
+        }
+        renderEvents(game, i);
+      }, 1100);
+    }
+
+    select.addEventListener("change", resetView);
+    playBtn.addEventListener("click", playAnimation);
+    resetBtn.addEventListener("click", resetView);
+
+    drawRink();
+    populateSelect();
+    resetView();
+  </script>
+</body>
+</html>
