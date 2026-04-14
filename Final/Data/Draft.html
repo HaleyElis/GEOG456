@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women USA Hockey Cartogram Draft</title>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="./Women_Total.js"></script>
+  <script src="./states.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fafafa;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    #chart {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: white;
+      border: 2px solid #aaa;
+      border-radius: 8px;
+    }
+
+    .state {
+      stroke: #333;
+      stroke-width: 0.7px;
+    }
+
+    .state:hover {
+      stroke: black;
+      stroke-width: 1.5px;
+    }
+
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid #999;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      opacity: 0;
+    }
+
+    .legend {
+      max-width: 1000px;
+      margin: 12px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 18px;
+      height: 12px;
+      border: 1px solid #777;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Total Number of Women and Girls Registered for USA Hockey</h1>
+  <h2 id="theYear">Year: 2024</h2>
+
+  <div class="controls">
+    <input
+      type="range"
+      min="2008"
+      max="2024"
+      step="1"
+      value="2024"
+      oninput="moveSlider(this.value)"
+    />
+  </div>
+
+  <div id="chart"></div>
+  <div id="legend" class="legend"></div>
+  <div id="tooltip" class="tooltip"></div>
+
+  <script>
+    const width = 960;
+    const height = 600;
+
+    const svg = d3.select("#chart")
+      .append("svg")
+      .attr("viewBox", `0 0 ${width} ${height}`);
+
+    const tooltip = d3.select("#tooltip");
+
+    let selectedYear = "2024";
+
+    // ---------------------------------------
+    // 1) Build lookup from women[] data
+    // ---------------------------------------
+    const womenLookup = {};
+
+    women.forEach(row => {
+      let abb = row.State_abb;
+
+      // combine East + West Pennsylvania into PA
+      if (abb === "E PA" || abb === "W PA") {
+        abb = "PA";
+      }
+
+      if (!womenLookup[abb]) {
+        womenLookup[abb] = {
+          State: row.State,
+          State_abb: abb
+        };
+      }
+
+      Object.keys(row).forEach(key => {
+        if (key.startsWith("X")) {
+          const raw = row[key];
+          const val = typeof raw === "string"
+            ? +raw.replace(/,/g, "")
+            : +raw;
+
+          womenLookup[abb][key] = (womenLookup[abb][key] || 0) + (val || 0);
+        }
+      });
+    });
+
+    // ---------------------------------------
+    // 2) Copy joined values onto state features
+    // ---------------------------------------
+    const joinedStates = JSON.parse(JSON.stringify(states));
+
+    joinedStates.features.forEach(feature => {
+      const abb = feature.properties.STATE;
+
+      if (womenLookup[abb]) {
+        Object.keys(womenLookup[abb]).forEach(key => {
+          feature.properties[key] = womenLookup[abb][key];
+        });
+      }
+    });
+
+    // ---------------------------------------
+    // 3) Projection + path
+    // ---------------------------------------
+    const projection = d3.geoAlbersUsa()
+      .fitSize([width, height], joinedStates);
+
+    const path = d3.geoPath(projection);
+
+    // ---------------------------------------
+    // 4) Helpers
+    // ---------------------------------------
+    function getValue(feature) {
+      return +feature.properties["X" + selectedYear] || 0;
+    }
+
+    function getColor(value) {
+      return value > 10000 ? "#084081" :
+             value > 5000  ? "#0868ac" :
+             value > 2500  ? "#2b8cbe" :
+             value > 1000  ? "#4eb3d3" :
+             value > 500   ? "#7bccc4" :
+             value > 100   ? "#a8ddb5" :
+                             "#e0f3db";
+    }
+
+    function getScale(value, maxValue) {
+      return d3.scaleSqrt()
+        .domain([0, maxValue || 1])
+        .range([0.35, 2.5])(value);
+    }
+
+    function legendBins() {
+      return [
+        { label: "0–100", color: "#e0f3db" },
+        { label: "101–500", color: "#a8ddb5" },
+        { label: "501–1,000", color: "#7bccc4" },
+        { label: "1,001–2,500", color: "#4eb3d3" },
+        { label: "2,501–5,000", color: "#2b8cbe" },
+        { label: "5,001–10,000", color: "#0868ac" },
+        { label: "10,001+", color: "#084081" }
+      ];
+    }
+
+    function drawLegend() {
+      const legend = d3.select("#legend");
+      legend.html("");
+
+      legendBins().forEach(item => {
+        const div = legend.append("div").attr("class", "legend-item");
+        div.append("span")
+          .attr("class", "legend-swatch")
+          .style("background", item.color);
+        div.append("span").text(item.label);
+      });
+    }
+
+    // ---------------------------------------
+    // 5) Draw/update cartogram
+    // ---------------------------------------
+    function updateMap() {
+      const maxValue = d3.max(joinedStates.features, d => getValue(d)) || 1;
+
+      svg.selectAll(".state")
+        .data(joinedStates.features, d => d.properties.STATE)
+        .join("path")
+        .attr("class", "state")
+        .attr("d", path)
+        .attr("fill", d => getColor(getValue(d)))
+        .attr("transform", d => {
+          const value = getValue(d);
+          const scale = getScale(value, maxValue);
+          const [cx, cy] = path.centroid(d);
+
+          return `translate(${cx},${cy}) scale(${scale}) translate(${-cx},${-cy})`;
+        })
+        .on("mousemove", function(event, d) {
+          const value = getValue(d);
+          tooltip
+            .style("opacity", 1)
+            .style("left", `${event.pageX + 12}px`)
+            .style("top", `${event.pageY + 12}px`)
+            .html(`
+              <strong>${d.properties.NAME}</strong><br>
+              Year: ${selectedYear}<br>
+              Registrations: ${value.toLocaleString()}
+            `);
+        })
+        .on("mouseleave", function() {
+          tooltip.style("opacity", 0);
+        });
+
+      d3.select("#theYear").text(`Year: ${selectedYear}`);
+    }
+
+    function moveSlider(value) {
+      selectedYear = value;
+      updateMap();
+    }
+
+    drawLegend();
+    updateMap();
+  </script>
+</body>
+</html>
