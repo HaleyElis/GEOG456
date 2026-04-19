@@ -276,9 +276,10 @@
     }
 
     function buildOlympicsEvents(gameId) {
-    const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
+  const game = schedule.find(g => String(g.game_id) === String(gameId));
+  const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
 
-    return gameRows.map(row => {
+  return gameRows.map(row => {
     const rawEvent = String(row.event || "").toLowerCase();
 
     let eventType = null;
@@ -290,14 +291,23 @@
 
     if (!eventType || !Number.isFinite(x) || !Number.isFinite(y)) return null;
 
+    const team = String(row.team_name || "").trim();
+    const home = String(game?.home_team || "").trim();
+    const away = String(game?.away_team || "").trim();
+
+    let side = "away";
+    if (team === home) side = "home";
+    else if (team === away) side = "away";
+
     return {
       game_id: gameId,
-      team: (row.team_name || "").trim(),
+      team,
+      side,
       period: Number(row.period),
       clock: secondsToClock(row.clock_seconds),
       event_type: eventType,
-      x: x,
-      y: y
+      x,
+      y
     };
   }).filter(Boolean);
 }
@@ -315,64 +325,72 @@
     }
 
     function normalizeEvent(event, game, dataset) {
-      const rawX = Number(event.x);
-      const rawY = Number(event.y);
-      const period = Number(event.period);
-      const eventType = String(event.event_type || "").toLowerCase();
+  const rawX = Number(event.x);
+  const rawY = Number(event.y);
+  const period = Number(event.period);
+  const eventType = String(event.event_type || "").toLowerCase();
 
-      let color = AWAY_COLOR;
-      let shotFill = AWAY_SHOT_FILL;
+  let color = AWAY_COLOR;
+  let shotFill = AWAY_SHOT_FILL;
 
-      if (dataset === "olympics_2022") {
-        if (event.side === "home") {
-          color = HOME_COLOR;
-          shotFill = HOME_SHOT_FILL;
-        } else {
-          color = AWAY_COLOR;
-          shotFill = AWAY_SHOT_FILL;
-        }
-
-        return {
-          ...event,
-          plotX: rawX,
-          plotY: rawY,
-          color,
-          shotFill,
-          eventType
-        };
-      }
-
-      const team = String(event.team || "").trim();
-const home = String(game.home_team || "").trim();
-const away = String(game.away_team || "").trim();
-
-if (team.includes(home)) {
-  color = HOME_COLOR;
-  shotFill = HOME_SHOT_FILL;
-} else if (team.includes(away)) {
-  color = AWAY_COLOR;
-  shotFill = AWAY_SHOT_FILL;
-      }
-
-if (!team || team === "") {
-  color = "#888";
-  shotFill = "rgba(120,120,120,0.2)";
-}
-
-      let plotX = rawX;
-      if (Number.isFinite(period) && period % 2 === 0) {
-        plotX = 200 - rawX;
-      }
-
-      return {
-        ...event,
-        plotX,
-        plotY: rawY,
-        color,
-        shotFill,
-        eventType
-      };
+  if (dataset === "olympics_2022") {
+    if (event.side === "home") {
+      color = HOME_COLOR;
+      shotFill = HOME_SHOT_FILL;
+    } else {
+      color = AWAY_COLOR;
+      shotFill = AWAY_SHOT_FILL;
     }
+
+    let plotX = rawX;
+    let plotY = rawY;
+
+    // mirror one team so both teams appear on opposite halves
+    if (event.side === "home") {
+      plotX = 200 - rawX;
+    }
+
+    return {
+      ...event,
+      plotX,
+      plotY,
+      color,
+      shotFill,
+      eventType
+    };
+  }
+
+  const team = String(event.team || "").trim();
+  const home = String(game.home_team || "").trim();
+  const away = String(game.away_team || "").trim();
+
+  if (team.includes(home)) {
+    color = HOME_COLOR;
+    shotFill = HOME_SHOT_FILL;
+  } else if (team.includes(away)) {
+    color = AWAY_COLOR;
+    shotFill = AWAY_SHOT_FILL;
+  }
+
+  if (!team) {
+    color = "#888";
+    shotFill = "rgba(120,120,120,0.2)";
+  }
+
+  let plotX = rawX;
+  if (Number.isFinite(period) && period % 2 === 0) {
+    plotX = 200 - rawX;
+  }
+
+  return {
+    ...event,
+    plotX,
+    plotY: rawY,
+    color,
+    shotFill,
+    eventType
+  };
+}
 
     function drawCircle(x, y, r, fill, isCurrent) {
       const circle = el("circle", {
