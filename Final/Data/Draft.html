@@ -6,7 +6,7 @@
   <title>Hockey Game Animation Draft</title>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="../pwhl_schedule.js"></script>
+  <script src="../pwhl_schedule.js?v=3"></script>
 
   <style>
     body {
@@ -34,7 +34,7 @@
     }
 
     #chart {
-      max-width: 900px;
+      max-width: 820px;
       margin: 0 auto;
     }
 
@@ -48,7 +48,7 @@
     }
 
     .legend {
-      max-width: 900px;
+      max-width: 820px;
       margin: 12px auto 0;
       display: flex;
       flex-wrap: wrap;
@@ -72,7 +72,7 @@
     }
 
     .meta {
-      max-width: 900px;
+      max-width: 820px;
       margin: 14px auto 0;
       font-size: 18px;
       text-align: left;
@@ -158,8 +158,8 @@
 
     const HOME_COLOR = "#c41e3a";
     const AWAY_COLOR = "#355c97";
-    const HOME_SHOT_FILL = "rgba(196, 30, 58, 0.25)";
-    const AWAY_SHOT_FILL = "rgba(53, 92, 151, 0.25)";
+    const HOME_SHOT_FILL = "rgba(196, 30, 58, 0.22)";
+    const AWAY_SHOT_FILL = "rgba(53, 92, 151, 0.22)";
     const OUTLINE_COLOR = "#111";
 
     function createSVG() {
@@ -276,32 +276,37 @@
     }
 
     function buildOlympicsEvents(gameId) {
+      const game = schedule.find(g => String(g.game_id) === String(gameId));
+      if (!game) return [];
+
       const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
 
-      return gameRows
-        .map(row => {
-          const rawEvent = String(row.event || "").toLowerCase();
-          let eventType = null;
+      return gameRows.map(row => {
+        const rawEvent = String(row.event || "").toLowerCase().trim();
+        let eventType = null;
 
-          if (rawEvent.includes("goal")) eventType = "goal";
-          else if (rawEvent.includes("shot")) eventType = "shot";
+        if (rawEvent.includes("goal")) eventType = "goal";
+        else if (rawEvent.includes("shot")) eventType = "shot";
 
-          const x = Number(row.x_coord);
-          const y = Number(row.y_coord);
+        const xRaw = Number(row.x_coord);
+        const yRaw = Number(row.y_coord);
 
-          if (!eventType || !Number.isFinite(x) || !Number.isFinite(y)) return null;
+        if (!eventType || !Number.isFinite(xRaw) || !Number.isFinite(yRaw)) return null;
 
-          return {
-            game_id: gameId,
-            team: row.team_name || "",
-            period: Number(row.period),
-            clock: secondsToClock(row.clock_seconds),
-            event_type: eventType,
-            x: x,
-            y: y
-          };
-        })
-        .filter(Boolean);
+        const teamName = String(row.team_name || "").trim();
+        const side = teamName === String(game.home_team).trim() ? "home" : "away";
+
+        return {
+          game_id: gameId,
+          team: teamName,
+          side,
+          period: Number(row.period),
+          clock: secondsToClock(row.clock_seconds),
+          event_type: eventType,
+          x: xRaw + 100,
+          y: yRaw + 42.5
+        };
+      }).filter(Boolean);
     }
 
     function sortEvents(arr) {
@@ -321,11 +326,30 @@
       const rawY = Number(event.y);
       const period = Number(event.period);
       const eventType = String(event.event_type || "").toLowerCase();
-      const team = String(event.team || "");
 
       let color = AWAY_COLOR;
       let shotFill = AWAY_SHOT_FILL;
 
+      if (dataset === "olympics_2022") {
+        if (event.side === "home") {
+          color = HOME_COLOR;
+          shotFill = HOME_SHOT_FILL;
+        } else {
+          color = AWAY_COLOR;
+          shotFill = AWAY_SHOT_FILL;
+        }
+
+        return {
+          ...event,
+          plotX: rawX,
+          plotY: rawY,
+          color,
+          shotFill,
+          eventType
+        };
+      }
+
+      const team = String(event.team || "");
       if (team && game) {
         const home = String(game.home_team || "");
         const away = String(game.away_team || "");
@@ -338,26 +362,15 @@
         }
       }
 
-      let plotX;
-      let plotY;
-
-      if (dataset === "olympics_2022") {
-        // BDC data uses centered rink coords like the original setup
-        plotX = rawX + 100;
-        plotY = rawY + 42.5;
-      } else {
-        plotX = rawX;
-        plotY = rawY;
-
-        if (Number.isFinite(period) && period % 2 === 0) {
-          plotX = 200 - rawX;
-        }
+      let plotX = rawX;
+      if (Number.isFinite(period) && period % 2 === 0) {
+        plotX = 200 - rawX;
       }
 
       return {
         ...event,
         plotX,
-        plotY,
+        plotY: rawY,
         color,
         shotFill,
         eventType
@@ -371,7 +384,7 @@
         r,
         fill,
         stroke: isCurrent ? OUTLINE_COLOR : "none",
-        "stroke-width": isCurrent ? 0.5 : 0
+        "stroke-width": isCurrent ? 0.45 : 0
       });
       svg.appendChild(circle);
     }
@@ -397,7 +410,7 @@
         d,
         fill,
         stroke: isCurrent ? OUTLINE_COLOR : "none",
-        "stroke-width": isCurrent ? 0.5 : 0
+        "stroke-width": isCurrent ? 0.45 : 0
       });
       svg.appendChild(star);
     }
@@ -529,11 +542,13 @@
       return new Promise((resolve, reject) => {
         removeActiveGameScript();
 
+        const varName = `pwhl_game_${gameId}`;
+        delete window[varName];
+
         const script = document.createElement("script");
-        script.src = `../pwhl_games/game_${gameId}.js`;
+        script.src = `../pwhl_games/game_${gameId}.js?v=${Date.now()}`;
 
         script.onload = () => {
-          const varName = `pwhl_game_${gameId}`;
           const loaded = window[varName];
           if (!loaded) {
             reject(new Error(`Could not find ${varName}`));
