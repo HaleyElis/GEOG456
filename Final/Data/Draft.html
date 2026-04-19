@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hockey Game Animation Draft</title>
+  <title>Animating Women's Hockey: Shots on Goal in PWHL and Olympic Games</title>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="../pwhl_schedule.js?v=3"></script>
@@ -276,38 +276,38 @@
     }
 
     function buildOlympicsEvents(gameId) {
-      const game = schedule.find(g => String(g.game_id) === String(gameId));
-      if (!game) return [];
+  const game = schedule.find(g => String(g.game_id) === String(gameId));
+  if (!game) return [];
 
-      const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
+  const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
 
-      return gameRows.map(row => {
-        const rawEvent = String(row.event || "").toLowerCase().trim();
-        let eventType = null;
+  return gameRows.map(row => {
+    const rawEvent = String(row.event || "").toLowerCase();
 
-        if (rawEvent.includes("goal")) eventType = "goal";
-        else if (rawEvent.includes("shot")) eventType = "shot";
+    let eventType = null;
+    if (rawEvent.includes("goal")) eventType = "goal";
+    else if (rawEvent.includes("shot")) eventType = "shot";
 
-        const xRaw = Number(row.x_coord);
-        const yRaw = Number(row.y_coord);
+    let x = Number(row.x_coord);
+    let y = Number(row.y_coord);
 
-        if (!eventType || !Number.isFinite(xRaw) || !Number.isFinite(yRaw)) return null;
+    if (!eventType || !Number.isFinite(x) || !Number.isFinite(y)) return null;
 
-        const teamName = String(row.team_name || "").trim();
-        const side = teamName === String(game.home_team).trim() ? "home" : "away";
+    // 🔥 CRITICAL FIX: normalize BDC coords
+    x = Math.abs(x);         // force offensive direction
+    y = y * Math.sign(row.x_coord); // flip side properly
 
-        return {
-          game_id: gameId,
-          team: teamName,
-          side,
-          period: Number(row.period),
-          clock: secondsToClock(row.clock_seconds),
-          event_type: eventType,
-          x: xRaw + 100,
-          y: yRaw + 42.5
-        };
-      }).filter(Boolean);
-    }
+    return {
+      game_id: gameId,
+      team: row.team_name || "",
+      period: Number(row.period),
+      clock: secondsToClock(row.clock_seconds),
+      event_type: eventType,
+      x: x + 100,
+      y: y + 42.5
+    };
+  }).filter(Boolean);
+}
 
     function sortEvents(arr) {
       return [...arr].sort((a, b) => {
@@ -353,14 +353,19 @@
       if (team && game) {
         const home = String(game.home_team || "");
         const away = String(game.away_team || "");
-        if (team === home) {
+        if (team.includes(home)) {
           color = HOME_COLOR;
           shotFill = HOME_SHOT_FILL;
-        } else if (team === away) {
+        } else if (team.includes(away)) {
           color = AWAY_COLOR;
           shotFill = AWAY_SHOT_FILL;
         }
       }
+
+if (!team || team === "") {
+  color = "#888";
+  shotFill = "rgba(120,120,120,0.2)";
+}
 
       let plotX = rawX;
       if (Number.isFinite(period) && period % 2 === 0) {
@@ -416,6 +421,7 @@
     }
 
     function render(index) {
+      if (index === 0) console.log(events[0]);
       drawRink();
 
       const game = currentGame();
