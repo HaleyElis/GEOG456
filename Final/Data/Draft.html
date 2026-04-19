@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Women USA Hockey Cartogram Draft</title>
-
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="./Women_Total.js"></script>
-  <script src="./states.js"></script>
+  <title>Hockey Game Animation Draft</title>
 
   <style>
     body {
@@ -27,8 +23,15 @@
       margin-bottom: 16px;
     }
 
+    .controls select,
+    .controls button {
+      font-size: 16px;
+      padding: 8px 10px;
+      margin: 4px;
+    }
+
     #chart {
-      max-width: 1000px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -41,36 +44,15 @@
       border-radius: 8px;
     }
 
-    .state {
-      stroke: #333;
-      stroke-width: 0.7px;
-    }
-
-    .state:hover {
-      stroke: black;
-      stroke-width: 1.5px;
-    }
-
-    .tooltip {
-      position: absolute;
-      pointer-events: none;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid #999;
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-size: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      opacity: 0;
-    }
-
     .legend {
-      max-width: 1000px;
+      max-width: 1400px;
       margin: 12px auto 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 14px;
       justify-content: center;
-      font-size: 13px;
+      font-size: 18px;
+      align-items: center;
     }
 
     .legend-item {
@@ -79,194 +61,425 @@
       gap: 6px;
     }
 
-    .legend-swatch {
-      width: 18px;
-      height: 12px;
-      border: 1px solid #777;
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
       display: inline-block;
+    }
+
+    .meta {
+      max-width: 1400px;
+      margin: 14px auto 0;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .status {
+      color: #2f5597;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #e9eefb;
+      color: #3459c9;
+      font-size: 13px;
+      font-weight: 700;
+      margin-left: 8px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Total Number of Women and Girls Registered for USA Hockey</h1>
-  <h2 id="theYear">Year: 2024</h2>
+  <h1>Hockey Game Animation (PWHL + Olympics)</h1>
+  <h2 id="subtitle">Animate shot and goal locations for PWHL games and Olympic women’s hockey games.</h2>
 
   <div class="controls">
-    <input
-      type="range"
-      min="2008"
-      max="2024"
-      step="1"
-      value="2024"
-      oninput="moveSlider(this.value)"
-    />
+    <label for="datasetSelect">Dataset:</label>
+    <select id="datasetSelect">
+      <option value="pwhl">PWHL</option>
+      <option value="olympics_2022">Olympic Games (Women)</option>
+    </select>
+
+    <label for="showSelect">Show:</label>
+    <select id="showSelect">
+      <option value="all">Goals + Shots</option>
+      <option value="goals">Goals only</option>
+    </select>
+
+    <label for="gameSelect">Game:</label>
+    <select id="gameSelect"></select>
+
+    <button id="loadBtn">Load game events</button>
+    <button id="playBtn">▶ Play</button>
+    <button id="pauseBtn">⏸ Pause</button>
+    <button id="resetBtn">↺ Reset</button>
+
+    <span id="status" class="status">No events loaded</span>
   </div>
 
   <div id="chart"></div>
-  <div id="legend" class="legend"></div>
-  <div id="tooltip" class="tooltip"></div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:#c41e3a;"></span> Home / Team A</div>
+    <div class="legend-item"><span class="dot" style="background:#355c97;"></span> Away / Team B</div>
+    <div class="legend-item">★ Goal</div>
+    <div class="legend-item">● Shot</div>
+    <div class="legend-item">⬤ Current event outline</div>
+  </div>
+
+  <div id="eventMeta" class="meta">No event loaded</div>
 
   <script>
-    const width = 960;
-    const height = 600;
+    const width = 200;
+    const height = 85;
 
-    const svg = d3.select("#chart")
-      .append("svg")
-      .attr("viewBox", `0 0 ${width} ${height}`);
+    const chart = document.getElementById("chart");
+    const datasetSelect = document.getElementById("datasetSelect");
+    const showSelect = document.getElementById("showSelect");
+    const gameSelect = document.getElementById("gameSelect");
+    const statusEl = document.getElementById("status");
+    const eventMeta = document.getElementById("eventMeta");
 
-    const tooltip = d3.select("#tooltip");
+    const loadBtn = document.getElementById("loadBtn");
+    const playBtn = document.getElementById("playBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const resetBtn = document.getElementById("resetBtn");
 
-    let selectedYear = "2024";
+    let svg;
+    let schedule = [];
+    let events = [];
+    let filteredEvents = [];
+    let currentIndex = -1;
+    let timer = null;
 
-    // ---------------------------------------
-    // 1) Build lookup from women[] data
-    // ---------------------------------------
-    const womenLookup = {};
+    const HOME_COLOR = "#c41e3a";
+    const AWAY_COLOR = "#355c97";
+    const OUTLINE_COLOR = "#111";
 
-    women.forEach(row => {
-      let abb = row.State_abb;
+    const DATASETS = {
+      pwhl: {
+        schedulePath: "./pwhl_schedule.json",
+        gamesFolder: "./pwhl_games",
+        title: "PWHL"
+      },
+      olympics_2022: {
+        schedulePath: "./olympics_2022_schedule.json",
+        gamesFolder: "./olympics_2022_games",
+        title: "Olympic Games (Women)"
+      }
+    };
 
-      // combine East + West Pennsylvania into PA
-      if (abb === "E PA" || abb === "W PA") {
-        abb = "PA";
+    function createSVG() {
+      chart.innerHTML = "";
+      svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      chart.appendChild(svg);
+    }
+
+    function el(name, attrs = {}) {
+      const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+      for (const [key, value] of Object.entries(attrs)) {
+        node.setAttribute(key, value);
+      }
+      return node;
+    }
+
+    function drawRink() {
+      createSVG();
+
+      svg.appendChild(el("rect", {
+        x: 2, y: 2, width: 196, height: 81, rx: 10, ry: 10,
+        fill: "#f8f8f8", stroke: "#7ea0cf", "stroke-width": 1
+      }));
+
+      svg.appendChild(el("line", {
+        x1: 75, y1: 2, x2: 75, y2: 83,
+        stroke: "#2c6db4", "stroke-width": 0.8
+      }));
+
+      svg.appendChild(el("line", {
+        x1: 125, y1: 2, x2: 125, y2: 83,
+        stroke: "#2c6db4", "stroke-width": 0.8
+      }));
+
+      svg.appendChild(el("line", {
+        x1: 100, y1: 2, x2: 100, y2: 83,
+        stroke: "#cf2f2f", "stroke-width": 0.8
+      }));
+
+      svg.appendChild(el("circle", {
+        cx: 100, cy: 42.5, r: 9,
+        fill: "none", stroke: "#cf2f2f", "stroke-width": 0.8
+      }));
+
+      svg.appendChild(el("rect", {
+        x: 2, y: 34, width: 6, height: 17,
+        fill: "none", stroke: "#cf2f2f", "stroke-width": 0.8
+      }));
+
+      svg.appendChild(el("rect", {
+        x: 192, y: 34, width: 6, height: 17,
+        fill: "none", stroke: "#cf2f2f", "stroke-width": 0.8
+      }));
+    }
+
+    function currentDataset() {
+      return DATASETS[datasetSelect.value];
+    }
+
+    function currentGame() {
+      return schedule.find(g => String(g.game_id) === String(gameSelect.value));
+    }
+
+    function stopPlayback() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function normalizeEvent(event, game) {
+      const x = Number(event.x);
+      const y = Number(event.y);
+      const period = Number(event.period);
+      const eventType = String(event.event_type || "").toLowerCase();
+      const team = String(event.team || "");
+
+      let color = AWAY_COLOR;
+
+      if (team && game) {
+        const home = String(game.home_team || "");
+        const away = String(game.away_team || "");
+        if (team === home) color = HOME_COLOR;
+        else if (team === away) color = AWAY_COLOR;
+      } else if (datasetSelect.value === "olympics_2022") {
+        color = AWAY_COLOR;
       }
 
-      if (!womenLookup[abb]) {
-        womenLookup[abb] = {
-          State: row.State,
-          State_abb: abb
-        };
+      let plotX = x;
+      if (Number.isFinite(period) && period % 2 === 0) {
+        plotX = 200 - x;
       }
 
-      Object.keys(row).forEach(key => {
-        if (key.startsWith("X")) {
-          const raw = row[key];
-          const val = typeof raw === "string"
-            ? +raw.replace(/,/g, "")
-            : +raw;
+      return {
+        ...event,
+        plotX,
+        plotY: y,
+        color,
+        eventType
+      };
+    }
 
-          womenLookup[abb][key] = (womenLookup[abb][key] || 0) + (val || 0);
+    function drawCircle(x, y, r, fill, isCurrent) {
+      const circle = el("circle", {
+        cx: x,
+        cy: y,
+        r: r,
+        fill: fill,
+        stroke: isCurrent ? OUTLINE_COLOR : "none",
+        "stroke-width": isCurrent ? 1.1 : 0
+      });
+      svg.appendChild(circle);
+    }
+
+    function drawStar(x, y, r, fill, isCurrent) {
+      let d = "";
+      const spikes = 5;
+      const outer = r;
+      const inner = r * 0.45;
+      let rot = Math.PI / 2 * 3;
+      const step = Math.PI / spikes;
+
+      d += `M ${x} ${y - outer} `;
+      for (let i = 0; i < spikes; i++) {
+        d += `L ${x + Math.cos(rot) * outer} ${y + Math.sin(rot) * outer} `;
+        rot += step;
+        d += `L ${x + Math.cos(rot) * inner} ${y + Math.sin(rot) * inner} `;
+        rot += step;
+      }
+      d += "Z";
+
+      const star = el("path", {
+        d,
+        fill,
+        stroke: isCurrent ? OUTLINE_COLOR : "none",
+        "stroke-width": isCurrent ? 1.1 : 0
+      });
+      svg.appendChild(star);
+    }
+
+    function sortEvents(arr) {
+      return [...arr].sort((a, b) => {
+        const pa = Number(a.period) || 0;
+        const pb = Number(b.period) || 0;
+        if (pa !== pb) return pa - pb;
+
+        const [am = 0, as = 0] = String(a.clock || "0:00").split(":").map(Number);
+        const [bm = 0, bs = 0] = String(b.clock || "0:00").split(":").map(Number);
+        return am * 60 + as - (bm * 60 + bs);
+      });
+    }
+
+    function filterEvents(allEvents) {
+      if (showSelect.value === "goals") {
+        return allEvents.filter(e => String(e.event_type).toLowerCase() === "goal");
+      }
+      return allEvents.filter(e => {
+        const t = String(e.event_type).toLowerCase();
+        return t === "goal" || t === "shot";
+      });
+    }
+
+    function render(index) {
+      drawRink();
+
+      const game = currentGame();
+
+      filteredEvents.forEach((rawEvent, i) => {
+        if (i > index) return;
+
+        const event = normalizeEvent(rawEvent, game);
+        const isCurrent = i === index;
+
+        if (!Number.isFinite(event.plotX) || !Number.isFinite(event.plotY)) return;
+
+        if (event.eventType === "goal") {
+          drawStar(event.plotX, event.plotY, 2.6, event.color, isCurrent);
+        } else {
+          drawCircle(event.plotX, event.plotY, 1.8, event.color, isCurrent);
         }
       });
-    });
 
-    // ---------------------------------------
-    // 2) Copy joined values onto state features
-    // ---------------------------------------
-    const joinedStates = JSON.parse(JSON.stringify(states));
-
-    joinedStates.features.forEach(feature => {
-      const abb = feature.properties.STATE;
-
-      if (womenLookup[abb]) {
-        Object.keys(womenLookup[abb]).forEach(key => {
-          feature.properties[key] = womenLookup[abb][key];
-        });
+      if (index >= 0 && filteredEvents[index]) {
+        const e = filteredEvents[index];
+        const teamText = e.team ? ` — ${e.team}` : "";
+        eventMeta.innerHTML =
+          `P${e.period} ${e.clock}${teamText} <span class="pill">${String(e.event_type).toUpperCase()}</span>`;
+      } else {
+        eventMeta.textContent = "No event loaded";
       }
+    }
+
+    function reset() {
+      stopPlayback();
+      currentIndex = -1;
+      render(currentIndex);
+      statusEl.textContent = filteredEvents.length ? "Ready" : "No events loaded";
+    }
+
+    function play() {
+      if (!filteredEvents.length) return;
+
+      stopPlayback();
+
+      if (currentIndex >= filteredEvents.length - 1) {
+        currentIndex = -1;
+      }
+
+      statusEl.textContent = "Playing...";
+
+      timer = setInterval(() => {
+        currentIndex += 1;
+        if (currentIndex >= filteredEvents.length) {
+          currentIndex = filteredEvents.length - 1;
+          stopPlayback();
+          statusEl.textContent = "Finished";
+          render(currentIndex);
+          return;
+        }
+        render(currentIndex);
+      }, 650);
+    }
+
+    function pause() {
+      stopPlayback();
+      statusEl.textContent = "Paused";
+    }
+
+    async function loadSchedule() {
+      stopPlayback();
+      currentIndex = -1;
+      events = [];
+      filteredEvents = [];
+      statusEl.textContent = "Loading schedule...";
+      eventMeta.textContent = "No event loaded";
+
+      const cfg = currentDataset();
+      const res = await fetch(cfg.schedulePath);
+      if (!res.ok) throw new Error(`Could not load ${cfg.schedulePath}`);
+
+      schedule = await res.json();
+      schedule = schedule.map(g => ({
+        ...g,
+        game_id: String(g.game_id)
+      }));
+
+      gameSelect.innerHTML = "";
+
+      schedule.forEach(game => {
+        const option = document.createElement("option");
+        option.value = game.game_id;
+        option.textContent = game.label || `${game.game_date} — ${game.away_team} @ ${game.home_team}`;
+        gameSelect.appendChild(option);
+      });
+
+      statusEl.textContent = schedule.length ? "Schedule loaded" : "No games found";
+      render(-1);
+    }
+
+    async function loadGame() {
+      stopPlayback();
+      currentIndex = -1;
+
+      const cfg = currentDataset();
+      const game = currentGame();
+      if (!game) return;
+
+      statusEl.textContent = "Loading game events...";
+
+      const path = `${cfg.gamesFolder}/game_${game.game_id}.json`;
+      const res = await fetch(path);
+
+      if (!res.ok) {
+        events = [];
+        filteredEvents = [];
+        render(-1);
+        statusEl.textContent = `Could not load ${path}`;
+        return;
+      }
+
+      events = await res.json();
+      events = sortEvents(events);
+      filteredEvents = filterEvents(events);
+
+      render(-1);
+      statusEl.textContent = filteredEvents.length
+        ? `${filteredEvents.length} events loaded`
+        : "No matching events";
+    }
+
+    datasetSelect.addEventListener("change", loadSchedule);
+
+    showSelect.addEventListener("change", () => {
+      filteredEvents = filterEvents(events);
+      reset();
     });
 
-    // ---------------------------------------
-    // 3) Projection + path
-    // ---------------------------------------
-    const projection = d3.geoAlbersUsa()
-      .fitSize([width, height], joinedStates);
+    loadBtn.addEventListener("click", loadGame);
+    playBtn.addEventListener("click", play);
+    pauseBtn.addEventListener("click", pause);
+    resetBtn.addEventListener("click", reset);
 
-    const path = d3.geoPath(projection);
-
-    // ---------------------------------------
-    // 4) Helpers
-    // ---------------------------------------
-    function getValue(feature) {
-      return +feature.properties["X" + selectedYear] || 0;
-    }
-
-    function getColor(value) {
-      return value > 10000 ? "#084081" :
-             value > 5000  ? "#0868ac" :
-             value > 2500  ? "#2b8cbe" :
-             value > 1000  ? "#4eb3d3" :
-             value > 500   ? "#7bccc4" :
-             value > 100   ? "#a8ddb5" :
-                             "#e0f3db";
-    }
-
-    function getScale(value, maxValue) {
-      return d3.scaleSqrt()
-        .domain([0, maxValue || 1])
-        .range([0.35, 2.5])(value);
-    }
-
-    function legendBins() {
-      return [
-        { label: "0–100", color: "#e0f3db" },
-        { label: "101–500", color: "#a8ddb5" },
-        { label: "501–1,000", color: "#7bccc4" },
-        { label: "1,001–2,500", color: "#4eb3d3" },
-        { label: "2,501–5,000", color: "#2b8cbe" },
-        { label: "5,001–10,000", color: "#0868ac" },
-        { label: "10,001+", color: "#084081" }
-      ];
-    }
-
-    function drawLegend() {
-      const legend = d3.select("#legend");
-      legend.html("");
-
-      legendBins().forEach(item => {
-        const div = legend.append("div").attr("class", "legend-item");
-        div.append("span")
-          .attr("class", "legend-swatch")
-          .style("background", item.color);
-        div.append("span").text(item.label);
-      });
-    }
-
-    // ---------------------------------------
-    // 5) Draw/update cartogram
-    // ---------------------------------------
-    function updateMap() {
-      const maxValue = d3.max(joinedStates.features, d => getValue(d)) || 1;
-
-      svg.selectAll(".state")
-        .data(joinedStates.features, d => d.properties.STATE)
-        .join("path")
-        .attr("class", "state")
-        .attr("d", path)
-        .attr("fill", d => getColor(getValue(d)))
-        .attr("transform", d => {
-          const value = getValue(d);
-          const scale = getScale(value, maxValue);
-          const [cx, cy] = path.centroid(d);
-
-          return `translate(${cx},${cy}) scale(${scale}) translate(${-cx},${-cy})`;
-        })
-        .on("mousemove", function(event, d) {
-          const value = getValue(d);
-          tooltip
-            .style("opacity", 1)
-            .style("left", `${event.pageX + 12}px`)
-            .style("top", `${event.pageY + 12}px`)
-            .html(`
-              <strong>${d.properties.NAME}</strong><br>
-              Year: ${selectedYear}<br>
-              Registrations: ${value.toLocaleString()}
-            `);
-        })
-        .on("mouseleave", function() {
-          tooltip.style("opacity", 0);
-        });
-
-      d3.select("#theYear").text(`Year: ${selectedYear}`);
-    }
-
-    function moveSlider(value) {
-      selectedYear = value;
-      updateMap();
-    }
-
-    drawLegend();
-    updateMap();
+    drawRink();
+    loadSchedule().catch(err => {
+      console.error(err);
+      statusEl.textContent = "Schedule load failed";
+    });
   </script>
 </body>
 </html>

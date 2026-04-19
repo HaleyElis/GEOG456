@@ -1,0 +1,75 @@
+var Olympics_22 = {[
+  {
+    "game_id": "8/2/2022 Olympic (Women) - Canada Olympic (Women) - United States",
+    "game_date": "8/2/2022",
+    "home_team": "Olympic (Women) - Canada",
+    "away_team": "Olympic (Women) - United States"
+  },
+  {
+    "game_id": "8/2/2022 Olympic (Women) - Canada Olympic (Women) - United States",
+    "game_date": "8/2/2022",
+    "home_team": "Olympic (Women) - United States",
+    "away_team": "Olympic (Women) - Canada"
+  },
+  {
+    "game_id": "8/2/2022 Olympic (Women) - Finland Olympic (Women) - Olympic Athletes from Russia",
+    "game_date": "8/2/2022",
+    "home_team": "Olympic (Women) - Finland",
+    "away_team": "Olympic (Women) - Olympic Athletes from Russia"
+  },
+  {
+    "game_id": "8/2/2022 Olympic (Women) - Finland Olympic (Women) - Olympic Athletes from Russia",
+    "game_date": "8/2/2022",
+    "home_team": "Olympic (Women) - Olympic Athletes from Russia",
+    "away_team": "Olympic (Women) - Finland"
+  },
+  {
+    "game_id": "12/2/2022 Olympic (Women) - Olympic Athletes from Russia Olympic (Women) - Switzerland",
+    "game_date": "12/2/2022",
+    "home_team": "Olympic (Women) - Olympic Athletes from Russia",
+    "away_team": "Olympic (Women) - Switzerland"
+  },
+  {
+    "game_id": "12/2/2022 Olympic (Women) - Olympic Athletes from Russia Olympic (Women) - Switzerland",
+    "game_date": "12/2/2022",
+    "home_team": "Olympic (Women) - Switzerland",
+    "away_team": "Olympic (Women) - Olympic Athletes from Russia"
+  },
+  {
+    "game_id": "14/2/2022 Olympic (Women) - Canada Olympic (Women) - Switzerland",
+    "game_date": "14/2/2022",
+    "home_team": "Olympic (Women) - Canada",
+    "away_team": "Olympic (Women) - Switzerland"
+  },
+  {
+    "game_id": "14/2/2022 Olympic (Women) - Canada Olympic (Women) - Switzerland",
+    "game_date": "14/2/2022",
+    "home_team": "Olympic (Women) - Switzerland",
+    "away_team": "Olympic (Women) - Canada"
+  },
+  {
+    "game_id": "14/2/2022 Olympic (Women) - Finland Olympic (Women) - United States",
+    "game_date": "14/2/2022",
+    "home_team": "Olympic (Women) - United States",
+    "away_team": "Olympic (Women) - Finland"
+  },
+  {
+    "game_id": "14/2/2022 Olympic (Women) - Finland Olympic (Women) - United States",
+    "game_date": "14/2/2022",
+    "home_team": "Olympic (Women) - Finland",
+    "away_team": "Olympic (Women) - United States"
+  },
+  {
+    "game_id": "16/2/2022 Olympic (Women) - Finland Olympic (Women) - Switzerland",
+    "game_date": "16/2/2022",
+    "home_team": "Olympic (Women) - Switzerland",
+    "away_team": "Olympic (Women) - Finland"
+  },
+  {
+    "game_id": "16/2/2022 Olympic (Women) - Finland Olympic (Women) - Switzerland",
+    "game_date": "16/2/2022",
+    "home_team": "Olympic (Women) - Finland",
+    "away_team": "Olympic (Women) - Switzerland"
+  }
+]
+}

@@ -57,7 +57,8 @@
     }
 
     button,
-    select {
+    select,
+    input {
       font-size: 0.95rem;
       padding: 0.45rem 0.65rem;
       border-radius: 8px;
@@ -149,13 +150,23 @@
       color: #4b5563;
       font-size: 0.9rem;
     }
+
+    .warn {
+      color: #92400e;
+      font-weight: 600;
+    }
+
+    .success {
+      color: #166534;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Hockey Game Animation (PWHL + Olympics)</h1>
     <p class="subtitle">
-      Animate event locations for PWHL games and Olympic women’s hockey games.
+      Animate shot and goal locations for PWHL games and Olympic women’s hockey games.
     </p>
 
     <div class="tab-row">
@@ -171,7 +182,12 @@
         <option value="5">Season ID 5</option>
         <option value="4">Season ID 4</option>
       </select>
-      <span class="meta">Uses HockeyTech schedule + play-by-play.</span>
+
+      <label for="pwhl-game-id">Manual game ID:</label>
+      <input id="pwhl-game-id" type="text" placeholder="Optional fallback game_id" />
+
+      <button id="manual-game-btn" type="button">Load manual game ID</button>
+      <span class="meta">If the live schedule feed is empty, use a known game_id here.</span>
     </div>
 
     <div class="controls">
@@ -195,11 +211,11 @@
     </div>
 
     <div class="legend">
-      <span><span class="dot" style="background:#c8102e;"></span>Home / Team A events</span>
-      <span><span class="dot" style="background:#1f4e79;"></span>Away / Team B events</span>
+      <span><span class="dot" style="background:#c8102e;"></span>Home / Team A</span>
+      <span><span class="dot" style="background:#1f4e79;"></span>Away / Team B</span>
       <span>★ Goal</span>
       <span>● Shot</span>
-      <span><span class="dot" style="background:#111;"></span>Current animation position</span>
+      <span><span class="dot" style="background:#111;"></span>Current event outline</span>
     </div>
 
     <p class="caption" id="caption"></p>
@@ -231,6 +247,8 @@
     const tabButtons = [...document.querySelectorAll(".tab-btn")];
     const pwhlControls = document.getElementById("pwhl-controls");
     const pwhlSeasonSelect = document.getElementById("pwhl-season-select");
+    const pwhlGameIdInput = document.getElementById("pwhl-game-id");
+    const manualGameBtn = document.getElementById("manual-game-btn");
     const eventFilterSelect = document.getElementById("event-filter");
 
     let mode = "pwhl";
@@ -268,19 +286,6 @@
         .replaceAll("'", "&#39;");
     }
 
-    function normalizeRinkCoord(xRaw, yRaw) {
-      let x = safeNumber(xRaw);
-      let y = safeNumber(yRaw);
-
-      if (x === null || y === null) return null;
-
-      if (x < 0 || x > 200) x = x + 100;
-      if (y < 0 || y > 85) y = y + 42.5;
-
-      if (x < 0 || x > 200 || y < 0 || y > 85) return null;
-      return { x, y };
-    }
-
     function drawRink() {
       svg.innerHTML = [
         '<rect x="0.5" y="0.5" width="199" height="84" rx="10" ry="10" fill="#ffffff" stroke="#7aa4cf" stroke-width="1"/>',
@@ -306,17 +311,13 @@
     }
 
     function parseClockToSeconds(clockRaw) {
-      if (typeof clockRaw === "number" && Number.isFinite(clockRaw)) {
-        return clockRaw;
-      }
+      if (typeof clockRaw === "number" && Number.isFinite(clockRaw)) return clockRaw;
 
       const s = String(clockRaw || "").trim();
       const match = s.match(/(\d{1,2}):(\d{2})/);
       if (!match) return 0;
 
-      const mins = Number(match[1]);
-      const secs = Number(match[2]);
-      return mins * 60 + secs;
+      return Number(match[1]) * 60 + Number(match[2]);
     }
 
     function buildSortKey(periodRaw, clockRaw) {
@@ -334,7 +335,6 @@
 
     function classifyEvent(raw) {
       const ev = String(raw || "").trim().toUpperCase();
-
       if (!ev) return null;
 
       if (
@@ -347,7 +347,13 @@
         return null;
       }
 
-      if (ev === "GOAL" || ev.endsWith(" GOAL") || ev.includes("GOAL SCORED")) {
+      if (
+        ev === "GOAL" ||
+        ev.endsWith(" GOAL") ||
+        ev.includes("GOAL SCORED") ||
+        ev.includes("PPG") ||
+        ev.includes("SHG")
+      ) {
         return "goal";
       }
 
@@ -356,7 +362,9 @@
         ev.includes("WRIST SHOT") ||
         ev.includes("SNAP SHOT") ||
         ev.includes("SLAP SHOT") ||
-        ev.includes("BACKHAND")
+        ev.includes("BACKHAND") ||
+        ev.includes("TIP-IN") ||
+        ev.includes("DEFLECTED")
       ) {
         return "shot";
       }
@@ -364,7 +372,7 @@
       return null;
     }
 
-    function starPoints(cx, cy, outerR = 2.8, innerR = 1.2, spikes = 5) {
+    function starPoints(cx, cy, outerR = 3.2, innerR = 1.45, spikes = 5) {
       let rot = Math.PI / 2 * 3;
       const step = Math.PI / spikes;
       const points = [];
@@ -384,16 +392,116 @@
       return points.join(" ");
     }
 
-    function renderEventShape(e, current = false) {
-      const teamColor = e.side === "home" ? "#c8102e" : "#1f4e79";
-      const currentStroke = current ? "#111" : "none";
-      const currentStrokeWidth = current ? 0.7 : 0;
+    function getFirstNumber(obj, keys) {
+      for (const key of keys) {
+        const value = obj?.[key];
+        const n = safeNumber(value);
+        if (n !== null) return n;
+      }
+      return null;
+    }
 
-      if (e.type === "goal") {
-        return `<polygon class="${current ? "puck" : "event-dot"}" points="${starPoints(e.x, e.y, current ? 3.6 : 3.1, current ? 1.6 : 1.3)}" fill="${teamColor}" stroke="${currentStroke}" stroke-width="${currentStrokeWidth}" opacity="0.95"></polygon>`;
+    function pickCoordinateBundle(row) {
+      const rawX = getFirstNumber(row, [
+        "x_raw", "raw_x", "xcoord_raw", "coord_x_raw", "event_coord_x_raw"
+      ]);
+      const rawY = getFirstNumber(row, [
+        "y_raw", "raw_y", "ycoord_raw", "coord_y_raw", "event_coord_y_raw"
+      ]);
+
+      if (rawX !== null && rawY !== null) {
+        return { x: rawX, y: rawY, source: "raw" };
       }
 
-      return `<circle class="${current ? "puck" : "event-dot"}" cx="${e.x}" cy="${e.y}" r="${current ? 2.8 : 1.9}" fill="${current ? "#111" : teamColor}" opacity="0.9"></circle>`;
+      const standardX = getFirstNumber(row, [
+        "x_coord", "coord_x", "event_coord_x", "xcoord", "x", "x_transformed"
+      ]);
+      const standardY = getFirstNumber(row, [
+        "y_coord", "coord_y", "event_coord_y", "ycoord", "y", "y_transformed"
+      ]);
+
+      if (standardX !== null && standardY !== null) {
+        return { x: standardX, y: standardY, source: "derived" };
+      }
+
+      return null;
+    }
+
+    function mapRawToRink(x, y) {
+      if (x >= -100 && x <= 100 && y >= -42.5 && y <= 42.5) {
+        return { x: x + 100, y: y + 42.5 };
+      }
+
+      if (x >= 0 && x <= 200 && y >= 0 && y <= 85) {
+        return { x, y };
+      }
+
+      return null;
+    }
+
+    function mapAttackNormalizedToFullRink(x, y, teamSide, period) {
+      if (!(x >= 0 && x <= 100 && y >= -42.5 && y <= 42.5)) return null;
+
+      const p = parsePeriodValue(period) || 1;
+      const teamAttacksRight =
+        teamSide === "home"
+          ? (p % 2 === 1)
+          : (p % 2 === 0);
+
+      const rinkX = teamAttacksRight ? (100 + x) : (100 - x);
+      const rinkY = y + 42.5;
+
+      if (rinkX < 0 || rinkX > 200 || rinkY < 0 || rinkY > 85) return null;
+      return { x: rinkX, y: rinkY };
+    }
+
+    function normalizeEventCoord(row, teamSide, period) {
+      const bundle = pickCoordinateBundle(row);
+      if (!bundle) return null;
+
+      if (bundle.source === "raw") {
+        return mapRawToRink(bundle.x, bundle.y);
+      }
+
+      const direct = mapRawToRink(bundle.x, bundle.y);
+      if (direct && !(bundle.x >= 0 && bundle.x <= 100 && bundle.y >= -42.5 && bundle.y <= 42.5)) {
+        return direct;
+      }
+
+      const attackNormalized = mapAttackNormalizedToFullRink(bundle.x, bundle.y, teamSide, period);
+      if (attackNormalized) return attackNormalized;
+
+      return direct;
+    }
+
+    function renderEventShape(e, current = false) {
+      const teamColor = e.side === "home" ? "#c8102e" : "#1f4e79";
+
+      if (e.type === "goal") {
+        return `
+          <polygon
+            class="${current ? "puck" : "event-dot"}"
+            points="${starPoints(e.x, e.y, current ? 3.9 : 3.2, current ? 1.75 : 1.45)}"
+            fill="${teamColor}"
+            stroke="${current ? "#111" : "#ffffff"}"
+            stroke-width="${current ? 0.9 : 0.5}"
+            opacity="0.98"
+          ></polygon>
+        `;
+      }
+
+      return `
+        <circle
+          class="${current ? "puck" : "event-dot"}"
+          cx="${e.x}"
+          cy="${e.y}"
+          r="${current ? 2.6 : 1.95}"
+          fill="${teamColor}"
+          stroke="${current ? "#111" : "none"}"
+          stroke-width="${current ? 0.75 : 0}"
+          opacity="0.92"
+        ></circle>
+      `;
     }
 
     function renderEvents(upto = -1) {
@@ -418,19 +526,10 @@
             ? `<span class="pill pill-goal">GOAL</span>`
             : `<span class="pill pill-shot">SHOT</span>`);
       } else {
-        captionEl.textContent = `Loaded ${activeEvents.length} plottable events. Press Play.`;
+        captionEl.textContent = activeEvents.length
+          ? `Loaded ${activeEvents.length} plottable events. Press Play.`
+          : "No plottable events loaded yet.";
       }
-    }
-
-    function applyEventFilter() {
-      const filterValue = eventFilterSelect.value;
-      activeEvents = filterValue === "goals"
-        ? allEvents.filter((e) => e.type === "goal")
-        : [...allEvents];
-
-      activeEvents.sort((a, b) => a.sortKey - b.sortKey);
-      resetView();
-      setStatus(`Loaded ${activeEvents.length} events`);
     }
 
     function resetView() {
@@ -464,16 +563,23 @@
 
       animationHandle = setInterval(() => {
         animationIndex += 1;
-
         if (animationIndex >= activeEvents.length) {
           stopAnimation();
           setStatus("Complete");
           playBtn.textContent = "▶ Play";
           return;
         }
-
         renderEvents(animationIndex);
       }, 850);
+    }
+
+    function applyEventFilter() {
+      activeEvents = eventFilterSelect.value === "goals"
+        ? allEvents.filter((e) => e.type === "goal")
+        : [...allEvents];
+
+      activeEvents.sort((a, b) => a.sortKey - b.sortKey);
+      resetView();
     }
 
     function populateGameSelect() {
@@ -500,7 +606,6 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const text = await response.text();
-
       try {
         return JSON.parse(text);
       } catch {
@@ -514,9 +619,7 @@
 
       if (obj && typeof obj === "object") {
         for (const value of Object.values(obj)) {
-          if (Array.isArray(value) && value.length && typeof value[0] === "object") {
-            return value;
-          }
+          if (Array.isArray(value)) return value;
         }
       }
 
@@ -560,12 +663,12 @@
       }
 
       const [header, ...rows] = out;
-      return rows.map((r) =>
-        Object.fromEntries(header.map((h, idx) => [h, r[idx] || ""]))
-      );
+      return rows.map((r) => Object.fromEntries(header.map((h, idx) => [h, r[idx] || ""])));
     }
 
-    function parsePwhlScheduleRows(rows, seasonId) {
+    function extractScheduleRows(payload, seasonId) {
+      const rows = toArray(payload);
+
       return rows
         .map((r) => {
           const id = r.game_id || r.id || r.GameID || r.gameid;
@@ -588,11 +691,12 @@
     async function loadPwhlSchedule() {
       setStatus("Loading PWHL schedule...");
       noteEl.innerHTML =
-        "Data source mode: <strong>PWHL HockeyTech API</strong> (historical schedule + play-by-play).";
+        "Data source mode: <strong>PWHL HockeyTech API</strong>. If schedule loading fails, use manual game_id.";
 
-      const chosen = pwhlSeasonSelect.value;
-      const seasonIds = chosen === "auto" ? PWHL_CFG.seasonIds : [Number(chosen)];
+      const selected = pwhlSeasonSelect.value;
+      const seasonIds = selected === "auto" ? PWHL_CFG.seasonIds : [Number(selected)];
       let bestGames = [];
+      let lastError = null;
 
       for (const sid of seasonIds) {
         const url =
@@ -601,24 +705,14 @@
 
         try {
           const payload = await fetchJson(url);
-          const rows = toArray(payload);
-          if (!rows.length) continue;
-
-          const parsed = parsePwhlScheduleRows(rows, sid).map((g) => ({
+          const parsed = extractScheduleRows(payload, sid).map((g) => ({
             ...g,
             label: `${formatDateDMY(g.date)} — ${g.away} @ ${g.home} (SID ${sid})`
           }));
 
-          if (parsed.length > bestGames.length) {
-            bestGames = parsed;
-          }
-
-          if (chosen !== "auto" && parsed.length) {
-            bestGames = parsed;
-            break;
-          }
+          if (parsed.length > bestGames.length) bestGames = parsed;
         } catch (error) {
-          // keep trying
+          lastError = error;
         }
       }
 
@@ -627,9 +721,17 @@
 
       if (games.length) {
         setStatus(`Loaded ${games.length} PWHL games`);
+        captionEl.innerHTML = `<span class="success">PWHL schedule loaded.</span>`;
       } else {
         setStatus("No PWHL schedule data found");
-        captionEl.textContent = "Try another season ID or switch to Auto / try all.";
+        captionEl.innerHTML =
+          `<span class="warn">Live PWHL schedule did not load.</span> ` +
+          `Try another season or enter a manual game_id.`;
+        if (lastError) {
+          noteEl.innerHTML =
+            `Data source mode: <strong>PWHL HockeyTech API</strong>. ` +
+            `Schedule fetch failed in this browser: <code>${escapeHtml(lastError.message)}</code>`;
+        }
       }
     }
 
@@ -682,20 +784,22 @@
       const events = [];
 
       for (const r of rows) {
-        const type = classifyEvent(r.event || r.event_type || r.description);
+        const type = classifyEvent(r.event || r.event_type || r.description || r.play_description);
         if (!type) continue;
 
-        const coord = normalizeRinkCoord(
-          r.x || r.xcoord || r.x_coord || r.coord_x || r.event_coord_x,
-          r.y || r.ycoord || r.y_coord || r.coord_y || r.event_coord_y
-        );
-        if (!coord) continue;
+        const period = r.period || r.period_of_game || r.per || "1";
+        const clock = r.time || r.clock || r.game_clock || r.time_of_period || "00:00";
+        const team = r.team || r.team_name || r.event_team || r.team_short || r.team_abbrev || "Team";
 
-        const period = r.period || r.per || "P?";
-        const clock = r.time || r.clock || r.game_clock || "00:00";
-        const team = r.team || r.team_name || r.event_team || r.team_short || "Team";
-        const home = r.home_team || r.home || "";
-        const side = team === home ? "home" : "away";
+        const homeName = r.home_team || r.home || r.home_team_name || "";
+        const awayName = r.away_team || r.visiting_team || r.away_team_name || "";
+
+        let side = "away";
+        if (homeName && team && String(team).toUpperCase() === String(homeName).toUpperCase()) side = "home";
+        else if (awayName && team && String(team).toUpperCase() === String(awayName).toUpperCase()) side = "away";
+
+        const coord = normalizeEventCoord(r, side, period);
+        if (!coord) continue;
 
         events.push({
           x: coord.x,
@@ -714,32 +818,32 @@
 
     function extractEventsFromOlympics(game) {
       const rows = game.rows || [];
-      const dedupe = new Set();
+      const seen = new Set();
       const events = [];
 
       for (const r of rows) {
         const type = classifyEvent(r.event);
         if (!type) continue;
 
-        const coord = normalizeRinkCoord(r.x_coord, r.y_coord);
+        const period = r.period || "1";
+        const team = (r.team_name || r.team || "Team").trim();
+        const side = team === game.home ? "home" : "away";
+
+        const coord = normalizeEventCoord(r, side, period);
         if (!coord) continue;
 
-        const rawTeam = (r.team_name || r.team || "Team").trim();
-        const side = rawTeam === game.home ? "home" : "away";
-        const period = r.period || "P?";
         const clockSeconds = Number(r.clock_seconds || 0);
-
-        const dedupeKey = [
+        const key = [
           parsePeriodValue(period),
           clockSeconds,
-          rawTeam,
-          coord.x,
-          coord.y,
-          type
+          team,
+          type,
+          coord.x.toFixed(1),
+          coord.y.toFixed(1)
         ].join("__");
 
-        if (dedupe.has(dedupeKey)) continue;
-        dedupe.add(dedupeKey);
+        if (seen.has(key)) continue;
+        seen.add(key);
 
         events.push({
           x: coord.x,
@@ -749,36 +853,39 @@
           period: parsePeriodValue(period),
           clock: formatClock(period, clockSeconds),
           sortKey: buildSortKey(period, clockSeconds),
-          description: `${rawTeam} ${type.toUpperCase()}`
+          description: `${team} ${type.toUpperCase()}`
         });
       }
 
       return events;
     }
 
+    async function loadGameEventsById(gameId) {
+      setStatus("Loading PWHL game events...");
+      const url =
+        `${PWHL_CFG.base}?feed=gc&tab=pxpverbose&game_id=${encodeURIComponent(gameId)}` +
+        `&key=${PWHL_CFG.key}&client_code=${PWHL_CFG.client_code}`;
+
+      const payload = await fetchJson(url);
+      allEvents = extractEventsFromPwhl(payload);
+      applyEventFilter();
+    }
+
     async function loadSelectedGameEvents() {
       const game = games.find((g) => g.id === select.value);
-
       if (!game) {
         setStatus("Select a game first");
         return;
       }
 
       try {
-        setStatus("Loading game events...");
-
         if (mode === "pwhl") {
-          const url =
-            `${PWHL_CFG.base}?feed=gc&tab=pxpverbose&game_id=${encodeURIComponent(game.id)}` +
-            `&key=${PWHL_CFG.key}&client_code=${PWHL_CFG.client_code}`;
-
-          const payload = await fetchJson(url);
-          allEvents = extractEventsFromPwhl(payload);
+          await loadGameEventsById(game.id);
         } else {
+          setStatus("Loading Olympic game events...");
           allEvents = extractEventsFromOlympics(game);
+          applyEventFilter();
         }
-
-        applyEventFilter();
       } catch (error) {
         allEvents = [];
         activeEvents = [];
@@ -788,12 +895,29 @@
       }
     }
 
+    async function loadManualPwhlGame() {
+      const gameId = pwhlGameIdInput.value.trim();
+      if (!gameId) {
+        setStatus("Enter a manual game_id first");
+        return;
+      }
+
+      try {
+        await loadGameEventsById(gameId);
+        captionEl.innerHTML =
+          `<span class="success">Loaded manual PWHL game_id ${escapeHtml(gameId)}.</span>`;
+      } catch (error) {
+        allEvents = [];
+        activeEvents = [];
+        resetView();
+        setStatus("Manual game load failed");
+        captionEl.textContent = `Could not load manual game_id ${gameId}: ${error.message}`;
+      }
+    }
+
     async function switchMode(nextMode) {
       mode = nextMode;
-      tabButtons.forEach((btn) =>
-        btn.classList.toggle("active", btn.dataset.mode === mode)
-      );
-
+      tabButtons.forEach((btn) => btn.classList.toggle("active", btn.dataset.mode === mode));
       pwhlControls.classList.toggle("hidden", mode !== "pwhl");
 
       games = [];
@@ -824,10 +948,8 @@
       if (mode === "pwhl") switchMode("pwhl");
     });
 
-    eventFilterSelect.addEventListener("change", () => {
-      applyEventFilter();
-    });
-
+    manualGameBtn.addEventListener("click", loadManualPwhlGame);
+    eventFilterSelect.addEventListener("change", applyEventFilter);
     loadBtn.addEventListener("click", loadSelectedGameEvents);
     playBtn.addEventListener("click", playAnimation);
     resetBtn.addEventListener("click", resetView);
