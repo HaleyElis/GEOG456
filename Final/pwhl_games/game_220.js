@@ -1,7 +1,7 @@
 window.pwhl_game_220 = [
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "2:50",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:58",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:01",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:02",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:02",
     "event_type": "goal",
@@ -46,7 +46,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:48",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "6:07",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "7:04",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:02",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:12",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:42",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:19",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:38",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "10:24",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "11:14",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "13:23",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "14:09",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "14:25",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "14:54",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "15:45",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:57",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "18:46",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "0:45",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "3:13",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "5:53",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "7:17",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "7:20",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "8:20",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "11:49",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "12:46",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "13:11",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "13:23",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "13:38",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "15:39",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "16:52",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:59",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "2:47",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:30",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "5:07",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "5:54",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "6:24",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "6:40",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "6:40",
     "event_type": "goal",
@@ -388,7 +388,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "8:06",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "10:24",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "12:02",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "12:19",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "15:13",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "16:09",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:09",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "17:31",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "17:33",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "19:01",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_220 = [
   },
   {
     "game_id": "220",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "19:28",
     "event_type": "shot",

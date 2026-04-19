@@ -1,7 +1,7 @@
 window.pwhl_game_66 = [
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "1:35",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "4:35",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "6:48",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "7:11",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "7:11",
     "event_type": "goal",
@@ -46,7 +46,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "10:34",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "10:44",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "11:15",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "13:42",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "13:42",
     "event_type": "goal",
@@ -91,7 +91,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "14:26",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "15:26",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "15:36",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "18:01",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "18:12",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "18:31",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "19:35",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "4:22",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "4:24",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "5:24",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "6:11",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "6:11",
     "event_type": "goal",
@@ -199,7 +199,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "7:42",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "8:01",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "9:01",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "9:09",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "9:31",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "10:55",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "15:40",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "17:55",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "19:59",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "0:14",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "2:11",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "2:46",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "3:24",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "5:07",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "5:51",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "6:10",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "7:00",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "7:48",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "11:59",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "12:05",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:21",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:27",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "13:08",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "14:44",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_66 = [
   },
   {
     "game_id": "66",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "15:46",
     "event_type": "shot",

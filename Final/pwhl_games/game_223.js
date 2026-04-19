@@ -1,7 +1,7 @@
 window.pwhl_game_223 = [
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "0:09",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:00",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:40",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:42",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:42",
     "event_type": "goal",
@@ -46,7 +46,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "5:36",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "5:58",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "8:06",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "8:20",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "8:42",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "11:53",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "13:13",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "14:46",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "16:36",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "16:36",
     "event_type": "goal",
@@ -136,7 +136,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:29",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "17:39",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "17:39",
     "event_type": "goal",
@@ -163,7 +163,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "18:44",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "1:35",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "1:48",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "1:54",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:30",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:52",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "5:35",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "9:01",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:40",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "12:04",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "12:20",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "12:39",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "16:04",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "17:05",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "17:11",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "1:11",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "3:09",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:01",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "5:44",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "5:47",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "5:47",
     "event_type": "goal",
@@ -352,7 +352,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "6:52",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:02",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "8:43",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "10:35",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "12:34",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "12:35",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:37",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:16",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:19",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "15:02",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "16:49",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "17:11",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_223 = [
   },
   {
     "game_id": "223",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:15",
     "event_type": "shot",

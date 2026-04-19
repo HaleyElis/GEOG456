@@ -1,7 +1,7 @@
 window.pwhl_game_251 = [
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "1:57",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "2:57",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:01",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:01",
     "event_type": "goal",
@@ -37,7 +37,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:19",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:30",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "4:55",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "6:33",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "10:24",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "11:20",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "12:32",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "12:48",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "14:40",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "16:29",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "16:57",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "17:46",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "18:27",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "0:50",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "4:17",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "6:52",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "6:58",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "9:28",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "9:56",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "11:53",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "15:41",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "16:17",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "17:43",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:22",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:34",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:44",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:45",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:53",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:47",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:32",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:42",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:47",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:51",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "2:43",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "4:30",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "4:31",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "6:48",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "6:48",
     "event_type": "goal",
@@ -379,7 +379,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "7:07",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:21",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:34",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "12:25",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "16:00",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "16:32",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:51",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 4,
     "clock": "1:13",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "1:27",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_251 = [
   },
   {
     "game_id": "251",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "4:59",
     "event_type": "shot",

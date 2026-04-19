@@ -1,7 +1,7 @@
 window.pwhl_game_168 = [
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "4:52",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "5:33",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "5:36",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "5:50",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "5:50",
     "event_type": "goal",
@@ -46,7 +46,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "6:19",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "9:08",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "10:23",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "11:53",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "13:20",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:39",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "19:18",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "0:19",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "0:24",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "0:24",
     "event_type": "goal",
@@ -136,7 +136,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "2:36",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "4:09",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "4:09",
     "event_type": "goal",
@@ -163,7 +163,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:05",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "9:57",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "10:08",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "10:34",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "11:06",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "14:00",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "16:19",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "18:09",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "0:45",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "1:36",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "2:50",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "3:38",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "5:05",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "6:22",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "7:49",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "8:15",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "8:16",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "8:16",
     "event_type": "goal",
@@ -325,7 +325,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "9:26",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "10:45",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "12:55",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "12:59",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "14:40",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_168 = [
   },
   {
     "game_id": "168",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "14:40",
     "event_type": "goal",

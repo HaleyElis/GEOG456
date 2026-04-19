@@ -1,7 +1,7 @@
 window.pwhl_game_318 = [
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "0:39",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "2:59",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "2:59",
     "event_type": "goal",
@@ -28,7 +28,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "6:02",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "6:03",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "6:03",
     "event_type": "goal",
@@ -55,7 +55,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "8:19",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "8:21",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "10:14",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "11:02",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "11:10",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "11:50",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "11:51",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "11:59",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "12:14",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "12:55",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "16:22",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "16:35",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "19:57",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "0:26",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "2:13",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "3:18",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "3:20",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "3:50",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "4:55",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "5:51",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "6:15",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "6:43",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "8:15",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:27",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:53",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "11:27",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "12:02",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "13:01",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "13:47",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "14:53",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "15:18",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "16:20",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "16:34",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:19",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:51",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "18:51",
     "event_type": "goal",
@@ -379,7 +379,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:27",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:35",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "1:40",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "2:40",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "4:36",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "5:29",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "6:06",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "7:36",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "8:26",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:11",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:41",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:41",
     "event_type": "goal",
@@ -487,7 +487,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:29",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "16:38",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:00",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:33",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:50",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:56",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "19:56",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "19:58",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 4,
     "clock": "0:38",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_318 = [
   },
   {
     "game_id": "318",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 4,
     "clock": "0:38",
     "event_type": "goal",

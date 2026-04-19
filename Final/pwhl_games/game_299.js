@@ -1,7 +1,7 @@
 window.pwhl_game_299 = [
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "0:59",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "3:24",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:31",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "5:58",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "6:51",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:00",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:06",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:33",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:49",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:59",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "10:18",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "11:36",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "11:38",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "11:38",
     "event_type": "goal",
@@ -127,7 +127,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "18:07",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "1:23",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "1:55",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "4:38",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "4:52",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "5:06",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "6:19",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "10:54",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "10:54",
     "event_type": "goal",
@@ -208,7 +208,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "11:52",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "11:58",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "12:40",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "12:53",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "12:55",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "13:46",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "14:32",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "14:32",
     "event_type": "goal",
@@ -280,7 +280,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "16:05",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "19:05",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "1:35",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "3:48",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "11:58",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "12:58",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:13",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:14",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:14",
     "event_type": "goal",
@@ -361,7 +361,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:30",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "15:23",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "17:21",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "18:57",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_299 = [
   },
   {
     "game_id": "299",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "19:30",
     "event_type": "shot",

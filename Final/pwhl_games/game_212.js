@@ -1,7 +1,7 @@
 window.pwhl_game_212 = [
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "1:44",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "1:58",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "3:15",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "3:28",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "4:12",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "4:21",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "4:57",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "6:27",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "7:10",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "7:52",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "8:13",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "8:14",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "11:07",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "11:08",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "11:23",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "12:24",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "12:42",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "12:59",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "15:36",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "16:25",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:22",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:53",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "18:23",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "19:22",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "1:07",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "3:07",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "3:29",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "3:31",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "4:29",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "7:58",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "9:08",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "9:19",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "9:47",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:12",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:25",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:37",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "13:02",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:18",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:09",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:39",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:44",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "17:19",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "18:06",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "18:46",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "0:11",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "0:51",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:51",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:57",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "5:23",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "6:11",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "6:13",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "6:34",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:46",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:46",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:49",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:49",
     "event_type": "goal",
@@ -505,7 +505,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "11:36",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "12:42",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "12:55",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "13:10",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:34",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:38",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:39",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:39",
     "event_type": "goal",
@@ -577,7 +577,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "14:36",
     "event_type": "shot",
@@ -586,7 +586,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "15:38",
     "event_type": "shot",
@@ -595,7 +595,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "16:38",
     "event_type": "shot",
@@ -604,7 +604,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "16:46",
     "event_type": "shot",
@@ -613,7 +613,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "16:48",
     "event_type": "shot",
@@ -622,7 +622,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "16:48",
     "event_type": "goal",
@@ -631,7 +631,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "17:59",
     "event_type": "shot",
@@ -640,7 +640,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "18:45",
     "event_type": "shot",
@@ -649,7 +649,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:56",
     "event_type": "shot",
@@ -658,7 +658,7 @@ window.pwhl_game_212 = [
   },
   {
     "game_id": "212",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:56",
     "event_type": "goal",

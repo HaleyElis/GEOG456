@@ -1,7 +1,7 @@
 window.pwhl_game_57 = [
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "0:33",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "1:42",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "2:31",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "3:39",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "6:56",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "8:21",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "9:42",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "10:35",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "12:19",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "12:21",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "12:50",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "13:04",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "15:12",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "15:42",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 1,
     "clock": "15:53",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "16:39",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "4:33",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "5:15",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "8:53",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "9:57",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "10:24",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "11:08",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "11:31",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "12:26",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "13:11",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "14:28",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "14:28",
     "event_type": "goal",
@@ -244,7 +244,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "15:25",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "16:07",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "17:42",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "17:45",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 2,
     "clock": "17:45",
     "event_type": "goal",
@@ -289,7 +289,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "19:56",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 3,
     "clock": "1:14",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "2:03",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "2:35",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "3:58",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 3,
     "clock": "4:14",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 3,
     "clock": "7:01",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "9:03",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "9:03",
     "event_type": "goal",
@@ -370,7 +370,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "10:32",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 3,
     "clock": "11:23",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 1,
+    "team": "PWHL Boston",
     "period": 3,
     "clock": "11:47",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:24",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:33",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "16:01",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_57 = [
   },
   {
     "game_id": "57",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "18:55",
     "event_type": "shot",

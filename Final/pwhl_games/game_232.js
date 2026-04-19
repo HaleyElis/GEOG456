@@ -1,7 +1,7 @@
 window.pwhl_game_232 = [
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "0:42",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "2:14",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "2:32",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "4:33",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "5:00",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "5:01",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "8:11",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "9:19",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "9:19",
     "event_type": "goal",
@@ -82,7 +82,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "10:37",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "11:32",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "12:15",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "14:16",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "15:31",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "16:00",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:35",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:37",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:37",
     "event_type": "goal",
@@ -163,7 +163,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "19:33",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "0:22",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "0:47",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "1:21",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "1:21",
     "event_type": "goal",
@@ -208,7 +208,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:33",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:49",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "4:34",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "6:17",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "6:17",
     "event_type": "goal",
@@ -253,7 +253,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "6:58",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "7:36",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "7:36",
     "event_type": "goal",
@@ -280,7 +280,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "8:07",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "9:48",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "10:27",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "10:28",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "11:00",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:53",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:21",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:30",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:58",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "15:44",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "16:14",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "16:28",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "18:35",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "18:51",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "19:42",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "0:30",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "0:54",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "2:41",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:23",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "3:49",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "4:42",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "5:26",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "6:48",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "7:27",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "7:29",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "8:37",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "10:17",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "10:25",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "12:02",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "12:08",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "12:37",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:06",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "15:27",
     "event_type": "shot",
@@ -577,7 +577,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "16:20",
     "event_type": "shot",
@@ -586,7 +586,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "17:53",
     "event_type": "shot",
@@ -595,7 +595,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "18:23",
     "event_type": "shot",
@@ -604,7 +604,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "18:23",
     "event_type": "goal",
@@ -613,7 +613,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "18:39",
     "event_type": "shot",
@@ -622,7 +622,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "18:41",
     "event_type": "shot",
@@ -631,7 +631,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "18:44",
     "event_type": "shot",
@@ -640,7 +640,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "18:44",
     "event_type": "goal",
@@ -649,7 +649,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:50",
     "event_type": "shot",
@@ -658,7 +658,7 @@ window.pwhl_game_232 = [
   },
   {
     "game_id": "232",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:57",
     "event_type": "shot",

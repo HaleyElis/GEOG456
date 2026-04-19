@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hockey Game Animation Draft</title>
 
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="../pwhl_schedule.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,7 +16,7 @@
       background: #fafafa;
     }
 
-    h1, h2, h3 {
+    h1, h2 {
       text-align: center;
       margin: 8px 0;
     }
@@ -31,7 +34,7 @@
     }
 
     #chart {
-      max-width: 1400px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -45,13 +48,13 @@
     }
 
     .legend {
-      max-width: 1400px;
+      max-width: 900px;
       margin: 12px auto 0;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
       align-items: center;
     }
 
@@ -62,14 +65,14 @@
     }
 
     .dot {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       display: inline-block;
     }
 
     .meta {
-      max-width: 1400px;
+      max-width: 900px;
       margin: 14px auto 0;
       font-size: 18px;
       text-align: left;
@@ -96,19 +99,13 @@
 <body>
 
   <h1>Hockey Game Animation (PWHL + Olympics)</h1>
-  <h2 id="subtitle">Animate shot and goal locations for PWHL games and Olympic women’s hockey games.</h2>
+  <h2>Animate shot and goal locations for PWHL games and 2022 Olympic women’s hockey games.</h2>
 
   <div class="controls">
     <label for="datasetSelect">Dataset:</label>
     <select id="datasetSelect">
       <option value="pwhl">PWHL</option>
       <option value="olympics_2022">Olympic Games (Women)</option>
-    </select>
-
-    <label for="showSelect">Show:</label>
-    <select id="showSelect">
-      <option value="all">Goals + Shots</option>
-      <option value="goals">Goals only</option>
     </select>
 
     <label for="gameSelect">Game:</label>
@@ -129,18 +126,19 @@
     <div class="legend-item"><span class="dot" style="background:#355c97;"></span> Away / Team B</div>
     <div class="legend-item">★ Goal</div>
     <div class="legend-item">● Shot</div>
-    <div class="legend-item">⬤ Current event outline</div>
+    <div class="legend-item">Thin outline = current event</div>
   </div>
 
   <div id="eventMeta" class="meta">No event loaded</div>
 
   <script>
+    const BDC_URL = "https://raw.githubusercontent.com/the-bucketless/bdc/main/data/pxp_womens_oly_2022_v2.csv";
+
     const width = 200;
     const height = 85;
 
     const chart = document.getElementById("chart");
     const datasetSelect = document.getElementById("datasetSelect");
-    const showSelect = document.getElementById("showSelect");
     const gameSelect = document.getElementById("gameSelect");
     const statusEl = document.getElementById("status");
     const eventMeta = document.getElementById("eventMeta");
@@ -153,26 +151,16 @@
     let svg;
     let schedule = [];
     let events = [];
-    let filteredEvents = [];
     let currentIndex = -1;
     let timer = null;
+    let activeGameScript = null;
+    let bdcRows = null;
 
     const HOME_COLOR = "#c41e3a";
     const AWAY_COLOR = "#355c97";
+    const HOME_SHOT_FILL = "rgba(196, 30, 58, 0.25)";
+    const AWAY_SHOT_FILL = "rgba(53, 92, 151, 0.25)";
     const OUTLINE_COLOR = "#111";
-
-    const DATASETS = {
-      pwhl: {
-        schedulePath: "./pwhl_schedule.json",
-        gamesFolder: "./pwhl_games",
-        title: "PWHL"
-      },
-      olympics_2022: {
-        schedulePath: "./olympics_2022_schedule.json",
-        gamesFolder: "./olympics_2022_games",
-        title: "Olympic Games (Women)"
-      }
-    };
 
     function createSVG() {
       chart.innerHTML = "";
@@ -228,14 +216,6 @@
       }));
     }
 
-    function currentDataset() {
-      return DATASETS[datasetSelect.value];
-    }
-
-    function currentGame() {
-      return schedule.find(g => String(g.game_id) === String(gameSelect.value));
-    }
-
     function stopPlayback() {
       if (timer) {
         clearInterval(timer);
@@ -243,34 +223,143 @@
       }
     }
 
-    function normalizeEvent(event, game) {
-      const x = Number(event.x);
-      const y = Number(event.y);
+    function currentGame() {
+      return schedule.find(g => String(g.game_id) === String(gameSelect.value));
+    }
+
+    function removeActiveGameScript() {
+      if (activeGameScript && activeGameScript.parentNode) {
+        activeGameScript.parentNode.removeChild(activeGameScript);
+      }
+      activeGameScript = null;
+    }
+
+    function secondsToClock(seconds) {
+      const s = Math.max(0, Number(seconds) || 0);
+      const mins = Math.floor(s / 60);
+      const secs = Math.floor(s % 60);
+      return `${mins}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function buildOlympicsGameId(row) {
+      const date = String(row.game_date || "").slice(0, 10);
+      const t1 = String(row.team_name || "");
+      const t2 = String(row.opp_team_name || "");
+      const teams = [t1, t2].sort();
+      return `${date}__${teams[0]}__${teams[1]}`;
+    }
+
+    function buildOlympicsSchedule(rows) {
+      const seen = new Map();
+
+      rows.forEach(row => {
+        const gameId = buildOlympicsGameId(row);
+        if (seen.has(gameId)) return;
+
+        const date = String(row.game_date || "").slice(0, 10);
+        const homeTeam = String(row.team_name || "");
+        const awayTeam = String(row.opp_team_name || "");
+
+        seen.set(gameId, {
+          game_id: gameId,
+          game_date: date,
+          home_team: homeTeam,
+          away_team: awayTeam,
+          label: `${date} — ${awayTeam} @ ${homeTeam}`
+        });
+      });
+
+      return Array.from(seen.values()).sort((a, b) => {
+        if (a.game_date !== b.game_date) return a.game_date.localeCompare(b.game_date);
+        return a.game_id.localeCompare(b.game_id);
+      });
+    }
+
+    function buildOlympicsEvents(gameId) {
+      const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
+
+      return gameRows
+        .map(row => {
+          const rawEvent = String(row.event || "").toLowerCase();
+          let eventType = null;
+
+          if (rawEvent.includes("goal")) eventType = "goal";
+          else if (rawEvent.includes("shot")) eventType = "shot";
+
+          const x = Number(row.x_coord);
+          const y = Number(row.y_coord);
+
+          if (!eventType || !Number.isFinite(x) || !Number.isFinite(y)) return null;
+
+          return {
+            game_id: gameId,
+            team: row.team_name || "",
+            period: Number(row.period),
+            clock: secondsToClock(row.clock_seconds),
+            event_type: eventType,
+            x: x,
+            y: y
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function sortEvents(arr) {
+      return [...arr].sort((a, b) => {
+        const pa = Number(a.period) || 0;
+        const pb = Number(b.period) || 0;
+        if (pa !== pb) return pa - pb;
+
+        const [am = 0, as = 0] = String(a.clock || "0:00").split(":").map(Number);
+        const [bm = 0, bs = 0] = String(b.clock || "0:00").split(":").map(Number);
+        return am * 60 + as - (bm * 60 + bs);
+      });
+    }
+
+    function normalizeEvent(event, game, dataset) {
+      const rawX = Number(event.x);
+      const rawY = Number(event.y);
       const period = Number(event.period);
       const eventType = String(event.event_type || "").toLowerCase();
       const team = String(event.team || "");
 
       let color = AWAY_COLOR;
+      let shotFill = AWAY_SHOT_FILL;
 
       if (team && game) {
         const home = String(game.home_team || "");
         const away = String(game.away_team || "");
-        if (team === home) color = HOME_COLOR;
-        else if (team === away) color = AWAY_COLOR;
-      } else if (datasetSelect.value === "olympics_2022") {
-        color = AWAY_COLOR;
+        if (team === home) {
+          color = HOME_COLOR;
+          shotFill = HOME_SHOT_FILL;
+        } else if (team === away) {
+          color = AWAY_COLOR;
+          shotFill = AWAY_SHOT_FILL;
+        }
       }
 
-      let plotX = x;
-      if (Number.isFinite(period) && period % 2 === 0) {
-        plotX = 200 - x;
+      let plotX;
+      let plotY;
+
+      if (dataset === "olympics_2022") {
+        // BDC data uses centered rink coords like the original setup
+        plotX = rawX + 100;
+        plotY = rawY + 42.5;
+      } else {
+        plotX = rawX;
+        plotY = rawY;
+
+        if (Number.isFinite(period) && period % 2 === 0) {
+          plotX = 200 - rawX;
+        }
       }
 
       return {
         ...event,
         plotX,
-        plotY: y,
+        plotY,
         color,
+        shotFill,
         eventType
       };
     }
@@ -279,10 +368,10 @@
       const circle = el("circle", {
         cx: x,
         cy: y,
-        r: r,
-        fill: fill,
+        r,
+        fill,
         stroke: isCurrent ? OUTLINE_COLOR : "none",
-        "stroke-width": isCurrent ? 1.1 : 0
+        "stroke-width": isCurrent ? 0.5 : 0
       });
       svg.appendChild(circle);
     }
@@ -308,55 +397,34 @@
         d,
         fill,
         stroke: isCurrent ? OUTLINE_COLOR : "none",
-        "stroke-width": isCurrent ? 1.1 : 0
+        "stroke-width": isCurrent ? 0.5 : 0
       });
       svg.appendChild(star);
-    }
-
-    function sortEvents(arr) {
-      return [...arr].sort((a, b) => {
-        const pa = Number(a.period) || 0;
-        const pb = Number(b.period) || 0;
-        if (pa !== pb) return pa - pb;
-
-        const [am = 0, as = 0] = String(a.clock || "0:00").split(":").map(Number);
-        const [bm = 0, bs = 0] = String(b.clock || "0:00").split(":").map(Number);
-        return am * 60 + as - (bm * 60 + bs);
-      });
-    }
-
-    function filterEvents(allEvents) {
-      if (showSelect.value === "goals") {
-        return allEvents.filter(e => String(e.event_type).toLowerCase() === "goal");
-      }
-      return allEvents.filter(e => {
-        const t = String(e.event_type).toLowerCase();
-        return t === "goal" || t === "shot";
-      });
     }
 
     function render(index) {
       drawRink();
 
       const game = currentGame();
+      const dataset = datasetSelect.value;
 
-      filteredEvents.forEach((rawEvent, i) => {
+      events.forEach((rawEvent, i) => {
         if (i > index) return;
 
-        const event = normalizeEvent(rawEvent, game);
+        const event = normalizeEvent(rawEvent, game, dataset);
         const isCurrent = i === index;
 
         if (!Number.isFinite(event.plotX) || !Number.isFinite(event.plotY)) return;
 
         if (event.eventType === "goal") {
-          drawStar(event.plotX, event.plotY, 2.6, event.color, isCurrent);
+          drawStar(event.plotX, event.plotY, 2.5, event.color, isCurrent);
         } else {
-          drawCircle(event.plotX, event.plotY, 1.8, event.color, isCurrent);
+          drawCircle(event.plotX, event.plotY, 1.0, event.shotFill, isCurrent);
         }
       });
 
-      if (index >= 0 && filteredEvents[index]) {
-        const e = filteredEvents[index];
+      if (index >= 0 && events[index]) {
+        const e = events[index];
         const teamText = e.team ? ` — ${e.team}` : "";
         eventMeta.innerHTML =
           `P${e.period} ${e.clock}${teamText} <span class="pill">${String(e.event_type).toUpperCase()}</span>`;
@@ -369,15 +437,15 @@
       stopPlayback();
       currentIndex = -1;
       render(currentIndex);
-      statusEl.textContent = filteredEvents.length ? "Ready" : "No events loaded";
+      statusEl.textContent = events.length ? "Ready" : "No events loaded";
     }
 
     function play() {
-      if (!filteredEvents.length) return;
+      if (!events.length) return;
 
       stopPlayback();
 
-      if (currentIndex >= filteredEvents.length - 1) {
+      if (currentIndex >= events.length - 1) {
         currentIndex = -1;
       }
 
@@ -385,8 +453,8 @@
 
       timer = setInterval(() => {
         currentIndex += 1;
-        if (currentIndex >= filteredEvents.length) {
-          currentIndex = filteredEvents.length - 1;
+        if (currentIndex >= events.length) {
+          currentIndex = events.length - 1;
           stopPlayback();
           statusEl.textContent = "Finished";
           render(currentIndex);
@@ -401,85 +469,123 @@
       statusEl.textContent = "Paused";
     }
 
-    async function loadSchedule() {
-      stopPlayback();
-      currentIndex = -1;
-      events = [];
-      filteredEvents = [];
-      statusEl.textContent = "Loading schedule...";
-      eventMeta.textContent = "No event loaded";
-
-      const cfg = currentDataset();
-      const res = await fetch(cfg.schedulePath);
-      if (!res.ok) throw new Error(`Could not load ${cfg.schedulePath}`);
-
-      schedule = await res.json();
-      schedule = schedule.map(g => ({
-        ...g,
-        game_id: String(g.game_id)
-      }));
-
+    function fillGameDropdown() {
       gameSelect.innerHTML = "";
 
       schedule.forEach(game => {
         const option = document.createElement("option");
-        option.value = game.game_id;
+        option.value = String(game.game_id);
         option.textContent = game.label || `${game.game_date} — ${game.away_team} @ ${game.home_team}`;
         gameSelect.appendChild(option);
       });
 
-      statusEl.textContent = schedule.length ? "Schedule loaded" : "No games found";
       render(-1);
+    }
+
+    async function loadSchedule() {
+      stopPlayback();
+      currentIndex = -1;
+      events = [];
+      eventMeta.textContent = "No event loaded";
+      removeActiveGameScript();
+
+      if (datasetSelect.value === "pwhl") {
+        schedule = (window.pwhl_schedule || []).map(g => ({
+          ...g,
+          game_id: String(g.game_id)
+        }));
+        fillGameDropdown();
+        statusEl.textContent = schedule.length ? "Schedule loaded" : "No games found";
+        return;
+      }
+
+      statusEl.textContent = "Loading Olympics data...";
+      try {
+        if (!bdcRows) {
+          bdcRows = await d3.csv(BDC_URL, d => ({
+            game_date: d.game_date,
+            team_name: d.team_name,
+            opp_team_name: d.opp_team_name,
+            period: d.period,
+            clock_seconds: +d.clock_seconds,
+            event: d.event,
+            x_coord: +d.x_coord,
+            y_coord: +d.y_coord
+          }));
+        }
+
+        schedule = buildOlympicsSchedule(bdcRows);
+        fillGameDropdown();
+        statusEl.textContent = schedule.length ? "Schedule loaded" : "No games found";
+      } catch (err) {
+        console.error(err);
+        schedule = [];
+        fillGameDropdown();
+        statusEl.textContent = "Olympics load failed";
+      }
+    }
+
+    function loadPwhlGame(gameId) {
+      return new Promise((resolve, reject) => {
+        removeActiveGameScript();
+
+        const script = document.createElement("script");
+        script.src = `../pwhl_games/game_${gameId}.js`;
+
+        script.onload = () => {
+          const varName = `pwhl_game_${gameId}`;
+          const loaded = window[varName];
+          if (!loaded) {
+            reject(new Error(`Could not find ${varName}`));
+            return;
+          }
+          resolve(loaded);
+        };
+
+        script.onerror = () => reject(new Error("Could not load PWHL game file"));
+
+        activeGameScript = script;
+        document.head.appendChild(script);
+      });
     }
 
     async function loadGame() {
       stopPlayback();
       currentIndex = -1;
 
-      const cfg = currentDataset();
       const game = currentGame();
       if (!game) return;
 
       statusEl.textContent = "Loading game events...";
 
-      const path = `${cfg.gamesFolder}/game_${game.game_id}.json`;
-      const res = await fetch(path);
+      try {
+        if (datasetSelect.value === "pwhl") {
+          events = await loadPwhlGame(game.game_id);
+        } else {
+          events = buildOlympicsEvents(game.game_id);
+        }
 
-      if (!res.ok) {
-        events = [];
-        filteredEvents = [];
+        events = sortEvents(events);
         render(-1);
-        statusEl.textContent = `Could not load ${path}`;
-        return;
+        statusEl.textContent = events.length
+          ? `${events.length} events loaded`
+          : "No matching events";
+      } catch (err) {
+        console.error(err);
+        events = [];
+        render(-1);
+        statusEl.textContent = "Could not load game events";
       }
-
-      events = await res.json();
-      events = sortEvents(events);
-      filteredEvents = filterEvents(events);
-
-      render(-1);
-      statusEl.textContent = filteredEvents.length
-        ? `${filteredEvents.length} events loaded`
-        : "No matching events";
     }
 
     datasetSelect.addEventListener("change", loadSchedule);
-
-    showSelect.addEventListener("change", () => {
-      filteredEvents = filterEvents(events);
-      reset();
-    });
-
     loadBtn.addEventListener("click", loadGame);
     playBtn.addEventListener("click", play);
     pauseBtn.addEventListener("click", pause);
     resetBtn.addEventListener("click", reset);
 
     drawRink();
-    loadSchedule().catch(err => {
-      console.error(err);
-      statusEl.textContent = "Schedule load failed";
-    });
+    loadSchedule();
   </script>
 </body>
 </html>

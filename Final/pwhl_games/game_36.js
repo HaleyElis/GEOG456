@@ -1,7 +1,7 @@
 window.pwhl_game_36 = [
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "0:27",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "0:47",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "1:02",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "1:23",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "1:39",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "2:23",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "3:04",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "4:34",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "6:03",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "8:16",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "10:27",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "10:34",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "11:03",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "11:26",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "12:25",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "13:03",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "14:14",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 1,
     "clock": "14:40",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "15:22",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "16:52",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 1,
     "clock": "18:00",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "0:41",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "0:57",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "1:05",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "1:56",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "2:15",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "3:12",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "6:07",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "8:09",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "9:01",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "9:25",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "10:28",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "10:42",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "12:49",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "14:29",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "14:36",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "16:08",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "16:11",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 2,
     "clock": "18:15",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "19:10",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 2,
     "clock": "19:10",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "2:19",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "4:53",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "5:00",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "5:33",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "5:41",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "7:22",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "7:48",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "9:45",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "9:51",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:34",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "12:34",
     "event_type": "goal",
@@ -469,7 +469,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "14:44",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 3,
     "clock": "14:53",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "19:20",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "19:30",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "19:52",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 3,
     "clock": "19:52",
     "event_type": "goal",
@@ -523,7 +523,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 4,
+    "team": "PWHL New York",
     "period": 4,
     "clock": "4:19",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_36 = [
   },
   {
     "game_id": "36",
-    "team": 6,
+    "team": "PWHL Toronto",
     "period": 4,
     "clock": "4:58",
     "event_type": "shot",

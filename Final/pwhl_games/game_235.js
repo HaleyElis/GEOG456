@@ -1,7 +1,7 @@
 window.pwhl_game_235 = [
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "0:18",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "0:25",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "1:12",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "1:36",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "1:38",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "1:38",
     "event_type": "goal",
@@ -55,7 +55,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "1:51",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "2:29",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "2:29",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "2:45",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "2:52",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "4:58",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "5:17",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "6:10",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "6:30",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "6:45",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "7:32",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "7:32",
     "event_type": "goal",
@@ -163,7 +163,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "7:58",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "8:12",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "8:45",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "8:52",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "11:03",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "11:18",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "13:08",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "14:51",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "15:12",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "16:15",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "16:22",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "17:13",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "17:22",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "17:24",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "17:26",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "17:29",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "18:04",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "19:26",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "2:25",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "2:39",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "3:52",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "3:57",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "4:13",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "5:33",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "6:08",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "6:08",
     "event_type": "goal",
@@ -397,7 +397,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "6:22",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "6:22",
     "event_type": "goal",
@@ -415,7 +415,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "7:11",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "8:24",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "8:34",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "12:47",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "13:03",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "13:06",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "13:07",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "13:09",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "13:51",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "13:54",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:12",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:12",
     "event_type": "goal",
@@ -523,7 +523,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "14:40",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "15:10",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "15:25",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "15:52",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "18:16",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "19:59",
     "event_type": "shot",
@@ -577,7 +577,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "0:52",
     "event_type": "shot",
@@ -586,7 +586,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "1:23",
     "event_type": "shot",
@@ -595,7 +595,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "1:57",
     "event_type": "shot",
@@ -604,7 +604,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "3:15",
     "event_type": "shot",
@@ -613,7 +613,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "4:00",
     "event_type": "shot",
@@ -622,7 +622,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "4:36",
     "event_type": "shot",
@@ -631,7 +631,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "4:36",
     "event_type": "goal",
@@ -640,7 +640,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "6:48",
     "event_type": "shot",
@@ -649,7 +649,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "10:05",
     "event_type": "shot",
@@ -658,7 +658,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "10:58",
     "event_type": "shot",
@@ -667,7 +667,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "11:50",
     "event_type": "shot",
@@ -676,7 +676,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "13:57",
     "event_type": "shot",
@@ -685,7 +685,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "15:23",
     "event_type": "shot",
@@ -694,7 +694,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "15:25",
     "event_type": "shot",
@@ -703,7 +703,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "18:48",
     "event_type": "shot",
@@ -712,7 +712,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 4,
     "clock": "1:24",
     "event_type": "shot",
@@ -721,7 +721,7 @@ window.pwhl_game_235 = [
   },
   {
     "game_id": "235",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 4,
     "clock": "1:24",
     "event_type": "goal",

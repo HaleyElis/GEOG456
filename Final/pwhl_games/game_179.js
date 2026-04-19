@@ -1,7 +1,7 @@
 window.pwhl_game_179 = [
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "0:08",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "0:34",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "1:38",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "2:09",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "2:09",
     "event_type": "goal",
@@ -46,7 +46,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:17",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "5:41",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "6:09",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "6:27",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "6:27",
     "event_type": "goal",
@@ -91,7 +91,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "9:54",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "10:18",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "10:32",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "10:42",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "11:52",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "14:35",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "15:29",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "15:38",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "15:51",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "16:01",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:31",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "18:23",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "19:08",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "19:10",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "19:10",
     "event_type": "goal",
@@ -226,7 +226,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "19:21",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "0:09",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "0:45",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "1:09",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "1:33",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "1:51",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "3:26",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "5:33",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "7:17",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "8:09",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "11:09",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "11:11",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "11:58",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:44",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:54",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "13:59",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:21",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:22",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:23",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:23",
     "event_type": "goal",
@@ -406,7 +406,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "1:45",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "1:57",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:05",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:26",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "5:26",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "7:14",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "8:05",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "8:34",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "9:02",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "11:10",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "11:30",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "11:54",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "11:56",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "13:31",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "14:03",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "16:08",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "16:09",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "17:42",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "18:42",
     "event_type": "shot",
@@ -577,7 +577,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "19:10",
     "event_type": "shot",
@@ -586,7 +586,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "19:55",
     "event_type": "shot",
@@ -595,7 +595,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "1:04",
     "event_type": "shot",
@@ -604,7 +604,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "1:36",
     "event_type": "shot",
@@ -613,7 +613,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "2:35",
     "event_type": "shot",
@@ -622,7 +622,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "2:45",
     "event_type": "shot",
@@ -631,7 +631,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "2:46",
     "event_type": "shot",
@@ -640,7 +640,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "3:12",
     "event_type": "shot",
@@ -649,7 +649,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 4,
     "clock": "3:56",
     "event_type": "shot",
@@ -658,7 +658,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "4:18",
     "event_type": "shot",
@@ -667,7 +667,7 @@ window.pwhl_game_179 = [
   },
   {
     "game_id": "179",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "4:29",
     "event_type": "shot",

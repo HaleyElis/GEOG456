@@ -1,7 +1,7 @@
 window.pwhl_game_107 = [
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "0:21",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "0:21",
     "event_type": "goal",
@@ -19,7 +19,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:09",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:27",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:36",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "6:41",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "8:38",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "8:49",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "9:08",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "9:23",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "11:11",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "11:42",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "11:54",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "12:53",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "13:55",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:07",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:45",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:46",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:46",
     "event_type": "goal",
@@ -172,7 +172,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "19:17",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:24",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "2:44",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "5:39",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "6:39",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:01",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "10:01",
     "event_type": "goal",
@@ -235,7 +235,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "11:37",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "11:56",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:12",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:59",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:59",
     "event_type": "goal",
@@ -280,7 +280,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "16:30",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "16:54",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "17:34",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "18:46",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "19:13",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "19:24",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "0:10",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "1:03",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "1:11",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "1:36",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:15",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "3:57",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "4:27",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:35",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:35",
     "event_type": "goal",
@@ -415,7 +415,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "5:06",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "8:00",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "8:37",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "10:26",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "11:01",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "11:46",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:00",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "13:25",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:21",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:22",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:24",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "15:47",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "15:47",
     "event_type": "goal",
@@ -532,7 +532,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "16:49",
     "event_type": "shot",
@@ -541,7 +541,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "17:56",
     "event_type": "shot",
@@ -550,7 +550,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "18:07",
     "event_type": "shot",
@@ -559,7 +559,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "19:51",
     "event_type": "shot",
@@ -568,7 +568,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "0:19",
     "event_type": "shot",
@@ -577,7 +577,7 @@ window.pwhl_game_107 = [
   },
   {
     "game_id": "107",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "0:19",
     "event_type": "goal",

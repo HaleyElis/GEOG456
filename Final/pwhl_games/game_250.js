@@ -1,7 +1,7 @@
 window.pwhl_game_250 = [
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "3:48",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "3:58",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:50",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:55",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "5:05",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:20",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "5:57",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "7:50",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "8:28",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:10",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:53",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "10:14",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "11:55",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "15:03",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "16:00",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "16:23",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "17:07",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:23",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:23",
     "event_type": "goal",
@@ -172,7 +172,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "18:23",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "18:42",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 1,
     "clock": "19:54",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "0:32",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 2,
     "clock": "4:02",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "5:05",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "7:33",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 2,
     "clock": "9:37",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "10:23",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "10:50",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "11:09",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "17:33",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:14",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:18",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:18",
     "event_type": "goal",
@@ -307,7 +307,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 3,
     "clock": "7:14",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 3,
     "clock": "7:14",
     "event_type": "goal",
@@ -325,7 +325,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 3,
     "clock": "8:49",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "11:12",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "11:21",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 3,
     "clock": "13:37",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_250 = [
   },
   {
     "game_id": "250",
-    "team": 8,
+    "team": "Seattle Torrent",
     "period": 3,
     "clock": "18:24",
     "event_type": "shot",

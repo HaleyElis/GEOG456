@@ -1,7 +1,7 @@
 window.pwhl_game_246 = [
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "0:59",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "1:23",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "1:36",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:39",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "3:40",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:22",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "4:22",
     "event_type": "goal",
@@ -64,7 +64,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:45",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "4:45",
     "event_type": "goal",
@@ -82,7 +82,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "7:03",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "7:38",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "7:38",
     "event_type": "goal",
@@ -109,7 +109,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "8:39",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "9:03",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:41",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "9:51",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "12:56",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "12:58",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "13:39",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 1,
     "clock": "15:55",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:32",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:36",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 1,
     "clock": "17:50",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "0:58",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "1:31",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "4:07",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "8:06",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "10:29",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "13:30",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "13:54",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "15:09",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "15:10",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "15:45",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 2,
     "clock": "19:03",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 2,
     "clock": "19:36",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:19",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:19",
     "event_type": "goal",
@@ -334,7 +334,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "0:48",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "1:12",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "1:59",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "3:25",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:06",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:20",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:21",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:21",
     "event_type": "goal",
@@ -406,7 +406,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "4:34",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "5:55",
     "event_type": "shot",
@@ -424,7 +424,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "8:01",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "8:01",
     "event_type": "goal",
@@ -442,7 +442,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "11:31",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "11:31",
     "event_type": "goal",
@@ -460,7 +460,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "12:16",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "14:13",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 1,
+    "team": "Boston Fleet",
     "period": 3,
     "clock": "15:45",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_246 = [
   },
   {
     "game_id": "246",
-    "team": 9,
+    "team": "Vancouver Goldeneyes",
     "period": 3,
     "clock": "16:08",
     "event_type": "shot",

@@ -1,7 +1,7 @@
 window.pwhl_game_159 = [
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "1:40",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "3:50",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "4:53",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:08",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:24",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:26",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "5:26",
     "event_type": "goal",
@@ -64,7 +64,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "8:50",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "10:22",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 1,
     "clock": "13:31",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:53",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "15:01",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "15:06",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "16:33",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "1:09",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "4:23",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "6:29",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "7:03",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "8:09",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "8:59",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "9:04",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "9:18",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "12:42",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "14:10",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "17:21",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "17:26",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "18:55",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 2,
     "clock": "18:55",
     "event_type": "goal",
@@ -253,7 +253,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "2:12",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "3:06",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "4:22",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "6:00",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "7:00",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "9:13",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "9:22",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "12:11",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "12:44",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "14:04",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "15:15",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "18:38",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 6,
+    "team": "Toronto Sceptres",
     "period": 3,
     "clock": "18:42",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "19:04",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 4,
     "clock": "1:04",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 4,
     "clock": "2:17",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 4,
     "clock": "2:38",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 4,
     "clock": "2:39",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_159 = [
   },
   {
     "game_id": "159",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 4,
     "clock": "2:39",
     "event_type": "goal",

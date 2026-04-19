@@ -1,7 +1,7 @@
 window.pwhl_game_290 = [
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "0:27",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "0:27",
     "event_type": "goal",
@@ -19,7 +19,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "3:44",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "4:01",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "7:34",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "7:35",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "10:40",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "11:15",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "12:56",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:39",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:39",
     "event_type": "goal",
@@ -100,7 +100,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:47",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:50",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "14:50",
     "event_type": "goal",
@@ -127,7 +127,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "16:03",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "16:15",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "16:15",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "16:15",
     "event_type": "goal",
@@ -163,7 +163,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 1,
     "clock": "17:03",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 1,
     "clock": "17:10",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "0:52",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "2:23",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "3:12",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "4:15",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "4:50",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "8:45",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "10:09",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "11:53",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "14:02",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "15:38",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "15:46",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 2,
     "clock": "15:46",
     "event_type": "goal",
@@ -289,7 +289,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 2,
     "clock": "18:04",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "0:21",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "3:41",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "3:53",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "5:36",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "7:51",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "12:08",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "13:28",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "15:05",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "17:00",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 2,
+    "team": "Minnesota Frost",
     "period": 3,
     "clock": "17:45",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_290 = [
   },
   {
     "game_id": "290",
-    "team": 5,
+    "team": "Ottawa Charge",
     "period": 3,
     "clock": "17:57",
     "event_type": "shot",

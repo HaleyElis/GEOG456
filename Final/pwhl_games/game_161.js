@@ -1,7 +1,7 @@
 window.pwhl_game_161 = [
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "3:09",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "3:36",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "5:49",
     "event_type": "shot",
@@ -28,7 +28,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "6:20",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "7:39",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "7:43",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "7:43",
     "event_type": "goal",
@@ -64,7 +64,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "11:02",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "12:05",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "12:28",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "13:24",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "13:32",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 1,
     "clock": "16:26",
     "event_type": "shot",
@@ -118,7 +118,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "16:55",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:43",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 1,
     "clock": "17:44",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "1:27",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "1:30",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "1:30",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "1:30",
     "event_type": "goal",
@@ -181,7 +181,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "4:28",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "6:46",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "8:12",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "8:24",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "8:51",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:02",
     "event_type": "shot",
@@ -235,7 +235,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:13",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "9:23",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:24",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "12:24",
     "event_type": "goal",
@@ -271,7 +271,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "13:39",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "15:37",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "16:58",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "17:29",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "17:33",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 2,
     "clock": "18:07",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "18:19",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 2,
     "clock": "18:27",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "2:12",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "2:28",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:25",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "3:54",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "4:53",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "5:09",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "5:54",
     "event_type": "shot",
@@ -406,7 +406,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "7:38",
     "event_type": "shot",
@@ -415,7 +415,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "7:38",
     "event_type": "goal",
@@ -424,7 +424,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "8:14",
     "event_type": "shot",
@@ -433,7 +433,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "9:35",
     "event_type": "shot",
@@ -442,7 +442,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "10:24",
     "event_type": "shot",
@@ -451,7 +451,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "10:35",
     "event_type": "shot",
@@ -460,7 +460,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "12:45",
     "event_type": "shot",
@@ -469,7 +469,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "13:28",
     "event_type": "shot",
@@ -478,7 +478,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "14:59",
     "event_type": "shot",
@@ -487,7 +487,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "15:10",
     "event_type": "shot",
@@ -496,7 +496,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 3,
     "clock": "15:25",
     "event_type": "shot",
@@ -505,7 +505,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 3,
+    "team": "Montréal Victoire",
     "period": 3,
     "clock": "16:19",
     "event_type": "shot",
@@ -514,7 +514,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "0:33",
     "event_type": "shot",
@@ -523,7 +523,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "1:54",
     "event_type": "shot",
@@ -532,7 +532,7 @@ window.pwhl_game_161 = [
   },
   {
     "game_id": "161",
-    "team": 4,
+    "team": "New York Sirens",
     "period": 4,
     "clock": "1:54",
     "event_type": "goal",

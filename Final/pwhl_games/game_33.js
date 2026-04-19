@@ -1,7 +1,7 @@
 window.pwhl_game_33 = [
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "1:55",
     "event_type": "shot",
@@ -10,7 +10,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "3:41",
     "event_type": "shot",
@@ -19,7 +19,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "3:41",
     "event_type": "goal",
@@ -28,7 +28,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "9:02",
     "event_type": "shot",
@@ -37,7 +37,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "9:41",
     "event_type": "shot",
@@ -46,7 +46,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "11:11",
     "event_type": "shot",
@@ -55,7 +55,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "12:22",
     "event_type": "shot",
@@ -64,7 +64,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "13:03",
     "event_type": "shot",
@@ -73,7 +73,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "13:11",
     "event_type": "shot",
@@ -82,7 +82,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 1,
     "clock": "15:38",
     "event_type": "shot",
@@ -91,7 +91,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "17:40",
     "event_type": "shot",
@@ -100,7 +100,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "17:42",
     "event_type": "shot",
@@ -109,7 +109,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 1,
     "clock": "17:42",
     "event_type": "goal",
@@ -118,7 +118,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "0:16",
     "event_type": "shot",
@@ -127,7 +127,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "2:43",
     "event_type": "shot",
@@ -136,7 +136,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "3:48",
     "event_type": "shot",
@@ -145,7 +145,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "5:59",
     "event_type": "shot",
@@ -154,7 +154,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "6:06",
     "event_type": "shot",
@@ -163,7 +163,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "6:28",
     "event_type": "shot",
@@ -172,7 +172,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "10:49",
     "event_type": "shot",
@@ -181,7 +181,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "11:33",
     "event_type": "shot",
@@ -190,7 +190,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "13:24",
     "event_type": "shot",
@@ -199,7 +199,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "14:05",
     "event_type": "shot",
@@ -208,7 +208,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "14:06",
     "event_type": "shot",
@@ -217,7 +217,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "14:06",
     "event_type": "shot",
@@ -226,7 +226,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "14:06",
     "event_type": "goal",
@@ -235,7 +235,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 2,
     "clock": "18:39",
     "event_type": "shot",
@@ -244,7 +244,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "19:02",
     "event_type": "shot",
@@ -253,7 +253,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 2,
     "clock": "19:28",
     "event_type": "shot",
@@ -262,7 +262,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "1:23",
     "event_type": "shot",
@@ -271,7 +271,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "1:45",
     "event_type": "shot",
@@ -280,7 +280,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "2:46",
     "event_type": "shot",
@@ -289,7 +289,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "4:35",
     "event_type": "shot",
@@ -298,7 +298,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "4:49",
     "event_type": "shot",
@@ -307,7 +307,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "5:45",
     "event_type": "shot",
@@ -316,7 +316,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "6:21",
     "event_type": "shot",
@@ -325,7 +325,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "6:41",
     "event_type": "shot",
@@ -334,7 +334,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "7:06",
     "event_type": "shot",
@@ -343,7 +343,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "8:13",
     "event_type": "shot",
@@ -352,7 +352,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "12:25",
     "event_type": "shot",
@@ -361,7 +361,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "12:31",
     "event_type": "shot",
@@ -370,7 +370,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "13:48",
     "event_type": "shot",
@@ -379,7 +379,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 3,
+    "team": "PWHL Montreal",
     "period": 3,
     "clock": "15:12",
     "event_type": "shot",
@@ -388,7 +388,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "18:04",
     "event_type": "shot",
@@ -397,7 +397,7 @@ window.pwhl_game_33 = [
   },
   {
     "game_id": "33",
-    "team": 2,
+    "team": "PWHL Minnesota",
     "period": 3,
     "clock": "18:10",
     "event_type": "shot",
