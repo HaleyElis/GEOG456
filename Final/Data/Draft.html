@@ -276,9 +276,6 @@
     }
 
     function buildOlympicsEvents(gameId) {
-  const game = schedule.find(g => String(g.game_id) === String(gameId));
-  if (!game) return [];
-
   const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
 
   return gameRows.map(row => {
@@ -288,15 +285,12 @@
     if (rawEvent.includes("goal")) eventType = "goal";
     else if (rawEvent.includes("shot")) eventType = "shot";
 
-    let x = Number(row.x_coord);
-    let y = Number(row.y_coord);
+    const x = Number(row.x_coord);
+    const y = Number(row.y_coord);
 
     if (!eventType || !Number.isFinite(x) || !Number.isFinite(y)) return null;
 
-    // 🔥 CRITICAL FIX: normalize BDC coords
-    x = Math.abs(x);         // force offensive direction
-    y = y * Math.sign(row.x_coord); // flip side properly
-
+    // ✅ ONLY transform once (THIS WAS THE BUG)
     return {
       game_id: gameId,
       team: row.team_name || "",
@@ -349,17 +343,16 @@
         };
       }
 
-      const team = String(event.team || "");
-      if (team && game) {
-        const home = String(game.home_team || "");
-        const away = String(game.away_team || "");
-        if (team.includes(home)) {
-          color = HOME_COLOR;
-          shotFill = HOME_SHOT_FILL;
-        } else if (team.includes(away)) {
-          color = AWAY_COLOR;
-          shotFill = AWAY_SHOT_FILL;
-        }
+      const team = String(event.team || "").trim();
+const home = String(game.home_team || "").trim();
+const away = String(game.away_team || "").trim();
+
+if (team.includes(home)) {
+  color = HOME_COLOR;
+  shotFill = HOME_SHOT_FILL;
+} else if (team.includes(away)) {
+  color = AWAY_COLOR;
+  shotFill = AWAY_SHOT_FILL;
       }
 
 if (!team || team === "") {
