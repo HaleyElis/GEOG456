@@ -1,0 +1,551 @@
+window.pwhl_game_308 = [
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "1:35",
+    "event_type": "shot",
+    "x": 68.6667,
+    "y": 70.55
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "2:49",
+    "event_type": "shot",
+    "x": 181.3333,
+    "y": 29.75
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "4:25",
+    "event_type": "shot",
+    "x": 117,
+    "y": 28.3333
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "5:48",
+    "event_type": "shot",
+    "x": 61,
+    "y": 13.3167
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "5:50",
+    "event_type": "shot",
+    "x": 24.6667,
+    "y": 35.9833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "6:14",
+    "event_type": "shot",
+    "x": 22,
+    "y": 51.85
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "7:10",
+    "event_type": "shot",
+    "x": 104.6667,
+    "y": 82.1667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "9:36",
+    "event_type": "shot",
+    "x": 136.3333,
+    "y": 29.4667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "11:36",
+    "event_type": "shot",
+    "x": 165,
+    "y": 44.4833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "13:52",
+    "event_type": "shot",
+    "x": 53.3333,
+    "y": 17
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "14:07",
+    "event_type": "shot",
+    "x": 22,
+    "y": 48.45
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "14:12",
+    "event_type": "shot",
+    "x": 71,
+    "y": 50.15
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "14:21",
+    "event_type": "shot",
+    "x": 18.6667,
+    "y": 45.05
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "14:23",
+    "event_type": "shot",
+    "x": 150.6667,
+    "y": 62.05
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "15:06",
+    "event_type": "shot",
+    "x": 134.3333,
+    "y": 41.65
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 1,
+    "clock": "16:16",
+    "event_type": "shot",
+    "x": 19,
+    "y": 43.0667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 1,
+    "clock": "18:38",
+    "event_type": "shot",
+    "x": 159.3333,
+    "y": 33.15
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "1:22",
+    "event_type": "shot",
+    "x": 155.3333,
+    "y": 8.7833
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "2:02",
+    "event_type": "shot",
+    "x": 171,
+    "y": 37.6833
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "2:51",
+    "event_type": "shot",
+    "x": 167,
+    "y": 47.8833
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "2:51",
+    "event_type": "goal",
+    "x": 167,
+    "y": 47.8833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "3:10",
+    "event_type": "shot",
+    "x": 30.3333,
+    "y": 52.1333
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "3:31",
+    "event_type": "shot",
+    "x": 29.3333,
+    "y": 39.3833
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "5:27",
+    "event_type": "shot",
+    "x": 164,
+    "y": 56.95
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "7:27",
+    "event_type": "shot",
+    "x": 178.6667,
+    "y": 56.1
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "10:27",
+    "event_type": "shot",
+    "x": 90.3333,
+    "y": 38.25
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 2,
+    "clock": "10:40",
+    "event_type": "shot",
+    "x": 172,
+    "y": 47.8833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "10:57",
+    "event_type": "shot",
+    "x": 14.6667,
+    "y": 47.6
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "15:49",
+    "event_type": "shot",
+    "x": 63.6667,
+    "y": 13.0333
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "17:54",
+    "event_type": "shot",
+    "x": 22.3333,
+    "y": 41.0833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "18:09",
+    "event_type": "shot",
+    "x": 37.6667,
+    "y": 53.55
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "19:14",
+    "event_type": "shot",
+    "x": 49,
+    "y": 55.8167
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 2,
+    "clock": "19:56",
+    "event_type": "shot",
+    "x": 59.3333,
+    "y": 60.35
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "1:07",
+    "event_type": "shot",
+    "x": 53,
+    "y": 10.2
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "1:27",
+    "event_type": "shot",
+    "x": 14,
+    "y": 36.2667
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "1:51",
+    "event_type": "shot",
+    "x": 34.6667,
+    "y": 44.7667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "2:25",
+    "event_type": "shot",
+    "x": 135.3333,
+    "y": 51.5667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "3:10",
+    "event_type": "shot",
+    "x": 141,
+    "y": 34.5667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "4:30",
+    "event_type": "shot",
+    "x": 133.3333,
+    "y": 73.95
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "6:25",
+    "event_type": "shot",
+    "x": 171,
+    "y": 66.8667
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "9:52",
+    "event_type": "shot",
+    "x": 186.3333,
+    "y": 51.2833
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 3,
+    "clock": "10:16",
+    "event_type": "shot",
+    "x": 148,
+    "y": 63.75
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "11:27",
+    "event_type": "shot",
+    "x": 55,
+    "y": 22.6667
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "13:47",
+    "event_type": "shot",
+    "x": 70.6667,
+    "y": 24.65
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "15:10",
+    "event_type": "shot",
+    "x": 57.3333,
+    "y": 31.7333
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "15:29",
+    "event_type": "shot",
+    "x": 35.6667,
+    "y": 39.95
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "15:56",
+    "event_type": "shot",
+    "x": 25,
+    "y": 53.55
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:25",
+    "event_type": "shot",
+    "x": 16.6667,
+    "y": 48.45
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:25",
+    "event_type": "goal",
+    "x": 16.6667,
+    "y": 48.45
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:52",
+    "event_type": "shot",
+    "x": 19.3333,
+    "y": 39.95
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:52",
+    "event_type": "shot",
+    "x": 16.6667,
+    "y": 30.8833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:52",
+    "event_type": "shot",
+    "x": 12.6667,
+    "y": 24.9333
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "16:59",
+    "event_type": "shot",
+    "x": 20.6667,
+    "y": 22.3833
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "17:30",
+    "event_type": "shot",
+    "x": 72.3333,
+    "y": 43.0667
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "17:37",
+    "event_type": "shot",
+    "x": 42,
+    "y": 20.9667
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 3,
+    "clock": "17:50",
+    "event_type": "shot",
+    "x": 56.3333,
+    "y": 45.9
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 4,
+    "clock": "1:47",
+    "event_type": "shot",
+    "x": 17.3333,
+    "y": 42.2167
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 4,
+    "clock": "2:50",
+    "event_type": "shot",
+    "x": 157,
+    "y": 28.05
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 4,
+    "clock": "3:36",
+    "event_type": "shot",
+    "x": 22.6667,
+    "y": 28.05
+  },
+  {
+    "game_id": "308",
+    "team": 8,
+    "period": 4,
+    "clock": "4:12",
+    "event_type": "shot",
+    "x": 158,
+    "y": 33.15
+  },
+  {
+    "game_id": "308",
+    "team": 4,
+    "period": 4,
+    "clock": "4:49",
+    "event_type": "shot",
+    "x": 21,
+    "y": 38.5333
+  }
+];
