@@ -194,22 +194,32 @@ function buildOlympicsSchedule(rows){
   return [...map.values()];
 }
 
-function buildOlympicsEvents(gameId){
-  return bdcRows
-    .filter(r=>buildOlympicsGameId(r)===gameId)
-    .map(r=>{
-      const ev = r.event.toLowerCase();
-      if(!ev.includes("shot") && !ev.includes("goal")) return null;
+function buildOlympicsEvents(gameId) {
+  const gameRows = bdcRows.filter(row => buildOlympicsGameId(row) === gameId);
 
-      return {
-        team:r.team_name,
-        period:+r.period,
-        clock:secondsToClock(r.clock_seconds),
-        event_type:ev.includes("goal")?"goal":"shot",
-        x:+r.x_coord + 100,
-        y:+r.y_coord + 42.5
-      };
-    }).filter(Boolean);
+  return gameRows.map(row => {
+    const rawEvent = String(row.event || "").toLowerCase();
+
+    let eventType = null;
+    if (rawEvent.includes("goal")) eventType = "goal";
+    else if (rawEvent.includes("shot")) eventType = "shot";
+
+    const xRaw = parseFloat(row.x_coord);
+    const yRaw = parseFloat(row.y_coord);
+
+    // THIS IS THE CRITICAL FIX
+    if (!eventType || isNaN(xRaw) || isNaN(yRaw)) return null;
+
+    return {
+      game_id: gameId,
+      team: (row.team_name || "").trim(),
+      period: Number(row.period),
+      clock: secondsToClock(row.clock_seconds),
+      event_type: eventType,
+      x: xRaw + 100,
+      y: yRaw + 42.5
+    };
+  }).filter(Boolean);
 }
 
 function normalizeEvent(e,game){
