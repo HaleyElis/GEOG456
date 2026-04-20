@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women's Ice Hockey — Data Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ice: #e8f4f8;
+    --rink: #071525;
+    --blue-light: #4eb3d3;
+    --blue-mid: #2b8cbe;
+    --blue-deep: #0868ac;
+    --blue-darkest: #084081;
+    --accent: #c8e6f5;
+    --text: #0a1628;
+    --muted: #5a6a7a;
+    --border: #c5dce8;
+    --surface: #ffffff;
+    --surface-alt: #f4f8fb;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--surface-alt);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .sb-hero {
+    background: var(--rink);
+    color: white;
+    padding: 80px 56px 88px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sb-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg,  rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 80px);
+    pointer-events: none;
+  }
+  .sb-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .sb-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 620px;
+    margin-bottom: 22px;
+    color: #f0f8ff;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .sb-hero h1 em { font-style: normal; color: var(--blue-light); }
+  .sb-hero p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #8eaabb;
+    max-width: 540px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .sb-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--blue-light);
+    opacity: 0.8;
+    position: relative;
+  }
+  .sb-scroll-hint svg { animation: bounce 1.8s ease-in-out infinite; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(5px); }
+  }
+
+  /* ── STAT ROW ── */
+  .sb-stat-row {
+    background: #0a1e35;
+    display: flex;
+    border-top: 1px solid rgba(78, 179, 211, 0.2);
+    flex-wrap: wrap;
+  }
+  .sb-stat {
+    flex: 1;
+    min-width: 140px;
+    padding: 22px 32px;
+    border-right: 1px solid rgba(78, 179, 211, 0.12);
+  }
+  .sb-stat:last-child { border-right: none; }
+  .sb-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--blue-light);
+    line-height: 1.1;
+  }
+  .sb-stat-label {
+    font-size: 12px;
+    color: #5a7a8a;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* ── QUOTE BAND ── */
+  .sb-quote {
+    background: var(--rink);
+    color: white;
+    padding: 64px 56px;
+    border-top: 1px solid rgba(78, 179, 211, 0.2);
+    border-bottom: 1px solid rgba(78, 179, 211, 0.2);
+  }
+  .sb-quote blockquote {
+    max-width: 700px;
+    font-size: 21px;
+    line-height: 1.65;
+    color: #c8dde8;
+    font-style: italic;
+    border-left: 3px solid var(--blue-light);
+    padding-left: 28px;
+    margin-bottom: 18px;
+  }
+  .sb-quote cite {
+    font-size: 13px;
+    color: var(--blue-light);
+    font-style: normal;
+    padding-left: 31px;
+    letter-spacing: 0.04em;
+    display: block;
+  }
+
+  /* ── SECTIONS ── */
+  .sb-section {
+    padding: 64px 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sb-section:nth-child(odd)  { background: var(--surface); }
+  .sb-section:nth-child(even) { background: var(--surface-alt); }
+
+  .sb-chapter {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    max-width: 1100px;
+  }
+  .sb-chapter-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--border);
+    line-height: 1;
+    min-width: 80px;
+    text-align: right;
+    margin-top: -10px;
+    flex-shrink: 0;
+    border-right: 1.5px solid var(--border);
+    padding-right: 32px;
+  }
+  .sb-chapter-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--blue-light);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .sb-chapter-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .sb-chapter-body h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+  .sb-chapter-body > p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 640px;
+    margin-bottom: 18px;
+  }
+
+  /* ── CARDS ── */
+  .sb-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+    max-width: 560px;
+  }
+  .sb-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .sb-section:nth-child(odd) .sb-card { background: var(--surface-alt); }
+  .sb-card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .sb-card-icon.ice  { background: #ddf0f8; }
+  .sb-card-icon.gold { background: #faeeda; }
+  .sb-card-icon.pink { background: #fbeaf0; }
+  .sb-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+  }
+  .sb-card p { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* ── FEATURE LIST ── */
+  .sb-feature-list {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    max-width: 560px;
+  }
+  .sb-feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .sb-bullet {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── MAP PLACEHOLDER ── */
+  .sb-map-placeholder {
+    margin-top: 28px;
+    max-width: 700px;
+    background: #f0f8fb;
+    border: 1.5px dashed var(--blue-mid);
+    border-radius: 10px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--blue-mid);
+    text-align: center;
+  }
+  .sb-map-placeholder svg { opacity: 0.5; }
+  .sb-map-placeholder p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin: 0;
+    max-width: 100%;
+  }
+  .sb-map-placeholder span {
+    font-size: 13px;
+    color: #7aabbf;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  /* ── FOOTER ── */
+  .sb-footer {
+    background: var(--rink);
+    color: #4a6a7a;
+    padding: 32px 56px;
+    font-size: 12px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(78, 179, 211, 0.15);
+  }
+  .sb-footer a { color: var(--blue-light); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .sb-hero       { padding: 48px 24px 56px; }
+    .sb-hero h1    { font-size: 36px; }
+    .sb-quote      { padding: 40px 24px; }
+    .sb-section    { padding: 48px 24px; }
+    .sb-chapter    { flex-direction: column; gap: 16px; }
+    .sb-chapter-num { font-size: 48px; border-right: none; border-bottom: 1.5px solid var(--border); padding-right: 0; padding-bottom: 10px; text-align: left; }
+    .sb-stat       { padding: 16px 20px; }
+    .sb-footer     { padding: 24px; }
+  }
+
+  /* ════════════════════════════════════════
+     CARTOGRAM COMPONENT
+  ════════════════════════════════════════ */
+
+  .sb-cartogram-wrapper {
+    margin-top: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .carto-topbar {
+    background: #f0f7fb;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .carto-year-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--blue-darkest);
+    min-width: 52px;
+    letter-spacing: -0.01em;
+  }
+
+  .carto-play-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: var(--blue-deep);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.12s;
+    white-space: nowrap;
+  }
+  .carto-play-btn:hover { background: var(--blue-darkest); }
+
+  .carto-slider-wrap {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .carto-slider-wrap input[type=range] {
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .carto-slider-wrap input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--blue-deep);
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(8,104,172,0.3);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .carto-slider-wrap input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  .carto-tick-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    pointer-events: none;
+  }
+
+  .carto-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .carto-mode-toggle button {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: none;
+    background: white;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+    border-right: 1px solid var(--border);
+  }
+  .carto-mode-toggle button:last-child { border-right: none; }
+  .carto-mode-toggle button.active {
+    background: var(--blue-deep);
+    color: white;
+  }
+
+  .carto-age-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: white;
+  }
+  .carto-age-bar button {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: white;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .carto-age-bar button:hover { border-color: var(--blue-mid); color: var(--blue-deep); }
+  .carto-age-bar button.active {
+    background: var(--blue-deep);
+    color: white;
+    border-color: var(--blue-deep);
+  }
+
+  .carto-stats-strip {
+    background: #f0f7fb;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .carto-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .carto-stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue-darkest);
+    line-height: 1;
+  }
+  .carto-stat-lbl {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+  }
+  .carto-stat-divider {
+    width: 1px;
+    height: 26px;
+    background: var(--border);
+    align-self: center;
+  }
+
+  .carto-map-area {
+    padding: 20px;
+    background: #f9fcfe;
+  }
+  .carto-map-area svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .carto-legend {
+    padding: 10px 20px 16px;
+    background: white;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .carto-legend-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+  }
+  .carto-legend-bar {
+    height: 7px;
+    width: 140px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #c8e6f5, #4eb3d3, #0868ac, #084081);
+  }
+  .carto-legend-ticks {
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+  }
+  .carto-legend-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-left: 4px;
+  }
+
+  #carto-tooltip {
+    position: fixed;
+    background: var(--rink);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s;
+    z-index: 9999;
+    border: 1px solid rgba(78,179,211,0.25);
+    line-height: 1.6;
+  }
+  #carto-tooltip strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 2px;
+    color: white;
+  }
+  #carto-tooltip .tt-rate { color: var(--blue-light); font-weight: 600; }
+  #carto-tooltip .tt-raw  { color: #7aabbf; font-size: 12px; }
+
+  .state-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    fill: white;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="sb-hero">
+  <p class="sb-eyebrow">GEOG 456: Final Project &nbsp;·&nbsp; Hannah, Haley, Miranda</p>
+  <h1>Visualizing Women's Ice Hockey in the United States</h1>
+  <p>A Geospatial Overview of the Sport </p>
+  <div class="sb-scroll-hint">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 2v10M3 8l4 4 4-4" stroke="#4eb3d3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Scroll to explore
+  </div>
+</header>
+
+<!-- CHAPTER 0 — Context -->
+<section class="sb-section">
+  <div class="sb-chapter">
+    <div class="sb-chapter-num">00</div>
+    <div class="sb-chapter-body">
+      <p class="sb-chapter-tag">Context</p>
+      <h2>A Background in Women's Ice Hockey</h2>
+      <p>Since women's ice hockey debuted at the 1998 Winter Olympics, the sport has grown dramatically. This growth led to the development of several women's hockey leagues beginning in 1999, and the eventual development of the contemporary Professional Women's Hockey League (PWHL) in 2023.  In the following 2024/25 season, USA Hockey reached an all-time high of 577,900 total members, with female participation increasing by 5.1%. Yet recognition of how women and girls contribute to the sport continues to lag, as seen by public discussions surrounding the 2026 Milan-Cortina Olympics. </p>
+      <p>The primary data sources are USA Hockey's annual registration reports, published continuously since 2008 and publicly available through each organization's webpage. As well as Stathletes-tracked women’s hockey event data from the Olympics and NCAA and fastRhockey: Functions to Access Professional Women's Hockey League and National Hockey League Play by Play Data.</p>
+      <div class="sb-card-grid">
+        <div class="sb-card">
+          <div class="sb-card-icon ice">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="#2b8cbe" stroke-width="1.5"/>
+              <path d="M9 2v14M2 9h14M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#2b8cbe" stroke-width="1"/>
+            </svg>
+          </div>
+          <h4>USA Hockey data</h4>
+          <p>Annual registration reports, 2008–present, by state and age group</p>
+        </div>
+        <div class="sb-card">
+          <div class="sb-card-icon gold">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2l1.8 4 4.2.6-3 3 .7 4.2L9 11.8 5.3 13.8l.7-4.2-3-3 4.2-.6z" stroke="#BA7517" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4>PWHL rosters</h4>
+          <p>Player stats, franchise locations, and play-by-play</p>
+        </div>
+        <div class="sb-card">
+          <div class="sb-card-icon pink">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="7" cy="7" r="4" stroke="#993556" stroke-width="1.3"/>
+              <circle cx="13" cy="12" r="3" stroke="#D4537E" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <h4>2022 Winter Olympics</h4>
+          <p>Stathletes-tracked women’s hockey event data from the Olympics and NCAA.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 01 — Registration Cartograms -->
+<section class="sb-section">
+  <div class="sb-chapter">
+    <div class="sb-chapter-num">01</div>
+    <div class="sb-chapter-body">
+      <p class="sb-chapter-tag">Visualization 1</p>
+      <h2>Registration of Women and Girls by State</h2>
+      <p>This project asks: what does three decades of registration data actually show us about where women's hockey is taking root?
+        Why a cartogram? This cartogram resizes each state proportional to its registration count. </p>
+      <ul class="sb-feature-list">
+        <li><span class="sb-bullet"></span><span>data stuff is confusing rn! but it runs</span></li>
+      </ul>
+
+      <div class="sb-cartogram-wrapper">
+
+        <!-- TOP BAR: play + year slider + mode toggle -->
+        <div class="carto-topbar">
+          <button class="carto-play-btn" id="carto-play">&#9654; Play</button>
+          <div class="carto-slider-wrap">
+            <input type="range" id="carto-yr-slider" min="0" max="17" step="1" value="17">
+            <div class="carto-tick-row">
+              <span>2007</span><span>2010</span><span>2013</span><span>2016</span><span>2019</span><span>2022</span><span>2024</span>
+            </div>
+          </div>
+          <span class="carto-year-pill" id="carto-year-label">2024</span>
+
+        </div>
+
+        <!-- AGE GROUP BUTTONS -->
+        <div class="carto-age-bar" id="carto-age-bar">
+          <button class="active" data-age="total" onclick="setAge(this)">Total</button>
+          <button data-age="20_plus" onclick="setAge(this)">20 &amp; Over</button>
+          <button data-age="19" onclick="setAge(this)">19</button>
+          <button data-age="17_18" onclick="setAge(this)">17–18</button>
+          <button data-age="15_16" onclick="setAge(this)">15–16</button>
+          <button data-age="13_14" onclick="setAge(this)">13–14</button>
+          <button data-age="11_12" onclick="setAge(this)">11–12</button>
+          <button data-age="9_10" onclick="setAge(this)">9–10</button>
+          <button data-age="7_8" onclick="setAge(this)">7–8</button>
+          <button data-age="6u" onclick="setAge(this)">6 &amp; Under</button>
+        </div>
+
+        <!-- STATS STRIP -->
+        <div class="carto-stats-strip">
+          <div class="carto-stat">
+            <span class="carto-stat-val" id="cs-total">—</span>
+            <span class="carto-stat-lbl" id="cs-total-lbl">Total registrations</span>
+          </div>
+          <div class="carto-stat-divider"></div>
+          <div class="carto-mode-toggle" style="align-self:center;">
+            <button id="btn-raw" class="active" onclick="setMode('raw',this)">Total</button>
+            <button id="btn-norm" onclick="setMode('norm',this)">Per 100k</button>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="carto-map-area">
+          <svg id="carto-svg" viewBox="0 0 900 506"></svg>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="carto-legend">
+          <span class="carto-legend-label">Scale:</span>
+          <div>
+            <div class="carto-legend-bar"></div>
+            <div class="carto-legend-ticks">
+              <span>Low</span><span id="leg-mid">Mid</span><span>Peak</span>
+            </div>
+          </div>
+          <span class="carto-legend-note" id="leg-note">Bubble size = total registrations · Color = intensity</span>
+        </div>
+
+      </div><!-- /.sb-cartogram-wrapper -->
+
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 02 — PWHL Map -->
+<section class="sb-section">
+  <div class="sb-chapter">
+    <div class="sb-chapter-num">02</div>
+    <div class="sb-chapter-body">
+      <p class="sb-chapter-tag">Visualization 2</p>
+      <h2>PWHL franchise map and player data</h2>
+      <p>The Professional Women's Hockey League launched in 2024 with 6 teams and has since expanded to 8. This map shows team home stadium locations. Explore each team's full roster in a side panel.</p>
+      <p>Background: the PWHL was formed after the dissolution of the NWHL and the brief Premier Hockey Federation era. Its rapid expansion reflects exactly the kind of institutional investment this project tracks alongside grassroots participation data.</p>
+      <ul class="sb-feature-list">
+        <li><span class="sb-bullet"></span><span>Click any franchise marker to open a roster and stats panel</span></li>
+        <li><span class="sb-bullet"></span><span>Timeline toggle: 2024 (6 teams) versus 2025 (8 teams)</span></li>
+        <li><span class="sb-bullet"></span><span>Olympic connection — highlight players who competed for Team USA or Canada</span></li>
+        <li><span class="sb-bullet"></span><span>See goals and assists for each player directly on the map popup</span></li>
+      </ul>
+      <div class="sb-map-placeholder">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="4" width="40" height="40" rx="4" stroke="#2b8cbe" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle cx="16" cy="20" r="4" fill="#4eb3d3" opacity="0.5"/>
+          <circle cx="30" cy="16" r="4" fill="#4eb3d3" opacity="0.5"/>
+          <circle cx="34" cy="28" r="4" fill="#4eb3d3" opacity="0.5"/>
+          <circle cx="20" cy="32" r="4" fill="#4eb3d3" opacity="0.5"/>
+          <line x1="16" y1="20" x2="30" y2="16" stroke="#2b8cbe" stroke-width="1"/>
+          <line x1="30" y1="16" x2="34" y2="28" stroke="#2b8cbe" stroke-width="1"/>
+          <line x1="34" y1="28" x2="20" y2="32" stroke="#2b8cbe" stroke-width="1"/>
+        </svg>
+        <p>PWHL franchise map goes here</p>
+        <span>Drop in your PWHL animation component — roster popups, Olympic highlights, team timeline</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 03 — Play-by-Play -->
+<section class="sb-section">
+  <div class="sb-chapter">
+    <div class="sb-chapter-num">03</div>
+    <div class="sb-chapter-body">
+      <p class="sb-chapter-tag">Visualization 3</p>
+      <h2>Shots on Goal in PWHL and Olympic Games</h2>
+      <a href="https://haleyelis.github.io/GEOG456/Final/Data/Draft.html" 
+   target="_blank" 
+   style="
+     display:inline-block;
+     margin-top:20px;
+     padding:10px 18px;
+     background:#0868ac;
+     color:white;
+     text-decoration:none;
+     border-radius:6px;
+     font-family:'Barlow Condensed', sans-serif;
+     font-weight:700;
+     letter-spacing:0.05em;
+     text-transform:uppercase;
+     font-size:13px;
+   ">
+   View Interactive Visualization →
+</a>
+
+<!-- FOOTER -->
+<footer class="sb-footer">
+  <span>Data: USA Hockey Annual Registration Reports &nbsp;·&nbsp; Hockey Canada &nbsp;·&nbsp; PWHL</span>
+  <span>Geovisualization project &nbsp;·&nbsp; 2024–25</span>
+</footer>
+
+<!-- TOOLTIP -->
+<div id="carto-tooltip"></div>
+
+<script>
+const AGE_DATA = {"2007":{"AK":{"total":1685,"20_plus":787,"19":7,"17_18":59,"15_16":83,"13_14":161,"11_12":173,"9_10":172,"7_8":119,"6u":124},"AL":{"total":63,"20_plus":17,"19":2,"17_18":1,"15_16":5,"13_14":9,"11_12":6,"9_10":9,"7_8":11,"6u":3},"AR":{"total":17,"20_plus":7,"19":0,"17_18":1,"15_16":2,"13_14":1,"11_12":3,"9_10":1,"7_8":0,"6u":2},"AZ":{"total":285,"20_plus":106,"19":3,"17_18":10,"15_16":33,"13_14":26,"11_12":46,"9_10":30,"7_8":18,"6u":13},"CA":{"total":1349,"20_plus":775,"19":28,"17_18":65,"15_16":87,"13_14":110,"11_12":98,"9_10":92,"7_8":67,"6u":27},"CO":{"total":2031,"20_plus":1019,"19":21,"17_18":82,"15_16":152,"13_14":217,"11_12":182,"9_10":159,"7_8":125,"6u":74},"CT":{"total":2129,"20_plus":274,"19":12,"17_18":98,"15_16":232,"13_14":333,"11_12":363,"9_10":307,"7_8":270,"6u":240},"DC":{"total":101,"20_plus":48,"19":5,"17_18":5,"15_16":3,"13_14":10,"11_12":12,"9_10":8,"7_8":9,"6u":1},"DE":{"total":57,"20_plus":38,"19":1,"17_18":4,"15_16":3,"13_14":4,"11_12":2,"9_10":4,"7_8":1,"6u":0},"FL":{"total":602,"20_plus":328,"19":8,"17_18":31,"15_16":41,"13_14":49,"11_12":62,"9_10":48,"7_8":23,"6u":12},"GA":{"total":127,"20_plus":55,"19":1,"17_18":5,"15_16":11,"13_14":12,"11_12":12,"9_10":11,"7_8":12,"6u":8},"HI":{"total":3,"20_plus":2,"19":0,"17_18":0,"15_16":0,"13_14":1,"11_12":0,"9_10":0,"7_8":0,"6u":0},"IA":{"total":184,"20_plus":34,"19":2,"17_18":12,"15_16":22,"13_14":16,"11_12":27,"9_10":18,"7_8":21,"6u":32},"ID":{"total":448,"20_plus":222,"19":4,"17_18":17,"15_16":35,"13_14":41,"11_12":43,"9_10":31,"7_8":26,"6u":29},"IL":{"total":1961,"20_plus":419,"19":30,"17_18":130,"15_16":228,"13_14":217,"11_12":278,"9_10":284,"7_8":228,"6u":147},"IN":{"total":306,"20_plus":107,"19":5,"17_18":22,"15_16":21,"13_14":41,"11_12":31,"9_10":24,"7_8":24,"6u":31},"KS":{"total":52,"20_plus":14,"19":1,"17_18":0,"15_16":2,"13_14":5,"11_12":13,"9_10":10,"7_8":5,"6u":2},"KY":{"total":137,"20_plus":26,"19":4,"17_18":19,"15_16":25,"13_14":18,"11_12":22,"9_10":9,"7_8":5,"6u":9},"LA":{"total":18,"20_plus":10,"19":1,"17_18":1,"15_16":4,"13_14":0,"11_12":0,"9_10":1,"7_8":0,"6u":1},"MA":{"total":7780,"20_plus":936,"19":32,"17_18":333,"15_16":708,"13_14":1045,"11_12":1217,"9_10":1192,"7_8":1145,"6u":1172},"MD":{"total":825,"20_plus":225,"19":13,"17_18":83,"15_16":137,"13_14":101,"11_12":93,"9_10":82,"7_8":59,"6u":32},"ME":{"total":1306,"20_plus":183,"19":11,"17_18":141,"15_16":214,"13_14":215,"11_12":161,"9_10":112,"7_8":125,"6u":144},"MI":{"total":4612,"20_plus":1480,"19":85,"17_18":261,"15_16":434,"13_14":535,"11_12":545,"9_10":525,"7_8":387,"6u":360},"MN":{"total":10702,"20_plus":1235,"19":58,"17_18":214,"15_16":472,"13_14":1293,"11_12":2127,"9_10":2108,"7_8":1840,"6u":1355},"MO":{"total":316,"20_plus":96,"19":4,"17_18":21,"15_16":28,"13_14":31,"11_12":41,"9_10":47,"7_8":29,"6u":19},"MS":{"total":18,"20_plus":3,"19":0,"17_18":0,"15_16":0,"13_14":3,"11_12":4,"9_10":7,"7_8":0,"6u":1},"MT":{"total":546,"20_plus":242,"19":7,"17_18":19,"15_16":44,"13_14":48,"11_12":49,"9_10":44,"7_8":42,"6u":51},"NC":{"total":332,"20_plus":195,"19":10,"17_18":6,"15_16":27,"13_14":20,"11_12":27,"9_10":19,"7_8":19,"6u":9},"ND":{"total":895,"20_plus":30,"19":11,"17_18":61,"15_16":100,"13_14":166,"11_12":188,"9_10":131,"7_8":116,"6u":91},"NE":{"total":85,"20_plus":17,"19":1,"17_18":7,"15_16":6,"13_14":6,"11_12":7,"9_10":10,"7_8":20,"6u":11},"NH":{"total":1184,"20_plus":302,"19":7,"17_18":50,"15_16":108,"13_14":155,"11_12":151,"9_10":168,"7_8":126,"6u":117},"NJ":{"total":1097,"20_plus":223,"19":10,"17_18":61,"15_16":145,"13_14":178,"11_12":180,"9_10":160,"7_8":82,"6u":58},"NM":{"total":192,"20_plus":65,"19":3,"17_18":8,"15_16":15,"13_14":27,"11_12":24,"9_10":16,"7_8":19,"6u":15},"NV":{"total":56,"20_plus":20,"19":0,"17_18":0,"15_16":7,"13_14":9,"11_12":5,"9_10":7,"7_8":2,"6u":6},"NY":{"total":4562,"20_plus":818,"19":59,"17_18":214,"15_16":471,"13_14":598,"11_12":655,"9_10":624,"7_8":546,"6u":577},"OH":{"total":1040,"20_plus":348,"19":8,"17_18":54,"15_16":77,"13_14":119,"11_12":144,"9_10":116,"7_8":91,"6u":83},"OK":{"total":20,"20_plus":3,"19":0,"17_18":2,"15_16":1,"13_14":4,"11_12":5,"9_10":1,"7_8":2,"6u":2},"OR":{"total":159,"20_plus":86,"19":4,"17_18":16,"15_16":16,"13_14":7,"11_12":11,"9_10":9,"7_8":6,"6u":4},"PA":{"total":1817,"20_plus":521,"19":40,"17_18":205,"15_16":227,"13_14":248,"11_12":229,"9_10":163,"7_8":116,"6u":68},"RI":{"total":755,"20_plus":105,"19":7,"17_18":29,"15_16":65,"13_14":94,"11_12":108,"9_10":104,"7_8":111,"6u":132},"SC":{"total":108,"20_plus":35,"19":1,"17_18":7,"15_16":6,"13_14":5,"11_12":9,"9_10":8,"7_8":10,"6u":27},"SD":{"total":351,"20_plus":10,"19":9,"17_18":40,"15_16":65,"13_14":57,"11_12":53,"9_10":29,"7_8":42,"6u":46},"TN":{"total":143,"20_plus":48,"19":0,"17_18":9,"15_16":15,"13_14":9,"11_12":12,"9_10":10,"7_8":15,"6u":25},"TX":{"total":518,"20_plus":253,"19":2,"17_18":30,"15_16":41,"13_14":72,"11_12":38,"9_10":48,"7_8":21,"6u":13},"UT":{"total":327,"20_plus":167,"19":10,"17_18":15,"15_16":36,"13_14":33,"11_12":22,"9_10":23,"7_8":14,"6u":7},"VA":{"total":510,"20_plus":197,"19":8,"17_18":39,"15_16":75,"13_14":48,"11_12":49,"9_10":48,"7_8":28,"6u":18},"VT":{"total":1293,"20_plus":309,"19":8,"17_18":61,"15_16":107,"13_14":181,"11_12":191,"9_10":149,"7_8":129,"6u":158},"WA":{"total":739,"20_plus":428,"19":10,"17_18":35,"15_16":28,"13_14":52,"11_12":59,"9_10":54,"7_8":31,"6u":42},"WI":{"total":3313,"20_plus":434,"19":34,"17_18":158,"15_16":318,"13_14":432,"11_12":539,"9_10":481,"7_8":418,"6u":499},"WV":{"total":122,"20_plus":15,"19":0,"17_18":9,"15_16":16,"13_14":17,"11_12":12,"9_10":15,"7_8":14,"6u":24},"WY":{"total":272,"20_plus":89,"19":7,"17_18":23,"15_16":30,"13_14":30,"11_12":23,"9_10":26,"7_8":21,"6u":23}},"2008":{"AK":{"total":1670,"20_plus":782,"19":15,"17_18":60,"15_16":81,"13_14":151,"11_12":180,"9_10":148,"7_8":120,"6u":133},"AL":{"total":100,"20_plus":46,"19":0,"17_18":5,"15_16":5,"13_14":6,"11_12":8,"9_10":16,"7_8":10,"6u":4},"AR":{"total":18,"20_plus":9,"19":0,"17_18":1,"15_16":0,"13_14":2,"11_12":2,"9_10":1,"7_8":2,"6u":1},"AZ":{"total":295,"20_plus":99,"19":1,"17_18":12,"15_16":40,"13_14":35,"11_12":48,"9_10":26,"7_8":23,"6u":11},"CA":{"total":1452,"20_plus":839,"19":22,"17_18":70,"15_16":99,"13_14":104,"11_12":99,"9_10":106,"7_8":72,"6u":41},"CO":{"total":2084,"20_plus":1049,"19":28,"17_18":88,"15_16":199,"13_14":218,"11_12":174,"9_10":143,"7_8":114,"6u":71},"CT":{"total":2197,"20_plus":292,"19":8,"17_18":116,"15_16":229,"13_14":356,"11_12":373,"9_10":308,"7_8":282,"6u":233},"DC":{"total":102,"20_plus":45,"19":2,"17_18":9,"15_16":4,"13_14":16,"11_12":9,"9_10":10,"7_8":6,"6u":1},"DE":{"total":61,"20_plus":35,"19":4,"17_18":5,"15_16":3,"13_14":7,"11_12":2,"9_10":2,"7_8":1,"6u":2},"FL":{"total":630,"20_plus":334,"19":10,"17_18":38,"15_16":42,"13_14":49,"11_12":61,"9_10":27,"7_8":25,"6u":44},"GA":{"total":156,"20_plus":63,"19":2,"17_18":7,"15_16":10,"13_14":18,"11_12":15,"9_10":16,"7_8":12,"6u":13},"HI":{"total":2,"20_plus":0,"19":0,"17_18":2,"15_16":0,"13_14":0,"11_12":0,"9_10":0,"7_8":0,"6u":0},"IA":{"total":185,"20_plus":28,"19":3,"17_18":11,"15_16":13,"13_14":19,"11_12":24,"9_10":25,"7_8":30,"6u":32},"ID":{"total":528,"20_plus":268,"19":6,"17_18":22,"15_16":46,"13_14":42,"11_12":39,"9_10":29,"7_8":42,"6u":34},"IL":{"total":2076,"20_plus":455,"19":24,"17_18":134,"15_16":240,"13_14":244,"11_12":312,"9_10":278,"7_8":230,"6u":159},"IN":{"total":292,"20_plus":98,"19":4,"17_18":6,"15_16":29,"13_14":30,"11_12":28,"9_10":36,"7_8":24,"6u":37},"KS":{"total":51,"20_plus":14,"19":0,"17_18":2,"15_16":3,"13_14":8,"11_12":11,"9_10":10,"7_8":2,"6u":1},"KY":{"total":125,"20_plus":31,"19":2,"17_18":13,"15_16":21,"13_14":18,"11_12":13,"9_10":8,"7_8":8,"6u":11},"LA":{"total":36,"20_plus":21,"19":1,"17_18":3,"15_16":2,"13_14":0,"11_12":2,"9_10":3,"7_8":0,"6u":4},"MA":{"total":7766,"20_plus":1053,"19":53,"17_18":396,"15_16":708,"13_14":1084,"11_12":1209,"9_10":1235,"7_8":1001,"6u":1027},"MD":{"total":788,"20_plus":238,"19":13,"17_18":73,"15_16":129,"13_14":104,"11_12":88,"9_10":66,"7_8":54,"6u":23},"ME":{"total":1217,"20_plus":166,"19":9,"17_18":116,"15_16":185,"13_14":199,"11_12":142,"9_10":131,"7_8":120,"6u":149},"MI":{"total":4492,"20_plus":1496,"19":60,"17_18":288,"15_16":423,"13_14":517,"11_12":499,"9_10":463,"7_8":409,"6u":337},"MN":{"total":11489,"20_plus":1330,"19":77,"17_18":326,"15_16":655,"13_14":1404,"11_12":2131,"9_10":2281,"7_8":1895,"6u":1390},"MO":{"total":371,"20_plus":110,"19":7,"17_18":19,"15_16":29,"13_14":32,"11_12":51,"9_10":43,"7_8":31,"6u":49},"MS":{"total":20,"20_plus":2,"19":0,"17_18":0,"15_16":0,"13_14":4,"11_12":5,"9_10":2,"7_8":1,"6u":6},"MT":{"total":602,"20_plus":280,"19":3,"17_18":42,"15_16":47,"13_14":50,"11_12":38,"9_10":49,"7_8":50,"6u":43},"NC":{"total":355,"20_plus":205,"19":2,"17_18":20,"15_16":27,"13_14":32,"11_12":23,"9_10":28,"7_8":11,"6u":7},"ND":{"total":887,"20_plus":21,"19":9,"17_18":54,"15_16":122,"13_14":184,"11_12":153,"9_10":133,"7_8":122,"6u":89},"NE":{"total":89,"20_plus":6,"19":0,"17_18":3,"15_16":6,"13_14":4,"11_12":16,"9_10":22,"7_8":13,"6u":19},"NH":{"total":1206,"20_plus":287,"19":1,"17_18":59,"15_16":110,"13_14":125,"11_12":190,"9_10":175,"7_8":140,"6u":119},"NJ":{"total":1125,"20_plus":224,"19":10,"17_18":94,"15_16":139,"13_14":156,"11_12":163,"9_10":146,"7_8":120,"6u":73},"NM":{"total":180,"20_plus":55,"19":2,"17_18":14,"15_16":27,"13_14":21,"11_12":17,"9_10":16,"7_8":16,"6u":12},"NV":{"total":70,"20_plus":34,"19":0,"17_18":1,"15_16":7,"13_14":6,"11_12":8,"9_10":4,"7_8":3,"6u":7},"NY":{"total":4727,"20_plus":810,"19":40,"17_18":280,"15_16":462,"13_14":640,"11_12":666,"9_10":633,"7_8":592,"6u":604},"OH":{"total":1088,"20_plus":375,"19":18,"17_18":53,"15_16":86,"13_14":128,"11_12":139,"9_10":128,"7_8":98,"6u":63},"OK":{"total":34,"20_plus":17,"19":0,"17_18":0,"15_16":3,"13_14":3,"11_12":1,"9_10":4,"7_8":4,"6u":2},"OR":{"total":123,"20_plus":63,"19":0,"17_18":10,"15_16":12,"13_14":10,"11_12":8,"9_10":13,"7_8":4,"6u":3},"PA":{"total":1999,"20_plus":611,"19":44,"17_18":206,"15_16":260,"13_14":277,"11_12":223,"9_10":180,"7_8":114,"6u":84},"RI":{"total":868,"20_plus":134,"19":4,"17_18":41,"15_16":77,"13_14":106,"11_12":95,"9_10":121,"7_8":107,"6u":183},"SC":{"total":85,"20_plus":36,"19":1,"17_18":4,"15_16":6,"13_14":10,"11_12":9,"9_10":5,"7_8":9,"6u":5},"SD":{"total":352,"20_plus":14,"19":3,"17_18":39,"15_16":65,"13_14":62,"11_12":50,"9_10":37,"7_8":42,"6u":40},"TN":{"total":136,"20_plus":53,"19":1,"17_18":12,"15_16":13,"13_14":13,"11_12":10,"9_10":10,"7_8":11,"6u":13},"TX":{"total":595,"20_plus":300,"19":4,"17_18":33,"15_16":56,"13_14":53,"11_12":51,"9_10":55,"7_8":21,"6u":22},"UT":{"total":369,"20_plus":196,"19":8,"17_18":30,"15_16":33,"13_14":33,"11_12":15,"9_10":30,"7_8":14,"6u":10},"VA":{"total":549,"20_plus":214,"19":8,"17_18":44,"15_16":56,"13_14":55,"11_12":52,"9_10":54,"7_8":44,"6u":22},"VT":{"total":1236,"20_plus":260,"19":3,"17_18":47,"15_16":80,"13_14":199,"11_12":195,"9_10":152,"7_8":140,"6u":160},"WA":{"total":814,"20_plus":485,"19":17,"17_18":29,"15_16":24,"13_14":61,"11_12":52,"9_10":58,"7_8":40,"6u":48},"WI":{"total":3311,"20_plus":492,"19":28,"17_18":163,"15_16":289,"13_14":483,"11_12":494,"9_10":434,"7_8":439,"6u":489},"WV":{"total":114,"20_plus":18,"19":0,"17_18":7,"15_16":13,"13_14":16,"11_12":11,"9_10":16,"7_8":11,"6u":22},"WY":{"total":313,"20_plus":104,"19":6,"17_18":21,"15_16":31,"13_14":27,"11_12":35,"9_10":35,"7_8":24,"6u":30}},"2009":{"AK":{"total":1752,"20_plus":828,"19":17,"17_18":43,"15_16":121,"13_14":149,"11_12":161,"9_10":151,"7_8":138,"6u":144},"AL":{"total":79,"20_plus":32,"19":1,"17_18":3,"15_16":7,"13_14":6,"11_12":8,"9_10":11,"7_8":5,"6u":6},"AR":{"total":13,"20_plus":6,"19":0,"17_18":1,"15_16":0,"13_14":0,"11_12":1,"9_10":1,"7_8":2,"6u":2},"AZ":{"total":329,"20_plus":131,"19":2,"17_18":19,"15_16":29,"13_14":34,"11_12":27,"9_10":20,"7_8":21,"6u":46},"CA":{"total":1350,"20_plus":803,"19":17,"17_18":47,"15_16":92,"13_14":96,"11_12":97,"9_10":98,"7_8":62,"6u":38},"CO":{"total":2063,"20_plus":1039,"19":27,"17_18":107,"15_16":190,"13_14":193,"11_12":191,"9_10":134,"7_8":99,"6u":83},"CT":{"total":2260,"20_plus":280,"19":22,"17_18":121,"15_16":217,"13_14":339,"11_12":362,"9_10":311,"7_8":281,"6u":327},"DC":{"total":119,"20_plus":58,"19":4,"17_18":7,"15_16":11,"13_14":16,"11_12":7,"9_10":11,"7_8":4,"6u":1},"DE":{"total":66,"20_plus":35,"19":1,"17_18":5,"15_16":5,"13_14":2,"11_12":4,"9_10":1,"7_8":3,"6u":10},"FL":{"total":559,"20_plus":307,"19":12,"17_18":18,"15_16":28,"13_14":46,"11_12":46,"9_10":32,"7_8":22,"6u":48},"GA":{"total":131,"20_plus":46,"19":3,"17_18":6,"15_16":10,"13_14":15,"11_12":13,"9_10":19,"7_8":11,"6u":8},"IA":{"total":170,"20_plus":16,"19":3,"17_18":11,"15_16":17,"13_14":28,"11_12":20,"9_10":20,"7_8":20,"6u":35},"ID":{"total":497,"20_plus":256,"19":6,"17_18":34,"15_16":37,"13_14":43,"11_12":24,"9_10":37,"7_8":31,"6u":29},"IL":{"total":2062,"20_plus":434,"19":15,"17_18":161,"15_16":222,"13_14":276,"11_12":272,"9_10":294,"7_8":212,"6u":176},"IN":{"total":324,"20_plus":63,"19":2,"17_18":16,"15_16":33,"13_14":45,"11_12":44,"9_10":43,"7_8":27,"6u":51},"KS":{"total":58,"20_plus":20,"19":0,"17_18":1,"15_16":4,"13_14":10,"11_12":11,"9_10":3,"7_8":3,"6u":6},"KY":{"total":130,"20_plus":20,"19":1,"17_18":16,"15_16":17,"13_14":19,"11_12":12,"9_10":14,"7_8":10,"6u":21},"LA":{"total":24,"20_plus":13,"19":0,"17_18":3,"15_16":0,"13_14":1,"11_12":1,"9_10":0,"7_8":2,"6u":4},"MA":{"total":8043,"20_plus":932,"19":51,"17_18":391,"15_16":753,"13_14":1125,"11_12":1247,"9_10":1233,"7_8":1160,"6u":1151},"MD":{"total":817,"20_plus":237,"19":23,"17_18":91,"15_16":135,"13_14":95,"11_12":77,"9_10":73,"7_8":53,"6u":33},"ME":{"total":1168,"20_plus":175,"19":16,"17_18":80,"15_16":141,"13_14":199,"11_12":138,"9_10":137,"7_8":118,"6u":164},"MI":{"total":4373,"20_plus":1362,"19":57,"17_18":269,"15_16":429,"13_14":463,"11_12":456,"9_10":450,"7_8":404,"6u":483},"MN":{"total":11713,"20_plus":1288,"19":72,"17_18":344,"15_16":643,"13_14":1490,"11_12":2172,"9_10":2278,"7_8":1888,"6u":1538},"MO":{"total":390,"20_plus":101,"19":5,"17_18":28,"15_16":22,"13_14":43,"11_12":44,"9_10":32,"7_8":42,"6u":73},"MS":{"total":12,"20_plus":1,"19":0,"17_18":0,"15_16":2,"13_14":2,"11_12":2,"9_10":1,"7_8":1,"6u":3},"MT":{"total":598,"20_plus":274,"19":6,"17_18":43,"15_16":44,"13_14":49,"11_12":57,"9_10":46,"7_8":45,"6u":34},"NC":{"total":353,"20_plus":190,"19":3,"17_18":15,"15_16":24,"13_14":27,"11_12":18,"9_10":37,"7_8":18,"6u":21},"ND":{"total":872,"20_plus":9,"19":7,"17_18":61,"15_16":106,"13_14":178,"11_12":138,"9_10":141,"7_8":128,"6u":104},"NE":{"total":80,"20_plus":8,"19":0,"17_18":2,"15_16":6,"13_14":11,"11_12":13,"9_10":18,"7_8":10,"6u":12},"NH":{"total":1134,"20_plus":240,"19":7,"17_18":55,"15_16":99,"13_14":155,"11_12":197,"9_10":146,"7_8":114,"6u":121},"NJ":{"total":1051,"20_plus":218,"19":14,"17_18":74,"15_16":130,"13_14":156,"11_12":166,"9_10":124,"7_8":117,"6u":52},"NM":{"total":154,"20_plus":47,"19":1,"17_18":14,"15_16":22,"13_14":11,"11_12":14,"9_10":16,"7_8":11,"6u":18},"NV":{"total":70,"20_plus":26,"19":0,"17_18":1,"15_16":7,"13_14":13,"11_12":7,"9_10":10,"7_8":1,"6u":5},"NY":{"total":5000,"20_plus":862,"19":40,"17_18":257,"15_16":525,"13_14":637,"11_12":664,"9_10":737,"7_8":619,"6u":659},"OH":{"total":1054,"20_plus":340,"19":15,"17_18":55,"15_16":93,"13_14":133,"11_12":119,"9_10":116,"7_8":100,"6u":83},"OK":{"total":39,"20_plus":16,"19":0,"17_18":2,"15_16":8,"13_14":3,"11_12":2,"9_10":4,"7_8":3,"6u":1},"OR":{"total":95,"20_plus":31,"19":1,"17_18":9,"15_16":14,"13_14":9,"11_12":8,"9_10":10,"7_8":2,"6u":11},"PA":{"total":2124,"20_plus":559,"19":62,"17_18":199,"15_16":294,"13_14":257,"11_12":234,"9_10":181,"7_8":166,"6u":172},"RI":{"total":814,"20_plus":117,"19":7,"17_18":38,"15_16":82,"13_14":104,"11_12":96,"9_10":114,"7_8":93,"6u":163},"SC":{"total":66,"20_plus":28,"19":1,"17_18":2,"15_16":3,"13_14":9,"11_12":5,"9_10":5,"7_8":5,"6u":8},"SD":{"total":330,"20_plus":25,"19":5,"17_18":31,"15_16":54,"13_14":64,"11_12":35,"9_10":38,"7_8":38,"6u":40},"TN":{"total":119,"20_plus":37,"19":2,"17_18":7,"15_16":11,"13_14":15,"11_12":11,"9_10":16,"7_8":11,"6u":9},"TX":{"total":546,"20_plus":268,"19":9,"17_18":27,"15_16":48,"13_14":41,"11_12":64,"9_10":38,"7_8":28,"6u":23},"UT":{"total":336,"20_plus":180,"19":4,"17_18":22,"15_16":29,"13_14":18,"11_12":26,"9_10":32,"7_8":14,"6u":11},"VA":{"total":560,"20_plus":203,"19":9,"17_18":57,"15_16":56,"13_14":54,"11_12":57,"9_10":58,"7_8":30,"6u":36},"VT":{"total":1297,"20_plus":244,"19":5,"17_18":56,"15_16":105,"13_14":180,"11_12":195,"9_10":157,"7_8":139,"6u":216},"WA":{"total":781,"20_plus":458,"19":10,"17_18":23,"15_16":40,"13_14":61,"11_12":50,"9_10":40,"7_8":40,"6u":59},"WI":{"total":3114,"20_plus":415,"19":27,"17_18":158,"15_16":237,"13_14":474,"11_12":470,"9_10":445,"7_8":390,"6u":498},"WV":{"total":124,"20_plus":14,"19":1,"17_18":9,"15_16":17,"13_14":12,"11_12":13,"9_10":11,"7_8":15,"6u":32},"WY":{"total":293,"20_plus":98,"19":4,"17_18":17,"15_16":30,"13_14":27,"11_12":28,"9_10":23,"7_8":23,"6u":43}},"2010":{"AK":{"total":1767,"20_plus":830,"19":18,"17_18":63,"15_16":106,"13_14":160,"11_12":152,"9_10":155,"7_8":119,"6u":164},"AL":{"total":83,"20_plus":37,"19":1,"17_18":5,"15_16":8,"13_14":5,"11_12":6,"9_10":9,"7_8":2,"6u":10},"AR":{"total":19,"20_plus":10,"19":2,"17_18":0,"15_16":1,"13_14":2,"11_12":1,"9_10":2,"7_8":0,"6u":1},"AZ":{"total":232,"20_plus":86,"19":1,"17_18":20,"15_16":23,"13_14":36,"11_12":22,"9_10":14,"7_8":12,"6u":18},"CA":{"total":1392,"20_plus":819,"19":9,"17_18":66,"15_16":81,"13_14":91,"11_12":111,"9_10":99,"7_8":71,"6u":45},"CO":{"total":2032,"20_plus":996,"19":30,"17_18":142,"15_16":170,"13_14":175,"11_12":161,"9_10":141,"7_8":125,"6u":92},"CT":{"total":2319,"20_plus":331,"19":19,"17_18":128,"15_16":227,"13_14":322,"11_12":343,"9_10":343,"7_8":305,"6u":301},"DC":{"total":124,"20_plus":59,"19":6,"17_18":7,"15_16":11,"13_14":9,"11_12":10,"9_10":10,"7_8":7,"6u":5},"DE":{"total":66,"20_plus":42,"19":2,"17_18":4,"15_16":6,"13_14":4,"11_12":2,"9_10":2,"7_8":2,"6u":2},"FL":{"total":577,"20_plus":330,"19":13,"17_18":22,"15_16":34,"13_14":51,"11_12":28,"9_10":32,"7_8":36,"6u":31},"GA":{"total":98,"20_plus":20,"19":2,"17_18":6,"15_16":11,"13_14":13,"11_12":9,"9_10":18,"7_8":9,"6u":10},"IA":{"total":203,"20_plus":35,"19":3,"17_18":18,"15_16":24,"13_14":27,"11_12":18,"9_10":24,"7_8":23,"6u":31},"ID":{"total":581,"20_plus":296,"19":9,"17_18":30,"15_16":41,"13_14":33,"11_12":54,"9_10":51,"7_8":34,"6u":33},"IL":{"total":2256,"20_plus":518,"19":36,"17_18":153,"15_16":223,"13_14":284,"11_12":283,"9_10":292,"7_8":258,"6u":209},"IN":{"total":364,"20_plus":93,"19":1,"17_18":27,"15_16":33,"13_14":43,"11_12":61,"9_10":27,"7_8":35,"6u":44},"KS":{"total":71,"20_plus":29,"19":1,"17_18":3,"15_16":8,"13_14":10,"11_12":8,"9_10":4,"7_8":4,"6u":4},"KY":{"total":141,"20_plus":31,"19":2,"17_18":16,"15_16":23,"13_14":15,"11_12":12,"9_10":11,"7_8":16,"6u":15},"LA":{"total":34,"20_plus":18,"19":1,"17_18":2,"15_16":0,"13_14":2,"11_12":0,"9_10":2,"7_8":5,"6u":4},"MA":{"total":8550,"20_plus":1102,"19":55,"17_18":443,"15_16":836,"13_14":1088,"11_12":1354,"9_10":1300,"7_8":1139,"6u":1233},"MD":{"total":862,"20_plus":272,"19":18,"17_18":90,"15_16":133,"13_14":91,"11_12":90,"9_10":82,"7_8":57,"6u":29},"ME":{"total":1163,"20_plus":205,"19":12,"17_18":78,"15_16":144,"13_14":141,"11_12":164,"9_10":139,"7_8":129,"6u":151},"MI":{"total":4429,"20_plus":1488,"19":76,"17_18":286,"15_16":446,"13_14":430,"11_12":439,"9_10":485,"7_8":365,"6u":414},"MN":{"total":12250,"20_plus":1417,"19":75,"17_18":359,"15_16":715,"13_14":1544,"11_12":2308,"9_10":2277,"7_8":1881,"6u":1674},"MO":{"total":374,"20_plus":118,"19":10,"17_18":20,"15_16":22,"13_14":45,"11_12":29,"9_10":40,"7_8":39,"6u":51},"MS":{"total":16,"20_plus":6,"19":0,"17_18":0,"15_16":4,"13_14":0,"11_12":3,"9_10":0,"7_8":1,"6u":2},"MT":{"total":691,"20_plus":325,"19":11,"17_18":37,"15_16":60,"13_14":60,"11_12":65,"9_10":59,"7_8":37,"6u":37},"NC":{"total":383,"20_plus":184,"19":5,"17_18":17,"15_16":28,"13_14":24,"11_12":41,"9_10":37,"7_8":31,"6u":16},"ND":{"total":866,"20_plus":25,"19":13,"17_18":66,"15_16":110,"13_14":142,"11_12":153,"9_10":145,"7_8":105,"6u":107},"NE":{"total":94,"20_plus":19,"19":1,"17_18":7,"15_16":5,"13_14":9,"11_12":14,"9_10":12,"7_8":9,"6u":18},"NH":{"total":1126,"20_plus":237,"19":4,"17_18":55,"15_16":88,"13_14":172,"11_12":173,"9_10":158,"7_8":99,"6u":140},"NJ":{"total":1069,"20_plus":234,"19":10,"17_18":90,"15_16":128,"13_14":143,"11_12":152,"9_10":156,"7_8":102,"6u":54},"NM":{"total":166,"20_plus":50,"19":3,"17_18":12,"15_16":15,"13_14":13,"11_12":14,"9_10":22,"7_8":17,"6u":20},"NV":{"total":72,"20_plus":22,"19":0,"17_18":5,"15_16":11,"13_14":5,"11_12":8,"9_10":7,"7_8":6,"6u":8},"NY":{"total":5264,"20_plus":1029,"19":70,"17_18":271,"15_16":516,"13_14":611,"11_12":700,"9_10":709,"7_8":634,"6u":724},"OH":{"total":1059,"20_plus":360,"19":18,"17_18":62,"15_16":101,"13_14":105,"11_12":113,"9_10":133,"7_8":88,"6u":79},"OK":{"total":39,"20_plus":18,"19":0,"17_18":3,"15_16":2,"13_14":3,"11_12":3,"9_10":5,"7_8":5,"6u":0},"OR":{"total":110,"20_plus":56,"19":3,"17_18":8,"15_16":11,"13_14":10,"11_12":10,"9_10":7,"7_8":4,"6u":1},"PA":{"total":2156,"20_plus":640,"19":40,"17_18":199,"15_16":271,"13_14":257,"11_12":231,"9_10":209,"7_8":166,"6u":143},"RI":{"total":832,"20_plus":136,"19":11,"17_18":43,"15_16":84,"13_14":81,"11_12":114,"9_10":87,"7_8":92,"6u":184},"SC":{"total":59,"20_plus":19,"19":0,"17_18":1,"15_16":6,"13_14":11,"11_12":5,"9_10":7,"7_8":6,"6u":4},"SD":{"total":342,"20_plus":21,"19":1,"17_18":38,"15_16":63,"13_14":55,"11_12":42,"9_10":46,"7_8":40,"6u":36},"TN":{"total":123,"20_plus":39,"19":5,"17_18":3,"15_16":14,"13_14":6,"11_12":14,"9_10":24,"7_8":8,"6u":10},"TX":{"total":587,"20_plus":310,"19":7,"17_18":32,"15_16":47,"13_14":40,"11_12":55,"9_10":46,"7_8":28,"6u":22},"UT":{"total":355,"20_plus":193,"19":9,"17_18":25,"15_16":27,"13_14":18,"11_12":32,"9_10":33,"7_8":9,"6u":9},"VA":{"total":534,"20_plus":185,"19":19,"17_18":32,"15_16":59,"13_14":53,"11_12":58,"9_10":63,"7_8":37,"6u":28},"VT":{"total":1240,"20_plus":227,"19":7,"17_18":55,"15_16":77,"13_14":180,"11_12":187,"9_10":153,"7_8":145,"6u":209},"WA":{"total":817,"20_plus":476,"19":21,"17_18":21,"15_16":54,"13_14":50,"11_12":52,"9_10":41,"7_8":47,"6u":55},"WI":{"total":3196,"20_plus":478,"19":29,"17_18":168,"15_16":261,"13_14":453,"11_12":452,"9_10":470,"7_8":395,"6u":490},"WV":{"total":135,"20_plus":18,"19":1,"17_18":10,"15_16":11,"13_14":12,"11_12":16,"9_10":16,"7_8":22,"6u":29},"WY":{"total":294,"20_plus":94,"19":3,"17_18":22,"15_16":21,"13_14":31,"11_12":30,"9_10":28,"7_8":35,"6u":30}},"2011":{"AK":{"total":1870,"20_plus":926,"19":15,"17_18":65,"15_16":112,"13_14":138,"11_12":132,"9_10":165,"7_8":133,"6u":184},"AL":{"total":95,"20_plus":41,"19":1,"17_18":3,"15_16":3,"13_14":8,"11_12":10,"9_10":9,"7_8":7,"6u":13},"AR":{"total":24,"20_plus":10,"19":0,"17_18":1,"15_16":1,"13_14":3,"11_12":1,"9_10":4,"7_8":0,"6u":4},"AZ":{"total":260,"20_plus":96,"19":4,"17_18":11,"15_16":28,"13_14":35,"11_12":22,"9_10":22,"7_8":20,"6u":22},"CA":{"total":1661,"20_plus":962,"19":23,"17_18":78,"15_16":85,"13_14":113,"11_12":126,"9_10":114,"7_8":88,"6u":72},"CO":{"total":2110,"20_plus":1072,"19":29,"17_18":113,"15_16":159,"13_14":181,"11_12":171,"9_10":156,"7_8":132,"6u":97},"CT":{"total":2333,"20_plus":380,"19":25,"17_18":111,"15_16":207,"13_14":300,"11_12":353,"9_10":358,"7_8":298,"6u":301},"DC":{"total":137,"20_plus":70,"19":7,"17_18":5,"15_16":9,"13_14":8,"11_12":10,"9_10":12,"7_8":9,"6u":7},"DE":{"total":67,"20_plus":43,"19":1,"17_18":8,"15_16":3,"13_14":5,"11_12":2,"9_10":4,"7_8":0,"6u":1},"FL":{"total":609,"20_plus":340,"19":11,"17_18":25,"15_16":41,"13_14":37,"11_12":38,"9_10":55,"7_8":36,"6u":26},"GA":{"total":154,"20_plus":55,"19":2,"17_18":5,"15_16":17,"13_14":11,"11_12":17,"9_10":20,"7_8":19,"6u":8},"IA":{"total":213,"20_plus":43,"19":4,"17_18":16,"15_16":26,"13_14":17,"11_12":27,"9_10":19,"7_8":26,"6u":35},"ID":{"total":575,"20_plus":284,"19":12,"17_18":27,"15_16":37,"13_14":44,"11_12":55,"9_10":37,"7_8":40,"6u":39},"IL":{"total":2516,"20_plus":562,"19":33,"17_18":166,"15_16":252,"13_14":275,"11_12":336,"9_10":345,"7_8":306,"6u":241},"IN":{"total":357,"20_plus":101,"19":1,"17_18":23,"15_16":34,"13_14":38,"11_12":43,"9_10":35,"7_8":36,"6u":46},"KS":{"total":93,"20_plus":25,"19":0,"17_18":4,"15_16":10,"13_14":9,"11_12":12,"9_10":10,"7_8":13,"6u":10},"KY":{"total":139,"20_plus":35,"19":3,"17_18":14,"15_16":25,"13_14":15,"11_12":14,"9_10":15,"7_8":11,"6u":7},"LA":{"total":29,"20_plus":13,"19":1,"17_18":2,"15_16":0,"13_14":1,"11_12":1,"9_10":2,"7_8":3,"6u":6},"MA":{"total":9102,"20_plus":1297,"19":65,"17_18":432,"15_16":838,"13_14":1147,"11_12":1313,"9_10":1373,"7_8":1220,"6u":1417},"MD":{"total":891,"20_plus":299,"19":17,"17_18":66,"15_16":109,"13_14":96,"11_12":90,"9_10":93,"7_8":75,"6u":46},"ME":{"total":1226,"20_plus":219,"19":17,"17_18":67,"15_16":130,"13_14":152,"11_12":172,"9_10":153,"7_8":135,"6u":181},"MI":{"total":4883,"20_plus":1697,"19":89,"17_18":296,"15_16":406,"13_14":457,"11_12":485,"9_10":543,"7_8":419,"6u":491},"MN":{"total":12573,"20_plus":1518,"19":68,"17_18":354,"15_16":737,"13_14":1564,"11_12":2328,"9_10":2229,"7_8":1959,"6u":1816},"MO":{"total":426,"20_plus":145,"19":5,"17_18":19,"15_16":30,"13_14":39,"11_12":36,"9_10":46,"7_8":51,"6u":55},"MS":{"total":17,"20_plus":7,"19":0,"17_18":1,"15_16":1,"13_14":1,"11_12":2,"9_10":3,"7_8":1,"6u":1},"MT":{"total":786,"20_plus":387,"19":8,"17_18":48,"15_16":59,"13_14":63,"11_12":53,"9_10":74,"7_8":38,"6u":56},"NC":{"total":403,"20_plus":187,"19":5,"17_18":14,"15_16":30,"13_14":29,"11_12":37,"9_10":44,"7_8":31,"6u":26},"ND":{"total":1005,"20_plus":42,"19":12,"17_18":62,"15_16":116,"13_14":131,"11_12":179,"9_10":186,"7_8":134,"6u":143},"NE":{"total":124,"20_plus":15,"19":0,"17_18":3,"15_16":10,"13_14":6,"11_12":23,"9_10":12,"7_8":23,"6u":32},"NH":{"total":1138,"20_plus":240,"19":8,"17_18":66,"15_16":97,"13_14":172,"11_12":161,"9_10":141,"7_8":105,"6u":148},"NJ":{"total":1107,"20_plus":228,"19":22,"17_18":64,"15_16":98,"13_14":141,"11_12":154,"9_10":178,"7_8":127,"6u":95},"NM":{"total":203,"20_plus":66,"19":5,"17_18":10,"15_16":17,"13_14":12,"11_12":24,"9_10":20,"7_8":27,"6u":22},"NV":{"total":87,"20_plus":27,"19":2,"17_18":4,"15_16":9,"13_14":12,"11_12":10,"9_10":5,"7_8":10,"6u":8},"NY":{"total":5534,"20_plus":1090,"19":54,"17_18":309,"15_16":501,"13_14":600,"11_12":770,"9_10":725,"7_8":709,"6u":776},"OH":{"total":1101,"20_plus":396,"19":16,"17_18":68,"15_16":99,"13_14":94,"11_12":121,"9_10":125,"7_8":102,"6u":80},"OK":{"total":38,"20_plus":14,"19":2,"17_18":2,"15_16":3,"13_14":3,"11_12":7,"9_10":1,"7_8":4,"6u":2},"OR":{"total":104,"20_plus":51,"19":1,"17_18":8,"15_16":9,"13_14":10,"11_12":8,"9_10":4,"7_8":7,"6u":6},"PA":{"total":2530,"20_plus":691,"19":63,"17_18":211,"15_16":314,"13_14":249,"11_12":253,"9_10":259,"7_8":216,"6u":274},"RI":{"total":827,"20_plus":137,"19":8,"17_18":47,"15_16":77,"13_14":84,"11_12":113,"9_10":94,"7_8":87,"6u":180},"SC":{"total":79,"20_plus":26,"19":1,"17_18":3,"15_16":9,"13_14":10,"11_12":8,"9_10":3,"7_8":11,"6u":8},"SD":{"total":395,"20_plus":18,"19":3,"17_18":46,"15_16":69,"13_14":50,"11_12":51,"9_10":58,"7_8":54,"6u":46},"TN":{"total":137,"20_plus":30,"19":2,"17_18":8,"15_16":12,"13_14":13,"11_12":17,"9_10":18,"7_8":13,"6u":24},"TX":{"total":703,"20_plus":373,"19":8,"17_18":41,"15_16":37,"13_14":68,"11_12":51,"9_10":55,"7_8":38,"6u":32},"UT":{"total":368,"20_plus":200,"19":8,"17_18":21,"15_16":19,"13_14":26,"11_12":34,"9_10":29,"7_8":16,"6u":15},"VA":{"total":599,"20_plus":230,"19":5,"17_18":33,"15_16":49,"13_14":58,"11_12":70,"9_10":55,"7_8":54,"6u":45},"VT":{"total":1341,"20_plus":225,"19":10,"17_18":56,"15_16":90,"13_14":187,"11_12":197,"9_10":168,"7_8":154,"6u":254},"WA":{"total":852,"20_plus":509,"19":10,"17_18":26,"15_16":51,"13_14":48,"11_12":34,"9_10":56,"7_8":56,"6u":62},"WI":{"total":3328,"20_plus":572,"19":36,"17_18":149,"15_16":266,"13_14":415,"11_12":458,"9_10":473,"7_8":443,"6u":516},"WV":{"total":132,"20_plus":16,"19":1,"17_18":6,"15_16":11,"13_14":16,"11_12":6,"9_10":18,"7_8":19,"6u":39},"WY":{"total":328,"20_plus":91,"19":4,"17_18":27,"15_16":29,"13_14":42,"11_12":40,"9_10":26,"7_8":36,"6u":33}},"2012":{"AK":{"total":1859,"20_plus":920,"19":23,"17_18":68,"15_16":121,"13_14":132,"11_12":142,"9_10":162,"7_8":127,"6u":164},"AL":{"total":101,"20_plus":40,"19":2,"17_18":3,"15_16":7,"13_14":11,"11_12":8,"9_10":6,"7_8":15,"6u":9},"AR":{"total":18,"20_plus":9,"19":0,"17_18":0,"15_16":1,"13_14":1,"11_12":3,"9_10":2,"7_8":1,"6u":1},"AZ":{"total":314,"20_plus":119,"19":1,"17_18":18,"15_16":39,"13_14":30,"11_12":29,"9_10":29,"7_8":16,"6u":33},"CA":{"total":1676,"20_plus":920,"19":26,"17_18":66,"15_16":95,"13_14":118,"11_12":146,"9_10":126,"7_8":115,"6u":64},"CO":{"total":2220,"20_plus":1106,"19":35,"17_18":129,"15_16":142,"13_14":183,"11_12":173,"9_10":185,"7_8":149,"6u":118},"CT":{"total":2482,"20_plus":415,"19":32,"17_18":113,"15_16":215,"13_14":292,"11_12":369,"9_10":359,"7_8":333,"6u":354},"DC":{"total":150,"20_plus":77,"19":1,"17_18":5,"15_16":9,"13_14":11,"11_12":18,"9_10":12,"7_8":12,"6u":5},"DE":{"total":87,"20_plus":60,"19":1,"17_18":9,"15_16":6,"13_14":1,"11_12":4,"9_10":3,"7_8":2,"6u":1},"FL":{"total":628,"20_plus":334,"19":9,"17_18":22,"15_16":36,"13_14":34,"11_12":49,"9_10":68,"7_8":42,"6u":34},"GA":{"total":164,"20_plus":70,"19":0,"17_18":10,"15_16":12,"13_14":9,"11_12":20,"9_10":21,"7_8":15,"6u":7},"IA":{"total":249,"20_plus":47,"19":4,"17_18":22,"15_16":25,"13_14":24,"11_12":27,"9_10":32,"7_8":24,"6u":44},"ID":{"total":582,"20_plus":293,"19":2,"17_18":27,"15_16":32,"13_14":45,"11_12":51,"9_10":40,"7_8":44,"6u":48},"IL":{"total":2543,"20_plus":567,"19":25,"17_18":168,"15_16":252,"13_14":288,"11_12":335,"9_10":365,"7_8":303,"6u":240},"IN":{"total":367,"20_plus":115,"19":7,"17_18":16,"15_16":21,"13_14":52,"11_12":41,"9_10":41,"7_8":40,"6u":34},"KS":{"total":108,"20_plus":28,"19":0,"17_18":4,"15_16":11,"13_14":10,"11_12":13,"9_10":13,"7_8":14,"6u":15},"KY":{"total":122,"20_plus":31,"19":7,"17_18":10,"15_16":15,"13_14":10,"11_12":15,"9_10":16,"7_8":7,"6u":11},"LA":{"total":31,"20_plus":16,"19":1,"17_18":0,"15_16":1,"13_14":2,"11_12":1,"9_10":1,"7_8":2,"6u":7},"MA":{"total":9564,"20_plus":1238,"19":61,"17_18":485,"15_16":792,"13_14":1249,"11_12":1399,"9_10":1471,"7_8":1334,"6u":1535},"MD":{"total":933,"20_plus":307,"19":22,"17_18":68,"15_16":88,"13_14":92,"11_12":121,"9_10":100,"7_8":73,"6u":62},"ME":{"total":1147,"20_plus":173,"19":8,"17_18":57,"15_16":104,"13_14":156,"11_12":178,"9_10":154,"7_8":131,"6u":186},"MI":{"total":4620,"20_plus":1654,"19":87,"17_18":251,"15_16":377,"13_14":419,"11_12":512,"9_10":470,"7_8":417,"6u":433},"MN":{"total":12697,"20_plus":1546,"19":68,"17_18":368,"15_16":760,"13_14":1615,"11_12":2324,"9_10":2191,"7_8":2012,"6u":1813},"MO":{"total":483,"20_plus":136,"19":3,"17_18":11,"15_16":46,"13_14":51,"11_12":51,"9_10":62,"7_8":57,"6u":66},"MS":{"total":25,"20_plus":7,"19":0,"17_18":2,"15_16":0,"13_14":2,"11_12":2,"9_10":7,"7_8":4,"6u":1},"MT":{"total":873,"20_plus":432,"19":16,"17_18":42,"15_16":57,"13_14":63,"11_12":73,"9_10":70,"7_8":63,"6u":57},"NC":{"total":467,"20_plus":215,"19":9,"17_18":20,"15_16":18,"13_14":46,"11_12":47,"9_10":52,"7_8":30,"6u":30},"ND":{"total":1075,"20_plus":42,"19":9,"17_18":63,"15_16":98,"13_14":148,"11_12":180,"9_10":209,"7_8":155,"6u":171},"NE":{"total":125,"20_plus":15,"19":0,"17_18":3,"15_16":5,"13_14":15,"11_12":17,"9_10":14,"7_8":26,"6u":30},"NH":{"total":1142,"20_plus":240,"19":9,"17_18":38,"15_16":99,"13_14":167,"11_12":184,"9_10":144,"7_8":108,"6u":153},"NJ":{"total":1194,"20_plus":219,"19":27,"17_18":76,"15_16":115,"13_14":150,"11_12":193,"9_10":190,"7_8":141,"6u":83},"NM":{"total":190,"20_plus":70,"19":2,"17_18":8,"15_16":15,"13_14":14,"11_12":17,"9_10":25,"7_8":19,"6u":20},"NV":{"total":66,"20_plus":20,"19":0,"17_18":7,"15_16":3,"13_14":9,"11_12":5,"9_10":8,"7_8":10,"6u":4},"NY":{"total":5477,"20_plus":1010,"19":66,"17_18":272,"15_16":463,"13_14":615,"11_12":756,"9_10":780,"7_8":739,"6u":776},"OH":{"total":1065,"20_plus":366,"19":13,"17_18":67,"15_16":91,"13_14":90,"11_12":120,"9_10":123,"7_8":117,"6u":78},"OK":{"total":36,"20_plus":9,"19":0,"17_18":0,"15_16":2,"13_14":2,"11_12":10,"9_10":3,"7_8":7,"6u":3},"OR":{"total":102,"20_plus":52,"19":0,"17_18":9,"15_16":8,"13_14":9,"11_12":7,"9_10":4,"7_8":4,"6u":9},"PA":{"total":2715,"20_plus":729,"19":63,"17_18":222,"15_16":289,"13_14":302,"11_12":324,"9_10":280,"7_8":242,"6u":264},"RI":{"total":796,"20_plus":128,"19":12,"17_18":29,"15_16":43,"13_14":110,"11_12":92,"9_10":100,"7_8":111,"6u":171},"SC":{"total":58,"20_plus":18,"19":0,"17_18":3,"15_16":5,"13_14":6,"11_12":1,"9_10":8,"7_8":7,"6u":10},"SD":{"total":423,"20_plus":18,"19":6,"17_18":44,"15_16":64,"13_14":61,"11_12":56,"9_10":60,"7_8":49,"6u":65},"TN":{"total":131,"20_plus":33,"19":1,"17_18":5,"15_16":3,"13_14":15,"11_12":21,"9_10":18,"7_8":16,"6u":19},"TX":{"total":694,"20_plus":369,"19":10,"17_18":32,"15_16":38,"13_14":58,"11_12":66,"9_10":53,"7_8":37,"6u":31},"UT":{"total":417,"20_plus":218,"19":7,"17_18":20,"15_16":23,"13_14":40,"11_12":34,"9_10":27,"7_8":31,"6u":17},"VA":{"total":624,"20_plus":231,"19":6,"17_18":43,"15_16":39,"13_14":70,"11_12":71,"9_10":70,"7_8":58,"6u":36},"VT":{"total":1229,"20_plus":204,"19":15,"17_18":64,"15_16":85,"13_14":184,"11_12":171,"9_10":149,"7_8":152,"6u":205},"WA":{"total":814,"20_plus":454,"19":8,"17_18":34,"15_16":39,"13_14":52,"11_12":47,"9_10":60,"7_8":60,"6u":60},"WI":{"total":3352,"20_plus":569,"19":25,"17_18":172,"15_16":223,"13_14":383,"11_12":482,"9_10":471,"7_8":444,"6u":583},"WV":{"total":108,"20_plus":10,"19":2,"17_18":3,"15_16":6,"13_14":10,"11_12":13,"9_10":14,"7_8":13,"6u":37},"WY":{"total":349,"20_plus":87,"19":6,"17_18":22,"15_16":42,"13_14":46,"11_12":27,"9_10":36,"7_8":38,"6u":45}},"2013":{"AK":{"total":1763,"20_plus":884,"19":26,"17_18":72,"15_16":94,"13_14":129,"11_12":137,"9_10":135,"7_8":112,"6u":174},"AL":{"total":79,"20_plus":35,"19":2,"17_18":4,"15_16":3,"13_14":9,"11_12":7,"9_10":5,"7_8":6,"6u":8},"AR":{"total":19,"20_plus":4,"19":1,"17_18":3,"15_16":2,"13_14":0,"11_12":2,"9_10":1,"7_8":3,"6u":3},"AZ":{"total":301,"20_plus":118,"19":3,"17_18":22,"15_16":33,"13_14":31,"11_12":26,"9_10":30,"7_8":13,"6u":25},"CA":{"total":1766,"20_plus":1022,"19":21,"17_18":62,"15_16":100,"13_14":138,"11_12":131,"9_10":125,"7_8":98,"6u":69},"CO":{"total":2149,"20_plus":1055,"19":52,"17_18":108,"15_16":154,"13_14":164,"11_12":181,"9_10":181,"7_8":132,"6u":122},"CT":{"total":2379,"20_plus":371,"19":17,"17_18":108,"15_16":200,"13_14":309,"11_12":372,"9_10":378,"7_8":308,"6u":316},"DC":{"total":160,"20_plus":82,"19":0,"17_18":6,"15_16":6,"13_14":12,"11_12":12,"9_10":16,"7_8":15,"6u":11},"DE":{"total":78,"20_plus":47,"19":3,"17_18":3,"15_16":6,"13_14":6,"11_12":5,"9_10":2,"7_8":4,"6u":2},"FL":{"total":623,"20_plus":320,"19":3,"17_18":28,"15_16":26,"13_14":41,"11_12":60,"9_10":56,"7_8":41,"6u":48},"GA":{"total":140,"20_plus":55,"19":1,"17_18":6,"15_16":7,"13_14":14,"11_12":22,"9_10":18,"7_8":10,"6u":7},"IA":{"total":259,"20_plus":52,"19":14,"17_18":19,"15_16":17,"13_14":29,"11_12":30,"9_10":37,"7_8":24,"6u":37},"ID":{"total":584,"20_plus":306,"19":6,"17_18":26,"15_16":37,"13_14":47,"11_12":37,"9_10":43,"7_8":47,"6u":35},"IL":{"total":2593,"20_plus":612,"19":32,"17_18":165,"15_16":246,"13_14":311,"11_12":317,"9_10":388,"7_8":296,"6u":226},"IN":{"total":405,"20_plus":126,"19":10,"17_18":22,"15_16":26,"13_14":46,"11_12":49,"9_10":48,"7_8":42,"6u":36},"KS":{"total":83,"20_plus":23,"19":2,"17_18":4,"15_16":10,"13_14":9,"11_12":7,"9_10":8,"7_8":11,"6u":9},"KY":{"total":135,"20_plus":47,"19":0,"17_18":16,"15_16":15,"13_14":12,"11_12":10,"9_10":12,"7_8":11,"6u":12},"LA":{"total":37,"20_plus":25,"19":0,"17_18":0,"15_16":2,"13_14":0,"11_12":2,"9_10":2,"7_8":3,"6u":3},"MA":{"total":9462,"20_plus":1247,"19":45,"17_18":481,"15_16":885,"13_14":1244,"11_12":1502,"9_10":1448,"7_8":1265,"6u":1345},"MD":{"total":955,"20_plus":318,"19":14,"17_18":60,"15_16":81,"13_14":115,"11_12":128,"9_10":114,"7_8":70,"6u":55},"ME":{"total":1114,"20_plus":156,"19":14,"17_18":62,"15_16":84,"13_14":153,"11_12":179,"9_10":164,"7_8":131,"6u":171},"MI":{"total":4648,"20_plus":1666,"19":81,"17_18":255,"15_16":396,"13_14":440,"11_12":492,"9_10":454,"7_8":431,"6u":433},"MN":{"total":12358,"20_plus":1649,"19":82,"17_18":349,"15_16":734,"13_14":1628,"11_12":2186,"9_10":2124,"7_8":1914,"6u":1692},"MO":{"total":469,"20_plus":136,"19":2,"17_18":19,"15_16":34,"13_14":27,"11_12":45,"9_10":72,"7_8":59,"6u":75},"MS":{"total":18,"20_plus":5,"19":1,"17_18":0,"15_16":1,"13_14":3,"11_12":2,"9_10":1,"7_8":3,"6u":2},"MT":{"total":857,"20_plus":444,"19":5,"17_18":46,"15_16":62,"13_14":55,"11_12":83,"9_10":50,"7_8":55,"6u":57},"NC":{"total":433,"20_plus":186,"19":4,"17_18":19,"15_16":24,"13_14":45,"11_12":45,"9_10":48,"7_8":33,"6u":29},"ND":{"total":1080,"20_plus":34,"19":5,"17_18":61,"15_16":81,"13_14":160,"11_12":204,"9_10":205,"7_8":167,"6u":163},"NE":{"total":127,"20_plus":7,"19":1,"17_18":7,"15_16":5,"13_14":20,"11_12":17,"9_10":17,"7_8":28,"6u":25},"NH":{"total":1037,"20_plus":162,"19":8,"17_18":59,"15_16":124,"13_14":149,"11_12":151,"9_10":123,"7_8":122,"6u":139},"NJ":{"total":1209,"20_plus":246,"19":13,"17_18":64,"15_16":112,"13_14":175,"11_12":209,"9_10":172,"7_8":142,"6u":76},"NM":{"total":189,"20_plus":71,"19":1,"17_18":11,"15_16":10,"13_14":20,"11_12":19,"9_10":21,"7_8":16,"6u":20},"NV":{"total":68,"20_plus":29,"19":0,"17_18":3,"15_16":6,"13_14":6,"11_12":4,"9_10":11,"7_8":4,"6u":5},"NY":{"total":5409,"20_plus":1015,"19":63,"17_18":277,"15_16":451,"13_14":673,"11_12":760,"9_10":777,"7_8":653,"6u":740},"OH":{"total":1044,"20_plus":342,"19":17,"17_18":65,"15_16":72,"13_14":103,"11_12":130,"9_10":131,"7_8":111,"6u":73},"OK":{"total":39,"20_plus":12,"19":1,"17_18":2,"15_16":2,"13_14":8,"11_12":3,"9_10":8,"7_8":3,"6u":0},"OR":{"total":150,"20_plus":84,"19":0,"17_18":9,"15_16":9,"13_14":11,"11_12":6,"9_10":9,"7_8":11,"6u":11},"PA":{"total":2521,"20_plus":696,"19":55,"17_18":214,"15_16":259,"13_14":276,"11_12":327,"9_10":250,"7_8":231,"6u":213},"RI":{"total":708,"20_plus":116,"19":7,"17_18":43,"15_16":59,"13_14":94,"11_12":92,"9_10":78,"7_8":93,"6u":126},"SC":{"total":66,"20_plus":22,"19":0,"17_18":5,"15_16":9,"13_14":4,"11_12":3,"9_10":9,"7_8":2,"6u":12},"SD":{"total":424,"20_plus":27,"19":2,"17_18":52,"15_16":56,"13_14":51,"11_12":59,"9_10":59,"7_8":49,"6u":69},"TN":{"total":142,"20_plus":53,"19":0,"17_18":4,"15_16":11,"13_14":17,"11_12":18,"9_10":14,"7_8":17,"6u":8},"TX":{"total":721,"20_plus":399,"19":9,"17_18":26,"15_16":53,"13_14":53,"11_12":49,"9_10":61,"7_8":37,"6u":34},"UT":{"total":412,"20_plus":208,"19":7,"17_18":15,"15_16":32,"13_14":45,"11_12":30,"9_10":44,"7_8":20,"6u":11},"VA":{"total":643,"20_plus":236,"19":13,"17_18":23,"15_16":57,"13_14":75,"11_12":70,"9_10":81,"7_8":41,"6u":47},"VT":{"total":1305,"20_plus":302,"19":13,"17_18":46,"15_16":70,"13_14":170,"11_12":182,"9_10":176,"7_8":152,"6u":194},"WA":{"total":848,"20_plus":497,"19":13,"17_18":30,"15_16":37,"13_14":36,"11_12":56,"9_10":61,"7_8":49,"6u":69},"WI":{"total":3188,"20_plus":564,"19":19,"17_18":169,"15_16":209,"13_14":376,"11_12":485,"9_10":459,"7_8":402,"6u":505},"WV":{"total":134,"20_plus":16,"19":1,"17_18":8,"15_16":14,"13_14":9,"11_12":15,"9_10":19,"7_8":16,"6u":36},"WY":{"total":369,"20_plus":123,"19":3,"17_18":27,"15_16":39,"13_14":40,"11_12":30,"9_10":36,"7_8":26,"6u":45}},"2014":{"AK":{"total":1811,"20_plus":925,"19":17,"17_18":63,"15_16":108,"13_14":122,"11_12":130,"9_10":121,"7_8":116,"6u":209},"AL":{"total":85,"20_plus":33,"19":3,"17_18":1,"15_16":7,"13_14":6,"11_12":3,"9_10":12,"7_8":4,"6u":16},"AR":{"total":19,"20_plus":6,"19":0,"17_18":1,"15_16":1,"13_14":1,"11_12":2,"9_10":1,"7_8":1,"6u":6},"AZ":{"total":305,"20_plus":118,"19":1,"17_18":22,"15_16":29,"13_14":24,"11_12":41,"9_10":24,"7_8":19,"6u":27},"CA":{"total":1825,"20_plus":1042,"19":18,"17_18":57,"15_16":111,"13_14":154,"11_12":127,"9_10":136,"7_8":99,"6u":81},"CO":{"total":2193,"20_plus":1112,"19":34,"17_18":99,"15_16":144,"13_14":165,"11_12":196,"9_10":171,"7_8":154,"6u":118},"CT":{"total":2435,"20_plus":358,"19":25,"17_18":112,"15_16":195,"13_14":316,"11_12":385,"9_10":398,"7_8":296,"6u":350},"DC":{"total":176,"20_plus":81,"19":6,"17_18":6,"15_16":10,"13_14":11,"11_12":13,"9_10":23,"7_8":18,"6u":8},"DE":{"total":71,"20_plus":40,"19":1,"17_18":6,"15_16":1,"13_14":6,"11_12":3,"9_10":5,"7_8":4,"6u":5},"FL":{"total":640,"20_plus":345,"19":14,"17_18":26,"15_16":31,"13_14":45,"11_12":59,"9_10":52,"7_8":39,"6u":29},"GA":{"total":129,"20_plus":54,"19":1,"17_18":6,"15_16":5,"13_14":8,"11_12":22,"9_10":20,"7_8":5,"6u":8},"IA":{"total":283,"20_plus":71,"19":10,"17_18":24,"15_16":26,"13_14":28,"11_12":34,"9_10":25,"7_8":25,"6u":40},"ID":{"total":619,"20_plus":327,"19":5,"17_18":20,"15_16":33,"13_14":51,"11_12":36,"9_10":54,"7_8":50,"6u":43},"IL":{"total":2758,"20_plus":655,"19":36,"17_18":170,"15_16":263,"13_14":322,"11_12":358,"9_10":386,"7_8":298,"6u":270},"IN":{"total":428,"20_plus":99,"19":3,"17_18":21,"15_16":34,"13_14":37,"11_12":45,"9_10":48,"7_8":48,"6u":93},"KS":{"total":100,"20_plus":30,"19":1,"17_18":8,"15_16":9,"13_14":8,"11_12":13,"9_10":8,"7_8":10,"6u":13},"KY":{"total":145,"20_plus":53,"19":1,"17_18":13,"15_16":10,"13_14":12,"11_12":16,"9_10":11,"7_8":13,"6u":16},"LA":{"total":45,"20_plus":28,"19":0,"17_18":0,"15_16":0,"13_14":1,"11_12":1,"9_10":2,"7_8":4,"6u":9},"MA":{"total":9816,"20_plus":1368,"19":63,"17_18":480,"15_16":986,"13_14":1347,"11_12":1501,"9_10":1484,"7_8":1231,"6u":1356},"MD":{"total":1023,"20_plus":322,"19":25,"17_18":51,"15_16":99,"13_14":140,"11_12":137,"9_10":112,"7_8":81,"6u":56},"ME":{"total":1053,"20_plus":175,"19":5,"17_18":34,"15_16":95,"13_14":169,"11_12":165,"9_10":129,"7_8":121,"6u":160},"MI":{"total":4613,"20_plus":1665,"19":75,"17_18":266,"15_16":364,"13_14":469,"11_12":442,"9_10":465,"7_8":399,"6u":468},"MN":{"total":12561,"20_plus":1817,"19":68,"17_18":364,"15_16":698,"13_14":1654,"11_12":2141,"9_10":2106,"7_8":1896,"6u":1817},"MO":{"total":492,"20_plus":153,"19":2,"17_18":19,"15_16":29,"13_14":37,"11_12":58,"9_10":51,"7_8":59,"6u":84},"MS":{"total":21,"20_plus":9,"19":0,"17_18":0,"15_16":0,"13_14":1,"11_12":3,"9_10":1,"7_8":4,"6u":3},"MT":{"total":884,"20_plus":450,"19":11,"17_18":39,"15_16":67,"13_14":65,"11_12":49,"9_10":63,"7_8":61,"6u":79},"NC":{"total":436,"20_plus":186,"19":4,"17_18":15,"15_16":29,"13_14":37,"11_12":46,"9_10":44,"7_8":38,"6u":37},"ND":{"total":1160,"20_plus":43,"19":11,"17_18":62,"15_16":113,"13_14":152,"11_12":219,"9_10":177,"7_8":188,"6u":195},"NE":{"total":137,"20_plus":7,"19":1,"17_18":5,"15_16":16,"13_14":17,"11_12":17,"9_10":22,"7_8":27,"6u":25},"NH":{"total":1106,"20_plus":184,"19":6,"17_18":66,"15_16":118,"13_14":161,"11_12":134,"9_10":147,"7_8":126,"6u":164},"NJ":{"total":1316,"20_plus":295,"19":22,"17_18":63,"15_16":118,"13_14":192,"11_12":200,"9_10":179,"7_8":150,"6u":97},"NM":{"total":189,"20_plus":69,"19":2,"17_18":10,"15_16":12,"13_14":17,"11_12":20,"9_10":20,"7_8":20,"6u":19},"NV":{"total":54,"20_plus":28,"19":0,"17_18":0,"15_16":5,"13_14":3,"11_12":5,"9_10":5,"7_8":6,"6u":2},"NY":{"total":5344,"20_plus":1059,"19":57,"17_18":262,"15_16":472,"13_14":654,"11_12":718,"9_10":765,"7_8":598,"6u":759},"OH":{"total":1026,"20_plus":338,"19":13,"17_18":55,"15_16":70,"13_14":116,"11_12":128,"9_10":134,"7_8":94,"6u":78},"OK":{"total":23,"20_plus":5,"19":0,"17_18":1,"15_16":2,"13_14":6,"11_12":2,"9_10":5,"7_8":2,"6u":0},"OR":{"total":198,"20_plus":114,"19":5,"17_18":8,"15_16":11,"13_14":10,"11_12":9,"9_10":14,"7_8":13,"6u":14},"PA":{"total":2695,"20_plus":673,"19":52,"17_18":221,"15_16":263,"13_14":332,"11_12":340,"9_10":279,"7_8":280,"6u":255},"RI":{"total":732,"20_plus":125,"19":6,"17_18":29,"15_16":76,"13_14":76,"11_12":88,"9_10":94,"7_8":101,"6u":137},"SC":{"total":57,"20_plus":21,"19":0,"17_18":4,"15_16":4,"13_14":5,"11_12":5,"9_10":5,"7_8":8,"6u":5},"SD":{"total":456,"20_plus":29,"19":7,"17_18":45,"15_16":64,"13_14":58,"11_12":66,"9_10":63,"7_8":53,"6u":71},"TN":{"total":148,"20_plus":49,"19":3,"17_18":5,"15_16":15,"13_14":17,"11_12":19,"9_10":13,"7_8":11,"6u":16},"TX":{"total":771,"20_plus":429,"19":7,"17_18":22,"15_16":48,"13_14":52,"11_12":63,"9_10":57,"7_8":43,"6u":50},"UT":{"total":391,"20_plus":200,"19":10,"17_18":14,"15_16":37,"13_14":32,"11_12":37,"9_10":34,"7_8":13,"6u":14},"VA":{"total":704,"20_plus":262,"19":6,"17_18":31,"15_16":57,"13_14":74,"11_12":86,"9_10":77,"7_8":62,"6u":49},"VT":{"total":1319,"20_plus":306,"19":9,"17_18":38,"15_16":59,"13_14":159,"11_12":191,"9_10":175,"7_8":172,"6u":210},"WA":{"total":852,"20_plus":479,"19":16,"17_18":28,"15_16":39,"13_14":40,"11_12":61,"9_10":60,"7_8":51,"6u":78},"WI":{"total":3098,"20_plus":568,"19":38,"17_18":126,"15_16":153,"13_14":401,"11_12":447,"9_10":449,"7_8":377,"6u":539},"WV":{"total":135,"20_plus":24,"19":0,"17_18":8,"15_16":8,"13_14":9,"11_12":14,"9_10":11,"7_8":25,"6u":36},"WY":{"total":353,"20_plus":111,"19":3,"17_18":37,"15_16":47,"13_14":27,"11_12":35,"9_10":27,"7_8":27,"6u":39}},"2015":{"AK":{"total":1865,"20_plus":909,"19":22,"17_18":65,"15_16":97,"13_14":120,"11_12":139,"9_10":138,"7_8":121,"6u":254},"AL":{"total":118,"20_plus":36,"19":3,"17_18":2,"15_16":6,"13_14":5,"11_12":9,"9_10":15,"7_8":15,"6u":27},"AR":{"total":28,"20_plus":11,"19":0,"17_18":1,"15_16":2,"13_14":0,"11_12":2,"9_10":3,"7_8":4,"6u":5},"AZ":{"total":508,"20_plus":188,"19":9,"17_18":20,"15_16":34,"13_14":40,"11_12":49,"9_10":47,"7_8":50,"6u":71},"CA":{"total":2029,"20_plus":1049,"19":13,"17_18":76,"15_16":142,"13_14":161,"11_12":177,"9_10":165,"7_8":142,"6u":104},"CO":{"total":2193,"20_plus":1096,"19":31,"17_18":109,"15_16":138,"13_14":175,"11_12":207,"9_10":157,"7_8":165,"6u":115},"CT":{"total":2423,"20_plus":303,"19":20,"17_18":114,"15_16":187,"13_14":325,"11_12":401,"9_10":384,"7_8":327,"6u":362},"DC":{"total":179,"20_plus":82,"19":2,"17_18":6,"15_16":8,"13_14":10,"11_12":20,"9_10":26,"7_8":13,"6u":12},"DE":{"total":80,"20_plus":42,"19":3,"17_18":6,"15_16":4,"13_14":7,"11_12":4,"9_10":9,"7_8":4,"6u":1},"FL":{"total":676,"20_plus":361,"19":10,"17_18":20,"15_16":44,"13_14":50,"11_12":64,"9_10":66,"7_8":38,"6u":23},"GA":{"total":152,"20_plus":57,"19":3,"17_18":6,"15_16":9,"13_14":16,"11_12":14,"9_10":17,"7_8":14,"6u":16},"IA":{"total":304,"20_plus":67,"19":12,"17_18":17,"15_16":34,"13_14":30,"11_12":36,"9_10":28,"7_8":32,"6u":48},"ID":{"total":696,"20_plus":343,"19":9,"17_18":31,"15_16":48,"13_14":46,"11_12":57,"9_10":60,"7_8":50,"6u":52},"IL":{"total":2840,"20_plus":690,"19":30,"17_18":188,"15_16":273,"13_14":322,"11_12":431,"9_10":413,"7_8":278,"6u":215},"IN":{"total":496,"20_plus":117,"19":6,"17_18":24,"15_16":28,"13_14":43,"11_12":54,"9_10":66,"7_8":58,"6u":100},"KS":{"total":98,"20_plus":32,"19":0,"17_18":4,"15_16":9,"13_14":8,"11_12":12,"9_10":11,"7_8":12,"6u":10},"KY":{"total":126,"20_plus":51,"19":0,"17_18":11,"15_16":10,"13_14":10,"11_12":10,"9_10":12,"7_8":8,"6u":14},"LA":{"total":39,"20_plus":20,"19":0,"17_18":1,"15_16":0,"13_14":3,"11_12":3,"9_10":4,"7_8":3,"6u":5},"MA":{"total":10310,"20_plus":1494,"19":55,"17_18":503,"15_16":979,"13_14":1416,"11_12":1558,"9_10":1533,"7_8":1298,"6u":1474},"MD":{"total":1151,"20_plus":390,"19":17,"17_18":59,"15_16":119,"13_14":141,"11_12":158,"9_10":119,"7_8":82,"6u":66},"ME":{"total":1089,"20_plus":177,"19":4,"17_18":55,"15_16":108,"13_14":154,"11_12":164,"9_10":131,"7_8":124,"6u":172},"MI":{"total":4794,"20_plus":1766,"19":94,"17_18":275,"15_16":400,"13_14":465,"11_12":447,"9_10":476,"7_8":397,"6u":474},"MN":{"total":12808,"20_plus":1853,"19":55,"17_18":392,"15_16":766,"13_14":1610,"11_12":2138,"9_10":2103,"7_8":1995,"6u":1896},"MO":{"total":560,"20_plus":149,"19":5,"17_18":28,"15_16":27,"13_14":46,"11_12":73,"9_10":77,"7_8":78,"6u":77},"MS":{"total":13,"20_plus":5,"19":0,"17_18":0,"15_16":0,"13_14":2,"11_12":0,"9_10":2,"7_8":2,"6u":2},"MT":{"total":905,"20_plus":455,"19":10,"17_18":52,"15_16":45,"13_14":69,"11_12":57,"9_10":83,"7_8":69,"6u":65},"NC":{"total":460,"20_plus":199,"19":3,"17_18":13,"15_16":36,"13_14":36,"11_12":51,"9_10":51,"7_8":43,"6u":28},"ND":{"total":1236,"20_plus":53,"19":12,"17_18":49,"15_16":102,"13_14":192,"11_12":215,"9_10":201,"7_8":203,"6u":209},"NE":{"total":181,"20_plus":19,"19":7,"17_18":10,"15_16":24,"13_14":23,"11_12":24,"9_10":28,"7_8":23,"6u":23},"NH":{"total":1105,"20_plus":181,"19":12,"17_18":82,"15_16":112,"13_14":149,"11_12":130,"9_10":157,"7_8":118,"6u":164},"NJ":{"total":1442,"20_plus":285,"19":18,"17_18":75,"15_16":162,"13_14":219,"11_12":206,"9_10":220,"7_8":162,"6u":95},"NM":{"total":205,"20_plus":74,"19":2,"17_18":8,"15_16":13,"13_14":19,"11_12":21,"9_10":26,"7_8":23,"6u":19},"NV":{"total":72,"20_plus":31,"19":0,"17_18":2,"15_16":7,"13_14":4,"11_12":11,"9_10":7,"7_8":5,"6u":5},"NY":{"total":5339,"20_plus":1025,"19":50,"17_18":243,"15_16":522,"13_14":644,"11_12":754,"9_10":702,"7_8":633,"6u":766},"OH":{"total":1051,"20_plus":315,"19":21,"17_18":52,"15_16":86,"13_14":116,"11_12":141,"9_10":143,"7_8":105,"6u":72},"OK":{"total":37,"20_plus":14,"19":0,"17_18":2,"15_16":6,"13_14":2,"11_12":5,"9_10":5,"7_8":1,"6u":2},"OR":{"total":224,"20_plus":140,"19":1,"17_18":8,"15_16":10,"13_14":6,"11_12":14,"9_10":27,"7_8":11,"6u":7},"PA":{"total":2670,"20_plus":679,"19":60,"17_18":192,"15_16":304,"13_14":366,"11_12":308,"9_10":278,"7_8":270,"6u":213},"RI":{"total":739,"20_plus":130,"19":9,"17_18":42,"15_16":67,"13_14":72,"11_12":80,"9_10":104,"7_8":87,"6u":148},"SC":{"total":97,"20_plus":36,"19":3,"17_18":3,"15_16":4,"13_14":4,"11_12":9,"9_10":9,"7_8":19,"6u":10},"SD":{"total":465,"20_plus":23,"19":5,"17_18":41,"15_16":60,"13_14":63,"11_12":69,"9_10":62,"7_8":69,"6u":73},"TN":{"total":174,"20_plus":65,"19":0,"17_18":10,"15_16":15,"13_14":19,"11_12":15,"9_10":20,"7_8":17,"6u":13},"TX":{"total":772,"20_plus":382,"19":7,"17_18":37,"15_16":42,"13_14":56,"11_12":74,"9_10":66,"7_8":48,"6u":60},"UT":{"total":427,"20_plus":237,"19":3,"17_18":21,"15_16":45,"13_14":28,"11_12":41,"9_10":19,"7_8":19,"6u":14},"VA":{"total":770,"20_plus":265,"19":15,"17_18":46,"15_16":60,"13_14":78,"11_12":103,"9_10":80,"7_8":66,"6u":57},"VT":{"total":1255,"20_plus":251,"19":7,"17_18":43,"15_16":53,"13_14":174,"11_12":181,"9_10":183,"7_8":171,"6u":192},"WA":{"total":938,"20_plus":520,"19":12,"17_18":27,"15_16":42,"13_14":52,"11_12":77,"9_10":66,"7_8":60,"6u":82},"WI":{"total":3093,"20_plus":593,"19":23,"17_18":94,"15_16":141,"13_14":403,"11_12":457,"9_10":422,"7_8":397,"6u":563},"WV":{"total":130,"20_plus":16,"19":2,"17_18":17,"15_16":2,"13_14":11,"11_12":12,"9_10":15,"7_8":24,"6u":31},"WY":{"total":382,"20_plus":102,"19":8,"17_18":34,"15_16":45,"13_14":34,"11_12":38,"9_10":41,"7_8":35,"6u":45}},"2016":{"AK":{"total":1935,"20_plus":926,"19":10,"17_18":64,"15_16":95,"13_14":111,"11_12":147,"9_10":156,"7_8":159,"6u":267},"AL":{"total":126,"20_plus":42,"19":1,"17_18":4,"15_16":5,"13_14":5,"11_12":12,"9_10":14,"7_8":14,"6u":29},"AR":{"total":29,"20_plus":12,"19":0,"17_18":2,"15_16":0,"13_14":0,"11_12":6,"9_10":1,"7_8":2,"6u":6},"AZ":{"total":535,"20_plus":188,"19":6,"17_18":24,"15_16":29,"13_14":47,"11_12":51,"9_10":53,"7_8":54,"6u":83},"CA":{"total":2287,"20_plus":1144,"19":22,"17_18":84,"15_16":171,"13_14":165,"11_12":203,"9_10":187,"7_8":204,"6u":107},"CO":{"total":2275,"20_plus":1066,"19":36,"17_18":100,"15_16":143,"13_14":204,"11_12":196,"9_10":226,"7_8":177,"6u":127},"CT":{"total":2416,"20_plus":270,"19":27,"17_18":112,"15_16":204,"13_14":333,"11_12":422,"9_10":360,"7_8":344,"6u":344},"DC":{"total":196,"20_plus":79,"19":1,"17_18":5,"15_16":8,"13_14":10,"11_12":29,"9_10":14,"7_8":21,"6u":29},"DE":{"total":81,"20_plus":37,"19":4,"17_18":1,"15_16":9,"13_14":6,"11_12":7,"9_10":6,"7_8":7,"6u":4},"FL":{"total":727,"20_plus":374,"19":6,"17_18":22,"15_16":45,"13_14":75,"11_12":81,"9_10":51,"7_8":49,"6u":24},"GA":{"total":151,"20_plus":57,"19":1,"17_18":6,"15_16":11,"13_14":20,"11_12":20,"9_10":13,"7_8":6,"6u":17},"IA":{"total":307,"20_plus":74,"19":4,"17_18":22,"15_16":24,"13_14":38,"11_12":36,"9_10":27,"7_8":44,"6u":38},"ID":{"total":674,"20_plus":323,"19":3,"17_18":19,"15_16":59,"13_14":52,"11_12":59,"9_10":59,"7_8":50,"6u":50},"IL":{"total":3005,"20_plus":719,"19":44,"17_18":190,"15_16":296,"13_14":350,"11_12":436,"9_10":423,"7_8":286,"6u":261},"IN":{"total":515,"20_plus":105,"19":6,"17_18":29,"15_16":22,"13_14":33,"11_12":75,"9_10":70,"7_8":49,"6u":126},"KS":{"total":99,"20_plus":29,"19":0,"17_18":8,"15_16":6,"13_14":11,"11_12":12,"9_10":21,"7_8":8,"6u":4},"KY":{"total":132,"20_plus":55,"19":3,"17_18":6,"15_16":9,"13_14":9,"11_12":11,"9_10":12,"7_8":12,"6u":15},"LA":{"total":51,"20_plus":17,"19":0,"17_18":0,"15_16":1,"13_14":3,"11_12":7,"9_10":3,"7_8":6,"6u":14},"MA":{"total":10527,"20_plus":1575,"19":65,"17_18":568,"15_16":985,"13_14":1446,"11_12":1575,"9_10":1499,"7_8":1321,"6u":1493},"MD":{"total":1208,"20_plus":385,"19":14,"17_18":88,"15_16":132,"13_14":166,"11_12":127,"9_10":129,"7_8":93,"6u":74},"ME":{"total":1116,"20_plus":182,"19":11,"17_18":47,"15_16":97,"13_14":138,"11_12":176,"9_10":135,"7_8":131,"6u":199},"MI":{"total":4984,"20_plus":1829,"19":87,"17_18":268,"15_16":427,"13_14":437,"11_12":464,"9_10":493,"7_8":442,"6u":537},"MN":{"total":13354,"20_plus":1885,"19":54,"17_18":405,"15_16":755,"13_14":1653,"11_12":2105,"9_10":2207,"7_8":2104,"6u":2186},"MO":{"total":672,"20_plus":159,"19":9,"17_18":20,"15_16":31,"13_14":64,"11_12":64,"9_10":115,"7_8":108,"6u":102},"MS":{"total":27,"20_plus":3,"19":0,"17_18":0,"15_16":0,"13_14":3,"11_12":1,"9_10":4,"7_8":2,"6u":14},"MT":{"total":948,"20_plus":475,"19":6,"17_18":49,"15_16":58,"13_14":62,"11_12":71,"9_10":78,"7_8":67,"6u":82},"NC":{"total":487,"20_plus":197,"19":3,"17_18":17,"15_16":25,"13_14":52,"11_12":58,"9_10":53,"7_8":41,"6u":41},"ND":{"total":1351,"20_plus":50,"19":9,"17_18":64,"15_16":106,"13_14":211,"11_12":177,"9_10":246,"7_8":250,"6u":238},"NE":{"total":182,"20_plus":21,"19":4,"17_18":15,"15_16":16,"13_14":21,"11_12":27,"9_10":31,"7_8":21,"6u":26},"NH":{"total":1086,"20_plus":147,"19":14,"17_18":76,"15_16":120,"13_14":143,"11_12":159,"9_10":150,"7_8":128,"6u":149},"NJ":{"total":1460,"20_plus":291,"19":12,"17_18":72,"15_16":163,"13_14":214,"11_12":213,"9_10":220,"7_8":162,"6u":113},"NM":{"total":228,"20_plus":70,"19":3,"17_18":6,"15_16":20,"13_14":18,"11_12":28,"9_10":26,"7_8":18,"6u":39},"NV":{"total":60,"20_plus":23,"19":0,"17_18":2,"15_16":1,"13_14":6,"11_12":6,"9_10":12,"7_8":5,"6u":5},"NY":{"total":5666,"20_plus":995,"19":43,"17_18":281,"15_16":531,"13_14":652,"11_12":769,"9_10":758,"7_8":694,"6u":943},"OH":{"total":1084,"20_plus":327,"19":17,"17_18":49,"15_16":89,"13_14":117,"11_12":143,"9_10":126,"7_8":115,"6u":101},"OK":{"total":41,"20_plus":15,"19":0,"17_18":2,"15_16":5,"13_14":5,"11_12":6,"9_10":3,"7_8":4,"6u":1},"OR":{"total":265,"20_plus":154,"19":0,"17_18":11,"15_16":10,"13_14":14,"11_12":24,"9_10":25,"7_8":15,"6u":12},"PA":{"total":2879,"20_plus":708,"19":34,"17_18":189,"15_16":359,"13_14":337,"11_12":354,"9_10":358,"7_8":285,"6u":255},"RI":{"total":739,"20_plus":105,"19":7,"17_18":47,"15_16":63,"13_14":70,"11_12":87,"9_10":96,"7_8":93,"6u":171},"SC":{"total":86,"20_plus":39,"19":1,"17_18":4,"15_16":3,"13_14":2,"11_12":6,"9_10":13,"7_8":11,"6u":7},"SD":{"total":485,"20_plus":23,"19":0,"17_18":44,"15_16":58,"13_14":70,"11_12":73,"9_10":61,"7_8":71,"6u":85},"TN":{"total":206,"20_plus":70,"19":3,"17_18":11,"15_16":14,"13_14":16,"11_12":13,"9_10":20,"7_8":33,"6u":26},"TX":{"total":808,"20_plus":397,"19":9,"17_18":27,"15_16":47,"13_14":67,"11_12":89,"9_10":67,"7_8":58,"6u":47},"UT":{"total":503,"20_plus":256,"19":8,"17_18":35,"15_16":39,"13_14":51,"11_12":41,"9_10":33,"7_8":18,"6u":22},"VA":{"total":844,"20_plus":273,"19":14,"17_18":47,"15_16":79,"13_14":89,"11_12":104,"9_10":88,"7_8":89,"6u":61},"VT":{"total":1334,"20_plus":294,"19":11,"17_18":37,"15_16":54,"13_14":184,"11_12":176,"9_10":176,"7_8":169,"6u":233},"WA":{"total":1092,"20_plus":513,"19":11,"17_18":33,"15_16":48,"13_14":66,"11_12":89,"9_10":95,"7_8":115,"6u":122},"WI":{"total":3271,"20_plus":566,"19":23,"17_18":86,"15_16":157,"13_14":385,"11_12":445,"9_10":442,"7_8":490,"6u":677},"WV":{"total":137,"20_plus":25,"19":5,"17_18":6,"15_16":5,"13_14":14,"11_12":10,"9_10":24,"7_8":24,"6u":24},"WY":{"total":405,"20_plus":110,"19":5,"17_18":35,"15_16":35,"13_14":37,"11_12":36,"9_10":42,"7_8":45,"6u":60}},"2017":{"AK":{"total":1965,"20_plus":921,"19":19,"17_18":66,"15_16":103,"13_14":131,"11_12":141,"9_10":153,"7_8":162,"6u":269},"AL":{"total":171,"20_plus":38,"19":2,"17_18":7,"15_16":3,"13_14":11,"11_12":16,"9_10":18,"7_8":38,"6u":38},"AR":{"total":38,"20_plus":12,"19":0,"17_18":1,"15_16":0,"13_14":1,"11_12":1,"9_10":3,"7_8":11,"6u":9},"AZ":{"total":580,"20_plus":214,"19":6,"17_18":22,"15_16":38,"13_14":53,"11_12":52,"9_10":68,"7_8":60,"6u":67},"CA":{"total":2517,"20_plus":1111,"19":17,"17_18":100,"15_16":167,"13_14":192,"11_12":208,"9_10":264,"7_8":258,"6u":200},"CO":{"total":2431,"20_plus":1077,"19":22,"17_18":98,"15_16":155,"13_14":212,"11_12":201,"9_10":224,"7_8":255,"6u":187},"CT":{"total":2427,"20_plus":282,"19":20,"17_18":110,"15_16":221,"13_14":360,"11_12":410,"9_10":369,"7_8":335,"6u":320},"DC":{"total":217,"20_plus":61,"19":1,"17_18":7,"15_16":4,"13_14":17,"11_12":30,"9_10":19,"7_8":31,"6u":47},"DE":{"total":107,"20_plus":38,"19":2,"17_18":8,"15_16":7,"13_14":11,"11_12":10,"9_10":9,"7_8":8,"6u":14},"FL":{"total":862,"20_plus":356,"19":7,"17_18":34,"15_16":48,"13_14":80,"11_12":87,"9_10":59,"7_8":91,"6u":100},"GA":{"total":142,"20_plus":50,"19":1,"17_18":5,"15_16":18,"13_14":20,"11_12":15,"9_10":14,"7_8":10,"6u":9},"HI":{"total":21,"20_plus":15,"19":0,"17_18":1,"15_16":0,"13_14":0,"11_12":0,"9_10":1,"7_8":2,"6u":2},"IA":{"total":332,"20_plus":52,"19":4,"17_18":24,"15_16":20,"13_14":30,"11_12":42,"9_10":39,"7_8":52,"6u":69},"ID":{"total":721,"20_plus":338,"19":3,"17_18":35,"15_16":54,"13_14":53,"11_12":66,"9_10":56,"7_8":53,"6u":63},"IL":{"total":3097,"20_plus":740,"19":37,"17_18":200,"15_16":281,"13_14":376,"11_12":453,"9_10":444,"7_8":298,"6u":268},"IN":{"total":495,"20_plus":111,"19":7,"17_18":17,"15_16":25,"13_14":48,"11_12":61,"9_10":64,"7_8":40,"6u":122},"KS":{"total":96,"20_plus":28,"19":1,"17_18":5,"15_16":6,"13_14":8,"11_12":13,"9_10":13,"7_8":14,"6u":8},"KY":{"total":125,"20_plus":58,"19":3,"17_18":3,"15_16":9,"13_14":8,"11_12":10,"9_10":13,"7_8":11,"6u":10},"LA":{"total":63,"20_plus":8,"19":0,"17_18":1,"15_16":3,"13_14":5,"11_12":4,"9_10":5,"7_8":10,"6u":27},"MA":{"total":10693,"20_plus":1523,"19":69,"17_18":545,"15_16":1060,"13_14":1446,"11_12":1552,"9_10":1550,"7_8":1381,"6u":1567},"MD":{"total":1284,"20_plus":387,"19":17,"17_18":65,"15_16":144,"13_14":153,"11_12":134,"9_10":128,"7_8":140,"6u":116},"ME":{"total":1211,"20_plus":148,"19":8,"17_18":58,"15_16":84,"13_14":160,"11_12":189,"9_10":147,"7_8":153,"6u":264},"MI":{"total":5105,"20_plus":1789,"19":80,"17_18":283,"15_16":379,"13_14":428,"11_12":497,"9_10":484,"7_8":504,"6u":661},"MN":{"total":13580,"20_plus":1900,"19":47,"17_18":421,"15_16":764,"13_14":1617,"11_12":2136,"9_10":2259,"7_8":2162,"6u":2274},"MO":{"total":760,"20_plus":161,"19":3,"17_18":20,"15_16":42,"13_14":68,"11_12":81,"9_10":125,"7_8":101,"6u":159},"MS":{"total":20,"20_plus":4,"19":0,"17_18":2,"15_16":2,"13_14":0,"11_12":1,"9_10":3,"7_8":4,"6u":4},"MT":{"total":961,"20_plus":485,"19":13,"17_18":33,"15_16":67,"13_14":63,"11_12":75,"9_10":71,"7_8":76,"6u":78},"NC":{"total":513,"20_plus":181,"19":1,"17_18":19,"15_16":29,"13_14":64,"11_12":55,"9_10":47,"7_8":54,"6u":63},"ND":{"total":1422,"20_plus":59,"19":5,"17_18":59,"15_16":137,"13_14":190,"11_12":193,"9_10":248,"7_8":242,"6u":289},"NE":{"total":221,"20_plus":30,"19":3,"17_18":17,"15_16":17,"13_14":18,"11_12":32,"9_10":31,"7_8":38,"6u":35},"NH":{"total":1107,"20_plus":129,"19":7,"17_18":73,"15_16":107,"13_14":133,"11_12":163,"9_10":144,"7_8":171,"6u":180},"NJ":{"total":1640,"20_plus":302,"19":15,"17_18":90,"15_16":144,"13_14":186,"11_12":254,"9_10":229,"7_8":231,"6u":189},"NM":{"total":212,"20_plus":56,"19":0,"17_18":13,"15_16":16,"13_14":21,"11_12":27,"9_10":26,"7_8":17,"6u":36},"NV":{"total":67,"20_plus":26,"19":1,"17_18":1,"15_16":3,"13_14":6,"11_12":11,"9_10":7,"7_8":9,"6u":3},"NY":{"total":5861,"20_plus":1015,"19":48,"17_18":288,"15_16":507,"13_14":700,"11_12":733,"9_10":760,"7_8":760,"6u":1050},"OH":{"total":1143,"20_plus":325,"19":15,"17_18":54,"15_16":88,"13_14":116,"11_12":157,"9_10":137,"7_8":145,"6u":106},"OK":{"total":65,"20_plus":8,"19":0,"17_18":3,"15_16":3,"13_14":5,"11_12":8,"9_10":6,"7_8":13,"6u":19},"OR":{"total":304,"20_plus":154,"19":2,"17_18":9,"15_16":6,"13_14":16,"11_12":33,"9_10":36,"7_8":29,"6u":19},"PA":{"total":2857,"20_plus":678,"19":51,"17_18":217,"15_16":337,"13_14":335,"11_12":323,"9_10":320,"7_8":320,"6u":276},"RI":{"total":679,"20_plus":96,"19":9,"17_18":32,"15_16":38,"13_14":67,"11_12":91,"9_10":88,"7_8":100,"6u":158},"SC":{"total":105,"20_plus":37,"19":1,"17_18":3,"15_16":7,"13_14":11,"11_12":10,"9_10":12,"7_8":13,"6u":11},"SD":{"total":489,"20_plus":12,"19":2,"17_18":44,"15_16":59,"13_14":70,"11_12":63,"9_10":72,"7_8":75,"6u":92},"TN":{"total":273,"20_plus":63,"19":3,"17_18":11,"15_16":19,"13_14":15,"11_12":25,"9_10":40,"7_8":54,"6u":43},"TX":{"total":882,"20_plus":377,"19":9,"17_18":23,"15_16":45,"13_14":78,"11_12":81,"9_10":64,"7_8":109,"6u":96},"UT":{"total":533,"20_plus":263,"19":9,"17_18":37,"15_16":51,"13_14":57,"11_12":31,"9_10":33,"7_8":24,"6u":28},"VA":{"total":912,"20_plus":253,"19":13,"17_18":60,"15_16":67,"13_14":103,"11_12":94,"9_10":103,"7_8":118,"6u":101},"VT":{"total":1231,"20_plus":189,"19":5,"17_18":36,"15_16":59,"13_14":162,"11_12":188,"9_10":183,"7_8":170,"6u":239},"WA":{"total":1180,"20_plus":504,"19":16,"17_18":32,"15_16":63,"13_14":76,"11_12":95,"9_10":133,"7_8":129,"6u":132},"WI":{"total":3555,"20_plus":616,"19":26,"17_18":94,"15_16":168,"13_14":382,"11_12":446,"9_10":488,"7_8":546,"6u":789},"WV":{"total":122,"20_plus":14,"19":2,"17_18":1,"15_16":7,"13_14":7,"11_12":15,"9_10":22,"7_8":28,"6u":26},"WY":{"total":438,"20_plus":105,"19":9,"17_18":28,"15_16":32,"13_14":47,"11_12":47,"9_10":51,"7_8":53,"6u":66}},"2018":{"AK":{"total":1987,"20_plus":924,"19":11,"17_18":64,"15_16":109,"13_14":144,"11_12":159,"9_10":143,"7_8":184,"6u":249},"AL":{"total":213,"20_plus":47,"19":4,"17_18":4,"15_16":8,"13_14":12,"11_12":14,"9_10":24,"7_8":41,"6u":59},"AR":{"total":34,"20_plus":6,"19":0,"17_18":0,"15_16":0,"13_14":1,"11_12":2,"9_10":6,"7_8":10,"6u":9},"AZ":{"total":757,"20_plus":209,"19":10,"17_18":33,"15_16":50,"13_14":59,"11_12":70,"9_10":101,"7_8":107,"6u":118},"CA":{"total":2963,"20_plus":1163,"19":21,"17_18":113,"15_16":174,"13_14":211,"11_12":262,"9_10":375,"7_8":351,"6u":293},"CO":{"total":2689,"20_plus":1156,"19":35,"17_18":106,"15_16":174,"13_14":185,"11_12":254,"9_10":279,"7_8":293,"6u":207},"CT":{"total":2556,"20_plus":280,"19":21,"17_18":130,"15_16":237,"13_14":383,"11_12":383,"9_10":413,"7_8":321,"6u":388},"DC":{"total":263,"20_plus":74,"19":1,"17_18":4,"15_16":6,"13_14":26,"11_12":20,"9_10":30,"7_8":33,"6u":69},"DE":{"total":115,"20_plus":32,"19":2,"17_18":7,"15_16":8,"13_14":10,"11_12":11,"9_10":13,"7_8":22,"6u":10},"FL":{"total":903,"20_plus":370,"19":13,"17_18":29,"15_16":61,"13_14":84,"11_12":77,"9_10":96,"7_8":101,"6u":72},"GA":{"total":173,"20_plus":47,"19":0,"17_18":8,"15_16":26,"13_14":19,"11_12":21,"9_10":21,"7_8":16,"6u":15},"HI":{"total":26,"20_plus":14,"19":0,"17_18":1,"15_16":1,"13_14":0,"11_12":0,"9_10":4,"7_8":2,"6u":4},"IA":{"total":355,"20_plus":59,"19":10,"17_18":12,"15_16":25,"13_14":28,"11_12":41,"9_10":54,"7_8":61,"6u":65},"ID":{"total":713,"20_plus":337,"19":1,"17_18":39,"15_16":49,"13_14":59,"11_12":68,"9_10":60,"7_8":44,"6u":56},"IL":{"total":3372,"20_plus":767,"19":26,"17_18":178,"15_16":308,"13_14":410,"11_12":415,"9_10":441,"7_8":445,"6u":382},"IN":{"total":507,"20_plus":128,"19":8,"17_18":18,"15_16":33,"13_14":62,"11_12":70,"9_10":64,"7_8":55,"6u":69},"KS":{"total":100,"20_plus":42,"19":2,"17_18":2,"15_16":6,"13_14":5,"11_12":18,"9_10":12,"7_8":5,"6u":8},"KY":{"total":155,"20_plus":63,"19":1,"17_18":2,"15_16":7,"13_14":8,"11_12":16,"9_10":11,"7_8":23,"6u":24},"LA":{"total":65,"20_plus":14,"19":0,"17_18":2,"15_16":4,"13_14":4,"11_12":5,"9_10":11,"7_8":10,"6u":15},"MA":{"total":10855,"20_plus":1459,"19":62,"17_18":606,"15_16":1060,"13_14":1461,"11_12":1524,"9_10":1581,"7_8":1497,"6u":1605},"MD":{"total":1410,"20_plus":420,"19":17,"17_18":83,"15_16":153,"13_14":137,"11_12":148,"9_10":166,"7_8":156,"6u":130},"ME":{"total":1257,"20_plus":161,"19":2,"17_18":48,"15_16":89,"13_14":179,"11_12":166,"9_10":138,"7_8":140,"6u":334},"MI":{"total":5041,"20_plus":1744,"19":64,"17_18":268,"15_16":367,"13_14":432,"11_12":478,"9_10":479,"7_8":532,"6u":677},"MN":{"total":13883,"20_plus":1862,"19":58,"17_18":410,"15_16":714,"13_14":1559,"11_12":2179,"9_10":2298,"7_8":2375,"6u":2428},"MO":{"total":771,"20_plus":169,"19":4,"17_18":22,"15_16":54,"13_14":67,"11_12":92,"9_10":111,"7_8":123,"6u":129},"MS":{"total":23,"20_plus":4,"19":0,"17_18":1,"15_16":1,"13_14":1,"11_12":1,"9_10":5,"7_8":5,"6u":5},"MT":{"total":998,"20_plus":493,"19":8,"17_18":53,"15_16":54,"13_14":71,"11_12":75,"9_10":84,"7_8":86,"6u":74},"NC":{"total":640,"20_plus":177,"19":8,"17_18":15,"15_16":44,"13_14":53,"11_12":65,"9_10":77,"7_8":95,"6u":106},"ND":{"total":1460,"20_plus":65,"19":12,"17_18":52,"15_16":135,"13_14":165,"11_12":206,"9_10":260,"7_8":237,"6u":328},"NE":{"total":231,"20_plus":52,"19":8,"17_18":13,"15_16":12,"13_14":31,"11_12":34,"9_10":29,"7_8":29,"6u":23},"NH":{"total":1107,"20_plus":138,"19":14,"17_18":80,"15_16":96,"13_14":148,"11_12":138,"9_10":156,"7_8":151,"6u":186},"NJ":{"total":1751,"20_plus":310,"19":31,"17_18":80,"15_16":151,"13_14":202,"11_12":259,"9_10":250,"7_8":267,"6u":201},"NM":{"total":224,"20_plus":60,"19":4,"17_18":8,"15_16":13,"13_14":20,"11_12":28,"9_10":23,"7_8":28,"6u":40},"NV":{"total":107,"20_plus":53,"19":1,"17_18":3,"15_16":5,"13_14":7,"11_12":12,"9_10":9,"7_8":10,"6u":7},"NY":{"total":5992,"20_plus":995,"19":53,"17_18":289,"15_16":532,"13_14":688,"11_12":734,"9_10":796,"7_8":818,"6u":1087},"OH":{"total":1195,"20_plus":295,"19":14,"17_18":72,"15_16":91,"13_14":131,"11_12":149,"9_10":151,"7_8":161,"6u":131},"OK":{"total":67,"20_plus":7,"19":0,"17_18":1,"15_16":0,"13_14":3,"11_12":13,"9_10":12,"7_8":15,"6u":16},"OR":{"total":311,"20_plus":137,"19":4,"17_18":8,"15_16":9,"13_14":23,"11_12":35,"9_10":35,"7_8":32,"6u":28},"PA":{"total":3072,"20_plus":687,"19":47,"17_18":245,"15_16":318,"13_14":377,"11_12":354,"9_10":346,"7_8":398,"6u":300},"RI":{"total":655,"20_plus":99,"19":8,"17_18":23,"15_16":34,"13_14":65,"11_12":85,"9_10":88,"7_8":103,"6u":150},"SC":{"total":124,"20_plus":41,"19":1,"17_18":5,"15_16":5,"13_14":12,"11_12":17,"9_10":14,"7_8":19,"6u":10},"SD":{"total":472,"20_plus":23,"19":1,"17_18":42,"15_16":67,"13_14":70,"11_12":54,"9_10":81,"7_8":56,"6u":78},"TN":{"total":344,"20_plus":85,"19":7,"17_18":10,"15_16":15,"13_14":27,"11_12":29,"9_10":49,"7_8":52,"6u":70},"TX":{"total":953,"20_plus":405,"19":7,"17_18":31,"15_16":49,"13_14":70,"11_12":82,"9_10":104,"7_8":106,"6u":99},"UT":{"total":526,"20_plus":261,"19":7,"17_18":29,"15_16":56,"13_14":47,"11_12":40,"9_10":26,"7_8":31,"6u":29},"VA":{"total":980,"20_plus":270,"19":16,"17_18":53,"15_16":72,"13_14":81,"11_12":117,"9_10":141,"7_8":116,"6u":114},"VT":{"total":1212,"20_plus":160,"19":9,"17_18":35,"15_16":72,"13_14":160,"11_12":195,"9_10":185,"7_8":170,"6u":226},"WA":{"total":1308,"20_plus":556,"19":10,"17_18":37,"15_16":62,"13_14":86,"11_12":109,"9_10":152,"7_8":116,"6u":180},"WI":{"total":3873,"20_plus":651,"19":26,"17_18":106,"15_16":199,"13_14":382,"11_12":459,"9_10":558,"7_8":599,"6u":893},"WV":{"total":130,"20_plus":14,"19":0,"17_18":3,"15_16":10,"13_14":8,"11_12":22,"9_10":25,"7_8":24,"6u":24},"WY":{"total":437,"20_plus":109,"19":9,"17_18":31,"15_16":38,"13_14":48,"11_12":44,"9_10":47,"7_8":58,"6u":53}},"2019":{"AK":{"total":2013,"20_plus":939,"19":16,"17_18":69,"15_16":116,"13_14":135,"11_12":145,"9_10":159,"7_8":171,"6u":263},"AL":{"total":235,"20_plus":65,"19":2,"17_18":5,"15_16":7,"13_14":15,"11_12":21,"9_10":35,"7_8":39,"6u":46},"AR":{"total":37,"20_plus":5,"19":0,"17_18":0,"15_16":1,"13_14":0,"11_12":3,"9_10":12,"7_8":8,"6u":8},"AZ":{"total":764,"20_plus":197,"19":13,"17_18":28,"15_16":52,"13_14":74,"11_12":87,"9_10":125,"7_8":106,"6u":82},"CA":{"total":3224,"20_plus":1208,"19":26,"17_18":116,"15_16":187,"13_14":240,"11_12":318,"9_10":426,"7_8":398,"6u":305},"CO":{"total":2788,"20_plus":1259,"19":35,"17_18":99,"15_16":165,"13_14":201,"11_12":271,"9_10":293,"7_8":282,"6u":183},"CT":{"total":2711,"20_plus":266,"19":14,"17_18":126,"15_16":270,"13_14":386,"11_12":413,"9_10":426,"7_8":363,"6u":447},"DC":{"total":287,"20_plus":78,"19":0,"17_18":6,"15_16":10,"13_14":23,"11_12":26,"9_10":29,"7_8":30,"6u":85},"DE":{"total":107,"20_plus":33,"19":3,"17_18":4,"15_16":8,"13_14":10,"11_12":11,"9_10":17,"7_8":15,"6u":6},"FL":{"total":1032,"20_plus":412,"19":11,"17_18":36,"15_16":66,"13_14":87,"11_12":90,"9_10":107,"7_8":142,"6u":81},"GA":{"total":176,"20_plus":50,"19":3,"17_18":14,"15_16":21,"13_14":18,"11_12":21,"9_10":16,"7_8":18,"6u":15},"HI":{"total":38,"20_plus":19,"19":0,"17_18":1,"15_16":0,"13_14":0,"11_12":5,"9_10":5,"7_8":4,"6u":4},"IA":{"total":370,"20_plus":59,"19":8,"17_18":16,"15_16":22,"13_14":29,"11_12":44,"9_10":68,"7_8":63,"6u":61},"ID":{"total":778,"20_plus":322,"19":19,"17_18":29,"15_16":48,"13_14":68,"11_12":66,"9_10":72,"7_8":74,"6u":80},"IL":{"total":3410,"20_plus":774,"19":45,"17_18":206,"15_16":363,"13_14":423,"11_12":428,"9_10":450,"7_8":398,"6u":323},"IN":{"total":539,"20_plus":125,"19":3,"17_18":22,"15_16":28,"13_14":57,"11_12":91,"9_10":75,"7_8":70,"6u":68},"KS":{"total":139,"20_plus":56,"19":2,"17_18":2,"15_16":5,"13_14":15,"11_12":17,"9_10":21,"7_8":13,"6u":8},"KY":{"total":169,"20_plus":61,"19":1,"17_18":3,"15_16":7,"13_14":13,"11_12":15,"9_10":19,"7_8":29,"6u":21},"LA":{"total":39,"20_plus":7,"19":0,"17_18":3,"15_16":4,"13_14":1,"11_12":7,"9_10":2,"7_8":5,"6u":10},"MA":{"total":11367,"20_plus":1492,"19":77,"17_18":659,"15_16":1086,"13_14":1453,"11_12":1596,"9_10":1658,"7_8":1567,"6u":1779},"MD":{"total":1472,"20_plus":429,"19":20,"17_18":95,"15_16":164,"13_14":159,"11_12":162,"9_10":186,"7_8":146,"6u":111},"ME":{"total":1179,"20_plus":125,"19":8,"17_18":35,"15_16":72,"13_14":152,"11_12":171,"9_10":152,"7_8":162,"6u":302},"MI":{"total":5266,"20_plus":1806,"19":105,"17_18":272,"15_16":330,"13_14":432,"11_12":475,"9_10":521,"7_8":560,"6u":766},"MN":{"total":14223,"20_plus":1885,"19":62,"17_18":405,"15_16":753,"13_14":1587,"11_12":2236,"9_10":2394,"7_8":2424,"6u":2477},"MO":{"total":804,"20_plus":160,"19":2,"17_18":24,"15_16":65,"13_14":76,"11_12":112,"9_10":110,"7_8":121,"6u":134},"MS":{"total":23,"20_plus":4,"19":0,"17_18":0,"15_16":0,"13_14":0,"11_12":4,"9_10":4,"7_8":9,"6u":2},"MT":{"total":1073,"20_plus":541,"19":8,"17_18":46,"15_16":52,"13_14":62,"11_12":74,"9_10":104,"7_8":86,"6u":100},"NC":{"total":734,"20_plus":201,"19":9,"17_18":30,"15_16":41,"13_14":63,"11_12":79,"9_10":114,"7_8":110,"6u":87},"ND":{"total":1470,"20_plus":47,"19":7,"17_18":72,"15_16":115,"13_14":167,"11_12":232,"9_10":240,"7_8":269,"6u":321},"NE":{"total":206,"20_plus":28,"19":8,"17_18":13,"15_16":16,"13_14":33,"11_12":27,"9_10":25,"7_8":32,"6u":24},"NH":{"total":1092,"20_plus":145,"19":14,"17_18":60,"15_16":107,"13_14":139,"11_12":132,"9_10":160,"7_8":157,"6u":178},"NJ":{"total":1815,"20_plus":298,"19":24,"17_18":85,"15_16":135,"13_14":241,"11_12":255,"9_10":301,"7_8":269,"6u":207},"NM":{"total":220,"20_plus":64,"19":1,"17_18":11,"15_16":14,"13_14":20,"11_12":31,"9_10":25,"7_8":25,"6u":29},"NV":{"total":204,"20_plus":86,"19":0,"17_18":5,"15_16":10,"13_14":14,"11_12":21,"9_10":32,"7_8":24,"6u":12},"NY":{"total":6414,"20_plus":1128,"19":87,"17_18":300,"15_16":556,"13_14":653,"11_12":733,"9_10":866,"7_8":868,"6u":1222},"OH":{"total":1326,"20_plus":331,"19":16,"17_18":62,"15_16":98,"13_14":139,"11_12":157,"9_10":203,"7_8":191,"6u":129},"OK":{"total":82,"20_plus":9,"19":2,"17_18":1,"15_16":1,"13_14":8,"11_12":18,"9_10":17,"7_8":12,"6u":14},"OR":{"total":338,"20_plus":159,"19":3,"17_18":6,"15_16":14,"13_14":34,"11_12":38,"9_10":30,"7_8":26,"6u":28},"PA":{"total":3239,"20_plus":726,"19":63,"17_18":233,"15_16":349,"13_14":337,"11_12":372,"9_10":430,"7_8":409,"6u":320},"RI":{"total":673,"20_plus":110,"19":7,"17_18":19,"15_16":35,"13_14":78,"11_12":88,"9_10":86,"7_8":106,"6u":144},"SC":{"total":138,"20_plus":45,"19":0,"17_18":1,"15_16":10,"13_14":18,"11_12":18,"9_10":21,"7_8":12,"6u":13},"SD":{"total":504,"20_plus":11,"19":6,"17_18":43,"15_16":75,"13_14":66,"11_12":69,"9_10":70,"7_8":72,"6u":92},"TN":{"total":326,"20_plus":100,"19":2,"17_18":12,"15_16":19,"13_14":20,"11_12":32,"9_10":43,"7_8":44,"6u":54},"TX":{"total":995,"20_plus":386,"19":6,"17_18":31,"15_16":55,"13_14":78,"11_12":98,"9_10":127,"7_8":108,"6u":106},"UT":{"total":549,"20_plus":269,"19":14,"17_18":26,"15_16":68,"13_14":38,"11_12":45,"9_10":31,"7_8":33,"6u":25},"VA":{"total":971,"20_plus":255,"19":18,"17_18":42,"15_16":82,"13_14":97,"11_12":120,"9_10":155,"7_8":120,"6u":82},"VT":{"total":1182,"20_plus":155,"19":8,"17_18":43,"15_16":76,"13_14":151,"11_12":184,"9_10":164,"7_8":167,"6u":234},"WA":{"total":1365,"20_plus":556,"19":9,"17_18":39,"15_16":61,"13_14":104,"11_12":129,"9_10":140,"7_8":153,"6u":174},"WI":{"total":4121,"20_plus":678,"19":25,"17_18":115,"15_16":214,"13_14":381,"11_12":525,"9_10":630,"7_8":654,"6u":899},"WV":{"total":131,"20_plus":15,"19":0,"17_18":3,"15_16":7,"13_14":14,"11_12":19,"9_10":20,"7_8":21,"6u":32},"WY":{"total":450,"20_plus":123,"19":4,"17_18":26,"15_16":47,"13_14":50,"11_12":53,"9_10":56,"7_8":45,"6u":46}},"2020":{"AK":{"total":2001,"20_plus":913,"19":15,"17_18":60,"15_16":124,"13_14":142,"11_12":138,"9_10":165,"7_8":159,"6u":285},"AL":{"total":224,"20_plus":67,"19":2,"17_18":2,"15_16":11,"13_14":8,"11_12":25,"9_10":31,"7_8":34,"6u":44},"AR":{"total":38,"20_plus":4,"19":0,"17_18":2,"15_16":3,"13_14":1,"11_12":8,"9_10":9,"7_8":4,"6u":7},"AZ":{"total":779,"20_plus":186,"19":12,"17_18":32,"15_16":56,"13_14":78,"11_12":96,"9_10":119,"7_8":109,"6u":91},"CA":{"total":3304,"20_plus":1155,"19":26,"17_18":112,"15_16":208,"13_14":257,"11_12":374,"9_10":432,"7_8":432,"6u":308},"CO":{"total":2824,"20_plus":1237,"19":36,"17_18":116,"15_16":151,"13_14":251,"11_12":256,"9_10":307,"7_8":279,"6u":191},"CT":{"total":2719,"20_plus":234,"19":28,"17_18":136,"15_16":295,"13_14":347,"11_12":441,"9_10":409,"7_8":401,"6u":428},"DC":{"total":269,"20_plus":86,"19":2,"17_18":7,"15_16":18,"13_14":14,"11_12":33,"9_10":27,"7_8":29,"6u":53},"DE":{"total":112,"20_plus":36,"19":4,"17_18":4,"15_16":8,"13_14":10,"11_12":11,"9_10":22,"7_8":12,"6u":5},"FL":{"total":1257,"20_plus":456,"19":10,"17_18":43,"15_16":70,"13_14":111,"11_12":108,"9_10":183,"7_8":160,"6u":116},"GA":{"total":177,"20_plus":47,"19":0,"17_18":10,"15_16":16,"13_14":20,"11_12":19,"9_10":25,"7_8":18,"6u":22},"HI":{"total":34,"20_plus":14,"19":0,"17_18":0,"15_16":0,"13_14":2,"11_12":5,"9_10":1,"7_8":7,"6u":5},"IA":{"total":373,"20_plus":58,"19":8,"17_18":19,"15_16":19,"13_14":28,"11_12":46,"9_10":76,"7_8":67,"6u":52},"ID":{"total":854,"20_plus":388,"19":5,"17_18":24,"15_16":59,"13_14":62,"11_12":73,"9_10":63,"7_8":88,"6u":92},"IL":{"total":3292,"20_plus":777,"19":40,"17_18":199,"15_16":396,"13_14":367,"11_12":413,"9_10":467,"7_8":346,"6u":287},"IN":{"total":550,"20_plus":118,"19":3,"17_18":18,"15_16":44,"13_14":77,"11_12":85,"9_10":71,"7_8":69,"6u":65},"KS":{"total":142,"20_plus":55,"19":0,"17_18":6,"15_16":6,"13_14":17,"11_12":21,"9_10":15,"7_8":12,"6u":10},"KY":{"total":153,"20_plus":48,"19":1,"17_18":5,"15_16":7,"13_14":17,"11_12":10,"9_10":28,"7_8":19,"6u":18},"LA":{"total":30,"20_plus":10,"19":0,"17_18":1,"15_16":0,"13_14":1,"11_12":4,"9_10":5,"7_8":7,"6u":2},"MA":{"total":11154,"20_plus":1457,"19":111,"17_18":667,"15_16":1147,"13_14":1411,"11_12":1528,"9_10":1656,"7_8":1470,"6u":1707},"MD":{"total":1456,"20_plus":402,"19":20,"17_18":126,"15_16":154,"13_14":176,"11_12":176,"9_10":165,"7_8":146,"6u":91},"ME":{"total":1256,"20_plus":130,"19":11,"17_18":37,"15_16":90,"13_14":147,"11_12":167,"9_10":151,"7_8":211,"6u":312},"MI":{"total":5403,"20_plus":1790,"19":108,"17_18":276,"15_16":364,"13_14":461,"11_12":480,"9_10":601,"7_8":595,"6u":728},"MN":{"total":14392,"20_plus":1887,"19":65,"17_18":435,"15_16":785,"13_14":1552,"11_12":2269,"9_10":2428,"7_8":2361,"6u":2610},"MO":{"total":981,"20_plus":155,"19":5,"17_18":40,"15_16":55,"13_14":98,"11_12":119,"9_10":150,"7_8":187,"6u":172},"MS":{"total":26,"20_plus":4,"19":0,"17_18":0,"15_16":1,"13_14":3,"11_12":3,"9_10":4,"7_8":7,"6u":4},"MT":{"total":1079,"20_plus":542,"19":9,"17_18":42,"15_16":54,"13_14":60,"11_12":87,"9_10":90,"7_8":82,"6u":113},"NC":{"total":797,"20_plus":210,"19":9,"17_18":31,"15_16":58,"13_14":63,"11_12":93,"9_10":124,"7_8":115,"6u":94},"ND":{"total":1538,"20_plus":48,"19":4,"17_18":68,"15_16":93,"13_14":182,"11_12":252,"9_10":261,"7_8":256,"6u":374},"NE":{"total":216,"20_plus":33,"19":2,"17_18":10,"15_16":25,"13_14":32,"11_12":37,"9_10":28,"7_8":27,"6u":22},"NH":{"total":1084,"20_plus":137,"19":17,"17_18":47,"15_16":103,"13_14":124,"11_12":139,"9_10":164,"7_8":143,"6u":210},"NJ":{"total":1965,"20_plus":288,"19":32,"17_18":90,"15_16":175,"13_14":273,"11_12":277,"9_10":317,"7_8":312,"6u":201},"NM":{"total":240,"20_plus":64,"19":0,"17_18":12,"15_16":17,"13_14":22,"11_12":32,"9_10":32,"7_8":34,"6u":27},"NV":{"total":232,"20_plus":72,"19":2,"17_18":5,"15_16":12,"13_14":28,"11_12":38,"9_10":48,"7_8":20,"6u":7},"NY":{"total":6348,"20_plus":954,"19":71,"17_18":310,"15_16":541,"13_14":636,"11_12":766,"9_10":904,"7_8":888,"6u":1278},"OH":{"total":1366,"20_plus":325,"19":28,"17_18":52,"15_16":94,"13_14":139,"11_12":179,"9_10":206,"7_8":194,"6u":149},"OK":{"total":74,"20_plus":10,"19":0,"17_18":0,"15_16":4,"13_14":11,"11_12":11,"9_10":16,"7_8":17,"6u":5},"OR":{"total":339,"20_plus":162,"19":3,"17_18":8,"15_16":21,"13_14":27,"11_12":40,"9_10":25,"7_8":28,"6u":25},"PA":{"total":3181,"20_plus":712,"19":65,"17_18":233,"15_16":350,"13_14":388,"11_12":368,"9_10":437,"7_8":359,"6u":269},"RI":{"total":659,"20_plus":107,"19":6,"17_18":15,"15_16":41,"13_14":77,"11_12":81,"9_10":99,"7_8":84,"6u":149},"SC":{"total":136,"20_plus":49,"19":0,"17_18":1,"15_16":8,"13_14":17,"11_12":18,"9_10":22,"7_8":11,"6u":10},"SD":{"total":516,"20_plus":6,"19":6,"17_18":49,"15_16":75,"13_14":68,"11_12":82,"9_10":60,"7_8":81,"6u":89},"TN":{"total":343,"20_plus":111,"19":3,"17_18":7,"15_16":18,"13_14":23,"11_12":29,"9_10":51,"7_8":49,"6u":52},"TX":{"total":1025,"20_plus":387,"19":9,"17_18":43,"15_16":58,"13_14":89,"11_12":121,"9_10":132,"7_8":113,"6u":73},"UT":{"total":511,"20_plus":248,"19":9,"17_18":35,"15_16":50,"13_14":48,"11_12":35,"9_10":32,"7_8":25,"6u":29},"VA":{"total":1062,"20_plus":310,"19":15,"17_18":57,"15_16":71,"13_14":99,"11_12":162,"9_10":134,"7_8":121,"6u":93},"VT":{"total":1195,"20_plus":138,"19":7,"17_18":47,"15_16":74,"13_14":158,"11_12":190,"9_10":164,"7_8":156,"6u":261},"WA":{"total":1463,"20_plus":652,"19":6,"17_18":50,"15_16":68,"13_14":103,"11_12":144,"9_10":132,"7_8":161,"6u":147},"WI":{"total":4361,"20_plus":769,"19":25,"17_18":130,"15_16":194,"13_14":395,"11_12":563,"9_10":633,"7_8":669,"6u":983},"WV":{"total":114,"20_plus":21,"19":3,"17_18":6,"15_16":6,"13_14":19,"11_12":13,"9_10":16,"7_8":9,"6u":21},"WY":{"total":458,"20_plus":112,"19":6,"17_18":24,"15_16":50,"13_14":54,"11_12":58,"9_10":59,"7_8":44,"6u":51}},"2021":{"AK":{"total":1510,"20_plus":476,"19":7,"17_18":49,"15_16":110,"13_14":137,"11_12":158,"9_10":167,"7_8":176,"6u":230},"AL":{"total":171,"20_plus":55,"19":1,"17_18":4,"15_16":4,"13_14":13,"11_12":17,"9_10":29,"7_8":16,"6u":32},"AR":{"total":34,"20_plus":3,"19":0,"17_18":2,"15_16":0,"13_14":1,"11_12":7,"9_10":5,"7_8":6,"6u":10},"AZ":{"total":634,"20_plus":178,"19":9,"17_18":41,"15_16":52,"13_14":80,"11_12":88,"9_10":80,"7_8":58,"6u":48},"CA":{"total":1316,"20_plus":225,"19":14,"17_18":113,"15_16":157,"13_14":220,"11_12":226,"9_10":188,"7_8":108,"6u":65},"CO":{"total":2110,"20_plus":605,"19":18,"17_18":116,"15_16":180,"13_14":263,"11_12":236,"9_10":288,"7_8":227,"6u":177},"CT":{"total":2318,"20_plus":106,"19":9,"17_18":156,"15_16":291,"13_14":366,"11_12":401,"9_10":373,"7_8":293,"6u":323},"DC":{"total":177,"20_plus":50,"19":1,"17_18":9,"15_16":15,"13_14":23,"11_12":27,"9_10":23,"7_8":17,"6u":12},"DE":{"total":83,"20_plus":10,"19":2,"17_18":4,"15_16":7,"13_14":8,"11_12":15,"9_10":17,"7_8":12,"6u":8},"FL":{"total":1030,"20_plus":360,"19":16,"17_18":42,"15_16":82,"13_14":110,"11_12":116,"9_10":140,"7_8":104,"6u":60},"GA":{"total":146,"20_plus":27,"19":2,"17_18":13,"15_16":18,"13_14":24,"11_12":20,"9_10":20,"7_8":11,"6u":11},"HI":{"total":2,"20_plus":2,"19":0,"17_18":0,"15_16":0,"13_14":0,"11_12":0,"9_10":0,"7_8":0,"6u":0},"IA":{"total":367,"20_plus":32,"19":3,"17_18":13,"15_16":16,"13_14":39,"11_12":67,"9_10":70,"7_8":66,"6u":61},"ID":{"total":647,"20_plus":217,"19":1,"17_18":32,"15_16":60,"13_14":66,"11_12":65,"9_10":60,"7_8":65,"6u":81},"IL":{"total":2585,"20_plus":344,"19":20,"17_18":219,"15_16":338,"13_14":352,"11_12":379,"9_10":410,"7_8":322,"6u":201},"IN":{"total":525,"20_plus":84,"19":7,"17_18":17,"15_16":43,"13_14":76,"11_12":74,"9_10":84,"7_8":60,"6u":80},"KS":{"total":119,"20_plus":38,"19":0,"17_18":5,"15_16":10,"13_14":16,"11_12":16,"9_10":13,"7_8":11,"6u":10},"KY":{"total":136,"20_plus":51,"19":1,"17_18":2,"15_16":6,"13_14":9,"11_12":10,"9_10":17,"7_8":15,"6u":25},"LA":{"total":15,"20_plus":2,"19":0,"17_18":0,"15_16":0,"13_14":4,"11_12":2,"9_10":3,"7_8":1,"6u":3},"MA":{"total":9624,"20_plus":863,"19":48,"17_18":653,"15_16":1167,"13_14":1416,"11_12":1542,"9_10":1468,"7_8":1240,"6u":1227},"MD":{"total":1138,"20_plus":253,"19":8,"17_18":96,"15_16":154,"13_14":168,"11_12":167,"9_10":128,"7_8":101,"6u":63},"ME":{"total":907,"20_plus":47,"19":3,"17_18":67,"15_16":96,"13_14":142,"11_12":131,"9_10":136,"7_8":133,"6u":152},"MI":{"total":4127,"20_plus":1072,"19":59,"17_18":230,"15_16":333,"13_14":397,"11_12":484,"9_10":551,"7_8":459,"6u":542},"MN":{"total":14238,"20_plus":1258,"19":22,"17_18":561,"15_16":1160,"13_14":1810,"11_12":2253,"9_10":2401,"7_8":2384,"6u":2389},"MO":{"total":922,"20_plus":163,"19":9,"17_18":43,"15_16":71,"13_14":98,"11_12":123,"9_10":149,"7_8":145,"6u":121},"MS":{"total":14,"20_plus":2,"19":0,"17_18":1,"15_16":0,"13_14":2,"11_12":4,"9_10":1,"7_8":3,"6u":1},"MT":{"total":941,"20_plus":411,"19":14,"17_18":42,"15_16":54,"13_14":63,"11_12":86,"9_10":102,"7_8":78,"6u":91},"NC":{"total":565,"20_plus":163,"19":8,"17_18":28,"15_16":51,"13_14":56,"11_12":75,"9_10":70,"7_8":63,"6u":51},"ND":{"total":1611,"20_plus":41,"19":31,"17_18":56,"15_16":108,"13_14":218,"11_12":227,"9_10":276,"7_8":296,"6u":358},"NE":{"total":202,"20_plus":22,"19":2,"17_18":7,"15_16":28,"13_14":30,"11_12":29,"9_10":35,"7_8":24,"6u":25},"NH":{"total":927,"20_plus":56,"19":6,"17_18":62,"15_16":111,"13_14":123,"11_12":158,"9_10":153,"7_8":125,"6u":133},"NJ":{"total":1562,"20_plus":137,"19":14,"17_18":82,"15_16":200,"13_14":253,"11_12":255,"9_10":262,"7_8":220,"6u":139},"NM":{"total":150,"20_plus":18,"19":2,"17_18":7,"15_16":19,"13_14":21,"11_12":23,"9_10":25,"7_8":20,"6u":15},"NV":{"total":286,"20_plus":82,"19":0,"17_18":7,"15_16":13,"13_14":28,"11_12":42,"9_10":54,"7_8":38,"6u":22},"NY":{"total":5316,"20_plus":429,"19":58,"17_18":351,"15_16":523,"13_14":632,"11_12":736,"9_10":777,"7_8":815,"6u":995},"OH":{"total":1193,"20_plus":190,"19":4,"17_18":62,"15_16":107,"13_14":134,"11_12":178,"9_10":191,"7_8":168,"6u":159},"OK":{"total":50,"20_plus":6,"19":0,"17_18":1,"15_16":6,"13_14":5,"11_12":11,"9_10":6,"7_8":10,"6u":5},"OR":{"total":209,"20_plus":80,"19":1,"17_18":5,"15_16":26,"13_14":30,"11_12":23,"9_10":14,"7_8":21,"6u":9},"PA":{"total":2625,"20_plus":403,"19":34,"17_18":218,"15_16":306,"13_14":366,"11_12":374,"9_10":399,"7_8":326,"6u":199},"RI":{"total":513,"20_plus":44,"19":6,"17_18":27,"15_16":59,"13_14":67,"11_12":68,"9_10":91,"7_8":76,"6u":75},"SC":{"total":128,"20_plus":40,"19":0,"17_18":5,"15_16":14,"13_14":16,"11_12":19,"9_10":13,"7_8":7,"6u":14},"SD":{"total":533,"20_plus":4,"19":4,"17_18":50,"15_16":67,"13_14":73,"11_12":73,"9_10":83,"7_8":85,"6u":94},"TN":{"total":301,"20_plus":95,"19":5,"17_18":10,"15_16":18,"13_14":23,"11_12":27,"9_10":48,"7_8":43,"6u":32},"TX":{"total":986,"20_plus":290,"19":8,"17_18":42,"15_16":73,"13_14":89,"11_12":119,"9_10":118,"7_8":119,"6u":128},"UT":{"total":433,"20_plus":136,"19":8,"17_18":45,"15_16":39,"13_14":57,"11_12":42,"9_10":45,"7_8":32,"6u":29},"VA":{"total":814,"20_plus":174,"19":9,"17_18":55,"15_16":64,"13_14":112,"11_12":126,"9_10":118,"7_8":89,"6u":67},"VT":{"total":971,"20_plus":51,"19":0,"17_18":49,"15_16":80,"13_14":140,"11_12":176,"9_10":155,"7_8":151,"6u":169},"WA":{"total":943,"20_plus":280,"19":5,"17_18":42,"15_16":62,"13_14":102,"11_12":110,"9_10":131,"7_8":110,"6u":101},"WI":{"total":3752,"20_plus":197,"19":16,"17_18":146,"15_16":229,"13_14":463,"11_12":597,"9_10":654,"7_8":656,"6u":794},"WV":{"total":98,"20_plus":10,"19":0,"17_18":3,"15_16":10,"13_14":16,"11_12":18,"9_10":17,"7_8":11,"6u":13},"WY":{"total":394,"20_plus":42,"19":2,"17_18":28,"15_16":45,"13_14":53,"11_12":60,"9_10":58,"7_8":51,"6u":55}},"2022":{"AK":{"total":2030,"20_plus":779,"19":10,"17_18":64,"15_16":125,"13_14":133,"11_12":195,"9_10":184,"7_8":199,"6u":341},"AL":{"total":208,"20_plus":62,"19":1,"17_18":6,"15_16":2,"13_14":22,"11_12":25,"9_10":23,"7_8":28,"6u":39},"AR":{"total":51,"20_plus":5,"19":0,"17_18":2,"15_16":1,"13_14":7,"11_12":5,"9_10":5,"7_8":14,"6u":12},"AZ":{"total":893,"20_plus":230,"19":19,"17_18":29,"15_16":77,"13_14":95,"11_12":98,"9_10":138,"7_8":121,"6u":86},"CA":{"total":2856,"20_plus":1035,"19":28,"17_18":120,"15_16":204,"13_14":328,"11_12":308,"9_10":359,"7_8":313,"6u":161},"CO":{"total":3008,"20_plus":1172,"19":43,"17_18":104,"15_16":235,"13_14":242,"11_12":301,"9_10":343,"7_8":315,"6u":253},"CT":{"total":2726,"20_plus":201,"19":28,"17_18":161,"15_16":273,"13_14":395,"11_12":401,"9_10":440,"7_8":357,"6u":470},"DC":{"total":275,"20_plus":89,"19":2,"17_18":12,"15_16":13,"13_14":26,"11_12":28,"9_10":30,"7_8":19,"6u":56},"DE":{"total":113,"20_plus":29,"19":1,"17_18":7,"15_16":7,"13_14":12,"11_12":19,"9_10":16,"7_8":13,"6u":9},"FL":{"total":1400,"20_plus":523,"19":14,"17_18":60,"15_16":91,"13_14":126,"11_12":148,"9_10":199,"7_8":150,"6u":89},"GA":{"total":194,"20_plus":46,"19":2,"17_18":13,"15_16":23,"13_14":26,"11_12":24,"9_10":24,"7_8":21,"6u":15},"HI":{"total":1,"20_plus":0,"19":0,"17_18":0,"15_16":0,"13_14":1,"11_12":0,"9_10":0,"7_8":0,"6u":0},"IA":{"total":470,"20_plus":50,"19":8,"17_18":17,"15_16":23,"13_14":53,"11_12":72,"9_10":72,"7_8":72,"6u":103},"ID":{"total":878,"20_plus":341,"19":6,"17_18":35,"15_16":56,"13_14":82,"11_12":66,"9_10":96,"7_8":82,"6u":114},"IL":{"total":3125,"20_plus":741,"19":37,"17_18":242,"15_16":321,"13_14":377,"11_12":427,"9_10":432,"7_8":307,"6u":241},"IN":{"total":632,"20_plus":137,"19":6,"17_18":28,"15_16":56,"13_14":80,"11_12":82,"9_10":90,"7_8":89,"6u":64},"KS":{"total":145,"20_plus":48,"19":2,"17_18":3,"15_16":12,"13_14":20,"11_12":18,"9_10":14,"7_8":14,"6u":14},"KY":{"total":161,"20_plus":58,"19":0,"17_18":3,"15_16":8,"13_14":11,"11_12":19,"9_10":20,"7_8":25,"6u":17},"LA":{"total":20,"20_plus":9,"19":0,"17_18":0,"15_16":1,"13_14":3,"11_12":1,"9_10":2,"7_8":4,"6u":0},"MA":{"total":11452,"20_plus":1252,"19":100,"17_18":746,"15_16":1153,"13_14":1469,"11_12":1681,"9_10":1626,"7_8":1563,"6u":1862},"MD":{"total":1448,"20_plus":410,"19":20,"17_18":100,"15_16":169,"13_14":182,"11_12":169,"9_10":172,"7_8":138,"6u":88},"ME":{"total":1152,"20_plus":93,"19":15,"17_18":59,"15_16":78,"13_14":142,"11_12":139,"9_10":172,"7_8":172,"6u":282},"MI":{"total":5269,"20_plus":1465,"19":88,"17_18":315,"15_16":372,"13_14":456,"11_12":583,"9_10":637,"7_8":598,"6u":755},"MN":{"total":15377,"20_plus":1820,"19":70,"17_18":441,"15_16":875,"13_14":1798,"11_12":2375,"9_10":2544,"7_8":2738,"6u":2716},"MO":{"total":1202,"20_plus":214,"19":16,"17_18":43,"15_16":83,"13_14":122,"11_12":158,"9_10":199,"7_8":185,"6u":182},"MS":{"total":12,"20_plus":4,"19":0,"17_18":0,"15_16":2,"13_14":2,"11_12":1,"9_10":0,"7_8":2,"6u":1},"MT":{"total":1190,"20_plus":547,"19":11,"17_18":47,"15_16":57,"13_14":91,"11_12":101,"9_10":112,"7_8":97,"6u":127},"NC":{"total":777,"20_plus":195,"19":13,"17_18":33,"15_16":57,"13_14":84,"11_12":92,"9_10":129,"7_8":113,"6u":61},"ND":{"total":1666,"20_plus":44,"19":11,"17_18":58,"15_16":123,"13_14":230,"11_12":254,"9_10":283,"7_8":331,"6u":332},"NE":{"total":250,"20_plus":26,"19":2,"17_18":16,"15_16":32,"13_14":40,"11_12":35,"9_10":33,"7_8":32,"6u":34},"NH":{"total":1117,"20_plus":105,"19":7,"17_18":60,"15_16":98,"13_14":138,"11_12":166,"9_10":164,"7_8":171,"6u":208},"NJ":{"total":2122,"20_plus":313,"19":26,"17_18":123,"15_16":254,"13_14":265,"11_12":297,"9_10":334,"7_8":284,"6u":226},"NM":{"total":247,"20_plus":64,"19":2,"17_18":13,"15_16":17,"13_14":24,"11_12":32,"9_10":32,"7_8":33,"6u":30},"NV":{"total":523,"20_plus":172,"19":2,"17_18":10,"15_16":36,"13_14":39,"11_12":77,"9_10":86,"7_8":76,"6u":25},"NY":{"total":6590,"20_plus":852,"19":76,"17_18":336,"15_16":507,"13_14":699,"11_12":794,"9_10":963,"7_8":1026,"6u":1337},"OH":{"total":1529,"20_plus":278,"19":22,"17_18":91,"15_16":98,"13_14":157,"11_12":226,"9_10":233,"7_8":208,"6u":216},"OK":{"total":74,"20_plus":12,"19":0,"17_18":2,"15_16":5,"13_14":9,"11_12":17,"9_10":14,"7_8":13,"6u":2},"OR":{"total":323,"20_plus":135,"19":2,"17_18":13,"15_16":22,"13_14":35,"11_12":32,"9_10":39,"7_8":30,"6u":15},"PA":{"total":3236,"20_plus":727,"19":52,"17_18":246,"15_16":368,"13_14":381,"11_12":430,"9_10":405,"7_8":381,"6u":246},"RI":{"total":660,"20_plus":105,"19":7,"17_18":39,"15_16":61,"13_14":77,"11_12":92,"9_10":77,"7_8":92,"6u":110},"SC":{"total":198,"20_plus":70,"19":0,"17_18":10,"15_16":15,"13_14":20,"11_12":26,"9_10":20,"7_8":20,"6u":17},"SD":{"total":578,"20_plus":7,"19":8,"17_18":48,"15_16":69,"13_14":85,"11_12":83,"9_10":91,"7_8":88,"6u":99},"TN":{"total":383,"20_plus":104,"19":2,"17_18":21,"15_16":40,"13_14":25,"11_12":38,"9_10":58,"7_8":48,"6u":47},"TX":{"total":1353,"20_plus":417,"19":13,"17_18":51,"15_16":86,"13_14":125,"11_12":157,"9_10":194,"7_8":163,"6u":147},"UT":{"total":562,"20_plus":240,"19":12,"17_18":32,"15_16":45,"13_14":53,"11_12":53,"9_10":51,"7_8":45,"6u":31},"VA":{"total":1083,"20_plus":296,"19":12,"17_18":53,"15_16":94,"13_14":146,"11_12":138,"9_10":130,"7_8":127,"6u":87},"VT":{"total":1165,"20_plus":136,"19":8,"17_18":49,"15_16":56,"13_14":152,"11_12":145,"9_10":167,"7_8":192,"6u":260},"WA":{"total":1759,"20_plus":750,"19":12,"17_18":64,"15_16":100,"13_14":148,"11_12":125,"9_10":205,"7_8":180,"6u":175},"WI":{"total":4870,"20_plus":651,"19":26,"17_18":148,"15_16":226,"13_14":538,"11_12":645,"9_10":763,"7_8":793,"6u":1080},"WV":{"total":120,"20_plus":22,"19":3,"17_18":2,"15_16":14,"13_14":10,"11_12":18,"9_10":18,"7_8":18,"6u":15},"WY":{"total":498,"20_plus":98,"19":4,"17_18":42,"15_16":43,"13_14":62,"11_12":68,"9_10":43,"7_8":63,"6u":75}},"2023":{"AK":{"total":2228,"20_plus":914,"19":14,"17_18":85,"15_16":123,"13_14":158,"11_12":184,"9_10":198,"7_8":231,"6u":321},"AL":{"total":217,"20_plus":60,"19":5,"17_18":3,"15_16":11,"13_14":24,"11_12":29,"9_10":27,"7_8":30,"6u":28},"AR":{"total":50,"20_plus":7,"19":0,"17_18":0,"15_16":3,"13_14":5,"11_12":7,"9_10":9,"7_8":13,"6u":6},"AZ":{"total":1060,"20_plus":308,"19":15,"17_18":42,"15_16":89,"13_14":98,"11_12":109,"9_10":153,"7_8":139,"6u":107},"CA":{"total":3232,"20_plus":1156,"19":30,"17_18":120,"15_16":236,"13_14":322,"11_12":376,"9_10":391,"7_8":360,"6u":241},"CO":{"total":3291,"20_plus":1233,"19":37,"17_18":147,"15_16":240,"13_14":269,"11_12":354,"9_10":343,"7_8":375,"6u":293},"CT":{"total":2708,"20_plus":221,"19":33,"17_18":156,"15_16":277,"13_14":406,"11_12":397,"9_10":384,"7_8":419,"6u":415},"DC":{"total":267,"20_plus":111,"19":6,"17_18":9,"15_16":22,"13_14":27,"11_12":32,"9_10":17,"7_8":26,"6u":17},"DE":{"total":124,"20_plus":27,"19":3,"17_18":6,"15_16":10,"13_14":15,"11_12":20,"9_10":19,"7_8":10,"6u":14},"FL":{"total":1517,"20_plus":583,"19":21,"17_18":63,"15_16":105,"13_14":123,"11_12":178,"9_10":198,"7_8":157,"6u":89},"GA":{"total":210,"20_plus":57,"19":5,"17_18":13,"15_16":23,"13_14":18,"11_12":26,"9_10":23,"7_8":24,"6u":21},"HI":{"total":20,"20_plus":13,"19":0,"17_18":0,"15_16":0,"13_14":0,"11_12":1,"9_10":4,"7_8":2,"6u":0},"IA":{"total":457,"20_plus":57,"19":3,"17_18":12,"15_16":36,"13_14":61,"11_12":54,"9_10":74,"7_8":74,"6u":86},"ID":{"total":943,"20_plus":418,"19":4,"17_18":35,"15_16":58,"13_14":65,"11_12":77,"9_10":79,"7_8":105,"6u":102},"IL":{"total":3224,"20_plus":763,"19":43,"17_18":238,"15_16":342,"13_14":380,"11_12":421,"9_10":437,"7_8":334,"6u":266},"IN":{"total":646,"20_plus":130,"19":12,"17_18":39,"15_16":56,"13_14":71,"11_12":91,"9_10":90,"7_8":95,"6u":62},"KS":{"total":170,"20_plus":51,"19":1,"17_18":5,"15_16":13,"13_14":23,"11_12":21,"9_10":19,"7_8":18,"6u":19},"KY":{"total":199,"20_plus":71,"19":0,"17_18":8,"15_16":7,"13_14":16,"11_12":27,"9_10":24,"7_8":23,"6u":23},"LA":{"total":17,"20_plus":5,"19":0,"17_18":0,"15_16":1,"13_14":1,"11_12":3,"9_10":4,"7_8":2,"6u":1},"MA":{"total":11444,"20_plus":1286,"19":102,"17_18":710,"15_16":1117,"13_14":1489,"11_12":1607,"9_10":1667,"7_8":1648,"6u":1818},"MD":{"total":1521,"20_plus":446,"19":20,"17_18":123,"15_16":178,"13_14":195,"11_12":170,"9_10":166,"7_8":145,"6u":78},"ME":{"total":1194,"20_plus":86,"19":14,"17_18":40,"15_16":85,"13_14":134,"11_12":151,"9_10":183,"7_8":192,"6u":309},"MI":{"total":5359,"20_plus":1459,"19":103,"17_18":334,"15_16":382,"13_14":493,"11_12":610,"9_10":618,"7_8":656,"6u":704},"MN":{"total":15355,"20_plus":1965,"19":58,"17_18":399,"15_16":876,"13_14":1819,"11_12":2448,"9_10":2594,"7_8":2597,"6u":2599},"MO":{"total":1335,"20_plus":248,"19":15,"17_18":50,"15_16":91,"13_14":150,"11_12":178,"9_10":225,"7_8":202,"6u":176},"MS":{"total":21,"20_plus":8,"19":0,"17_18":0,"15_16":1,"13_14":2,"11_12":0,"9_10":4,"7_8":3,"6u":3},"MT":{"total":1211,"20_plus":532,"19":7,"17_18":42,"15_16":68,"13_14":86,"11_12":116,"9_10":121,"7_8":116,"6u":123},"NC":{"total":852,"20_plus":209,"19":8,"17_18":36,"15_16":64,"13_14":94,"11_12":118,"9_10":135,"7_8":121,"6u":67},"ND":{"total":1679,"20_plus":54,"19":16,"17_18":73,"15_16":146,"13_14":210,"11_12":273,"9_10":307,"7_8":311,"6u":289},"NE":{"total":261,"20_plus":28,"19":2,"17_18":24,"15_16":22,"13_14":37,"11_12":44,"9_10":37,"7_8":35,"6u":32},"NH":{"total":1169,"20_plus":136,"19":12,"17_18":81,"15_16":101,"13_14":145,"11_12":163,"9_10":172,"7_8":175,"6u":184},"NJ":{"total":2246,"20_plus":332,"19":29,"17_18":159,"15_16":247,"13_14":259,"11_12":297,"9_10":339,"7_8":356,"6u":228},"NM":{"total":299,"20_plus":96,"19":2,"17_18":15,"15_16":22,"13_14":29,"11_12":36,"9_10":41,"7_8":36,"6u":22},"NV":{"total":450,"20_plus":134,"19":4,"17_18":11,"15_16":34,"13_14":49,"11_12":68,"9_10":70,"7_8":53,"6u":27},"NY":{"total":6938,"20_plus":977,"19":114,"17_18":336,"15_16":534,"13_14":712,"11_12":801,"9_10":1020,"7_8":1146,"6u":1298},"OH":{"total":1763,"20_plus":314,"19":32,"17_18":85,"15_16":110,"13_14":198,"11_12":223,"9_10":289,"7_8":272,"6u":240},"OK":{"total":95,"20_plus":16,"19":2,"17_18":3,"15_16":4,"13_14":10,"11_12":16,"9_10":13,"7_8":13,"6u":18},"OR":{"total":367,"20_plus":185,"19":3,"17_18":24,"15_16":22,"13_14":32,"11_12":27,"9_10":46,"7_8":14,"6u":14},"PA":{"total":3367,"20_plus":721,"19":69,"17_18":258,"15_16":375,"13_14":433,"11_12":444,"9_10":455,"7_8":380,"6u":232},"RI":{"total":676,"20_plus":107,"19":9,"17_18":48,"15_16":72,"13_14":77,"11_12":88,"9_10":85,"7_8":76,"6u":114},"SC":{"total":208,"20_plus":75,"19":1,"17_18":12,"15_16":17,"13_14":28,"11_12":22,"9_10":14,"7_8":18,"6u":21},"SD":{"total":571,"20_plus":9,"19":9,"17_18":49,"15_16":70,"13_14":83,"11_12":90,"9_10":91,"7_8":75,"6u":95},"TN":{"total":430,"20_plus":104,"19":1,"17_18":30,"15_16":39,"13_14":32,"11_12":37,"9_10":57,"7_8":71,"6u":59},"TX":{"total":1342,"20_plus":407,"19":12,"17_18":47,"15_16":89,"13_14":142,"11_12":175,"9_10":177,"7_8":170,"6u":123},"UT":{"total":580,"20_plus":259,"19":10,"17_18":30,"15_16":56,"13_14":53,"11_12":59,"9_10":45,"7_8":39,"6u":29},"VA":{"total":1200,"20_plus":336,"19":28,"17_18":56,"15_16":118,"13_14":140,"11_12":142,"9_10":146,"7_8":136,"6u":98},"VT":{"total":1194,"20_plus":126,"19":16,"17_18":50,"15_16":73,"13_14":167,"11_12":164,"9_10":176,"7_8":190,"6u":232},"WA":{"total":1936,"20_plus":862,"19":22,"17_18":56,"15_16":116,"13_14":128,"11_12":186,"9_10":204,"7_8":210,"6u":152},"WI":{"total":4940,"20_plus":679,"19":29,"17_18":132,"15_16":263,"13_14":552,"11_12":686,"9_10":762,"7_8":813,"6u":1024},"WV":{"total":171,"20_plus":53,"19":4,"17_18":12,"15_16":8,"13_14":17,"11_12":23,"9_10":20,"7_8":19,"6u":15},"WY":{"total":500,"20_plus":99,"19":10,"17_18":34,"15_16":46,"13_14":69,"11_12":58,"9_10":44,"7_8":68,"6u":72}},"2024":{"AK":{"total":2322,"20_plus":981,"19":21,"17_18":86,"15_16":115,"13_14":192,"11_12":183,"9_10":209,"7_8":216,"6u":319},"AL":{"total":217,"20_plus":47,"19":0,"17_18":3,"15_16":20,"13_14":18,"11_12":29,"9_10":29,"7_8":37,"6u":34},"AR":{"total":60,"20_plus":4,"19":0,"17_18":0,"15_16":6,"13_14":10,"11_12":6,"9_10":13,"7_8":9,"6u":12},"AZ":{"total":972,"20_plus":295,"19":13,"17_18":45,"15_16":80,"13_14":110,"11_12":119,"9_10":118,"7_8":110,"6u":82},"CA":{"total":3661,"20_plus":1328,"19":38,"17_18":145,"15_16":256,"13_14":320,"11_12":391,"9_10":466,"7_8":391,"6u":326},"CO":{"total":3401,"20_plus":1277,"19":28,"17_18":159,"15_16":240,"13_14":329,"11_12":344,"9_10":374,"7_8":348,"6u":302},"CT":{"total":2532,"20_plus":229,"19":26,"17_18":158,"15_16":318,"13_14":371,"11_12":393,"9_10":338,"7_8":364,"6u":335},"DC":{"total":279,"20_plus":104,"19":5,"17_18":9,"15_16":22,"13_14":24,"11_12":28,"9_10":32,"7_8":34,"6u":21},"DE":{"total":112,"20_plus":26,"19":1,"17_18":5,"15_16":12,"13_14":18,"11_12":16,"9_10":9,"7_8":22,"6u":3},"FL":{"total":1660,"20_plus":630,"19":27,"17_18":54,"15_16":112,"13_14":162,"11_12":194,"9_10":198,"7_8":190,"6u":93},"GA":{"total":206,"20_plus":54,"19":3,"17_18":15,"15_16":21,"13_14":24,"11_12":26,"9_10":28,"7_8":23,"6u":12},"HI":{"total":35,"20_plus":16,"19":0,"17_18":0,"15_16":4,"13_14":4,"11_12":5,"9_10":5,"7_8":1,"6u":0},"IA":{"total":472,"20_plus":67,"19":6,"17_18":20,"15_16":40,"13_14":53,"11_12":57,"9_10":71,"7_8":83,"6u":75},"ID":{"total":910,"20_plus":411,"19":13,"17_18":30,"15_16":61,"13_14":56,"11_12":73,"9_10":95,"7_8":79,"6u":92},"IL":{"total":3470,"20_plus":762,"19":62,"17_18":216,"15_16":340,"13_14":394,"11_12":437,"9_10":497,"7_8":378,"6u":384},"IN":{"total":679,"20_plus":138,"19":5,"17_18":32,"15_16":62,"13_14":82,"11_12":88,"9_10":127,"7_8":76,"6u":69},"KS":{"total":178,"20_plus":52,"19":3,"17_18":8,"15_16":15,"13_14":18,"11_12":26,"9_10":19,"7_8":26,"6u":11},"KY":{"total":186,"20_plus":52,"19":1,"17_18":4,"15_16":12,"13_14":20,"11_12":22,"9_10":27,"7_8":28,"6u":20},"LA":{"total":16,"20_plus":2,"19":0,"17_18":0,"15_16":3,"13_14":4,"11_12":2,"9_10":3,"7_8":1,"6u":1},"MA":{"total":11763,"20_plus":1471,"19":126,"17_18":689,"15_16":1128,"13_14":1577,"11_12":1555,"9_10":1666,"7_8":1695,"6u":1856},"MD":{"total":1612,"20_plus":453,"19":20,"17_18":128,"15_16":202,"13_14":192,"11_12":195,"9_10":180,"7_8":140,"6u":102},"ME":{"total":1235,"20_plus":79,"19":8,"17_18":52,"15_16":86,"13_14":121,"11_12":183,"9_10":196,"7_8":194,"6u":316},"MI":{"total":5327,"20_plus":1528,"19":82,"17_18":254,"15_16":378,"13_14":519,"11_12":635,"9_10":603,"7_8":616,"6u":712},"MN":{"total":15723,"20_plus":1981,"19":79,"17_18":380,"15_16":896,"13_14":2006,"11_12":2471,"9_10":2630,"7_8":2558,"6u":2722},"MO":{"total":1334,"20_plus":227,"19":14,"17_18":55,"15_16":107,"13_14":150,"11_12":189,"9_10":210,"7_8":194,"6u":188},"MS":{"total":17,"20_plus":3,"19":0,"17_18":1,"15_16":0,"13_14":1,"11_12":4,"9_10":4,"7_8":3,"6u":1},"MT":{"total":1249,"20_plus":589,"19":13,"17_18":44,"15_16":78,"13_14":89,"11_12":109,"9_10":111,"7_8":108,"6u":108},"NC":{"total":894,"20_plus":210,"19":11,"17_18":36,"15_16":77,"13_14":97,"11_12":132,"9_10":147,"7_8":121,"6u":63},"ND":{"total":1651,"20_plus":53,"19":20,"17_18":83,"15_16":121,"13_14":228,"11_12":256,"9_10":332,"7_8":262,"6u":296},"NE":{"total":259,"20_plus":37,"19":8,"17_18":18,"15_16":32,"13_14":36,"11_12":39,"9_10":36,"7_8":29,"6u":24},"NH":{"total":1130,"20_plus":124,"19":11,"17_18":57,"15_16":99,"13_14":146,"11_12":161,"9_10":192,"7_8":164,"6u":176},"NJ":{"total":2108,"20_plus":296,"19":36,"17_18":166,"15_16":224,"13_14":271,"11_12":310,"9_10":310,"7_8":310,"6u":185},"NM":{"total":295,"20_plus":78,"19":4,"17_18":13,"15_16":17,"13_14":37,"11_12":38,"9_10":42,"7_8":34,"6u":32},"NV":{"total":469,"20_plus":113,"19":3,"17_18":15,"15_16":31,"13_14":57,"11_12":68,"9_10":81,"7_8":67,"6u":34},"NY":{"total":6795,"20_plus":1018,"19":84,"17_18":278,"15_16":558,"13_14":714,"11_12":816,"9_10":1016,"7_8":1023,"6u":1288},"OH":{"total":1894,"20_plus":309,"19":25,"17_18":89,"15_16":111,"13_14":207,"11_12":247,"9_10":335,"7_8":305,"6u":266},"OK":{"total":81,"20_plus":8,"19":2,"17_18":3,"15_16":6,"13_14":9,"11_12":17,"9_10":11,"7_8":15,"6u":10},"OR":{"total":412,"20_plus":229,"19":4,"17_18":16,"15_16":20,"13_14":31,"11_12":44,"9_10":29,"7_8":15,"6u":24},"PA":{"total":3374,"20_plus":725,"19":56,"17_18":276,"15_16":379,"13_14":480,"11_12":404,"9_10":455,"7_8":363,"6u":236},"RI":{"total":767,"20_plus":135,"19":15,"17_18":42,"15_16":71,"13_14":95,"11_12":74,"9_10":91,"7_8":105,"6u":139},"SC":{"total":221,"20_plus":68,"19":6,"17_18":14,"15_16":22,"13_14":27,"11_12":18,"9_10":28,"7_8":18,"6u":20},"SD":{"total":561,"20_plus":6,"19":7,"17_18":34,"15_16":76,"13_14":79,"11_12":95,"9_10":86,"7_8":76,"6u":102},"TN":{"total":431,"20_plus":116,"19":4,"17_18":32,"15_16":26,"13_14":49,"11_12":44,"9_10":58,"7_8":67,"6u":35},"TX":{"total":1345,"20_plus":461,"19":10,"17_18":49,"15_16":109,"13_14":146,"11_12":173,"9_10":174,"7_8":128,"6u":95},"UT":{"total":634,"20_plus":268,"19":16,"17_18":38,"15_16":59,"13_14":71,"11_12":56,"9_10":53,"7_8":44,"6u":29},"VA":{"total":1259,"20_plus":345,"19":16,"17_18":85,"15_16":123,"13_14":134,"11_12":149,"9_10":158,"7_8":154,"6u":95},"VT":{"total":1196,"20_plus":86,"19":11,"17_18":56,"15_16":83,"13_14":154,"11_12":169,"9_10":197,"7_8":198,"6u":242},"WA":{"total":2113,"20_plus":997,"19":22,"17_18":64,"15_16":133,"13_14":126,"11_12":204,"9_10":222,"7_8":187,"6u":158},"WI":{"total":5098,"20_plus":709,"19":36,"17_18":154,"15_16":289,"13_14":546,"11_12":745,"9_10":786,"7_8":818,"6u":1015},"WV":{"total":185,"20_plus":48,"19":0,"17_18":7,"15_16":8,"13_14":25,"11_12":22,"9_10":21,"7_8":19,"6u":35},"WY":{"total":471,"20_plus":99,"19":7,"17_18":30,"15_16":54,"13_14":61,"11_12":44,"9_10":51,"7_8":54,"6u":71}}};
+
+// ─── NORM: per-100k normalized totals (total registrations / state population * 100k)
+const NORM = {"2007":{"DE":5.76,"NJ":11.81,"E PA":14.83,"IL":15.31,"IA":5.77,"KS":1.77,"MO":5.13,"NE":4.33,"WI":56.21,"MA":110.67,"MI":45.77,"IN":4.51,"KY":3.04,"OH":8.81,"W PA":12.69,"WV":6.8,"MN":187.54,"ND":114.88,"SD":39.59,"CT":59.04,"ME":95.86,"NH":85.95,"RI":68.8,"VT":201.06,"NY":22.58,"AK":229.75,"CA":3.41,"HI":0.21,"NV":1.8,"OR":3.75,"WA":9.59,"AZ":3.99,"CO":35.18,"ID":24.36,"MT":50.36,"NM":9.07,"OK":0.51,"TX":1.78,"UT":10.0,"WY":47.15,"AL":1.25,"AR":0.56,"DC":14.65,"FL":2.8,"GA":1.19,"LA":0.39,"MD":13.36,"MS":0.61,"NC":3.18,"SC":2.11,"TN":2.07,"VA":5.91},"2008":{"DE":6.16,"NJ":12.11,"E PA":16.4,"IL":16.2,"IA":5.8,"KS":1.74,"MO":6.03,"NE":4.54,"WI":56.18,"MA":110.47,"MI":44.58,"IN":4.3,"KY":2.77,"OH":9.22,"W PA":13.85,"WV":6.36,"MN":201.33,"CT":60.93,"ME":89.33,"NH":87.55,"RI":79.1,"VT":192.2,"NY":23.4,"MT":55.52,"ND":113.85,"SD":39.7,"WY":54.26,"AK":227.71,"CA":3.67,"HI":0.14,"NV":2.25,"OR":2.9,"WA":10.56,"AZ":4.13,"CO":36.09,"ID":28.71,"NM":8.5,"OK":0.86,"TX":2.04,"UT":11.28,"AL":1.99,"AR":0.6,"DC":14.79,"FL":2.93,"GA":1.46,"LA":0.77,"MD":12.76,"MS":0.68,"NC":3.4,"SC":1.66,"TN":1.97,"VA":6.36},"2009":{"DE":6.67,"NJ":11.31,"E PA":16.92,"IL":16.09,"IA":5.33,"KS":1.97,"MO":6.34,"NE":4.08,"WI":52.84,"MA":114.41,"MI":43.39,"IN":4.77,"KY":2.89,"OH":8.93,"W PA":15.46,"WV":6.91,"MN":205.26,"CT":62.67,"ME":85.73,"NH":82.32,"RI":74.18,"VT":201.69,"NY":24.75,"MT":55.15,"ND":111.92,"SD":37.22,"WY":50.79,"AK":238.89,"CA":3.41,"NV":2.25,"OR":2.24,"WA":10.14,"AZ":4.6,"CO":35.73,"ID":27.02,"NM":7.27,"OK":0.99,"TX":1.87,"UT":10.27,"AL":1.57,"AR":0.43,"DC":17.26,"FL":2.6,"GA":1.22,"LA":0.52,"MD":13.23,"MS":0.41,"NC":3.38,"SC":1.29,"TN":1.72,"VA":6.49},"2010":{"DE":6.67,"E PA":16.71,"NJ":11.51,"IL":17.61,"IA":6.36,"KS":2.42,"MO":6.08,"NE":4.79,"WI":54.23,"MA":121.62,"MI":43.95,"IN":5.36,"KY":3.13,"OH":8.97,"W PA":16.4,"WV":7.53,"MN":214.67,"CT":64.31,"ME":85.37,"NH":81.74,"RI":75.82,"VT":192.82,"NY":26.06,"MT":63.73,"ND":111.15,"SD":38.57,"WY":50.97,"AK":240.94,"CA":3.52,"NV":2.32,"OR":2.6,"WA":10.6,"AZ":3.24,"CO":35.19,"ID":31.59,"NM":7.84,"OK":0.99,"TX":2.01,"UT":10.85,"AL":1.65,"AR":0.63,"DC":17.98,"FL":2.68,"GA":0.91,"LA":0.73,"MD":13.95,"MS":0.54,"NC":3.67,"SC":1.15,"TN":1.78,"VA":6.19},"2011":{"DE":6.77,"E PA":18.28,"NJ":11.92,"IL":19.64,"IA":6.68,"KS":3.17,"MO":6.92,"NE":6.32,"WI":56.47,"MA":129.48,"MI":48.46,"IN":5.26,"KY":3.08,"OH":9.33,"W PA":21.23,"WV":7.36,"MN":220.33,"CT":64.7,"ME":89.99,"NH":82.61,"RI":75.36,"VT":208.53,"NY":27.39,"MT":72.49,"ND":129.0,"SD":44.55,"WY":56.86,"AK":254.98,"CA":4.2,"NV":2.8,"OR":2.45,"WA":11.06,"AZ":3.64,"CO":36.54,"ID":31.27,"NM":9.59,"OK":0.96,"TX":2.41,"UT":11.25,"AL":1.89,"AR":0.8,"DC":19.87,"FL":2.83,"GA":1.44,"LA":0.62,"MD":14.42,"MS":0.57,"NC":3.86,"SC":1.54,"TN":1.98,"VA":6.94},"2012":{"DE":8.79,"E PA":19.28,"NJ":12.85,"IL":19.85,"IA":7.8,"KS":3.68,"MO":7.85,"NE":6.37,"WI":56.87,"MA":136.05,"MI":45.85,"IN":5.41,"KY":2.71,"OH":9.03,"W PA":23.29,"WV":6.02,"MN":222.5,"CT":68.83,"ME":84.19,"NH":82.9,"RI":72.54,"VT":191.11,"NY":27.11,"MT":80.52,"ND":137.98,"SD":47.71,"WY":60.5,"AK":253.48,"CA":4.24,"NV":2.13,"OR":2.41,"WA":10.56,"AZ":4.39,"CO":38.45,"ID":31.65,"NM":8.97,"OK":0.91,"TX":2.38,"UT":12.75,"AL":2.01,"AR":0.6,"DC":21.75,"FL":2.92,"GA":1.53,"LA":0.67,"MD":15.1,"MS":0.84,"NC":4.47,"SC":1.13,"TN":1.9,"VA":7.23},"2013":{"DE":7.88,"E PA":18.28,"NJ":13.02,"IL":20.24,"IA":8.12,"KS":2.83,"MO":7.62,"NE":6.47,"WI":54.09,"MA":134.6,"MI":46.12,"IN":5.97,"KY":3.0,"OH":8.85,"W PA":21.06,"WV":7.47,"MN":216.56,"CT":65.97,"ME":81.77,"NH":75.28,"RI":64.52,"VT":202.93,"NY":26.78,"MT":79.04,"ND":138.62,"SD":47.82,"WY":63.97,"AK":240.39,"CA":4.47,"NV":2.19,"OR":3.54,"WA":11.01,"AZ":4.21,"CO":37.22,"ID":31.75,"NM":8.93,"OK":0.99,"TX":2.47,"UT":12.59,"AL":1.57,"AR":0.63,"DC":23.2,"FL":2.89,"GA":1.31,"LA":0.79,"MD":15.46,"MS":0.61,"NC":4.15,"SC":1.29,"TN":2.05,"VA":7.45},"2014":{"DE":7.17,"E PA":19.81,"NJ":14.17,"IL":21.53,"IA":8.87,"KS":3.4,"MO":7.99,"NE":6.98,"WI":52.56,"MA":139.63,"MI":45.78,"IN":6.31,"KY":3.22,"OH":8.7,"W PA":22.12,"WV":7.53,"MN":220.12,"CT":67.53,"ME":77.29,"NH":80.29,"RI":66.7,"VT":205.11,"NY":26.45,"MT":81.53,"ND":148.89,"SD":51.43,"WY":61.19,"AK":246.94,"CA":4.62,"NV":1.74,"OR":4.67,"WA":11.06,"AZ":4.26,"CO":37.98,"ID":33.66,"NM":8.93,"OK":0.58,"TX":2.65,"UT":11.95,"AL":1.69,"AR":0.63,"DC":25.52,"FL":2.97,"GA":1.2,"LA":0.97,"MD":16.56,"MS":0.71,"NC":4.18,"SC":1.11,"TN":2.14,"VA":8.16},"2015":{"DE":8.08,"E PA":19.67,"NJ":15.52,"IL":22.17,"IA":9.53,"KS":3.34,"MO":9.1,"NE":9.23,"WI":52.48,"MA":146.66,"MI":47.57,"IN":7.31,"KY":2.8,"OH":8.91,"W PA":21.85,"WV":7.25,"MN":224.45,"CT":67.19,"ME":79.93,"NH":80.22,"RI":67.34,"VT":195.16,"NY":26.43,"MT":83.47,"ND":158.65,"SD":52.44,"WY":66.22,"AK":254.3,"CA":5.13,"NV":2.32,"OR":5.29,"WA":12.17,"AZ":7.1,"CO":37.98,"ID":37.84,"NM":9.68,"OK":0.93,"TX":2.65,"UT":13.05,"AL":2.35,"AR":0.93,"DC":25.96,"FL":3.14,"GA":1.42,"LA":0.84,"MD":18.63,"MS":0.44,"NC":4.41,"SC":1.9,"TN":2.52,"VA":8.92},"2016":{"DE":8.18,"E PA":21.26,"NJ":15.72,"IL":23.45,"IA":9.62,"KS":3.37,"MO":10.92,"NE":9.28,"WI":55.5,"MA":149.75,"MI":49.46,"IN":7.59,"KY":2.93,"OH":9.19,"W PA":23.48,"WV":7.64,"MN":234.01,"CT":67.0,"ME":81.92,"NH":78.84,"RI":67.34,"VT":207.44,"NY":28.05,"MT":87.44,"ND":173.41,"SD":54.7,"WY":70.21,"AK":263.84,"CA":5.78,"NV":1.93,"OR":6.25,"WA":14.17,"AZ":7.48,"CO":39.4,"ID":36.65,"NM":10.77,"OK":1.04,"TX":2.77,"UT":15.37,"AL":2.51,"AR":0.96,"DC":28.42,"FL":3.38,"GA":1.41,"LA":1.09,"MD":19.56,"MS":0.91,"NC":4.67,"SC":1.68,"TN":2.98,"VA":9.78},"2017":{"DE":10.81,"E PA":20.81,"NJ":17.66,"IL":24.17,"IA":10.41,"KS":3.27,"MO":12.35,"NE":11.27,"WI":60.32,"MA":152.11,"MI":50.66,"IN":7.29,"KY":2.77,"OH":9.69,"W PA":23.73,"WV":6.8,"MN":237.97,"CT":67.31,"ME":88.89,"NH":80.36,"RI":61.87,"VT":191.42,"NY":29.01,"MT":88.63,"ND":182.52,"SD":55.15,"WY":75.93,"AK":267.93,"CA":6.37,"HI":1.44,"NV":2.16,"OR":7.17,"WA":15.31,"AZ":8.11,"CO":42.1,"ID":39.2,"NM":10.01,"OK":1.64,"TX":3.03,"UT":16.29,"AL":3.4,"AR":1.26,"DC":31.47,"FL":4.0,"GA":1.33,"LA":1.35,"MD":20.79,"MS":0.68,"NC":4.91,"SC":2.05,"TN":3.95,"VA":10.57},"2018":{"DE":11.62,"E PA":22.45,"NJ":18.85,"IL":26.32,"IA":11.13,"KS":3.4,"MO":12.53,"NE":11.78,"WI":65.71,"MA":154.41,"MI":50.02,"IN":7.47,"KY":3.44,"OH":10.13,"W PA":25.4,"WV":7.25,"MN":243.28,"CT":70.88,"ME":92.27,"NH":80.36,"RI":59.69,"VT":188.47,"NY":29.66,"MT":92.05,"ND":187.4,"SD":53.23,"WY":75.76,"AK":270.93,"CA":7.49,"HI":1.79,"NV":3.45,"OR":7.34,"WA":16.98,"AZ":10.59,"CO":46.57,"ID":38.77,"NM":10.58,"OK":1.69,"TX":3.27,"UT":16.08,"AL":4.24,"AR":1.13,"DC":38.14,"FL":4.19,"GA":1.62,"LA":1.4,"MD":22.83,"MS":0.78,"NC":6.13,"SC":2.42,"TN":4.98,"VA":11.35},"2019":{"DE":10.81,"E PA":23.31,"NJ":19.54,"IL":26.61,"IA":11.6,"KS":4.73,"MO":13.06,"NE":10.5,"WI":69.92,"MA":161.69,"MI":52.26,"IN":7.94,"KY":3.75,"OH":11.24,"W PA":27.33,"WV":7.3,"MN":249.24,"CT":75.18,"ME":86.54,"NH":79.27,"RI":61.33,"VT":183.8,"NY":31.75,"MT":98.96,"ND":188.68,"SD":56.84,"WY":78.01,"AK":274.48,"CA":8.15,"HI":2.61,"NV":6.57,"OR":7.98,"WA":17.72,"AZ":10.68,"CO":48.29,"ID":42.3,"NM":10.39,"OK":2.07,"TX":3.41,"UT":16.78,"AL":4.68,"AR":1.23,"DC":41.62,"FL":4.79,"GA":1.64,"LA":0.84,"MD":23.83,"MS":0.78,"NC":7.03,"SC":2.7,"TN":4.72,"VA":11.25},"2020":{"DE":11.31,"E PA":23.24,"NJ":21.15,"IL":25.69,"IA":11.69,"KS":4.83,"MO":15.94,"NE":11.01,"WI":73.99,"MA":158.66,"MI":53.62,"IN":8.11,"KY":3.4,"OH":11.58,"W PA":26.31,"WV":6.36,"MN":252.2,"CT":75.4,"ME":92.19,"NH":78.69,"RI":60.05,"VT":185.83,"NY":31.42,"MT":99.52,"ND":197.41,"SD":58.2,"WY":79.4,"AK":272.84,"CA":8.36,"HI":2.34,"NV":7.47,"OR":8.0,"WA":18.99,"AZ":10.89,"CO":48.91,"ID":46.44,"NM":11.33,"OK":1.87,"TX":3.52,"UT":15.62,"AL":4.46,"AR":1.26,"DC":39.01,"FL":5.84,"GA":1.65,"LA":0.64,"MD":23.57,"MS":0.88,"NC":7.63,"SC":2.66,"TN":4.96,"VA":12.3},"2021":{"DE":8.38,"E PA":18.81,"NJ":16.82,"IL":20.18,"IA":11.5,"KS":4.05,"MO":14.98,"NE":10.3,"WI":63.66,"MA":136.9,"MI":40.95,"IN":7.74,"KY":3.02,"OH":10.11,"W PA":22.27,"WV":5.46,"MN":249.51,"CT":64.28,"ME":66.58,"NH":67.29,"RI":46.75,"VT":150.99,"NY":26.32,"MT":86.79,"ND":206.78,"SD":60.11,"WY":68.3,"AK":205.89,"CA":3.33,"HI":0.14,"NV":9.21,"OR":4.93,"WA":12.24,"AZ":8.87,"CO":36.54,"ID":35.18,"NM":7.08,"OK":1.26,"TX":3.38,"UT":13.24,"AL":3.4,"AR":1.13,"DC":25.67,"FL":4.78,"GA":1.36,"LA":0.32,"MD":18.42,"MS":0.47,"NC":5.41,"SC":2.5,"TN":4.36,"VA":9.43},"2022":{"DE":11.41,"E PA":23.72,"NJ":22.84,"IL":24.39,"IA":14.73,"KS":4.94,"MO":19.53,"NE":12.75,"WI":82.63,"MA":162.9,"MI":52.29,"IN":9.31,"KY":3.57,"OH":12.96,"W PA":26.65,"WV":6.69,"MN":269.46,"CT":75.6,"ME":84.56,"NH":81.09,"RI":60.14,"VT":181.16,"NY":32.62,"MT":109.76,"ND":213.84,"SD":65.19,"WY":86.33,"AK":276.8,"CA":7.22,"HI":0.07,"NV":16.85,"OR":7.62,"WA":22.83,"AZ":12.49,"CO":52.1,"ID":47.74,"NM":11.66,"OK":1.87,"TX":4.64,"UT":17.18,"AL":4.14,"AR":1.69,"DC":39.88,"FL":6.5,"GA":1.81,"LA":0.43,"MD":23.44,"MS":0.41,"NC":7.44,"SC":3.87,"TN":5.54,"VA":12.55},"2023":{"DE":12.53,"E PA":24.46,"NJ":24.18,"IL":25.16,"IA":14.32,"KS":5.79,"MO":21.69,"NE":13.31,"WI":83.82,"MA":162.79,"MI":53.18,"IN":9.52,"KY":4.42,"OH":14.94,"W PA":28.06,"WV":9.53,"MN":269.08,"CT":75.1,"ME":87.64,"NH":84.86,"RI":61.6,"VT":185.67,"NY":34.34,"MT":111.69,"ND":215.51,"SD":64.4,"WY":86.68,"AK":303.79,"CA":8.17,"HI":1.37,"NV":14.49,"OR":8.66,"WA":25.13,"AZ":14.82,"CO":57.0,"ID":51.27,"NM":14.12,"OK":2.4,"TX":4.6,"UT":17.73,"AL":4.32,"AR":1.66,"DC":38.72,"FL":7.04,"GA":1.96,"LA":0.36,"MD":24.62,"MS":0.71,"NC":8.16,"SC":4.06,"TN":6.22,"VA":13.9},"2024":{"DE":11.31,"E PA":24.67,"NJ":22.69,"IL":27.08,"IA":14.79,"KS":6.06,"MO":21.67,"NE":13.2,"WI":86.5,"MA":167.33,"MI":52.86,"IN":10.01,"KY":4.13,"OH":16.05,"W PA":27.88,"WV":10.31,"MN":275.53,"CT":70.22,"ME":90.65,"NH":82.03,"RI":69.89,"VT":185.98,"NY":33.64,"MT":115.2,"ND":211.91,"SD":63.27,"WY":81.65,"AK":316.61,"CA":9.26,"HI":2.41,"NV":15.11,"OR":9.72,"WA":27.42,"AZ":13.59,"CO":58.9,"ID":49.48,"NM":13.93,"OK":2.05,"TX":4.61,"UT":19.38,"AL":4.32,"AR":1.99,"DC":40.46,"FL":7.71,"GA":1.92,"LA":0.34,"MD":26.1,"MS":0.57,"NC":8.56,"SC":4.32,"TN":6.24,"VA":14.59}};
+
+// Map NORM E PA / W PA -> PA by averaging
+(function() {
+  Object.keys(NORM).forEach(yr => {
+    const epa = NORM[yr]["E PA"] || 0;
+    const wpa = NORM[yr]["W PA"] || 0;
+    if (epa || wpa) {
+      NORM[yr]["PA"] = (epa + wpa) / 2;
+      delete NORM[yr]["E PA"];
+      delete NORM[yr]["W PA"];
+    }
+  });
+})();
+
+// State positions (as fraction of 900×506 viewBox)
+const POS = {
+  "WA":[0.13,0.17],"OR":[0.10,0.28],"CA":[0.08,0.44],"NV":[0.14,0.38],
+  "ID":[0.19,0.26],"MT":[0.27,0.17],"WY":[0.28,0.29],"UT":[0.21,0.37],
+  "CO":[0.31,0.39],"AZ":[0.20,0.49],"NM":[0.27,0.51],"ND":[0.42,0.15],
+  "SD":[0.43,0.24],"NE":[0.43,0.33],"KS":[0.44,0.42],"OK":[0.45,0.51],
+  "TX":[0.41,0.62],"MN":[0.51,0.17],"IA":[0.54,0.30],"MO":[0.55,0.40],
+  "AR":[0.55,0.52],"LA":[0.55,0.64],"WI":[0.58,0.20],"IL":[0.60,0.32],
+  "MS":[0.61,0.59],"TN":[0.64,0.49],"AL":[0.65,0.59],"MI":[0.66,0.21],
+  "IN":[0.65,0.33],"KY":[0.67,0.43],"OH":[0.71,0.32],"WV":[0.74,0.41],
+  "GA":[0.70,0.59],"FL":[0.70,0.72],"SC":[0.75,0.54],"NC":[0.77,0.48],
+  "VA":[0.78,0.41],"MD":[0.80,0.36],"DC":[0.815,0.40],"DE":[0.83,0.34],
+  "NJ":[0.84,0.30],"PA":[0.78,0.28],"NY":[0.83,0.22],
+  "CT":[0.87,0.28],"RI":[0.89,0.26],"MA":[0.88,0.21],"VT":[0.86,0.16],
+  "NH":[0.875,0.14],"ME":[0.895,0.10],
+  "AK":[0.10,0.84],"HI":[0.22,0.90]
+};
+
+const STATE_NAMES = {
+  "AK":"Alaska","AL":"Alabama","AR":"Arkansas","AZ":"Arizona","CA":"California",
+  "CO":"Colorado","CT":"Connecticut","DC":"Washington D.C.","DE":"Delaware",
+  "FL":"Florida","GA":"Georgia","HI":"Hawaii",
+  "IA":"Iowa","ID":"Idaho","IL":"Illinois","IN":"Indiana","KS":"Kansas",
+  "KY":"Kentucky","LA":"Louisiana","MA":"Massachusetts","MD":"Maryland",
+  "ME":"Maine","MI":"Michigan","MN":"Minnesota","MO":"Missouri","MS":"Mississippi",
+  "MT":"Montana","NC":"North Carolina","ND":"North Dakota","NE":"Nebraska",
+  "NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NV":"Nevada",
+  "NY":"New York","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania",
+  "RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee",
+  "TX":"Texas","UT":"Utah","VA":"Virginia","VT":"Vermont",
+  "WA":"Washington","WI":"Wisconsin","WV":"West Virginia","WY":"Wyoming"
+};
+
+// ── CONFIG ──────────────────────────────────────────────────────────
+const YEARS = ["2007","2008","2009","2010","2011","2012","2013","2014",
+               "2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"];
+const GLOBAL_MAX_NORM = 320; // AK 2024 peak
+const W = 900, H = 506, MAX_R = 62, MIN_R = 3;
+
+let curYear  = "2024";
+let curMode  = "raw";   // "raw" | "norm"
+let curAge   = "total"; // age group key
+let playTimer = null;
+
+// ── COLOR SCALE ─────────────────────────────────────────────────────
+function colorForVal(v, mode) {
+  if (!v || v <= 0) return "rgba(196,220,235,0.28)";
+  const maxV = mode === "norm" ? GLOBAL_MAX_NORM : getMaxRaw();
+  const t = Math.min(v / maxV, 1);
+  const stops = [[200,230,245],[46,140,190],[8,104,172],[8,64,129]];
+  const seg = t * 3, i = Math.min(Math.floor(seg), 2), f = seg - i;
+  const [r1,g1,b1]=stops[i], [r2,g2,b2]=stops[i+1];
+  return `rgb(${Math.round(r1+(r2-r1)*f)},${Math.round(g1+(g2-g1)*f)},${Math.round(b1+(b2-b1)*f)})`;
+}
+
+function getMaxRaw() {
+  const vals = Object.values(AGE_DATA[curYear]||{}).map(d => d[curAge] || 0);
+  return Math.max(...vals, 1);
+}
+
+// ── RADIUS SCALE ────────────────────────────────────────────────────
+function radiusFor(v, mode) {
+  if (!v || v <= 0) return MIN_R * 0.4;
+  if (mode === "norm") {
+    return Math.max(MIN_R, Math.sqrt(v / GLOBAL_MAX_NORM) * MAX_R);
+  } else {
+    const mx = getMaxRaw();
+    return Math.max(MIN_R, Math.sqrt(v / mx) * MAX_R);
+  }
+}
+
+// ── GET VALUE FOR CURRENT SETTINGS ──────────────────────────────────
+function getAgeVal(st) {
+  return (AGE_DATA[curYear]?.[st]?.[curAge]) || 0;
+}
+
+function getVal(st) {
+  if (curMode === "norm") {
+    if (curAge === "total") return NORM[curYear]?.[st] || 0;
+    // For age sub-groups: scale norm by age share
+    const rawTotal = AGE_DATA[curYear]?.[st]?.total || 0;
+    const rawAge   = getAgeVal(st);
+    if (!rawTotal) return 0;
+    return (NORM[curYear]?.[st] || 0) * (rawAge / rawTotal);
+  }
+  return getAgeVal(st);
+}
+
+// ── SVG NODES ───────────────────────────────────────────────────────
+const svgEl = document.getElementById("carto-svg");
+const stKeys = Object.keys(POS);
+const nodes = {};
+const NS = "http://www.w3.org/2000/svg";
+
+stKeys.forEach(st => {
+  const g   = document.createElementNS(NS, "g");
+  const c   = document.createElementNS(NS, "circle");
+  const lbl = document.createElementNS(NS, "text");
+
+  c.setAttribute("class", "carto-bubble");
+  c.style.transition = "r 0.45s cubic-bezier(0.34,1.4,0.64,1), fill 0.4s ease, opacity 0.35s ease";
+
+  lbl.setAttribute("class", "state-label");
+  lbl.textContent = st;
+
+  g.appendChild(c);
+  g.appendChild(lbl);
+  svgEl.appendChild(g);
+  nodes[st] = { c, lbl };
+});
+
+// ── TOOLTIP ─────────────────────────────────────────────────────────
+const tt = document.getElementById("carto-tooltip");
+
+function showTip(st, v, raw100k, rawCount, evt) {
+  const name = STATE_NAMES[st] || st;
+  let html = `<strong>${name}</strong>`;
+  if (curMode === "norm") {
+    html += `<span class="tt-rate">${v ? v.toFixed(1) : "—"} per 100k residents</span>`;
+    html += `<span class="tt-raw">${rawCount ? rawCount.toLocaleString() + " registrations" : "no data"}</span>`;
+  } else {
+    html += `<span class="tt-rate">${rawCount ? rawCount.toLocaleString() + " registrations" : "no data"}</span>`;
+    if (raw100k) html += `<span class="tt-raw">${raw100k.toFixed(1)} per 100k</span>`;
+  }
+  tt.innerHTML = html;
+  tt.style.opacity = 1;
+  tt.style.left = (evt.clientX + 14) + "px";
+  tt.style.top  = (evt.clientY - 38) + "px";
+}
+
+// ── RENDER ──────────────────────────────────────────────────────────
+function render() {
+  const nd = NORM[curYear]    || {};
+  const ad = AGE_DATA[curYear] || {};
+
+  // Stats strip
+  const vals = stKeys.map(st => getVal(st)).filter(v => v > 0);
+  const rawVals = stKeys.map(st => (ad[st]?.[curAge] || 0)).filter(v => v > 0);
+
+  document.getElementById("cs-total").textContent =
+    rawVals.reduce((a, b) => a + b, 0).toLocaleString();
+  document.getElementById("cs-total-lbl").textContent = "Total registrations";
+
+  // Legend
+  const peakV = curMode === "norm" ? GLOBAL_MAX_NORM : Math.max(...rawVals, 1);
+  document.getElementById("leg-mid").textContent =
+    curMode === "norm" ? Math.round(peakV / 2) : Math.round(peakV / 2).toLocaleString();
+  document.getElementById("leg-note").textContent =
+    curMode === "norm"
+      ? "Bubble size & color = registrations per 100,000 residents · Scale fixed to all-time peak"
+      : "Bubble size & color = registrations · Scale relative to current year + age group maximum";
+
+  // Draw bubbles
+  stKeys.forEach(st => {
+    const { c, lbl } = nodes[st];
+    const [nx, ny] = POS[st];
+    const cx = nx * W, cy = ny * H;
+    const v    = getVal(st);
+    const rawC = ad[st]?.[curAge] || 0;
+    const normV = nd[st] || 0;
+    const r = radiusFor(v, curMode);
+
+    c.setAttribute("cx", cx);
+    c.setAttribute("cy", cy);
+    c.setAttribute("r",  r);
+    c.setAttribute("fill", colorForVal(v, curMode));
+    c.setAttribute("stroke", (v / (curMode==="norm"?GLOBAL_MAX_NORM:peakV)) > 0.45 ? "rgba(255,255,255,0.22)" : "rgba(8,104,172,0.35)");
+    c.setAttribute("stroke-width", "1.2");
+    c.style.opacity = v > 0 ? "1" : "0.15";
+
+    lbl.setAttribute("x", cx);
+    lbl.setAttribute("y", cy);
+    const fs = r < 9 ? 0 : r < 13 ? 6 : r < 19 ? 7.5 : r < 28 ? 9 : 10;
+    lbl.style.fontSize   = fs + "px";
+    lbl.style.display    = r < 7 ? "none" : "";
+    const tint = v / (curMode==="norm"?GLOBAL_MAX_NORM:peakV);
+    lbl.style.fill = tint > 0.35 ? "rgba(240,250,255,0.92)" : "rgba(7,21,37,0.82)";
+
+    c.onmousemove = (evt) => showTip(st, v, normV, rawC, evt);
+    c.onmouseleave = () => { tt.style.opacity = 0; };
+  });
+}
+
+// ── CONTROLS ────────────────────────────────────────────────────────
+const slider   = document.getElementById("carto-yr-slider");
+const yrLabel  = document.getElementById("carto-year-label");
+const playBtn  = document.getElementById("carto-play");
+
+slider.addEventListener("input", () => {
+  curYear = YEARS[+slider.value];
+  yrLabel.textContent = curYear;
+  render();
+});
+
+playBtn.addEventListener("click", () => {
+  if (playTimer) {
+    clearInterval(playTimer);
+    playTimer = null;
+    playBtn.innerHTML = "&#9654; Play";
+  } else {
+    playBtn.innerHTML = "&#9646;&#9646; Pause";
+    let idx = +slider.value;
+    playTimer = setInterval(() => {
+      idx = (idx + 1) % YEARS.length;
+      slider.value = idx;
+      curYear = YEARS[idx];
+      yrLabel.textContent = curYear;
+      render();
+      if (idx === YEARS.length - 1) {
+        clearInterval(playTimer);
+        playTimer = null;
+        playBtn.innerHTML = "&#9654; Play";
+      }
+    }, 800);
+  }
+});
+
+function setMode(mode, btn) {
+  curMode = mode;
+  document.querySelectorAll(".carto-mode-toggle button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+function setAge(btn) {
+  curAge = btn.dataset.age;
+  document.querySelectorAll("#carto-age-bar button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+// initial draw
+render();
+
+</script>
+</body>
+</html>
