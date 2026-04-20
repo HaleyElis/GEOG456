@@ -131,6 +131,13 @@
 
   <div id="eventMeta" class="meta">No event loaded</div>
 
+  <h2> How It Works</h2>
+  <p> This is a simple animated visualization of shots and goals in women's professional hockey. With dropdowns, users can select a dataset, either PWHL or Olympic Games, and a game to load and view the associated play-by-play data, buttons allow for playback control.</p>
+  <p> The rink is oriented so that the home team (or Team A) always attacks from left to right. Shots are shown as circles and goals as stars, with the home/Team A in red and away/Team B in blue. The current event is highlighted with a dark outline, and metadata about the event is shown below the chart.</p>
+  <p> The PWHL data is sourced from the official league stats through SportyDataVerse's fastRhockey and the HockeyTech API, while the Olympic Games data is sourced from the Stathletes Big Data Cup 2021. </p>
+  <p> Challenges in developing this visualization included managing a messy API and normalizing the data formats and ensuring consistent styling across different datasets. These challenges were addressed through careful data processing and a flexible rendering approach that could accommodate variations in the data.</p>
+  <p> We chose to include game level visualizations within our project to display the many ways we can visualize change in sports data on a variety of scales.</p>
+
   <script>
     const BDC_URL = "https://raw.githubusercontent.com/the-bucketless/bdc/main/data/pxp_womens_oly_2022_v2.csv";
 
