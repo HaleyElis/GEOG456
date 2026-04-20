@@ -94,6 +94,21 @@
       font-weight: 700;
       margin-left: 8px;
     }
+
+    /* ── FOOTER ── */
+  .sb-footer {
+    background: var(--rink);
+    color: #4a6a7a;
+    padding: 32px 56px;
+    font-size: 12px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(78, 179, 211, 0.15);
+  }
+  .sb-footer a { color: var(--blue-light); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -133,7 +148,13 @@
 
   <h2> How It Works</h2>
   <p> We chose to include game level visualizations within our project to display the many ways we can visualize change in sports data on a variety of scales. This is a simple animated visualization of shots and goals in women's professional hockey. With dropdowns, users can select a dataset, either PWHL or Olympic Games, and a game to load and view the associated play-by-play data, buttons allow for playback control. The rink is oriented so that the home team (or Team A) always attacks from left to right. Shots are shown as circles and goals as stars, with the home/Team A in red and away/Team B in blue. The current event is highlighted with a dark outline, and metadata about the event is shown below the chart.</p>
-  <p> The PWHL data is sourced from the official league stats through SportyDataVerse's fastRhockey and the HockeyTech API, while the Olympic Games data is sourced from the Stathletes Big Data Cup 2021. Challenges in developing this visualization included managing a messy API and normalizing the data formats and ensuring consistent styling across different datasets. These challenges were addressed through careful data processing and a flexible rendering approach that could accommodate variations in the data. Remaining challenges include differences between the datasets leading to inconsistencies in visualization. For example, in the PWHL animations, teams switch sides each period, but in the Olympics animations they do not. In the Olympics animation, shots and goals are indistinguishable which is limits the potential analyses. Aesthetically many improvements could be made, for one the team colors could reflect actual team colors and the "pills" in the metadata could be updated to match rather than remaining blue. </p>
+  <p> The PWHL data is sourced from the official league stats through SportyDataVerse's fastRhockey and the HockeyTech API, while the Olympic Games data is sourced from the Stathletes Big Data Cup 2021/22. Challenges in developing this visualization included managing a messy API and normalizing the data formats and ensuring consistent styling across different datasets. These challenges were addressed through careful data processing and a flexible rendering approach that could accommodate variations in the data. Remaining challenges include differences between the datasets leading to inconsistencies in visualization. For example, in the PWHL animations, teams switch sides each period, but in the Olympics animations they do not. In the Olympics animation, shots and goals are indistinguishable which is limits the potential analyses. Aesthetically many improvements could be made, for one the team colors could reflect actual team colors and the "pills" in the metadata could be updated to match rather than remaining blue. </p>
+
+  <!-- FOOTER -->
+  <footer class="sb-footer">
+    <span>Data: <a href="https://fastrhockey.sportsdataverse.org/index.html">fastRhockey</a>  &nbsp;·&nbsp; <a href="https://github.com/bigdatacup/Big-Data-Cup-2021"> Stathletes Big Data Cup 2021/22 </a> </span>
+   <span>Geovisualization project &nbsp;·&nbsp; 2025–26</span>
+  </footer>
 
   <script>
     const BDC_URL = "https://raw.githubusercontent.com/the-bucketless/bdc/main/data/pxp_womens_oly_2022_v2.csv";
