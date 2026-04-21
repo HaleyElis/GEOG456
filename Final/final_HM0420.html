@@ -669,11 +669,7 @@
     <div class="sb-chapter-body">
       <p class="sb-chapter-tag">Visualization 1</p>
       <h2>Registration of Women and Girls by State</h2>
-      <p>This project asks: what does three decades of registration data actually show us about where women's hockey is taking root?
-        Why a cartogram? This cartogram resizes each state proportional to its registration count. </p>
-      <ul class="sb-feature-list">
-        <li><span class="sb-bullet"></span><span>data stuff is confusing rn! but it runs</span></li>
-      </ul>
+      <p>This cartogram maps the geographic spread of female hockey participation across the United States, drawing on USA Hockey's annual registration reports from 2007 through 2024. Each state is represented as a bubble sized and shaded in proportion to its registration count. The cartogram style allows registration density to be immediately visible to users in a way traditional maps do not. The timeline slider allows viewers to animate three decades of growth, watching the sport's registration numbers change year by year. Toggling between total registrations and a per-100k residents adjusts for state population, exposing where women's hockey has genuinely grown versus where raw numbers simply reflect a large underlying population.</p>
 
       <div class="sb-cartogram-wrapper">
 
@@ -746,28 +742,35 @@
     <div class="sb-chapter-num">02</div>
     <div class="sb-chapter-body">
       <p class="sb-chapter-tag">Visualization 2</p>
-      <h2>PWHL franchise map and player data</h2>
-      <p>The Professional Women's Hockey League launched in 2024 with 6 teams and has since expanded to 8. This map shows team home stadium locations. Explore each team's full roster in a side panel.</p>
-      <p>Background: the PWHL was formed after the dissolution of the NWHL and the brief Premier Hockey Federation era. Its rapid expansion reflects exactly the kind of institutional investment this project tracks alongside grassroots participation data.</p>
+      <h2>PWHL Franchise Map and Player Data</h2>
+      <p>The Professional Women's Hockey League launched in 2024 with 6 teams and expanded to 8 in 2025. This interactive map shows each team's home stadium location, choropleth shading by player origin (U.S. state or Canadian province), and full 2025–26 roster details.</p>
+      <p>The choropleth layer reveals a clear geographic concentration of talent — particularly in Ontario and Minnesota — that mirrors the registration growth patterns shown in Visualization 1.</p>
       <ul class="sb-feature-list">
-        <li><span class="sb-bullet"></span><span>Click any franchise marker to open a roster and stats panel</span></li>
-        <li><span class="sb-bullet"></span><span>Timeline toggle: 2024 (6 teams) versus 2025 (8 teams)</span></li>
-        <li><span class="sb-bullet"></span><span>Olympic connection — highlight players who competed for Team USA or Canada</span></li>
-        <li><span class="sb-bullet"></span><span>See goals and assists for each player directly on the map popup</span></li>
+        <li><span class="sb-bullet"></span><span>Click any team logo marker to open a full roster popup with stats</span></li>
+        <li><span class="sb-bullet"></span><span>Hover any state or province to see how many PWHL players come from there</span></li>
+        <li><span class="sb-bullet"></span><span>International players are listed separately within each team popup</span></li>
+        <li><span class="sb-bullet"></span><span>Coaching staff including GM, Head Coach, and Assistants for all 8 teams</span></li>
       </ul>
-      <div class="sb-map-placeholder">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="4" width="40" height="40" rx="4" stroke="#2b8cbe" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <circle cx="16" cy="20" r="4" fill="#4eb3d3" opacity="0.5"/>
-          <circle cx="30" cy="16" r="4" fill="#4eb3d3" opacity="0.5"/>
-          <circle cx="34" cy="28" r="4" fill="#4eb3d3" opacity="0.5"/>
-          <circle cx="20" cy="32" r="4" fill="#4eb3d3" opacity="0.5"/>
-          <line x1="16" y1="20" x2="30" y2="16" stroke="#2b8cbe" stroke-width="1"/>
-          <line x1="30" y1="16" x2="34" y2="28" stroke="#2b8cbe" stroke-width="1"/>
-          <line x1="34" y1="28" x2="20" y2="32" stroke="#2b8cbe" stroke-width="1"/>
-        </svg>
-        <p>PWHL franchise map goes here</p>
-        <span>Drop in your PWHL animation component — roster popups, Olympic highlights, team timeline</span>
+
+      <!-- PWHL Map launch card -->
+      <div class="sb-map-launch-card">
+        <div class="sb-map-launch-preview">
+        <div class="sb-map-launch-info">
+            <div class="sb-map-launch-title">PWHL Interactive Map</div>
+            <div class="sb-map-launch-subtitle">2025–26 Season · 8 Teams · Full Roster Data</div>
+            <div class="sb-map-launch-tags">
+              <span class="sb-map-tag">Choropleth by player origin</span>
+              <span class="sb-map-tag">Roster popups</span>
+              <span class="sb-map-tag">Stats &amp; coaching staff</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://mzwack.github.io/GEOG456/GEOG456/Final_project/pwhl_map_standalone.html" target="_blank" class="sb-map-launch-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M8 3l5 5-5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open Interactive Map
+        </a>
       </div>
     </div>
   </div>
@@ -798,6 +801,9 @@
    ">
    View Interactive Visualization →
 </a>
+ </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer class="sb-footer">
