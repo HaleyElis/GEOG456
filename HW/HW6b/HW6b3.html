@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Change</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        font-size:20px;
+        height:100vh;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    div#image_container{
+        width: 100%;
+        max-width: 900px;
+        height: 75vh;
+        position: fixed;
+        top: 80px;
+        
+    }
+    img{
+        width: 100%;
+        position: absolute;
+    }
+
+    #image2005{
+        z-index: 1;
+        opacity: 1;
+    }
+    #image2012{
+        z-index: 2;
+        opacity: 0;
+    }
+    #image2020{
+        z-index: 3;
+        opacity: 0;
+    }
+#myText{
+    color: aliceblue;
+    /* bottom: 0px; */
+    display: grid;
+    width: 100vw;
+    max-width: 900px;
+    height: 25vh;
+    top: calc(75vh + 5px);;
+    /* height: 100vh; */
+    grid-template-rows: 100%;
+    background-color: rgb(35, 95, 95, .5);
+    position: fixed;
+    overflow-y:scroll;
+    /* right: 0%; */
+    /* margin-left: 50%; */
+}
+#y2012{
+
+    background-color: rgb(35, 95, 95, .5);
+    /* color: brown; */
+}
+#y2020{
+
+    background-color: rgb(35, 95, 95, .5);
+    /* color: brown; */
+}
+#myP{
+    top:0;
+    position: fixed;
+    color: aliceblue;
+}
+h3{
+    color: white;
+    position: fixed;
+    font-size: 20px;
+    top: 30px;
+}
+p{
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.5;
+}
+h1{
+    padding-left: 20px;
+}
+</style>
+<body>
+    <h3 id="h3scroll">The onscroll Event</h3><br>
+
+    <p id="myP" style="position:fixed">
+        Scroll to see changes</p> <br>
+    <div id="image_container">
+        <img id="image2020"  src="./image2020.png" alt="2020">
+        <img id="image2012"  src="./image2012.png" alt="2012">
+        <img id="image2005" src="./image2005.png" alt="2005">
+
+    </div>
+    <div id="myText">
+    <div id="y2005">
+        <h1>Year 2005</h1>
+        <p>Across the three aerial photographs, the playa surface remains bright and exposed, but the location and intensity of the reddish and gray mineral staining changes over time. The agricultural fields along the eastern and southern edges shift in shape and visibility, with some green parcels becoming more distinct in later images. The overall lakebed boundary and surrounding desert landscape stay similar, while the interior patterns of moisture, sediment, and salt deposits appear to move and reorganize between 2005, 2012, and 2020.</p>
+        
+    </div>
+    <div id="y2012">
+        <h1>Year 2012</h1>
+        <p>Across the three aerial photographs, the playa surface remains bright and exposed, but the location and intensity of the reddish and gray mineral staining changes over time. The agricultural fields along the eastern and southern edges shift in shape and visibility, with some green parcels becoming more distinct in later images. The overall lakebed boundary and surrounding desert landscape stay similar, while the interior patterns of moisture, sediment, and salt deposits appear to move and reorganize between 2005, 2012, and 2020.</p>
+
+    </div>
+    <div id="y2020">
+        <h1>Year 2020</h1>
+        <p>Across the three aerial photographs, the playa surface remains bright and exposed, but the location and intensity of the reddish and gray mineral staining changes over time. The agricultural fields along the eastern and southern edges shift in shape and visibility, with some green parcels becoming more distinct in later images. The overall lakebed boundary and surrounding desert landscape stay similar, while the interior patterns of moisture, sediment, and salt deposits appear to move and reorganize between 2005, 2012, and 2020.</p>
+
+    </div>
+    </div>
+<script>
+
+ var maxY = document.getElementById('myText').scrollHeight - document.getElementById('myText').clientHeight;
+
+
+    // var maxY = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    // // The previous is a good way of calculating the maximum vertical scrolling. 
+
+    document.getElementById('myText').onscroll = function() {myFunction()}; // when you scroll the myFunction will be called. 
+    function myFunction() {
+    var opacity = document.getElementById('myText').scrollTop / maxY;
+    if (opacity <= .5){
+        document.getElementById('image2012').style.opacity = opacity*2;
+        document.getElementById('image2020').style.opacity = 0;
+    } else {
+        document.getElementById('image2012').style.opacity = 1;
+        document.getElementById('image2020').style.opacity = (opacity-.5)*2;
+    }
+    document.getElementById("h3scroll").innerText = "  MaxY = " + maxY +  "   Scroll Y = " + document.getElementById('myText').scrollTop + "  Scroll Y / Max Y = " + document.getElementById('myText').scrollTop / maxY;
+}
+    
+function replaceTop(){
+    document.getElementById("myText").style.top = document.getElementById('image2020').offsetHeight + 80 + 'px'
+}
+       window.addEventListener('resize', function() {
+        replaceTop()
+        maxY = document.getElementById('myText').scrollHeight - document.getElementById('myText').clientHeight;
+        })
+
+        // Trigger the resize event to initially set the width
+        window.dispatchEvent(new Event('resize'));
+
+        window.onload = function() {replaceTop()}
+
+    </script>
+</body>
+</html>
